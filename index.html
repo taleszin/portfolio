@@ -354,6 +354,7 @@
             opacity: 0;
             transition: opacity 0.5s;
             pointer-events: none;
+            z-index: 1;
         }
         
         .project-card:hover::before {
@@ -363,6 +364,344 @@
         .project-card:hover {
             transform: perspective(1000px) rotateY(5deg) scale(1.05);
             box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        /* MedLeap AI - Medical Theme */
+        .project-card[data-title="MedLeap AI"] {
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+            border: 2px solid #00aaff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card[data-title="MedLeap AI"]::after {
+            content: "⚕️";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 80px;
+            opacity: 0.1;
+            z-index: 1;
+            animation: pulse-medical 3s ease-in-out infinite;
+        }
+
+        .project-card[data-title="MedLeap AI"] .project-card-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-card[data-title="MedLeap AI"]:hover {
+            box-shadow: 0 0 30px rgba(0, 170, 255, 0.6);
+            animation: medical-glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse-medical {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.1; }
+            50% { transform: scale(1.1) rotate(5deg); opacity: 0.2; }
+        }
+
+        @keyframes medical-glow {
+            0% { box-shadow: 0 0 30px rgba(0, 170, 255, 0.6); }
+            100% { box-shadow: 0 0 40px rgba(0, 255, 170, 0.8); }
+        }
+
+        /* ShotMap Basketball - Sports Theme */
+        .project-card[data-title="ShotMap Basketball"] {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            border: 2px solid #ff8c42;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card[data-title="ShotMap Basketball"]::after {
+            content: "🏀";
+            position: absolute;
+            top: -10px;
+            right: -15px;
+            font-size: 60px;
+            opacity: 0.2;
+            z-index: 1;
+            animation: basketball-bounce 2s ease-in-out infinite;
+        }
+
+        .project-card[data-title="ShotMap Basketball"] .project-card-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-card[data-title="ShotMap Basketball"]:hover {
+            animation: basketball-shake 0.5s ease-in-out infinite;
+        }
+
+        @keyframes basketball-bounce {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+        }
+
+        @keyframes basketball-shake {
+            0%, 100% { transform: perspective(1000px) rotateY(5deg) scale(1.05) translateX(0); }
+            25% { transform: perspective(1000px) rotateY(5deg) scale(1.05) translateX(-2px); }
+            75% { transform: perspective(1000px) rotateY(5deg) scale(1.05) translateX(2px); }
+        }
+
+        /* Portal da História - Vintage Theme */
+        .project-card[data-title="Portal da História do Ceará"] {
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+            border: 2px solid #daa520;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card[data-title="Portal da História do Ceará"]::after {
+            content: "📜";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 50px;
+            opacity: 0.3;
+            z-index: 1;
+            animation: vintage-float 4s ease-in-out infinite;
+        }
+
+        .project-card[data-title="Portal da História do Ceará"]::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(218, 165, 32, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(218, 165, 32, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .project-card[data-title="Portal da História do Ceará"] .project-card-content {
+            background: rgba(139, 69, 19, 0.8);
+            backdrop-filter: blur(5px);
+            color: #f4e4bc;
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 8px;
+            box-shadow: inset 0 0 20px rgba(218, 165, 32, 0.1);
+        }
+
+        .project-card[data-title="Portal da História do Ceará"]:hover {
+            box-shadow: 0 0 25px rgba(218, 165, 32, 0.5);
+            filter: sepia(0.3);
+        }
+
+        @keyframes vintage-float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-8px) rotate(10deg); opacity: 0.5; }
+        }
+
+        /* Valentine's Day - Romantic Theme */
+        .project-card[data-title="Valentine's Day"] {
+            background: linear-gradient(135deg, #ff1744 0%, #e91e63 50%, #9c27b0 100%);
+            border: 2px solid #ff4569;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card[data-title="Valentine's Day"]::after {
+            content: "💖";
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            font-size: 40px;
+            opacity: 0.4;
+            z-index: 1;
+            animation: heart-beat 1.5s ease-in-out infinite;
+        }
+
+        .project-card[data-title="Valentine's Day"]::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(255, 69, 105, 0.2) 0%, transparent 30%),
+                radial-gradient(circle at 70% 60%, rgba(233, 30, 99, 0.2) 0%, transparent 30%);
+            z-index: 1;
+            animation: romantic-sparkle 3s ease-in-out infinite;
+        }
+
+        .project-card[data-title="Valentine's Day"] .project-card-content {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-card[data-title="Valentine's Day"]:hover {
+            animation: heart-glow 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes heart-beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @keyframes romantic-sparkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes heart-glow {
+            0% { box-shadow: 0 0 20px rgba(255, 69, 105, 0.6); }
+            100% { box-shadow: 0 0 35px rgba(233, 30, 99, 0.8); }
+        }
+
+        /* C Programming - Terminal Theme */
+        .project-card[data-title="Sistema de Gerenciamento de Inventário em C"] {
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+            border: 2px solid #30363d;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
+        }
+
+        .project-card[data-title="Sistema de Gerenciamento de Inventário em C"]::after {
+            content: "💻";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 50px;
+            opacity: 0.2;
+            z-index: 1;
+            animation: terminal-blink 2s linear infinite;
+        }
+
+        .project-card[data-title="Sistema de Gerenciamento de Inventário em C"]::before {
+            content: "> █";
+            position: absolute;
+            bottom: 10px;
+            left: 15px;
+            color: #00ff41;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            opacity: 0.6;
+            z-index: 1;
+            animation: cursor-blink 1s linear infinite;
+        }
+
+        .project-card[data-title="Sistema de Gerenciamento de Inventário em C"] .project-card-content {
+            background: rgba(13, 17, 23, 0.9);
+            color: #00ff41;
+            position: relative;
+            z-index: 2;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+        }
+
+        .project-card[data-title="Sistema de Gerenciamento de Inventário em C"] h3 {
+            color: #00ff41 !important;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+        }
+
+        .project-card[data-title="Sistema de Gerenciamento de Inventário em C"]:hover {
+            box-shadow: 0 0 25px rgba(0, 255, 65, 0.3);
+            animation: terminal-glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes terminal-blink {
+            0%, 50% { opacity: 0.2; }
+            51%, 100% { opacity: 0.6; }
+        }
+
+        @keyframes cursor-blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes terminal-glow {
+            0% { border-color: #30363d; }
+            100% { border-color: #00ff41; }
+        }
+
+        /* Academic Manager - Education Theme */
+        .project-card[data-title="Gerenciador de Atividades Acadêmicas"] {
+            background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+            border: 2px solid #5ba0f2;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card[data-title="Gerenciador de Atividades Acadêmicas"]::after {
+            content: "🎓";
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 60px;
+            opacity: 0.2;
+            z-index: 1;
+            animation: academic-float 3.5s ease-in-out infinite;
+        }
+
+        .project-card[data-title="Gerenciador de Atividades Acadêmicas"]::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255, 255, 255, 0.05) 10px,
+                    rgba(255, 255, 255, 0.05) 20px
+                );
+            z-index: 1;
+        }
+
+        .project-card[data-title="Gerenciador de Atividades Acadêmicas"] .project-card-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-card[data-title="Gerenciador de Atividades Acadêmicas"]:hover {
+            box-shadow: 0 0 30px rgba(74, 144, 226, 0.6);
+            animation: academic-shine 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes academic-float {
+            0%, 100% { transform: translateY(0px) rotate(-5deg); }
+            50% { transform: translateY(-12px) rotate(5deg); }
+        }
+
+        @keyframes academic-shine {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.2); }
+        }
+
+        /* Enhanced hover effects for all cards */
+        .project-card:hover .project-card-content {
+            transform: translateZ(20px);
+        }
+
+        .project-card .tags span {
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .tags span {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .project-card-content {
