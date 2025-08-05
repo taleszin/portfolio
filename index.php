@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tales Santiago | Desenvolvedor & Arquiteto de Software</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --light-primary: #007bff;
+            --light-secondary: #f8f9fa;
+            --light-background: #ffffff;
+            --light-text: #212529;
+            --light-card-bg: #ffffff;
+            --light-border: #dee2e6;
+
+            --dark-primary: #00aaff;
+            --dark-secondary: #0d1117;
+            --dark-background: #010409;
+            --dark-text: #c9d1d9;
+            --dark-card-bg: #161b22;
+            --dark-border: #30363d;
+        }
+
+        [data-theme='light'] {
+            --primary-color: var(--light-primary);
+            --secondary-color: var(--light-secondary);
+            --background-color: var(--light-background);
+            --text-color: var(--light-text);
+            --light-text-color: var(--light-text);
+            --card-bg-color: var(--light-card-bg);
+            --border-color: var(--light-border);
+            --header-bg: rgba(255, 255, 255, 0.8);
+        }
+
+        [data-theme='dark'] {
+            --primary-color: var(--dark-primary);
+            --secondary-color: var(--dark-secondary);
+            --background-color: var(--dark-background);
+            --text-color: var(--dark-text);
+            --light-text-color: #f0f6fc;
+            --card-bg-color: var(--dark-card-bg);
+            --border-color: var(--dark-border);
+            --header-bg: rgba(1, 4, 9, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        header {
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--light-text-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--light-text-color);
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .theme-switcher {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .theme-switcher:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-text-color);
+            overflow: hidden;
+            position: relative;
+        }
+
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            z-index: 2;
+            position: relative;
+        }
+
+        #hero h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: var(--light-text-color);
+        }
+
+        #hero p {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--light-background);
+            padding: 14px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        [data-theme='light'] .btn {
+            color: var(--light-background);
+        }
+        [data-theme='dark'] .btn {
+            color: var(--dark-secondary);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.2);
+        }
+        
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            font-weight: 700;
+            color: var(--light-text-color);
+        }
+        
+        #about {
+            background-color: var(--secondary-color);
+        }
+
+        #about .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        #about img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 50%;
+            margin: auto;
+            display: block;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 8px 24px rgba(0, 170, 255, 0.1);
+        }
+
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .skills-list li {
+            background-color: var(--card-bg-color);
+            color: var(--primary-color);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+        }
+        
+        .skills-list li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 170, 255, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .swiper-container {
+            width: 100%;
+            padding: 10px 0 50px 0;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .project-card {
+            background: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 350px;
+            min-height: 380px;
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 170, 255, 0.15), transparent 40%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+        
+        .project-card:hover::before {
+            opacity: 1;
+        }
+        
+        .project-card:hover {
+            transform: perspective(1000px) rotateY(5deg) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .project-card-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .project-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .project-card .tags {
+            margin-top: auto;
+            padding-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .project-card .tags span {
+            background: var(--secondary-color);
+            color: var(--text-color);
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--primary-color);
+            transform: scale(0.8);
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: var(--primary-color);
+        }
+
+        #experience {
+            background-color: var(--secondary-color);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+        .timeline-item.left {
+            left: 0;
+        }
+        .timeline-item.right {
+            left: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            right: -12px;
+            background-color: var(--secondary-color);
+            border: 4px solid var(--primary-color);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+        .timeline-item:hover::after {
+            transform: scale(1.2);
+        }
+        .timeline-item.right::after {
+            left: -12px;
+        }
+        .timeline-content {
+            padding: 25px;
+            background-color: var(--card-bg-color);
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: border-color 0.3s ease;
+        }
+        .timeline-item:hover .timeline-content {
+            border-color: var(--primary-color);
+        }
+        .timeline-content h3 {
+             font-family: 'Space Grotesk', sans-serif;
+             color: var(--primary-color);
+        }
+        .timeline-content h4 {
+            font-weight: 500;
+            color: #8b949e;
+            font-size: 1rem;
+        }
+        .timeline-content span {
+            font-size: 0.85rem;
+            color: #6e7681;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        #contact {
+            text-align: center;
+        }
+        #contact p {
+            max-width: 600px;
+            margin: 20px auto 30px auto;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .medium-zoom-overlay {
+            z-index: 3000 !important;
+        }
+
+        .medium-zoom-image {
+            z-index: 3001 !important;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup {
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px 40px;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .popup-overlay.active .popup {
+            transform: scale(1);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .popup-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .popup-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .popup-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .popup-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .popup-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            cursor: zoom-in;
+            transition: all 0.3s ease;
+        }
+
+        .popup-gallery img:hover {
+            transform: scale(1.02);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0, 170, 255, 0.2);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: var(--light-background);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 170, 255, 0.3);
+        }
+
+        .project-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--secondary-color);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-metric {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .project-metric .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .project-metric .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--card-bg-color);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--primary-color);
+            color: var(--light-background);
+            padding: 14px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 170, 255, 0.3);
+        }
+
+        .contact-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: transparent;
+            color: var(--primary-color);
+            text-decoration: none;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .contact-action:hover {
+            background: var(--primary-color);
+            color: var(--light-background);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 170, 255, 0.3);
+        }
+
+        .contact-action.whatsapp {
+            background: #25D366;
+            border-color: #25D366;
+            color: white;
+        }
+
+        .contact-action.whatsapp:hover {
+            background: #128C7E;
+            border-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .form-status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .form-status.success {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+            border: 1px solid rgba(40, 167, 69, 0.3);
+        }
+
+        .form-status.error {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+
+
+        [data-theme='light'] .project-link {
+            color: var(--light-background);
+        }
+        [data-theme='dark'] .project-link {
+            color: var(--dark-secondary);
+        }
+
+        [data-theme='light'] .form-submit {
+            color: var(--light-background);
+        }
+        [data-theme='dark'] .form-submit {
+            color: var(--dark-secondary);
+        }
+
+
+        @media(max-width: 992px) {
+            #hero h2 { font-size: 3rem; }
+            #hero p { font-size: 1.2rem; }
+            #about .about-content { grid-template-columns: 1fr; text-align: center;}
+            #about img { margin-bottom: 30px; }
+            .contact-form { padding: 30px 20px; }
+            .project-links { justify-content: center; }
+            .contact-actions { flex-direction: column; align-items: center; }
+            .contact-action { width: 250px; }
+        }
+
+        @media(max-width: 768px) {
+            .nav-menu ul { display: none; }
+            .section-title { font-size: 2.2rem; }
+            
+            .timeline::after { left: 15px; }
+            .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; }
+            .timeline-item.left::after, .timeline-item.right::after { left: 3px; }
+            .timeline-item.right { left: 0%; }
+            
+            .popup { padding: 20px; margin: 20px; }
+            .popup-gallery { grid-template-columns: 1fr; }
+            .project-metrics { flex-direction: column; }
+            .project-metric { min-width: auto; }
+            .contact-form { padding: 25px 15px; }
+            .project-links { flex-direction: column; align-items: center; }
+            .project-link { width: 200px; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="logo">Tales Santiago</div>
+            <ul class="nav-menu">
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#projects">Projetos</a></li>
+                <li><a href="#experience">Jornada</a></li>
+                <li><a href="#contact">Contato</a></li>
+                <li>
+                    <button class="theme-switcher" id="theme-toggle-btn" aria-label="Mudar tema">
+                        <span class="icon-sun">☀️</span>
+                        <span class="icon-moon" style="display:none;">🌙</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div id="hero-canvas"></div>
+            <div class="hero-content" data-aos="fade-in">
+                <h2>Transformando Ideias em Realidade Digital</h2>
+                <p>Sou um desenvolvedor focado em criar soluções que resolvem dores reais, construo sistemas robustos e intuitivos que resolvem problemas complexos, unindo engenharia de software, visão de produto e uma profunda atenção à experiência do usuário.</p>
+                <a href="#contact" class="btn">VAMOS CONSTRUIR JUNTOS</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Sobre Mim</h2>
+                <div class="about-content">
+                    <div data-aos="fade-right">
+                        <img src="TalesRJ.jpg" alt="Foto de Tales Santiago">
+                    </div>
+                    <div data-aos="fade-left">
+                        <p>
+                           Olá! Sou estudante de Ciência da Computação na UECE, mas minha verdadeira sala de aula tem sido o desafio de construir software do zero. O que me fascina é o poder da arquitetura de sistemas para traduzir a complexidade do mundo em soluções digitais elegantes. Seja otimizando uma consulta em SQL ou projetando uma nova feature, busco a união entre performance técnica e uma experiência de usuário intuitiva.
+                        </p>
+                        <ul class="skills-list">
+                            <li>PHP</li>
+                            <li>JavaScript (ES6+)</li>
+                            <li>MySQL</li>
+                            <li>LLM & IA</li>
+                            <li>AWS Cloud</li>
+                            <li>Figma (UI/UX)</li>
+                            <li>Arquitetura de Sistemas</li>
+                            <li>APIs RESTful</li>
+                            <li>Node.js</li>
+                            <li>Three.js</li>
+                            <li>POO</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Projetos em Destaque</h2>
+                <div class="swiper-container" data-aos="fade-up" data-aos-delay="200">
+                    <div class="swiper-wrapper">
+                        
+                        <div class="swiper-slide">
+                            <div class="project-card" 
+                                 data-title="MedLeap AI" 
+                                 data-images="images/medleap-1.jpg,images/medleap-2.jpg,images/medleap-3.jpg"
+                                 data-tech-copy="Este projeto é uma plataforma SaaS (Software as a Service) desenvolvida em PHP com arquitetura MVC. O core da aplicação integra-se a Large Language Models (LLMs) via API RESTful para gerar dinamicamente simulações de casos clínicos interativos. O sistema gerencia o estado da simulação, avalia as respostas do usuário em tempo real e fornece feedback baseado em algoritmos de análise de raciocínio clínico. O front-end utiliza JavaScript para renderização dinâmica e comunicação assíncrona com o back-end, garantindo uma experiência de usuário fluida e reativa.">
+                                <div class="project-card-content">
+                                    <h3>MedLeap AI</h3>
+                                    <p>A teoria médica enche os livros, mas o que prepara um estudante para a pressão de um diagnóstico real? Criei uma plataforma de IA que simula essa pressão, usando casos clínicos e questões inteligentes para forjar o raciocínio crítico que salva vidas.</p>
+                                    <div class="tags"><span>IA</span><span>EdTech</span><span>PHP</span><span>SaaS</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="project-card"
+                                 data-title="ShotMap Basketball"
+                                 data-images="images/shotmap-1.jpg,images/shotmap-2.jpg"
+                                 data-tech-copy="Uma aplicação web de visualização de dados construída com JavaScript puro. Utiliza a biblioteca D3.js para renderizar heatmaps e shot charts interativos sobre uma imagem SVG de uma quadra de basquete. Os dados de arremesso (coordenadas x, y, e resultado) são processados no lado do cliente, permitindo a filtragem e análise de desempenho em tempo real. A interface é projetada para ser responsiva e performática, manipulando o DOM de forma eficiente para refletir as interações do usuário sem a necessidade de recarregar a página.">
+                                <div class="project-card-content">
+                                    <h3>ShotMap Basketball</h3>
+                                    <p>Menos 'achismo', mais ciência. Desenvolvi uma ferramenta para que atletas de basquete treinem de forma mais inteligente, não apenas mais intensa. Ao mapear os arremessos, o sistema revela padrões de acerto e erro que são invisíveis a olho nu.</p>
+                                    <div class="tags"><span>JS</span><span>Data Viz</span><span>Sports</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                             <div class="project-card"
+                                 data-title="Portal da História do Ceará"
+                                 data-images="images/portal-1.jpg,images/portal-2.jpg"
+                                 data-tech-copy="Desenvolvimento de um sistema de gerenciamento de conteúdo e uma API RESTful para um vasto acervo digital. O back-end foi construído em PHP com um banco de dados relacional MySQL, otimizado com índices Full-Text para buscas de alta performance em milhares de registros. A arquitetura da API foi projetada para ser robusta e escalável, servindo dados de forma estruturada (JSON) para múltiplos clientes, incluindo o portal web principal. O projeto envolveu modelagem de dados complexa e a implementação de endpoints seguros e documentados.">
+                                <div class="project-card-content">
+                                    <h3>Portal da História do Ceará</h3>
+                                    <p>O desafio era tornar pesquisável um acervo com milhares de documentos históricos. Projetei e implementei o sistema de catalogação e a API de busca que hoje alimenta a maior plataforma sobre a história do Ceará.</p>
+                                    <div class="tags"><span>PHP</span><span>MySQL</span><span>Educação</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                             <div class="project-card"
+                                 data-title="Valentine's Day"
+                                 data-images="images/valentine-1.jpg,images/valentine-2.jpg,images/valentine-3.jpg"
+                                 data-tech-copy="Uma experiência 3D interativa no navegador, desenvolvida com Three.js para a renderização da cena, modelos e iluminação. A linha do tempo da animação e a coreografia dos eventos são controladas pela biblioteca GSAP (GreenSock Animation Platform), que manipula as propriedades dos objetos 3D e elementos do DOM. A lógica de interação do usuário é implementada em JavaScript puro, capturando eventos de mouse e teclado para guiar a narrativa visual. O projeto é uma demonstração de otimização de performance no front-end, gerenciando o ciclo de renderização e os assets para garantir uma animação suave.">
+                                <div class="project-card-content">
+                                    <h3>Valentine's day</h3>
+                                    <p>Um belo storytelling interativo no navegador, combinando o poder do 3D da Three.js com outras bibliotecas de animação como GSAP e anime.js. O resultado é uma jornada intuitiva.</p>
+                                    <div class="tags"><span>Tech</span><span>Inovação</span><span>Front-end</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="project-card"
+                                data-title="Sistema de Gerenciamento de Inventário em C"
+                                data-images="images/inventory-c-1.jpg"
+                                data-tech-copy="Implementação de um sistema CRUD (Create, Read, Update, Delete) em linguagem C, operando diretamente no terminal. A estrutura de dados principal é uma lista duplamente encadeada, permitindo a inserção e remoção de registros em tempo O(1) quando o nó é conhecido. A persistência dos dados é garantida através da serialização da lista encadeada em um arquivo binário, utilizando `fwrite` e `fread` para operações de I/O. O projeto exigiu gerenciamento explícito de memória com `malloc` e `free` para evitar memory leaks, sendo um exercício prático de algoritmos e estruturas de dados de baixo nível.">
+                               <div class="project-card-content">
+                                   <h3>Gerenciamento de Inventário em C</h3>
+                                   <p>Um projeto focado nos fundamentos da engenharia de software, onde implementei do zero um sistema CRUD em C puro, com gerenciamento manual de memória e persistência via manipulação de arquivos binários.</p>
+                                   <div class="tags"><span>C</span><span>Alocação de memória</span><span>Terminal</span></div>
+                               </div>
+                           </div>
+                       </div>
+
+                        <div class="swiper-slide">
+                             <div class="project-card"
+                                 data-title="Gerenciador de Atividades Acadêmicas"
+                                 data-images="images/academic-1.jpg,images/academic-2.jpg"
+                                 data-tech-copy="Uma aplicação web full-stack desenvolvida para otimizar o processo de gestão de atividades acadêmicas. O back-end, implementado em PHP, segue o padrão MVC e gerencia toda a lógica de negócio, incluindo autenticação de usuários, validação de dados e operações CRUD no banco de dados MySQL. O front-end utiliza HTML, CSS e JavaScript para criar uma interface de usuário reativa, com formulários dinâmicos e feedback em tempo real através de requisições AJAX. O foco do projeto foi a otimização da experiência do usuário (UX), simplificando um fluxo de trabalho complexo em uma interface limpa e eficiente.">
+                                <div class="project-card-content">
+                                    <h3>Simplificando a Vida Acadêmica</h3>
+                                    <p>A burocracia para registrar horas complementares na universidade era um obstáculo. Em resposta, projetei e desenvolvi esta aplicação web para transformar um processo frustrante em uma experiência de dois cliques.</p>
+                                    <div class="tags"><span>Tech</span><span>Inovação</span><span>Full-Stack</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Minha Jornada</h2>
+                <div class="timeline">
+                    <div class="timeline-item left" data-aos="fade-right">
+                        <div class="timeline-content">
+                            <h3>Engenheiro de Software Líder</h3>
+                            <h4>MedLeap AI</h4>
+                            <span>mar 2025 - presente</span>
+                            <p>Liderança técnica na arquitetura e desenvolvimento full-stack da plataforma, com foco na integração de APIs de IA.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right" data-aos="fade-left">
+                        <div class="timeline-content">
+                            <h3>Pesquisador Científico</h3>
+                            <h4>Universidade Estadual do Ceará</h4>
+                            <span>abr 2024 - set 2024</span>
+                            <p>Aplicação de Machine Learning para predição de riscos clínicos em pacientes no projeto CONCERN.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left" data-aos="fade-right">
+                        <div class="timeline-content">
+                            <h3>Software Engineer Intern</h3>
+                            <h4>apLIS</h4>
+                            <span>mai 2023 - abr 2024</span>
+                            <p>Desenvolvimento back-end e front-end com PHP e JS, prototipação (Figma) e aplicação de conceitos de UX.</p>
+                        </div>
+                    </div>
+                     <div class="timeline-item right" data-aos="fade-left">
+                        <div class="timeline-content">
+                            <h3>Bolsista PET-CC</h3>
+                            <h4>Universidade Estadual do Ceará</h4>
+                            <span>jan 2022 - mai 2023</span>
+                            <p>Atuação em projetos de ensino, pesquisa e extensão no Programa de Educação Tutorial em Ciência da Computação.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container" data-aos="fade-up">
+                <h2 class="section-title">Vamos Construir Algo Juntos? 🚀</h2>
+                <p>
+                    Estou sempre em busca de desafios que me permitam crescer e de projetos onde eu possa agregar valor. Se você tem uma ideia ou uma oportunidade, adoraria conversar.
+                </p>
+                
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nome *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Assunto *</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensagem *</label>
+                        <textarea id="message" name="message" placeholder="Conte-me sobre seu projeto ou oportunidade..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit" id="submit-btn">
+                        Enviar Mensagem
+                    </button>
+                    
+                    <div class="form-status" id="form-status"></div>
+                </form>
+                
+                <div class="contact-actions">
+                    <a href="https://wa.me/5585984038749?text=Olá%20Tales!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar." 
+                       class="contact-action whatsapp" 
+                       target="_blank">
+                        📱 WhatsApp
+                    </a>
+                    <a href="mailto:tales.santiago@aluno.uece.br?subject=Contato%20via%20Portfólio&body=Olá%20Tales,%0A%0AVi%20seu%20portfólio%20e%20gostaria%20de%20conversar%20sobre..." 
+                       class="contact-action">
+                        ✉️ E-mail Direto
+                    </a>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+                    <p style="font-size: 0.9rem; color: var(--text-color); opacity: 0.7;">
+                        Respondo em até 24 horas • <span style="color: var(--primary-color); font-weight: 500;">santiagold116@gmail.com</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Projetado e construído por Tales Santiago.</p>
+        </div>
+    </footer>
+
+    <div class="popup-overlay" id="project-popup">
+        <div class="popup">
+            <button class="popup-close" id="popup-close-btn">&times;</button>
+            <div class="popup-content" id="popup-content">
+                <h3 id="popup-title"></h3>
+                
+                <div class="project-links" id="popup-links">
+                    <a href="#" class="project-link" id="popup-live-link" target="_blank">
+                        🚀 Ver ao Vivo
+                    </a>
+                    <a href="#" class="project-link" id="popup-code-link" target="_blank">
+                        💻 Ver Código
+                    </a>
+                </div>
+                
+                <div class="project-metrics" id="popup-metrics"></div>
+                
+                <p id="popup-text"></p>
+                
+                <div class="popup-gallery" id="popup-gallery"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
