@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tales Santiago | Desenvolvedor & Arquiteto de Software</title>
     
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNH0R1LRM4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-NNH0R1LRM4');
+    </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
@@ -192,6 +202,20 @@
             margin-bottom: 1rem;
             font-weight: 700;
             color: var(--light-text-color);
+            min-height: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .typewriter-text {
+            border-right: 3px solid var(--primary-color);
+            animation: blink-cursor 1s infinite;
+        }
+
+        @keyframes blink-cursor {
+            0%, 50% { border-color: var(--primary-color); }
+            51%, 100% { border-color: transparent; }
         }
 
         #hero p {
@@ -776,7 +800,7 @@
 
 
         @media(max-width: 992px) {
-            #hero h2 { font-size: 3rem; }
+            #hero h2 { font-size: 3rem; min-height: 4rem; }
             #hero p { font-size: 1.2rem; }
             #about .about-content { grid-template-columns: 1fr; text-align: center;}
             #about img { margin-bottom: 30px; }
@@ -789,6 +813,7 @@
         @media(max-width: 768px) {
             .nav-menu ul { display: none; }
             .section-title { font-size: 2.2rem; }
+            #hero h2 { font-size: 2.5rem; min-height: 3.5rem; }
             
             .timeline::after { left: 15px; }
             .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; }
@@ -830,7 +855,7 @@
         <section id="hero">
             <div id="hero-canvas"></div>
             <div class="hero-content" data-aos="fade-in">
-                <h2>Transformando Ideias em Realidade Digital</h2>
+                <h2><span id="typewriter-text" class="typewriter-text">Transformando Ideias em Realidade Digital</span></h2>
                 <p>Sou um desenvolvedor focado em criar soluções que resolvem dores reais, construo sistemas robustos e intuitivos que resolvem problemas complexos, unindo engenharia de software, visão de produto e uma profunda atenção à experiência do usuário.</p>
                 <a href="#contact" class="btn">VAMOS CONSTRUIR JUNTOS</a>
             </div>

@@ -6,6 +6,49 @@ document.addEventListener('DOMContentLoaded', () => {
         offset: 50,
     });
 
+    const typewriterTexts = [
+        "Transformando Ideias em Realidade Digital",
+        "Criando Soluções Inovadoras com IA",
+        "Desenvolvendo Software que Resolve Problemas Reais",
+        "Construindo o Futuro com Código Inteligente",
+        "Arquitetando Sistemas Robustos e Escaláveis",
+        "Inovando com Tecnologia e Design"
+    ];
+
+    let currentTextIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting = false;
+    let typewriterSpeed = 100;
+
+    const typewriterElement = document.getElementById('typewriter-text');
+
+    function typewriterEffect() {
+        const currentText = typewriterTexts[currentTextIndex];
+        
+        if (isDeleting) {
+            typewriterElement.textContent = currentText.substring(0, currentCharIndex - 1);
+            currentCharIndex--;
+            typewriterSpeed = 50;
+        } else {
+            typewriterElement.textContent = currentText.substring(0, currentCharIndex + 1);
+            currentCharIndex++;
+            typewriterSpeed = 100;
+        }
+
+        if (!isDeleting && currentCharIndex === currentText.length) {
+            setTimeout(() => {
+                isDeleting = true;
+            }, 2000);
+        } else if (isDeleting && currentCharIndex === 0) {
+            isDeleting = false;
+            currentTextIndex = (currentTextIndex + 1) % typewriterTexts.length;
+        }
+
+        setTimeout(typewriterEffect, typewriterSpeed);
+    }
+
+    setTimeout(typewriterEffect, 1500);
+
     const swiper = new Swiper('.swiper-container', {
         loop: true,
         slidesPerView: 1,
