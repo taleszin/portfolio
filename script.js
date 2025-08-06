@@ -6,6 +6,73 @@ document.addEventListener('DOMContentLoaded', () => {
         offset: 50,
     });
 
+    // Navbar scroll effect - muda cor quando rola
+    const header = document.querySelector('header');
+    let scrolled = false;
+
+    function handleScroll() {
+        const isScrolled = window.scrollY > 50;
+        
+        if (isScrolled !== scrolled) {
+            scrolled = isScrolled;
+            header.classList.toggle('header-scrolled', scrolled);
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Skills tooltips interativas
+    const skillCards = document.querySelectorAll('.skill-card');
+    let activeTooltip = null;
+
+    function showTooltip(card) {
+        // Esconder tooltip ativo se existir
+        if (activeTooltip && activeTooltip !== card) {
+            const activeTooltipElement = activeTooltip.querySelector('.skill-tooltip');
+            activeTooltipElement?.classList.remove('show');
+        }
+
+        const tooltip = card.querySelector('.skill-tooltip');
+        if (tooltip) {
+            tooltip.classList.add('show');
+            activeTooltip = card;
+        }
+    }
+
+    function hideTooltip(card) {
+        const tooltip = card.querySelector('.skill-tooltip');
+        if (tooltip) {
+            tooltip.classList.remove('show');
+            if (activeTooltip === card) {
+                activeTooltip = null;
+            }
+        }
+    }
+
+    skillCards.forEach(card => {
+        // Mouse events
+        card.addEventListener('mouseenter', () => showTooltip(card));
+        card.addEventListener('mouseleave', () => hideTooltip(card));
+        
+        // Keyboard events for accessibility
+        card.addEventListener('focus', () => showTooltip(card));
+        card.addEventListener('blur', () => hideTooltip(card));
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const tooltip = card.querySelector('.skill-tooltip');
+                tooltip?.classList.toggle('show');
+            }
+        });
+    });
+
+    // Esconder tooltips quando clicar fora
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.skill-card') && activeTooltip) {
+            hideTooltip(activeTooltip);
+        }
+    });
+
     const typewriterTexts = [
         "Transformando Ideias em Realidade Digital",
         "Criando Soluções Inovadoras com IA",

@@ -3,7 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tales Santiago | Desenvolvedor & Arquiteto de Software</title>
+    <title>Tales Santiago | Desenvolvedor & Arquiteto de Software | Portfólio Ceará</title>
+    <meta name="description" content="Desenvolvedor web especializado em engenharia de software, PHP, JavaScript e IA. Portfólio de Tales Santiago com projetos inovadores em tecnologia e educação no Ceará.">
+    <meta name="keywords" content="desenvolvedor web, engenharia de software, PHP, JavaScript, portfólio desenvolvedor Ceará, IA, tecnologia, UECE">
+    <meta name="author" content="Tales Santiago">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tales-santiago.dev/">
+    <meta property="og:title" content="Tales Santiago | Desenvolvedor & Arquiteto de Software">
+    <meta property="og:description" content="Desenvolvedor web especializado em engenharia de software, criando soluções inovadoras com foco em UX e performance.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tales-santiago.dev/">
+    <meta property="twitter:title" content="Tales Santiago | Desenvolvedor & Arquiteto de Software">
+    <meta property="twitter:description" content="Desenvolvedor web especializado em engenharia de software, criando soluções inovadoras com foco em UX e performance.">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3crect width='100' height='100' fill='%2300aaff'/%3e%3ctext x='50' y='65' font-family='Arial, sans-serif' font-size='45' font-weight='bold' fill='white' text-anchor='middle'%3eTS%3c/text%3e%3c/svg%3e">
@@ -22,25 +37,37 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 
     <style>
         :root {
-            --light-primary: #007bff;
-            --light-secondary: #f8f9fa;
-            --light-background: #ffffff;
-            --light-text: #212529;
-            --light-card-bg: #ffffff;
-            --light-border: #dee2e6;
+            /* Nova paleta de cores profissional */
+            --purple: #5A3E8F;
+            --purple-light: #B299D9;
+            --purple-dark: #4B2C75;
+            --dark: #101010;
+            --dark-soft: #1A1A1A;
+            --light-gray: #F5F5F5;
+            --light-gray-border: #EAEAEA;
+            --highlight: #8E6EB2;
+            --white: #FFFFFF;
+            
+            /* Mapeamento para temas */
+            --light-primary: var(--purple);
+            --light-secondary: var(--light-gray);
+            --light-background: var(--white);
+            --light-text: var(--dark);
+            --light-card-bg: var(--white);
+            --light-border: var(--light-gray-border);
 
-            --dark-primary: #00aaff;
+            --dark-primary: var(--purple-light);
             --dark-secondary: #0d1117;
-            --dark-background: #010409;
+            --dark-background: var(--dark);
             --dark-text: #c9d1d9;
-            --dark-card-bg: #161b22;
+            --dark-card-bg: var(--dark-soft);
             --dark-border: #30363d;
         }
 
@@ -74,7 +101,7 @@
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', 'Roboto', sans-serif;
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.7;
@@ -94,14 +121,21 @@
 
         header {
             background: var(--header-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
-            transition: background-color 0.3s, border-color 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .header-scrolled {
+            background: var(--purple) !important;
+            border-bottom-color: var(--purple-dark);
+            box-shadow: 0 4px 20px rgba(90, 62, 143, 0.15);
         }
         
         nav {
@@ -111,10 +145,11 @@
         }
 
         nav .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
             color: var(--light-text-color);
+            letter-spacing: -0.02em;
         }
 
         .nav-menu {
@@ -128,11 +163,11 @@
         }
 
         .nav-menu a {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             color: var(--text-color);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             padding: 5px 0;
         }
@@ -145,8 +180,9 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
+            background: linear-gradient(90deg, var(--purple), var(--purple-light));
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 1px;
         }
 
         .nav-menu a:hover {
@@ -235,15 +271,34 @@
         
         .btn {
             display: inline-block;
-            background: var(--primary-color);
-            color: var(--light-background);
-            padding: 14px 35px;
-            border-radius: 8px;
+            background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 4px;
             text-decoration: none;
-            font-weight: 700;
-            font-family: 'Space Grotesk', sans-serif;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid var(--primary-color);
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--purple);
+            box-shadow: 0 4px 15px rgba(90, 62, 143, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--purple-light), var(--highlight));
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 0;
         }
 
         [data-theme='light'] .btn {
@@ -254,8 +309,8 @@
         }
 
         .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(90, 62, 143, 0.3);
         }
         
         section {
@@ -265,11 +320,25 @@
         
         .section-title {
             text-align: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.8rem;
-            margin-bottom: 60px;
-            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 80px;
+            font-weight: 500;
             color: var(--light-text-color);
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--purple), var(--purple-light));
+            border-radius: 2px;
         }
         
         #about {
@@ -298,25 +367,149 @@
             padding: 0;
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 25px;
+            gap: 16px;
+            margin-top: 40px;
         }
 
-        .skills-list li {
-            background-color: var(--card-bg-color);
-            color: var(--primary-color);
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+        .skill-card {
+            background: var(--card-bg-color);
+            color: var(--purple);
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 0.95rem;
             font-weight: 500;
-            border: 1px solid var(--border-color);
-            transition: all 0.2s ease;
+            font-family: 'Montserrat', sans-serif;
+            border: 1px solid var(--light-gray-border);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(90, 62, 143, 0.08);
         }
         
-        .skills-list li:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 170, 255, 0.15);
-            border-color: var(--primary-color);
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(90, 62, 143, 0.15);
+            border-color: var(--purple);
+            background: linear-gradient(135deg, var(--purple), var(--purple-dark));
+            color: var(--white);
+        }
+        
+        .skill-tooltip {
+            position: absolute;
+            bottom: calc(100% + 15px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--light-gray);
+            color: var(--dark);
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid var(--purple-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            width: 320px;
+            box-shadow: 0 10px 30px rgba(90, 62, 143, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .skill-tooltip::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: var(--purple-light);
+        }
+        
+        .skill-tooltip.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-5px);
+        }
+        
+        .skill-tooltip h4 {
+            color: var(--purple);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .skill-tooltip p {
+            margin: 0;
+            color: var(--dark-soft);
+        }
+
+        [data-theme='dark'] .skill-tooltip {
+            background: var(--dark-card-bg);
+            color: var(--dark-text);
+        }
+        
+        [data-theme='dark'] .skill-tooltip p {
+            color: var(--dark-text);
+        }
+        
+        /* Loading Animation */
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--light-gray);
+            border-top: 3px solid var(--purple);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Progress Bar for Skills */
+        .skill-progress {
+            width: 100%;
+            height: 4px;
+            background: var(--light-gray);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .skill-card:hover .skill-progress {
+            opacity: 1;
+        }
+        
+        .skill-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--purple), var(--purple-light));
+            border-radius: 2px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Microinterações nos links */
+        a:not(.btn) {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        a:not(.btn)::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, var(--purple), var(--purple-light));
+            transition: width 0.3s ease;
+        }
+        
+        a:not(.btn):hover::after {
+            width: 100%;
         }
 
         .swiper-container {
@@ -335,12 +528,13 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             width: 350px;
             min-height: 380px;
             position: relative;
             cursor: pointer;
             transform-style: preserve-3d;
+            box-shadow: 0 4px 15px rgba(90, 62, 143, 0.1);
         }
 
         .project-card::before {
@@ -350,7 +544,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 170, 255, 0.15), transparent 40%);
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(90, 62, 143, 0.15), transparent 40%);
             opacity: 0;
             transition: opacity 0.5s;
             pointer-events: none;
@@ -363,7 +557,7 @@
         
         .project-card:hover {
             transform: perspective(1000px) rotateY(5deg) scale(1.05);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(90, 62, 143, 0.2);
         }
 
         /* MedLeap AI - Medical Theme */
@@ -1176,8 +1370,8 @@
 </head>
 <body>
 
-    <header>
-        <nav class="container">
+    <header role="banner">
+        <nav class="container" role="navigation" aria-label="Navegação principal">
             <div class="logo">Tales Santiago</div>
             <ul class="nav-menu">
                 <li><a href="#hero">Início</a></li>
@@ -1186,7 +1380,7 @@
                 <li><a href="#experience">Jornada</a></li>
                 <li><a href="#contact">Contato</a></li>
                 <li>
-                    <button class="theme-switcher" id="theme-toggle-btn" aria-label="Mudar tema">
+                    <button class="theme-switcher" id="theme-toggle-btn" aria-label="Alternar tema claro/escuro">
                         <span class="icon-sun">☀️</span>
                         <span class="icon-moon" style="display:none;">🌙</span>
                     </button>
@@ -1195,48 +1389,147 @@
         </nav>
     </header>
 
-    <main>
-        <section id="hero">
-            <div id="hero-canvas"></div>
+    <main role="main">
+        <section id="hero" role="banner" aria-labelledby="hero-heading">
+            <div id="hero-canvas" aria-hidden="true"></div>
             <div class="hero-content" data-aos="fade-in">
-                <h2><span id="typewriter-text" class="typewriter-text">Transformando Ideias em Realidade Digital</span></h2>
+                <h1 id="hero-heading"><span id="typewriter-text" class="typewriter-text">Transformando Ideias em Realidade Digital</span></h1>
                 <p>Sou um desenvolvedor focado em criar soluções que resolvem dores reais, construo sistemas robustos e intuitivos que resolvem problemas complexos, unindo engenharia de software, visão de produto e uma profunda atenção à experiência do usuário.</p>
                 <a href="#contact" class="btn">VAMOS CONSTRUIR JUNTOS</a>
             </div>
         </section>
 
-        <section id="about">
+        <section id="about" role="region" aria-labelledby="about-heading">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Sobre Mim</h2>
-                <div class="about-content">
+                <h2 id="about-heading" class="section-title" data-aos="fade-up">Sobre Mim</h2>
+                <article class="about-content">
                     <div data-aos="fade-right">
-                        <img src="TalesRJ.jpg" alt="Foto de Tales Santiago">
+                        <img src="TalesRJ.jpg" alt="Foto profissional de Tales Santiago, desenvolvedor de software">
                     </div>
                     <div data-aos="fade-left">
                         <p>
                            Olá! Sou estudante de Ciência da Computação na UECE, mas minha verdadeira sala de aula tem sido o desafio de construir software do zero. O que me fascina é o poder da arquitetura de sistemas para traduzir a complexidade do mundo em soluções digitais elegantes. Seja otimizando uma consulta em SQL ou projetando uma nova feature, busco a união entre performance técnica e uma experiência de usuário intuitiva.
                         </p>
                         <ul class="skills-list">
-                            <li>PHP</li>
-                            <li>JavaScript (ES6+)</li>
-                            <li>MySQL</li>
-                            <li>LLM & IA</li>
-                            <li>AWS Cloud</li>
-                            <li>Figma (UI/UX)</li>
-                            <li>Arquitetura de Sistemas</li>
-                            <li>APIs RESTful</li>
-                            <li>Node.js</li>
-                            <li>Three.js</li>
-                            <li>POO</li>
+                            <li class="skill-card" data-skill="php" tabindex="0" role="button" aria-label="Mais informações sobre PHP">
+                                PHP
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 90%;"></div>
+                                </div>
+                                <div class="skill-tooltip">
+                                    <h4>PHP - A Base de Tudo</h4>
+                                    <p>Comecei com PHP em 2021 criando meu primeiro CRUD na universidade. Desde então, construí APIs robustas, sistemas MVC complexos e plataformas SaaS como o MedLeap AI. É minha linguagem principal para arquitetar soluções escaláveis.</p>
+                                </div>
+                            </li>
+                            <li class="skill-card" data-skill="javascript" tabindex="0" role="button" aria-label="Mais informações sobre JavaScript">
+                                JavaScript (ES6+)
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 85%;"></div>
+                                </div>
+                                <div class="skill-tooltip">
+                                    <h4>JavaScript - Criando Experiências</h4>
+                                    <p>Mergulhei no JS moderno criando visualizações interativas para o ShotMap Basketball. Domino tanto vanilla JS quanto frameworks, focando em performance e UX fluida. Uso ES6+ para código limpo e manutenível.</p>
+                                </div>
+                            </li>
+                            <li class="skill-card" data-skill="mysql" tabindex="0" role="button" aria-label="Mais informações sobre MySQL">
+                                MySQL
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 80%;"></div>
+                                </div>
+                                <div class="skill-tooltip">
+                                    <h4>MySQL - Dados que Fazem Sentido</h4>
+                                    <p>Aprendi otimização de queries trabalhando com milhares de registros no Portal da História do Ceará. Implementei índices Full-Text e modelagem relacional complexa para alta performance em buscas.</p>
+                                </div>
+                            </li>
+                            <li class="skill-card" data-skill="ai" tabindex="0" role="button" aria-label="Mais informações sobre IA">
+                                LLM & IA
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 75%;"></div>
+                                </div>
+                                <div class="skill-tooltip">
+                                    <h4>IA - O Futuro é Agora</h4>
+                                    <p>Integrei LLMs via API no MedLeap AI, criando simulações clínicas inteligentes. Trabalho com prompt engineering e fine-tuning para soluções educacionais inovadoras que realmente agregam valor.</p>
+                                </div>
+                            </li>
+                            <li class="skill-card" data-skill="aws" tabindex="0" role="button" aria-label="Mais informações sobre AWS">
+                                AWS Cloud
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 70%;"></div>
+                                </div>
+                                <div class="skill-tooltip">
+                                    <h4>AWS - Escalabilidade na Nuvem</h4>
+                                    <p>Deploy e gerenciamento de aplicações em produção usando EC2, RDS e S3. Aprendi na prática configurando infraestrutura para projetos reais que precisavam suportar múltiplos usuários.</p>
+                                </div>
+                            </li>
+                            <li class="skill-card" data-skill="figma" tabindex="0" role="button" aria-label="Mais informações sobre Figma">
+                                Figma (UI/UX)
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 85%;"></div>
+                                </div>
+                                <div class="skill-tooltip">
+                                    <h4>Design - Antes do Código, a Experiência</h4>
+                                    <p>Uso Figma desde 2022 para prototipar interfaces antes de codificar. Minha experiência na apLIS me ensinou que design thinking é fundamental para criar produtos que os usuários realmente querem usar.</p>
+                                </div>
+                            </li>
+                            <li class="skill-card" data-skill="architecture" tabindex="0" role="button" aria-label="Mais informações sobre Arquitetura de Sistemas">
+                                Arquitetura de Sistemas
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 80%;"></div>
+                                </div>
+                                <div class="skill-tooltip">
+                                    <h4>Arquitetura - Pensando em Grande Escala</h4>
+                                    <p>Projetei a arquitetura do MedLeap AI pensando em escalabilidade e manutenibilidade. Aplico padrões como MVC, Repository e princípios SOLID para código que dura e evolui.</p>
+                                </div>
+                            </li>
+                            <li class="skill-card" data-skill="apis" tabindex="0" role="button" aria-label="Mais informações sobre APIs RESTful">
+                                APIs RESTful
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 88%;"></div>
+                                </div>
+                                <div class="skill-tooltip">
+                                    <h4>APIs - Conectando Mundos</h4>
+                                    <p>Construí APIs desde endpoints simples até integrações complexas com IA. Minha API para o Portal da História serve milhares de consultas diárias com performance e segurança impecáveis.</p>
+                                </div>
+                            </li>
+                            <li class="skill-card" data-skill="nodejs" tabindex="0" role="button" aria-label="Mais informações sobre Node.js">
+                                Node.js
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 75%;"></div>
+                                </div>
+                                <div class="skill-tooltip">
+                                    <h4>Node.js - JavaScript Everywhere</h4>
+                                    <p>Uso Node.js para automações, ferramentas de build e microserviços. A versatilidade do JavaScript no backend me permite criar soluções full-stack coesas e eficientes.</p>
+                                </div>
+                            </li>
+                            <li class="skill-card" data-skill="threejs" tabindex="0" role="button" aria-label="Mais informações sobre Three.js">
+                                Three.js
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 70%;"></div>
+                                </div>
+                                <div class="skill-tooltip">
+                                    <h4>3D - Experiências Imersivas</h4>
+                                    <p>Criei experiências 3D interativas no projeto Valentine's Day. Three.js me permite transformar ideias criativas em realidade, combinando arte e tecnologia para storytelling único.</p>
+                                </div>
+                            </li>
+                            <li class="skill-card" data-skill="oop" tabindex="0" role="button" aria-label="Mais informações sobre POO">
+                                POO
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 85%;"></div>
+                                </div>
+                                <div class="skill-tooltip">
+                                    <h4>POO - Código que Faz Sentido</h4>
+                                    <p>Programação orientada a objetos é meu fundamento desde a faculdade. Aplico conceitos como herança, polimorfismo e encapsulamento para criar código reutilizável e manutenível.</p>
+                                </div>
+                            </li>
                         </ul>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
 
-        <section id="projects">
+        <section id="projects" role="region" aria-labelledby="projects-heading">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Projetos em Destaque</h2>
+                <h2 id="projects-heading" class="section-title" data-aos="fade-up">Projetos em Destaque</h2>
                 <div class="swiper-container" data-aos="fade-up" data-aos-delay="200">
                     <div class="swiper-wrapper">
                         
@@ -1326,9 +1619,9 @@
             </div>
         </section>
 
-        <section id="experience">
+        <section id="experience" role="region" aria-labelledby="experience-heading">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">Minha Jornada</h2>
+                <h2 id="experience-heading" class="section-title" data-aos="fade-up">Minha Jornada</h2>
                 <div class="timeline">
                     <div class="timeline-item left" data-aos="fade-right">
                         <div class="timeline-content">
@@ -1366,9 +1659,9 @@
             </div>
         </section>
 
-        <section id="contact">
+        <section id="contact" role="region" aria-labelledby="contact-heading">
             <div class="container" data-aos="fade-up">
-                <h2 class="section-title">Vamos Construir Algo Juntos? 🚀</h2>
+                <h2 id="contact-heading" class="section-title">Vamos Construir Algo Juntos? 🚀</h2>
                 <p>
                     Estou sempre em busca de desafios que me permitam crescer e de projetos onde eu possa agregar valor. Se você tem uma ideia ou uma oportunidade, adoraria conversar.
                 </p>
