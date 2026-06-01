@@ -7,19 +7,24 @@
     <meta name="description" content="Desenvolvedor web especializado em engenharia de software, PHP, JavaScript e IA. Portfólio de Tales Santiago com projetos inovadores em tecnologia e educação no Ceará.">
     <meta name="keywords" content="desenvolvedor web, engenharia de software, PHP, JavaScript, portfólio desenvolvedor Ceará, IA, tecnologia, UECE">
     <meta name="author" content="Tales Santiago">
-    
+    <link rel="canonical" href="https://taleszin.github.io/portfolio/">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tales-santiago.dev/">
-    <meta property="og:title" content="Tales Santiago | Desenvolvedor & Arquiteto de Software">
-    <meta property="og:description" content="Desenvolvedor web especializado em engenharia de software, criando soluções inovadoras com foco em UX e performance.">
-    
+    <meta property="og:url" content="https://taleszin.github.io/portfolio/">
+    <meta property="og:title" content="Tales Santiago | Full-Stack Developer — Product, Gamification & Applied AI">
+    <meta property="og:description" content="Full-stack developer shipping production code in React Native, ASP.NET, FastAPI and PHP, with three AI integrations in production. PT-BR / EN portfolio.">
+    <meta property="og:image" content="https://taleszin.github.io/portfolio/TalesRJ.jpg">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:locale:alternate" content="en_US">
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://tales-santiago.dev/">
-    <meta property="twitter:title" content="Tales Santiago | Desenvolvedor & Arquiteto de Software">
-    <meta property="twitter:description" content="Desenvolvedor web especializado em engenharia de software, criando soluções inovadoras com foco em UX e performance.">
-    
+    <meta property="twitter:url" content="https://taleszin.github.io/portfolio/">
+    <meta property="twitter:title" content="Tales Santiago | Full-Stack Developer — Product, Gamification & Applied AI">
+    <meta property="twitter:description" content="Full-stack developer shipping production code in React Native, ASP.NET, FastAPI and PHP, with three AI integrations in production. PT-BR / EN portfolio.">
+    <meta property="twitter:image" content="https://taleszin.github.io/portfolio/TalesRJ.jpg">
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3crect width='100' height='100' fill='%2300aaff'/%3e%3ctext x='50' y='65' font-family='Arial, sans-serif' font-size='45' font-weight='bold' fill='white' text-anchor='middle'%3eTS%3c/text%3e%3c/svg%3e">
     <link rel="apple-touch-icon" href="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3crect width='100' height='100' rx='15' fill='%2300aaff'/%3e%3ctext x='50' y='65' font-family='Arial, sans-serif' font-size='45' font-weight='bold' fill='white' text-anchor='middle'%3eTS%3c/text%3e%3c/svg%3e">
@@ -211,7 +216,61 @@
             border-color: var(--primary-color);
             color: var(--primary-color);
         }
-        
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lang-switcher {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            cursor: pointer;
+            height: 40px;
+            min-width: 44px;
+            padding: 0 12px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            transition: all 0.3s ease;
+        }
+        .lang-switcher:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 42px;
+            height: 42px;
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 0 9px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--text-color);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+        .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
         #hero {
             height: 100vh;
             display: flex;
@@ -561,14 +620,14 @@
         }
 
         /* MedLeap AI - Medical Theme */
-        .project-card[data-title="MedLeap AI"] {
+        .project-card[data-key="leapnotes"] {
             background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
             border: 2px solid #00aaff;
             position: relative;
             overflow: hidden;
         }
 
-        .project-card[data-title="MedLeap AI"]::after {
+        .project-card[data-key="leapnotes"]::after {
             content: "⚕️";
             position: absolute;
             top: -20px;
@@ -579,7 +638,7 @@
             animation: pulse-medical 3s ease-in-out infinite;
         }
 
-        .project-card[data-title="MedLeap AI"] .project-card-content {
+        .project-card[data-key="leapnotes"] .project-card-content {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             color: white;
@@ -587,7 +646,7 @@
             z-index: 2;
         }
 
-        .project-card[data-title="MedLeap AI"]:hover {
+        .project-card[data-key="leapnotes"]:hover {
             box-shadow: 0 0 30px rgba(0, 170, 255, 0.6);
             animation: medical-glow 2s ease-in-out infinite alternate;
         }
@@ -603,14 +662,14 @@
         }
 
         /* ShotMap Basketball - Sports Theme */
-        .project-card[data-title="ShotMap Basketball"] {
+        .project-card[data-key="geosumo"] {
             background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
             border: 2px solid #ff8c42;
             position: relative;
             overflow: hidden;
         }
 
-        .project-card[data-title="ShotMap Basketball"]::after {
+        .project-card[data-key="geosumo"]::after {
             content: "🏀";
             position: absolute;
             top: -10px;
@@ -621,7 +680,7 @@
             animation: basketball-bounce 2s ease-in-out infinite;
         }
 
-        .project-card[data-title="ShotMap Basketball"] .project-card-content {
+        .project-card[data-key="geosumo"] .project-card-content {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             color: white;
@@ -629,7 +688,7 @@
             z-index: 2;
         }
 
-        .project-card[data-title="ShotMap Basketball"]:hover {
+        .project-card[data-key="geosumo"]:hover {
             animation: basketball-shake 0.5s ease-in-out infinite;
         }
 
@@ -645,14 +704,14 @@
         }
 
         /* Portal da História - Vintage Theme */
-        .project-card[data-title="Portal da História do Ceará"] {
+        .project-card[data-key="phc"] {
             background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
             border: 2px solid #daa520;
             position: relative;
             overflow: hidden;
         }
 
-        .project-card[data-title="Portal da História do Ceará"]::after {
+        .project-card[data-key="phc"]::after {
             content: "📜";
             position: absolute;
             top: -10px;
@@ -663,7 +722,7 @@
             animation: vintage-float 4s ease-in-out infinite;
         }
 
-        .project-card[data-title="Portal da História do Ceará"]::before {
+        .project-card[data-key="phc"]::before {
             content: "";
             position: absolute;
             top: 0;
@@ -676,7 +735,7 @@
             z-index: 1;
         }
 
-        .project-card[data-title="Portal da História do Ceará"] .project-card-content {
+        .project-card[data-key="phc"] .project-card-content {
             background: rgba(139, 69, 19, 0.8);
             backdrop-filter: blur(5px);
             color: #f4e4bc;
@@ -687,7 +746,7 @@
             box-shadow: inset 0 0 20px rgba(218, 165, 32, 0.1);
         }
 
-        .project-card[data-title="Portal da História do Ceará"]:hover {
+        .project-card[data-key="phc"]:hover {
             box-shadow: 0 0 25px rgba(218, 165, 32, 0.5);
             filter: sepia(0.3);
         }
@@ -698,14 +757,14 @@
         }
 
         /* Valentine's Day - Romantic Theme */
-        .project-card[data-title="Valentine's Day"] {
+        .project-card[data-key="geolife"] {
             background: linear-gradient(135deg, #ff1744 0%, #e91e63 50%, #9c27b0 100%);
             border: 2px solid #ff4569;
             position: relative;
             overflow: hidden;
         }
 
-        .project-card[data-title="Valentine's Day"]::after {
+        .project-card[data-key="geolife"]::after {
             content: "💖";
             position: absolute;
             top: -5px;
@@ -716,7 +775,7 @@
             animation: heart-beat 1.5s ease-in-out infinite;
         }
 
-        .project-card[data-title="Valentine's Day"]::before {
+        .project-card[data-key="geolife"]::before {
             content: "";
             position: absolute;
             top: 0;
@@ -730,7 +789,7 @@
             animation: romantic-sparkle 3s ease-in-out infinite;
         }
 
-        .project-card[data-title="Valentine's Day"] .project-card-content {
+        .project-card[data-key="geolife"] .project-card-content {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             color: white;
@@ -738,7 +797,7 @@
             z-index: 2;
         }
 
-        .project-card[data-title="Valentine's Day"]:hover {
+        .project-card[data-key="geolife"]:hover {
             animation: heart-glow 1s ease-in-out infinite alternate;
         }
 
@@ -758,7 +817,7 @@
         }
 
         /* C Programming - Terminal Theme */
-        .project-card[data-title="Sistema de Gerenciamento de Inventário em C"] {
+        .project-card[data-key="hylomorph"] {
             background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
             border: 2px solid #30363d;
             position: relative;
@@ -766,7 +825,7 @@
             font-family: 'Courier New', monospace;
         }
 
-        .project-card[data-title="Sistema de Gerenciamento de Inventário em C"]::after {
+        .project-card[data-key="hylomorph"]::after {
             content: "💻";
             position: absolute;
             top: -10px;
@@ -777,7 +836,7 @@
             animation: terminal-blink 2s linear infinite;
         }
 
-        .project-card[data-title="Sistema de Gerenciamento de Inventário em C"]::before {
+        .project-card[data-key="hylomorph"]::before {
             content: "> █";
             position: absolute;
             bottom: 10px;
@@ -790,7 +849,7 @@
             animation: cursor-blink 1s linear infinite;
         }
 
-        .project-card[data-title="Sistema de Gerenciamento de Inventário em C"] .project-card-content {
+        .project-card[data-key="hylomorph"] .project-card-content {
             background: rgba(13, 17, 23, 0.9);
             color: #00ff41;
             position: relative;
@@ -799,12 +858,12 @@
             border-radius: 4px;
         }
 
-        .project-card[data-title="Sistema de Gerenciamento de Inventário em C"] h3 {
+        .project-card[data-key="hylomorph"] h3 {
             color: #00ff41 !important;
             text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
         }
 
-        .project-card[data-title="Sistema de Gerenciamento de Inventário em C"]:hover {
+        .project-card[data-key="hylomorph"]:hover {
             box-shadow: 0 0 25px rgba(0, 255, 65, 0.3);
             animation: terminal-glow 2s ease-in-out infinite alternate;
         }
@@ -825,14 +884,14 @@
         }
 
         /* Academic Manager - Education Theme */
-        .project-card[data-title="Gerenciador de Atividades Acadêmicas"] {
+        .project-card[data-key="enembot"] {
             background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
             border: 2px solid #5ba0f2;
             position: relative;
             overflow: hidden;
         }
 
-        .project-card[data-title="Gerenciador de Atividades Acadêmicas"]::after {
+        .project-card[data-key="enembot"]::after {
             content: "🎓";
             position: absolute;
             top: -15px;
@@ -843,7 +902,7 @@
             animation: academic-float 3.5s ease-in-out infinite;
         }
 
-        .project-card[data-title="Gerenciador de Atividades Acadêmicas"]::before {
+        .project-card[data-key="enembot"]::before {
             content: "";
             position: absolute;
             top: 0;
@@ -861,7 +920,7 @@
             z-index: 1;
         }
 
-        .project-card[data-title="Gerenciador de Atividades Acadêmicas"] .project-card-content {
+        .project-card[data-key="enembot"] .project-card-content {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             color: white;
@@ -869,7 +928,7 @@
             z-index: 2;
         }
 
-        .project-card[data-title="Gerenciador de Atividades Acadêmicas"]:hover {
+        .project-card[data-key="enembot"]:hover {
             box-shadow: 0 0 30px rgba(74, 144, 226, 0.6);
             animation: academic-shine 2s ease-in-out infinite alternate;
         }
@@ -1349,7 +1408,35 @@
         }
 
         @media(max-width: 768px) {
-            .nav-menu ul { display: none; }
+            .nav-toggle { display: flex; }
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 6px;
+                background: var(--header-bg);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                border-bottom: 1px solid var(--border-color);
+                padding: 16px 24px 22px;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                pointer-events: none;
+                transform: translateY(-8px);
+                transition: max-height 0.35s ease, opacity 0.25s ease, transform 0.25s ease;
+            }
+            .nav-menu.open {
+                max-height: 420px;
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateY(0);
+            }
+            .nav-menu li { margin-left: 0; padding: 6px 0; }
+            .nav-controls { margin-top: 8px; justify-content: flex-start; }
             .section-title { font-size: 2.2rem; }
             #hero h2 { font-size: 2.5rem; min-height: 3.5rem; }
             
@@ -1373,13 +1460,19 @@
     <header role="banner">
         <nav class="container" role="navigation" aria-label="Navegação principal">
             <div class="logo">Tales Santiago</div>
-            <ul class="nav-menu">
-                <li><a href="#hero">Início</a></li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#projects">Projetos</a></li>
-                <li><a href="#experience">Jornada</a></li>
-                <li><a href="#contact">Contato</a></li>
-                <li>
+            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#hero" data-i18n="nav.home">Início</a></li>
+                <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
+                <li><a href="#projects" data-i18n="nav.projects">Projetos</a></li>
+                <li><a href="#experience" data-i18n="nav.journey">Jornada</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Contato</a></li>
+                <li class="nav-controls">
+                    <button class="lang-switcher" id="lang-toggle-btn" aria-label="Switch language / Trocar idioma">
+                        <span id="lang-label">EN</span>
+                    </button>
                     <button class="theme-switcher" id="theme-toggle-btn" aria-label="Alternar tema claro/escuro">
                         <span class="icon-sun">☀️</span>
                         <span class="icon-moon" style="display:none;">🌙</span>
@@ -1394,131 +1487,131 @@
             <div id="hero-canvas" aria-hidden="true"></div>
             <div class="hero-content" data-aos="fade-in">
                 <h1 id="hero-heading"><span id="typewriter-text" class="typewriter-text">Transformando Ideias em Realidade Digital</span></h1>
-                <p>Sou um desenvolvedor focado em criar soluções que resolvem dores reais, construo sistemas robustos e intuitivos que resolvem problemas complexos, unindo engenharia de software, visão de produto e uma profunda atenção à experiência do usuário.</p>
-                <a href="#contact" class="btn">VAMOS CONSTRUIR JUNTOS</a>
+                <p data-i18n="hero.subtitle">Desenvolvedor full-stack que constrói da camada de produto à infraestrutura — mobile, web, back-ends em microsserviços e três integrações de IA em produção. Junto engenharia, visão de produto e atenção real à experiência do usuário.</p>
+                <a href="#contact" class="btn" data-i18n="hero.cta">VAMOS CONSTRUIR JUNTOS</a>
             </div>
         </section>
 
         <section id="about" role="region" aria-labelledby="about-heading">
             <div class="container">
-                <h2 id="about-heading" class="section-title" data-aos="fade-up">Sobre Mim</h2>
+                <h2 id="about-heading" class="section-title" data-aos="fade-up" data-i18n="about.title">Sobre Mim</h2>
                 <article class="about-content">
                     <div data-aos="fade-right">
                         <img src="TalesRJ.jpg" alt="Foto profissional de Tales Santiago, desenvolvedor de software">
                     </div>
                     <div data-aos="fade-left">
-                        <p>
-                           Olá! Sou estudante de Ciência da Computação na UECE, mas minha verdadeira sala de aula tem sido o desafio de construir software do zero. O que me fascina é o poder da arquitetura de sistemas para traduzir a complexidade do mundo em soluções digitais elegantes. Seja otimizando uma consulta em SQL ou projetando uma nova feature, busco a união entre performance técnica e uma experiência de usuário intuitiva.
+                        <p data-i18n="about.bio">
+                           Sou desenvolvedor full-stack de Fortaleza-CE e estudante de Ciência da Computação na UECE. Trabalho em produção com TypeScript/React Native, C#/ASP.NET Core, Python/FastAPI e PHP — do front-end mobile e web a back-ends em microsserviços, bancos PostgreSQL/MySQL e integrações de IA. Atuo como ponte entre produto e técnico: desenho mecânicas de engajamento e retenção e as implemento de ponta a ponta, sempre preferindo soluções enxutas a overengineering.
                         </p>
                         <ul class="skills-list">
-                            <li class="skill-card" data-skill="php" tabindex="0" role="button" aria-label="Mais informações sobre PHP">
-                                PHP
+                            <li class="skill-card" data-skill="typescript" tabindex="0" role="button" aria-label="TypeScript / React Native">
+                                TypeScript / React Native
                                 <div class="skill-progress">
                                     <div class="skill-progress-bar" style="width: 90%;"></div>
                                 </div>
                                 <div class="skill-tooltip">
-                                    <h4>PHP - A Base de Tudo</h4>
-                                    <p>Comecei com PHP em 2021 criando meu primeiro CRUD na universidade. Desde então, construí APIs robustas, sistemas MVC complexos e plataformas SaaS como o MedLeap AI. É minha linguagem principal para arquitetar soluções escaláveis.</p>
+                                    <h4 data-i18n="skill.ts.t">TypeScript & React Native</h4>
+                                    <p data-i18n="skill.ts.d">Stack principal do meu trabalho mobile e web. No Woolly construo o app em Expo/React Native e interfaces reativas em React. TypeScript do front ao back para código seguro e manutenível.</p>
                                 </div>
                             </li>
-                            <li class="skill-card" data-skill="javascript" tabindex="0" role="button" aria-label="Mais informações sobre JavaScript">
-                                JavaScript (ES6+)
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 85%;"></div>
-                                </div>
-                                <div class="skill-tooltip">
-                                    <h4>JavaScript - Criando Experiências</h4>
-                                    <p>Mergulhei no JS moderno criando visualizações interativas para o ShotMap Basketball. Domino tanto vanilla JS quanto frameworks, focando em performance e UX fluida. Uso ES6+ para código limpo e manutenível.</p>
-                                </div>
-                            </li>
-                            <li class="skill-card" data-skill="mysql" tabindex="0" role="button" aria-label="Mais informações sobre MySQL">
-                                MySQL
+                            <li class="skill-card" data-skill="csharp" tabindex="0" role="button" aria-label="C# / ASP.NET Core">
+                                C# / ASP.NET Core
                                 <div class="skill-progress">
                                     <div class="skill-progress-bar" style="width: 80%;"></div>
                                 </div>
                                 <div class="skill-tooltip">
-                                    <h4>MySQL - Dados que Fazem Sentido</h4>
-                                    <p>Aprendi otimização de queries trabalhando com milhares de registros no Portal da História do Ceará. Implementei índices Full-Text e modelagem relacional complexa para alta performance em buscas.</p>
+                                    <h4 data-i18n="skill.csharp.t">C# & ASP.NET Core</h4>
+                                    <p data-i18n="skill.csharp.d">Back-end do Woolly em ASP.NET Core 8: módulos de gamificação, eventos de domínio e APIs server-authoritative sobre PostgreSQL.</p>
                                 </div>
                             </li>
-                            <li class="skill-card" data-skill="ai" tabindex="0" role="button" aria-label="Mais informações sobre IA">
-                                LLM & IA
+                            <li class="skill-card" data-skill="python" tabindex="0" role="button" aria-label="Python / FastAPI">
+                                Python / FastAPI
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 78%;"></div>
+                                </div>
+                                <div class="skill-tooltip">
+                                    <h4 data-i18n="skill.python.t">Python & FastAPI</h4>
+                                    <p data-i18n="skill.python.d">Serviços em FastAPI, incluindo o serviço de voz do Woolly (LiveKit/WebRTC), além de automações e scripts de deploy.</p>
+                                </div>
+                            </li>
+                            <li class="skill-card" data-skill="php" tabindex="0" role="button" aria-label="PHP">
+                                PHP
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 88%;"></div>
+                                </div>
+                                <div class="skill-tooltip">
+                                    <h4 data-i18n="skill.php.t">PHP — onde tudo começou</h4>
+                                    <p data-i18n="skill.php.d">Comecei com PHP na universidade e levei a produção: o Portal da História do Ceará e a IAcema rodam em PHP/MySQL, com APIs, padrão MVC e integração de IA.</p>
+                                </div>
+                            </li>
+                            <li class="skill-card" data-skill="ai" tabindex="0" role="button" aria-label="LLM e IA aplicada">
+                                LLM & IA Aplicada
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 82%;"></div>
+                                </div>
+                                <div class="skill-tooltip">
+                                    <h4 data-i18n="skill.ai.t">LLM & IA Aplicada</h4>
+                                    <p data-i18n="skill.ai.d">Três integrações de LLM em produção: a IAcema (agente com 16 ferramentas SQL), o tutor por voz do Woolly e o ENEMBot. Prompt engineering, tool use e saída estruturada.</p>
+                                </div>
+                            </li>
+                            <li class="skill-card" data-skill="databases" tabindex="0" role="button" aria-label="PostgreSQL e MySQL">
+                                PostgreSQL / MySQL
+                                <div class="skill-progress">
+                                    <div class="skill-progress-bar" style="width: 82%;"></div>
+                                </div>
+                                <div class="skill-tooltip">
+                                    <h4 data-i18n="skill.db.t">PostgreSQL & MySQL</h4>
+                                    <p data-i18n="skill.db.d">Modelagem relacional e otimização de queries em grande volume — do índice Full-Text do acervo do Portal a esquemas transacionais com Supabase no Leap-Notes.</p>
+                                </div>
+                            </li>
+                            <li class="skill-card" data-skill="cloud" tabindex="0" role="button" aria-label="Deploy e DevOps">
+                                Deploy & DevOps
                                 <div class="skill-progress">
                                     <div class="skill-progress-bar" style="width: 75%;"></div>
                                 </div>
                                 <div class="skill-tooltip">
-                                    <h4>IA - O Futuro é Agora</h4>
-                                    <p>Integrei LLMs via API no MedLeap AI, criando simulações clínicas inteligentes. Trabalho com prompt engineering e fine-tuning para soluções educacionais inovadoras que realmente agregam valor.</p>
+                                    <h4 data-i18n="skill.cloud.t">Deploy & DevOps</h4>
+                                    <p data-i18n="skill.cloud.d">Coloco produto no ar e mantenho de pé: Docker, VPS, CI/CD, Sentry e deploy automatizado. Da pipeline ao monitoramento em produção.</p>
                                 </div>
                             </li>
-                            <li class="skill-card" data-skill="aws" tabindex="0" role="button" aria-label="Mais informações sobre AWS">
-                                AWS Cloud
+                            <li class="skill-card" data-skill="payments" tabindex="0" role="button" aria-label="Pagamentos e SaaS">
+                                Stripe / SaaS
                                 <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 70%;"></div>
+                                    <div class="skill-progress-bar" style="width: 80%;"></div>
                                 </div>
                                 <div class="skill-tooltip">
-                                    <h4>AWS - Escalabilidade na Nuvem</h4>
-                                    <p>Deploy e gerenciamento de aplicações em produção usando EC2, RDS e S3. Aprendi na prática configurando infraestrutura para projetos reais que precisavam suportar múltiplos usuários.</p>
+                                    <h4 data-i18n="skill.saas.t">Pagamentos & SaaS</h4>
+                                    <p data-i18n="skill.saas.d">No Leap-Notes integro assinaturas e Pix (Stripe e AbacatePay), com planos, gating de paywall e modo convidado — da cobrança à conversão.</p>
                                 </div>
                             </li>
-                            <li class="skill-card" data-skill="figma" tabindex="0" role="button" aria-label="Mais informações sobre Figma">
-                                Figma (UI/UX)
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 85%;"></div>
-                                </div>
-                                <div class="skill-tooltip">
-                                    <h4>Design - Antes do Código, a Experiência</h4>
-                                    <p>Uso Figma desde 2022 para prototipar interfaces antes de codificar. Minha experiência na apLIS me ensinou que design thinking é fundamental para criar produtos que os usuários realmente querem usar.</p>
-                                </div>
-                            </li>
-                            <li class="skill-card" data-skill="architecture" tabindex="0" role="button" aria-label="Mais informações sobre Arquitetura de Sistemas">
+                            <li class="skill-card" data-skill="architecture" tabindex="0" role="button" aria-label="Arquitetura de Sistemas">
                                 Arquitetura de Sistemas
                                 <div class="skill-progress">
                                     <div class="skill-progress-bar" style="width: 80%;"></div>
                                 </div>
                                 <div class="skill-tooltip">
-                                    <h4>Arquitetura - Pensando em Grande Escala</h4>
-                                    <p>Projetei a arquitetura do MedLeap AI pensando em escalabilidade e manutenibilidade. Aplico padrões como MVC, Repository e princípios SOLID para código que dura e evolui.</p>
+                                    <h4 data-i18n="skill.arch.t">Arquitetura de Sistemas</h4>
+                                    <p data-i18n="skill.arch.d">Projeto sistemas pensando em escala e manutenção: monorepos, microsserviços, eventos de domínio e APIs claras. Padrões que duram e evoluem.</p>
                                 </div>
                             </li>
-                            <li class="skill-card" data-skill="apis" tabindex="0" role="button" aria-label="Mais informações sobre APIs RESTful">
-                                APIs RESTful
+                            <li class="skill-card" data-skill="gamedev" tabindex="0" role="button" aria-label="Game Dev e WebGL">
+                                Game Dev / WebGL
                                 <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 88%;"></div>
+                                    <div class="skill-progress-bar" style="width: 76%;"></div>
                                 </div>
                                 <div class="skill-tooltip">
-                                    <h4>APIs - Conectando Mundos</h4>
-                                    <p>Construí APIs desde endpoints simples até integrações complexas com IA. Minha API para o Portal da História serve milhares de consultas diárias com performance e segurança impecáveis.</p>
+                                    <h4 data-i18n="skill.game.t">Game Dev & WebGL</h4>
+                                    <p data-i18n="skill.game.d">Construo games web do zero — motores próprios em WebGL/GLSL e Phaser, física custom, geração procedural e controles mobile-first.</p>
                                 </div>
                             </li>
-                            <li class="skill-card" data-skill="nodejs" tabindex="0" role="button" aria-label="Mais informações sobre Node.js">
-                                Node.js
+                            <li class="skill-card" data-skill="design" tabindex="0" role="button" aria-label="UX e UI">
+                                UX / UI
                                 <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 75%;"></div>
+                                    <div class="skill-progress-bar" style="width: 84%;"></div>
                                 </div>
                                 <div class="skill-tooltip">
-                                    <h4>Node.js - JavaScript Everywhere</h4>
-                                    <p>Uso Node.js para automações, ferramentas de build e microserviços. A versatilidade do JavaScript no backend me permite criar soluções full-stack coesas e eficientes.</p>
-                                </div>
-                            </li>
-                            <li class="skill-card" data-skill="threejs" tabindex="0" role="button" aria-label="Mais informações sobre Three.js">
-                                Three.js
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 70%;"></div>
-                                </div>
-                                <div class="skill-tooltip">
-                                    <h4>3D - Experiências Imersivas</h4>
-                                    <p>Criei experiências 3D interativas no projeto Valentine's Day. Three.js me permite transformar ideias criativas em realidade, combinando arte e tecnologia para storytelling único.</p>
-                                </div>
-                            </li>
-                            <li class="skill-card" data-skill="oop" tabindex="0" role="button" aria-label="Mais informações sobre POO">
-                                POO
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 85%;"></div>
-                                </div>
-                                <div class="skill-tooltip">
-                                    <h4>POO - Código que Faz Sentido</h4>
-                                    <p>Programação orientada a objetos é meu fundamento desde a faculdade. Aplico conceitos como herança, polimorfismo e encapsulamento para criar código reutilizável e manutenível.</p>
+                                    <h4 data-i18n="skill.ux.t">UX / UI</h4>
+                                    <p data-i18n="skill.ux.d">Desenho a experiência antes de codar: gamificação, retenção, onboarding e "game feel". Figma para prototipar e atenção real ao usuário final.</p>
                                 </div>
                             </li>
                         </ul>
@@ -1529,84 +1622,90 @@
 
         <section id="projects" role="region" aria-labelledby="projects-heading">
             <div class="container">
-                <h2 id="projects-heading" class="section-title" data-aos="fade-up">Projetos em Destaque</h2>
+                <h2 id="projects-heading" class="section-title" data-aos="fade-up" data-i18n="projects.title">Projetos em Destaque</h2>
                 <div class="swiper-container" data-aos="fade-up" data-aos-delay="200">
                     <div class="swiper-wrapper">
-                        
-                        <div class="swiper-slide">
-                            <div class="project-card" 
-                                 data-title="MedLeap AI" 
-                                 data-images="images/medleap-1.jpg,images/medleap-2.jpg,images/medleap-3.jpg"
-                                 data-tech-copy="Este projeto é uma plataforma SaaS (Software as a Service) desenvolvida em PHP com arquitetura MVC. O core da aplicação integra-se a Large Language Models (LLMs) via API RESTful para gerar dinamicamente simulações de casos clínicos interativos. O sistema gerencia o estado da simulação, avalia as respostas do usuário em tempo real e fornece feedback baseado em algoritmos de análise de raciocínio clínico. O front-end utiliza JavaScript para renderização dinâmica e comunicação assíncrona com o back-end, garantindo uma experiência de usuário fluida e reativa.">
-                                <div class="project-card-content">
-                                    <h3>MedLeap AI</h3>
-                                    <p>A teoria médica enche os livros, mas o que prepara um estudante para a pressão de um diagnóstico real? Criei uma plataforma de IA que simula essa pressão, usando casos clínicos e questões inteligentes para forjar o raciocínio crítico que salva vidas.</p>
-                                    <div class="tags"><span>IA</span><span>EdTech</span><span>PHP</span><span>SaaS</span></div>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="swiper-slide">
                             <div class="project-card"
-                                 data-title="ShotMap Basketball"
-                                 data-images="images/shotmap-1.jpg,images/shotmap-2.jpg"
-                                 data-tech-copy="Uma aplicação web de visualização de dados construída com JavaScript puro. Utiliza a biblioteca D3.js para renderizar heatmaps e shot charts interativos sobre uma imagem SVG de uma quadra de basquete. Os dados de arremesso (coordenadas x, y, e resultado) são processados no lado do cliente, permitindo a filtragem e análise de desempenho em tempo real. A interface é projetada para ser responsiva e performática, manipulando o DOM de forma eficiente para refletir as interações do usuário sem a necessidade de recarregar a página.">
+                                 data-key="leapnotes"
+                                 data-images="images/medleap-1.jpg,images/medleap-2.jpg,images/medleap-3.JPG"
+                                 data-tech="Leap-Notes é um SaaS de notas e estudo para medicina, construído em React 18 + TypeScript sobre Supabase, com editor rico em TipTap/ProseMirror e empacotamento mobile via Capacitor. Como cofundador e principal responsável técnico, desenvolvi o editor (tabelas, sumário, task lists, exportação PDF/DOCX), o modo convidado com gating de paywall no primeiro login, e a camada de ativação e engajamento (checklist, onboarding com spotlight, celebração de marcos). Integrei pagamentos com Stripe e AbacatePay (Pix), montei a suíte E2E em Playwright e automatizei o deploy."
+                                 data-tech-en="Leap-Notes is a note-taking and study SaaS for medicine, built in React 18 + TypeScript on Supabase, with a TipTap/ProseMirror rich-text editor and Capacitor for mobile. As co-founder and lead engineer, I built the editor (tables, table of contents, task lists, PDF/DOCX export), guest mode with first-login paywall gating, and the activation and engagement layer (checklist, spotlight onboarding, milestone celebrations). I integrated payments via Stripe and AbacatePay (Pix), stood up the Playwright E2E suite, and automated deploys.">
                                 <div class="project-card-content">
-                                    <h3>ShotMap Basketball</h3>
-                                    <p>Menos 'achismo', mais ciência. Desenvolvi uma ferramenta para que atletas de basquete treinem de forma mais inteligente, não apenas mais intensa. Ao mapear os arremessos, o sistema revela padrões de acerto e erro que são invisíveis a olho nu.</p>
-                                    <div class="tags"><span>JS</span><span>Data Viz</span><span>Sports</span></div>
+                                    <h3>Leap-Notes</h3>
+                                    <p data-i18n="proj.leapnotes.blurb">SaaS de notas e estudo para medicina. Como cofundador e engine técnico, conduzo produto, o editor rico (TipTap), pagamentos e toda a base de engenharia.</p>
+                                    <div class="tags"><span>React</span><span>Supabase</span><span>Stripe</span><span>TipTap</span></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="swiper-slide">
                              <div class="project-card"
-                                 data-title="Portal da História do Ceará"
-                                 data-images="images/portal-1.jpg,images/portal-2.jpg"
-                                 data-tech-copy="Desenvolvimento de um sistema de gerenciamento de conteúdo e uma API RESTful para um vasto acervo digital. O back-end foi construído em PHP com um banco de dados relacional MySQL, otimizado com índices Full-Text para buscas de alta performance em milhares de registros. A arquitetura da API foi projetada para ser robusta e escalável, servindo dados de forma estruturada (JSON) para múltiplos clientes, incluindo o portal web principal. O projeto envolveu modelagem de dados complexa e a implementação de endpoints seguros e documentados.">
+                                 data-key="phc"
+                                 data-images=""
+                                 data-tech="O Portal da História do Ceará é um acervo digital de jornais antigos, fatos históricos, livros e revistas, em PHP procedural com MySQL 8. Seu diferencial é a IAcema, que projetei como um agente — não RAG vetorial — com loop de ferramentas: 16 tools SQL com prepared statements consultam jornais, manchetes, fatos e autores. Defini schema de saída JSON estrito e ancoragem por citação para impedir alucinação de fontes do acervo. Inclui painel administrativo editorial e busca Full-Text sobre grande volume de manchetes."
+                                 data-tech-en="Portal da História do Ceará is a digital archive of historical newspapers, facts, books and magazines, built in procedural PHP on MySQL 8. Its standout feature is Iracema, which I designed as an agent — not vector RAG — with a tool-use loop: 16 SQL tools with prepared statements query newspapers, headlines, facts and authors. I defined a strict JSON output schema and citation grounding to prevent the model from hallucinating archive sources. It includes an editorial admin panel and Full-Text search over a large volume of headlines.">
                                 <div class="project-card-content">
                                     <h3>Portal da História do Ceará</h3>
-                                    <p>O desafio era tornar pesquisável um acervo com milhares de documentos históricos. Projetei e implementei o sistema de catalogação e a API de busca que hoje alimenta a maior plataforma sobre a história do Ceará.</p>
-                                    <div class="tags"><span>PHP</span><span>MySQL</span><span>Educação</span></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                             <div class="project-card"
-                                 data-title="Valentine's Day"
-                                 data-images="images/valentine-1.jpg,images/valentine-2.jpg,images/valentine-3.jpg"
-                                 data-tech-copy="Uma experiência 3D interativa no navegador, desenvolvida com Three.js para a renderização da cena, modelos e iluminação. A linha do tempo da animação e a coreografia dos eventos são controladas pela biblioteca GSAP (GreenSock Animation Platform), que manipula as propriedades dos objetos 3D e elementos do DOM. A lógica de interação do usuário é implementada em JavaScript puro, capturando eventos de mouse e teclado para guiar a narrativa visual. O projeto é uma demonstração de otimização de performance no front-end, gerenciando o ciclo de renderização e os assets para garantir uma animação suave.">
-                                <div class="project-card-content">
-                                    <h3>Valentine's day</h3>
-                                    <p>Um belo storytelling interativo no navegador, combinando o poder do 3D da Three.js com outras bibliotecas de animação como GSAP e anime.js. O resultado é uma jornada intuitiva.</p>
-                                    <div class="tags"><span>Tech</span><span>Inovação</span><span>Front-end</span></div>
+                                    <p data-i18n="proj.phc.blurb">Acervo digital de jornais e fatos históricos, com a IAcema — uma assistente de IA que responde com base direta no acervo, via agente com ferramentas SQL.</p>
+                                    <div class="tags"><span>PHP</span><span>MySQL</span><span>OpenAI</span><span>AI Agent</span></div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="swiper-slide">
                             <div class="project-card"
-                                data-title="Sistema de Gerenciamento de Inventário em C"
-                                data-images="images/inventory-c-1.jpg"
-                                data-tech-copy="Implementação de um sistema CRUD (Create, Read, Update, Delete) em linguagem C, operando diretamente no terminal. A estrutura de dados principal é uma lista duplamente encadeada, permitindo a inserção e remoção de registros em tempo O(1) quando o nó é conhecido. A persistência dos dados é garantida através da serialização da lista encadeada em um arquivo binário, utilizando `fwrite` e `fread` para operações de I/O. O projeto exigiu gerenciamento explícito de memória com `malloc` e `free` para evitar memory leaks, sendo um exercício prático de algoritmos e estruturas de dados de baixo nível.">
-                               <div class="project-card-content">
-                                   <h3>Gerenciamento de Inventário em C</h3>
-                                   <p>Um projeto focado nos fundamentos da engenharia de software, onde implementei do zero um sistema CRUD em C puro, com gerenciamento manual de memória e persistência via manipulação de arquivos binários.</p>
-                                   <div class="tags"><span>C</span><span>Alocação de memória</span><span>Terminal</span></div>
-                               </div>
-                           </div>
-                       </div>
+                                 data-key="geosumo"
+                                 data-images=""
+                                 data-tech="GEO SUMO é um arena-fighter 3D construído do zero em WebGL/GLSL, sem engine pronta. Tem física própria com knockback percentual e hitstun (anti-combo infinito), sistema de stocks e ring-out, charge/dash, IA comportamental em três dificuldades e até quatro oponentes simultâneos. É mobile-first: joystick virtual, zonas de toque e háptica. O áudio é 100% procedural e o game feel inclui screen shake, slow-motion, hit-flash e partículas."
+                                 data-tech-en="GEO SUMO is a 3D arena fighter built from scratch in WebGL/GLSL, with no off-the-shelf engine. It has custom physics with percentage-based knockback and hitstun (anti-infinite-combo), a stock and ring-out system, charge/dash, behavioral AI across three difficulties, and up to four simultaneous opponents. It is mobile-first: virtual joystick, touch zones and haptics. The audio is fully procedural and the game feel includes screen shake, slow-motion, hit-flash and particles.">
+                                <div class="project-card-content">
+                                    <h3>GEO SUMO</h3>
+                                    <p data-i18n="proj.geosumo.blurb">Arena-fighter 3D em WebGL puro, com física custom, IA de combate e controles mobile-first. Motor e áudio escritos do zero.</p>
+                                    <div class="tags"><span>WebGL</span><span>GLSL</span><span>Game Dev</span></div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="swiper-slide">
-                             <div class="project-card"
-                                 data-title="Gerenciador de Atividades Acadêmicas"
-                                 data-images="images/academic-1.jpg,images/academic-2.jpg"
-                                 data-tech-copy="Uma aplicação web full-stack desenvolvida para otimizar o processo de gestão de atividades acadêmicas. O back-end, implementado em PHP, segue o padrão MVC e gerencia toda a lógica de negócio, incluindo autenticação de usuários, validação de dados e operações CRUD no banco de dados MySQL. O front-end utiliza HTML, CSS e JavaScript para criar uma interface de usuário reativa, com formulários dinâmicos e feedback em tempo real através de requisições AJAX. O foco do projeto foi a otimização da experiência do usuário (UX), simplificando um fluxo de trabalho complexo em uma interface limpa e eficiente.">
+                            <div class="project-card"
+                                 data-key="hylomorph"
+                                 data-images=""
+                                 data-tech="Hylomorph é um 'god-game' em Phaser 3 com um loop de criar, observar, reproduzir e evoluir criaturas geométricas. Implementa genética mendeliana com mutação, receitas de crafting/transmutação com raridade e risco (anomalias), IA por steering behaviors e uma UI com gestos físicos (fling) e tratamento de toque vs. arraste no mobile."
+                                 data-tech-en="Hylomorph is a Phaser 3 'god-game' built around a loop of creating, observing, breeding and evolving geometric creatures. It implements Mendelian genetics with mutation, crafting/transmutation recipes with rarity and risk (anomalies), steering-behavior AI, and a UI with physics-based fling gestures and mobile tap-vs-drag handling.">
                                 <div class="project-card-content">
-                                    <h3>Simplificando a Vida Acadêmica</h3>
-                                    <p>A burocracia para registrar horas complementares na universidade era um obstáculo. Em resposta, projetei e desenvolvi esta aplicação web para transformar um processo frustrante em uma experiência de dois cliques.</p>
-                                    <div class="tags"><span>Tech</span><span>Inovação</span><span>Full-Stack</span></div>
+                                    <h3>Hylomorph</h3>
+                                    <p data-i18n="proj.hylomorph.blurb">"God-game" em Phaser sobre criar, cruzar e evoluir vida digital — genética, crafting e raridade.</p>
+                                    <div class="tags"><span>Phaser</span><span>Procedural</span><span>Game Dev</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="project-card"
+                                 data-key="geolife"
+                                 data-images=""
+                                 data-tech="Geolife é um pet-sim no estilo Tamagotchi com renderizador em canvas a nível de pixel, escrito do zero. Tem loop de decaimento de status vitais, ciclo de vida e envelhecimento, sistema de personalidade e um vocabulário completo de gestos (toque, segurar, arrastar, pinçar) com thresholds afinados para o toque."
+                                 data-tech-en="Geolife is a Tamagotchi-style pet-sim with a from-scratch pixel-level canvas renderer. It has a vital-stat decay loop, a life cycle with aging, a personality system, and a full gesture vocabulary (tap, long-press, drag, pinch) with thresholds tuned for touch.">
+                                <div class="project-card-content">
+                                    <h3>Geolife</h3>
+                                    <p data-i18n="proj.geolife.blurb">Pet-sim em canvas (estilo Tamagotchi) com arte procedural e vocabulário completo de gestos. Touch-native.</p>
+                                    <div class="tags"><span>Canvas</span><span>Mobile</span><span>Game Dev</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="project-card"
+                                 data-key="enembot"
+                                 data-images=""
+                                 data-tech="ENEMBot é um tutor de estudos para o ENEM em Next.js + OpenAI que aplica o método Feynman: conduz o aluno à descoberta em vez de entregar a resposta. Combina conversa contextualizada, questões no estilo ENEM e uma camada de gamificação — pontuação, ofensivas, badges, dificuldade adaptativa e ferramentas de ajuda (lifelines) — com dashboard de desempenho e entrada por voz."
+                                 data-tech-en="ENEMBot is an ENEM study tutor in Next.js + OpenAI that applies the Feynman method: it guides the student to discovery instead of handing over the answer. It blends contextual conversation, ENEM-style questions and a gamification layer — scoring, streaks, badges, adaptive difficulty and lifeline help tools — with a performance dashboard and voice input.">
+                                <div class="project-card-content">
+                                    <h3>ENEMBot</h3>
+                                    <p data-i18n="proj.enembot.blurb">Tutor conversacional gamificado para o ENEM, no método Feynman: pontuação, ofensivas, dificuldade adaptativa e dicas socráticas.</p>
+                                    <div class="tags"><span>Next.js</span><span>OpenAI</span><span>Gamification</span></div>
                                 </div>
                             </div>
                         </div>
@@ -1621,38 +1720,54 @@
 
         <section id="experience" role="region" aria-labelledby="experience-heading">
             <div class="container">
-                <h2 id="experience-heading" class="section-title" data-aos="fade-up">Minha Jornada</h2>
+                <h2 id="experience-heading" class="section-title" data-aos="fade-up" data-i18n="exp.title">Minha Jornada</h2>
                 <div class="timeline">
                     <div class="timeline-item left" data-aos="fade-right">
                         <div class="timeline-content">
-                            <h3>Engenheiro de Software Líder</h3>
-                            <h4>MedLeap AI</h4>
-                            <span>mar 2025 - presente</span>
-                            <p>Liderança técnica na arquitetura e desenvolvimento full-stack da plataforma, com foco na integração de APIs de IA.</p>
+                            <h3 data-i18n="exp.woolly.role">Desenvolvedor Full-Stack</h3>
+                            <h4>Woolly</h4>
+                            <span data-i18n="exp.woolly.date">fev 2026 — presente</span>
+                            <p data-i18n="exp.woolly.desc">Desenvolvedor full-stack e autor principal da camada de gamificação de um app de tutoria por voz com IA (Expo/React Native + ASP.NET Core 8 + FastAPI). Economia de XP e níveis, ligas competitivas, ofensivas, quizzes e push-to-talk por voz.</p>
                         </div>
                     </div>
                     <div class="timeline-item right" data-aos="fade-left">
                         <div class="timeline-content">
-                            <h3>Pesquisador Científico</h3>
-                            <h4>Universidade Estadual do Ceará</h4>
-                            <span>abr 2024 - set 2024</span>
-                            <p>Aplicação de Machine Learning para predição de riscos clínicos em pacientes no projeto CONCERN.</p>
+                            <h3 data-i18n="exp.leap.role">Cofundador & Engine Técnico</h3>
+                            <h4>Leap-Notes</h4>
+                            <span data-i18n="exp.leap.date">2025 — presente</span>
+                            <p data-i18n="exp.leap.desc">Cofundador e principal responsável técnico de um SaaS de notas para medicina (React + Supabase + Stripe/AbacatePay). Editor rico em TipTap, modo convidado, pagamentos, ativação e a base de engenharia do produto.</p>
                         </div>
                     </div>
                     <div class="timeline-item left" data-aos="fade-right">
                         <div class="timeline-content">
-                            <h3>Software Engineer Intern</h3>
+                            <h3 data-i18n="exp.phc.role">Desenvolvedor & Autor da IAcema</h3>
+                            <h4>Portal da História do Ceará</h4>
+                            <span data-i18n="exp.phc.date">2024 — presente</span>
+                            <p data-i18n="exp.phc.desc">Manutenção do portal histórico em PHP/MySQL e autoria da IAcema, assistente de IA em arquitetura de agente com 16 ferramentas SQL sobre o acervo. Stakeholder: Prof. Gildácio Sá.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right" data-aos="fade-left">
+                        <div class="timeline-content">
+                            <h3 data-i18n="exp.concern.role">Pesquisador Científico</h3>
+                            <h4>Universidade Estadual do Ceará</h4>
+                            <span data-i18n="exp.concern.date">abr 2024 — set 2024</span>
+                            <p data-i18n="exp.concern.desc">Aplicação de Machine Learning para predição de riscos clínicos em pacientes no projeto CONCERN.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left" data-aos="fade-right">
+                        <div class="timeline-content">
+                            <h3 data-i18n="exp.aplis.role">Estágio em Engenharia de Software</h3>
                             <h4>apLIS</h4>
-                            <span>mai 2023 - abr 2024</span>
-                            <p>Desenvolvimento back-end e front-end com PHP e JS, prototipação (Figma) e aplicação de conceitos de UX.</p>
+                            <span data-i18n="exp.aplis.date">mai 2023 — abr 2024</span>
+                            <p data-i18n="exp.aplis.desc">Desenvolvimento back-end e front-end com PHP e JavaScript, prototipação no Figma e aplicação de conceitos de UX.</p>
                         </div>
                     </div>
                      <div class="timeline-item right" data-aos="fade-left">
                         <div class="timeline-content">
-                            <h3>Bolsista PET-CC</h3>
+                            <h3 data-i18n="exp.pet.role">Bolsista PET-CC</h3>
                             <h4>Universidade Estadual do Ceará</h4>
-                            <span>jan 2022 - mai 2023</span>
-                            <p>Atuação em projetos de ensino, pesquisa e extensão no Programa de Educação Tutorial em Ciência da Computação.</p>
+                            <span data-i18n="exp.pet.date">jan 2022 — mai 2023</span>
+                            <p data-i18n="exp.pet.desc">Atuação em projetos de ensino, pesquisa e extensão no Programa de Educação Tutorial em Ciência da Computação.</p>
                         </div>
                     </div>
                 </div>
@@ -1661,54 +1776,54 @@
 
         <section id="contact" role="region" aria-labelledby="contact-heading">
             <div class="container" data-aos="fade-up">
-                <h2 id="contact-heading" class="section-title">Vamos Construir Algo Juntos? 🚀</h2>
-                <p>
-                    Estou sempre em busca de desafios que me permitam crescer e de projetos onde eu possa agregar valor. Se você tem uma ideia ou uma oportunidade, adoraria conversar.
+                <h2 id="contact-heading" class="section-title" data-i18n="contact.title">Vamos Construir Algo Juntos?</h2>
+                <p data-i18n="contact.intro">
+                    Estou aberto a oportunidades — remotas e internacionais — em produto, mobile, IA aplicada e gamificação. Se você tem uma ideia ou uma vaga, vamos conversar.
                 </p>
-                
+
                 <form class="contact-form" id="contact-form">
                     <div class="form-group">
-                        <label for="name">Nome *</label>
+                        <label for="name" data-i18n="contact.name">Nome *</label>
                         <input type="text" id="name" name="name" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="email">E-mail *</label>
+                        <label for="email" data-i18n="contact.email">E-mail *</label>
                         <input type="email" id="email" name="email" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="subject">Assunto *</label>
+                        <label for="subject" data-i18n="contact.subject">Assunto *</label>
                         <input type="text" id="subject" name="subject" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="message">Mensagem *</label>
-                        <textarea id="message" name="message" placeholder="Conte-me sobre seu projeto ou oportunidade..." required></textarea>
+                        <label for="message" data-i18n="contact.message">Mensagem *</label>
+                        <textarea id="message" name="message" data-i18n-placeholder="contact.placeholder" placeholder="Conte-me sobre seu projeto ou oportunidade..." required></textarea>
                     </div>
-                    
-                    <button type="submit" class="form-submit" id="submit-btn">
+
+                    <button type="submit" class="form-submit" id="submit-btn" data-i18n="contact.send">
                         Enviar Mensagem
                     </button>
-                    
+
                     <div class="form-status" id="form-status"></div>
                 </form>
-                
+
                 <div class="contact-actions">
-                    <a href="https://wa.me/5585984038749?text=Olá%20Tales!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar." 
-                       class="contact-action whatsapp" 
-                       target="_blank">
+                    <a href="https://wa.me/5585984038749?text=Olá%20Tales!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar."
+                       class="contact-action whatsapp"
+                       target="_blank" rel="noopener">
                         📱 WhatsApp
                     </a>
-                    <a href="mailto:tales.santiago@aluno.uece.br?subject=Contato%20via%20Portfólio&body=Olá%20Tales,%0A%0AVi%20seu%20portfólio%20e%20gostaria%20de%20conversar%20sobre..." 
-                       class="contact-action">
+                    <a href="mailto:santiagold116@gmail.com?subject=Contato%20via%20Portf%C3%B3lio&body=Ol%C3%A1%20Tales,%0A%0AVi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre..."
+                       class="contact-action" data-i18n="contact.emailDirect">
                         ✉️ E-mail Direto
                     </a>
                 </div>
-                
+
                 <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color);">
                     <p style="font-size: 0.9rem; color: var(--text-color); opacity: 0.7;">
-                        Respondo em até 24 horas • <span style="color: var(--primary-color); font-weight: 500;">santiagold116@gmail.com</span>
+                        <span data-i18n="contact.replyTime">Respondo em até 24 horas</span> • <span style="color: var(--primary-color); font-weight: 500;">santiagold116@gmail.com</span>
                     </p>
                 </div>
             </div>
@@ -1717,7 +1832,7 @@
 
     <footer>
         <div class="container">
-            <p>Projetado e construído por Tales Santiago.</p>
+            <p data-i18n="footer.text">Projetado e construído por Tales Santiago.</p>
         </div>
     </footer>
 
@@ -1728,10 +1843,10 @@
                 <h3 id="popup-title"></h3>
                 
                 <div class="project-links" id="popup-links">
-                    <a href="#" class="project-link" id="popup-live-link" target="_blank">
+                    <a href="#" class="project-link" id="popup-live-link" target="_blank" rel="noopener" data-i18n="popup.live">
                         🚀 Ver ao Vivo
                     </a>
-                    <a href="#" class="project-link" id="popup-code-link" target="_blank">
+                    <a href="#" class="project-link" id="popup-code-link" target="_blank" rel="noopener" data-i18n="popup.code">
                         💻 Ver Código
                     </a>
                 </div>
