@@ -1,1869 +1,359 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tales Santiago | Desenvolvedor & Arquiteto de Software | Portfólio Ceará</title>
-    <meta name="description" content="Desenvolvedor web especializado em engenharia de software, PHP, JavaScript e IA. Portfólio de Tales Santiago com projetos inovadores em tecnologia e educação no Ceará.">
-    <meta name="keywords" content="desenvolvedor web, engenharia de software, PHP, JavaScript, portfólio desenvolvedor Ceará, IA, tecnologia, UECE">
-    <meta name="author" content="Tales Santiago">
-    <link rel="canonical" href="https://taleszin.github.io/portfolio/">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://taleszin.github.io/portfolio/">
-    <meta property="og:title" content="Tales Santiago | Full-Stack Developer — Product, Gamification & Applied AI">
-    <meta property="og:description" content="Full-stack developer shipping production code in React Native, ASP.NET, FastAPI and PHP, with three AI integrations in production. PT-BR / EN portfolio.">
-    <meta property="og:image" content="https://taleszin.github.io/portfolio/TalesRJ.jpg">
-    <meta property="og:locale" content="pt_BR">
-    <meta property="og:locale:alternate" content="en_US">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://taleszin.github.io/portfolio/">
-    <meta property="twitter:title" content="Tales Santiago | Full-Stack Developer — Product, Gamification & Applied AI">
-    <meta property="twitter:description" content="Full-stack developer shipping production code in React Native, ASP.NET, FastAPI and PHP, with three AI integrations in production. PT-BR / EN portfolio.">
-    <meta property="twitter:image" content="https://taleszin.github.io/portfolio/TalesRJ.jpg">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3crect width='100' height='100' fill='%2300aaff'/%3e%3ctext x='50' y='65' font-family='Arial, sans-serif' font-size='45' font-weight='bold' fill='white' text-anchor='middle'%3eTS%3c/text%3e%3c/svg%3e">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3crect width='100' height='100' rx='15' fill='%2300aaff'/%3e%3ctext x='50' y='65' font-family='Arial, sans-serif' font-size='45' font-weight='bold' fill='white' text-anchor='middle'%3eTS%3c/text%3e%3c/svg%3e">
-    <meta name="theme-color" content="#00aaff">
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNH0R1LRM4"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-NNH0R1LRM4');
-    </script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-
-    <style>
-        :root {
-            /* Nova paleta de cores profissional */
-            --purple: #5A3E8F;
-            --purple-light: #B299D9;
-            --purple-dark: #4B2C75;
-            --dark: #101010;
-            --dark-soft: #1A1A1A;
-            --light-gray: #F5F5F5;
-            --light-gray-border: #EAEAEA;
-            --highlight: #8E6EB2;
-            --white: #FFFFFF;
-            
-            /* Mapeamento para temas */
-            --light-primary: var(--purple);
-            --light-secondary: var(--light-gray);
-            --light-background: var(--white);
-            --light-text: var(--dark);
-            --light-card-bg: var(--white);
-            --light-border: var(--light-gray-border);
-
-            --dark-primary: var(--purple-light);
-            --dark-secondary: #0d1117;
-            --dark-background: var(--dark);
-            --dark-text: #c9d1d9;
-            --dark-card-bg: var(--dark-soft);
-            --dark-border: #30363d;
-        }
-
-        [data-theme='light'] {
-            --primary-color: var(--light-primary);
-            --secondary-color: var(--light-secondary);
-            --background-color: var(--light-background);
-            --text-color: var(--light-text);
-            --light-text-color: var(--light-text);
-            --card-bg-color: var(--light-card-bg);
-            --border-color: var(--light-border);
-            --header-bg: rgba(255, 255, 255, 0.8);
-        }
-
-        [data-theme='dark'] {
-            --primary-color: var(--dark-primary);
-            --secondary-color: var(--dark-secondary);
-            --background-color: var(--dark-background);
-            --text-color: var(--dark-text);
-            --light-text-color: #f0f6fc;
-            --card-bg-color: var(--dark-card-bg);
-            --border-color: var(--dark-border);
-            --header-bg: rgba(1, 4, 9, 0.8);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', 'Roboto', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.7;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        
-        body.modal-open {
-            overflow: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 20px;
-            overflow: hidden;
-        }
-
-        header {
-            background: var(--header-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .header-scrolled {
-            background: var(--purple) !important;
-            border-bottom-color: var(--purple-dark);
-            box-shadow: 0 4px 20px rgba(90, 62, 143, 0.15);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--light-text-color);
-            letter-spacing: -0.02em;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            list-style: none;
-        }
-        
-        .nav-menu li {
-            margin-left: 25px;
-        }
-
-        .nav-menu a {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            padding: 5px 0;
-        }
-        
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(90deg, var(--purple), var(--purple-light));
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 1px;
-        }
-
-        .nav-menu a:hover {
-            color: var(--light-text-color);
-        }
-        
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        .theme-switcher {
-            background: none;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-        .theme-switcher:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .lang-switcher {
-            background: none;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            cursor: pointer;
-            height: 40px;
-            min-width: 44px;
-            padding: 0 12px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            transition: all 0.3s ease;
-        }
-        .lang-switcher:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .nav-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            gap: 5px;
-            width: 42px;
-            height: 42px;
-            background: none;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            cursor: pointer;
-            padding: 0 9px;
-        }
-        .nav-toggle span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background: var(--text-color);
-            border-radius: 2px;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-        .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-        #hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--light-text-color);
-            overflow: hidden;
-            position: relative;
-        }
-
-        #hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .hero-content {
-            z-index: 2;
-            position: relative;
-        }
-
-        #hero h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            color: var(--light-text-color);
-            min-height: 5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .typewriter-text {
-            border-right: 3px solid var(--primary-color);
-            animation: blink-cursor 1s infinite;
-        }
-
-        @keyframes blink-cursor {
-            0%, 50% { border-color: var(--primary-color); }
-            51%, 100% { border-color: transparent; }
-        }
-
-        #hero p {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--text-color);
-        }
-        
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-            color: var(--white);
-            padding: 16px 32px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-family: 'Montserrat', sans-serif;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid var(--purple);
-            box-shadow: 0 4px 15px rgba(90, 62, 143, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--purple-light), var(--highlight));
-            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
-        }
-        
-        .btn:hover::before {
-            left: 0;
-        }
-
-        [data-theme='light'] .btn {
-            color: var(--light-background);
-        }
-        [data-theme='dark'] .btn {
-            color: var(--dark-secondary);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(90, 62, 143, 0.3);
-        }
-        
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 80px;
-            font-weight: 500;
-            color: var(--light-text-color);
-            letter-spacing: -0.02em;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--purple), var(--purple-light));
-            border-radius: 2px;
-        }
-        
-        #about {
-            background-color: var(--secondary-color);
-        }
-
-        #about .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        #about img {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 50%;
-            margin: auto;
-            display: block;
-            border: 5px solid var(--primary-color);
-            box-shadow: 0 8px 24px rgba(0, 170, 255, 0.1);
-        }
-
-        .skills-list {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 40px;
-        }
-
-        .skill-card {
-            background: var(--card-bg-color);
-            color: var(--purple);
-            padding: 12px 24px;
-            border-radius: 4px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            font-family: 'Montserrat', sans-serif;
-            border: 1px solid var(--light-gray-border);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            position: relative;
-            box-shadow: 0 2px 8px rgba(90, 62, 143, 0.08);
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(90, 62, 143, 0.15);
-            border-color: var(--purple);
-            background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-            color: var(--white);
-        }
-        
-        .skill-tooltip {
-            position: absolute;
-            bottom: calc(100% + 15px);
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--light-gray);
-            color: var(--dark);
-            padding: 20px;
-            border-radius: 8px;
-            border: 2px solid var(--purple-light);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            width: 320px;
-            box-shadow: 0 10px 30px rgba(90, 62, 143, 0.2);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1000;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .skill-tooltip::before {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 8px solid transparent;
-            border-top-color: var(--purple-light);
-        }
-        
-        .skill-tooltip.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(-5px);
-        }
-        
-        .skill-tooltip h4 {
-            color: var(--purple);
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .skill-tooltip p {
-            margin: 0;
-            color: var(--dark-soft);
-        }
-
-        [data-theme='dark'] .skill-tooltip {
-            background: var(--dark-card-bg);
-            color: var(--dark-text);
-        }
-        
-        [data-theme='dark'] .skill-tooltip p {
-            color: var(--dark-text);
-        }
-        
-        /* Loading Animation */
-        .loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--light-gray);
-            border-top: 3px solid var(--purple);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Progress Bar for Skills */
-        .skill-progress {
-            width: 100%;
-            height: 4px;
-            background: var(--light-gray);
-            border-radius: 2px;
-            overflow: hidden;
-            margin-top: 8px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .skill-card:hover .skill-progress {
-            opacity: 1;
-        }
-        
-        .skill-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--purple), var(--purple-light));
-            border-radius: 2px;
-            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        /* Microinterações nos links */
-        a:not(.btn) {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        
-        a:not(.btn)::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -2px;
-            left: 0;
-            background: linear-gradient(90deg, var(--purple), var(--purple-light));
-            transition: width 0.3s ease;
-        }
-        
-        a:not(.btn):hover::after {
-            width: 100%;
-        }
-
-        .swiper-container {
-            width: 100%;
-            padding: 10px 0 50px 0;
-        }
-
-        .swiper-slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .project-card {
-            background: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            width: 350px;
-            min-height: 380px;
-            position: relative;
-            cursor: pointer;
-            transform-style: preserve-3d;
-            box-shadow: 0 4px 15px rgba(90, 62, 143, 0.1);
-        }
-
-        .project-card::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(90, 62, 143, 0.15), transparent 40%);
-            opacity: 0;
-            transition: opacity 0.5s;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .project-card:hover::before {
-            opacity: 1;
-        }
-        
-        .project-card:hover {
-            transform: perspective(1000px) rotateY(5deg) scale(1.05);
-            box-shadow: 0 20px 40px rgba(90, 62, 143, 0.2);
-        }
-
-        /* MedLeap AI - Medical Theme */
-        .project-card[data-key="leapnotes"] {
-            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
-            border: 2px solid #00aaff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card[data-key="leapnotes"]::after {
-            content: "⚕️";
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            font-size: 80px;
-            opacity: 0.1;
-            z-index: 1;
-            animation: pulse-medical 3s ease-in-out infinite;
-        }
-
-        .project-card[data-key="leapnotes"] .project-card-content {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            color: white;
-            position: relative;
-            z-index: 2;
-        }
-
-        .project-card[data-key="leapnotes"]:hover {
-            box-shadow: 0 0 30px rgba(0, 170, 255, 0.6);
-            animation: medical-glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes pulse-medical {
-            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.1; }
-            50% { transform: scale(1.1) rotate(5deg); opacity: 0.2; }
-        }
-
-        @keyframes medical-glow {
-            0% { box-shadow: 0 0 30px rgba(0, 170, 255, 0.6); }
-            100% { box-shadow: 0 0 40px rgba(0, 255, 170, 0.8); }
-        }
-
-        /* ShotMap Basketball - Sports Theme */
-        .project-card[data-key="geosumo"] {
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-            border: 2px solid #ff8c42;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card[data-key="geosumo"]::after {
-            content: "🏀";
-            position: absolute;
-            top: -10px;
-            right: -15px;
-            font-size: 60px;
-            opacity: 0.2;
-            z-index: 1;
-            animation: basketball-bounce 2s ease-in-out infinite;
-        }
-
-        .project-card[data-key="geosumo"] .project-card-content {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            color: white;
-            position: relative;
-            z-index: 2;
-        }
-
-        .project-card[data-key="geosumo"]:hover {
-            animation: basketball-shake 0.5s ease-in-out infinite;
-        }
-
-        @keyframes basketball-bounce {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(180deg); }
-        }
-
-        @keyframes basketball-shake {
-            0%, 100% { transform: perspective(1000px) rotateY(5deg) scale(1.05) translateX(0); }
-            25% { transform: perspective(1000px) rotateY(5deg) scale(1.05) translateX(-2px); }
-            75% { transform: perspective(1000px) rotateY(5deg) scale(1.05) translateX(2px); }
-        }
-
-        /* Portal da História - Vintage Theme */
-        .project-card[data-key="phc"] {
-            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
-            border: 2px solid #daa520;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card[data-key="phc"]::after {
-            content: "📜";
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            font-size: 50px;
-            opacity: 0.3;
-            z-index: 1;
-            animation: vintage-float 4s ease-in-out infinite;
-        }
-
-        .project-card[data-key="phc"]::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(218, 165, 32, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(218, 165, 32, 0.1) 0%, transparent 50%);
-            z-index: 1;
-        }
-
-        .project-card[data-key="phc"] .project-card-content {
-            background: rgba(139, 69, 19, 0.8);
-            backdrop-filter: blur(5px);
-            color: #f4e4bc;
-            position: relative;
-            z-index: 2;
-            border: 1px solid rgba(218, 165, 32, 0.3);
-            border-radius: 8px;
-            box-shadow: inset 0 0 20px rgba(218, 165, 32, 0.1);
-        }
-
-        .project-card[data-key="phc"]:hover {
-            box-shadow: 0 0 25px rgba(218, 165, 32, 0.5);
-            filter: sepia(0.3);
-        }
-
-        @keyframes vintage-float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
-            50% { transform: translateY(-8px) rotate(10deg); opacity: 0.5; }
-        }
-
-        /* Valentine's Day - Romantic Theme */
-        .project-card[data-key="geolife"] {
-            background: linear-gradient(135deg, #ff1744 0%, #e91e63 50%, #9c27b0 100%);
-            border: 2px solid #ff4569;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card[data-key="geolife"]::after {
-            content: "💖";
-            position: absolute;
-            top: -5px;
-            right: -10px;
-            font-size: 40px;
-            opacity: 0.4;
-            z-index: 1;
-            animation: heart-beat 1.5s ease-in-out infinite;
-        }
-
-        .project-card[data-key="geolife"]::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 30% 40%, rgba(255, 69, 105, 0.2) 0%, transparent 30%),
-                radial-gradient(circle at 70% 60%, rgba(233, 30, 99, 0.2) 0%, transparent 30%);
-            z-index: 1;
-            animation: romantic-sparkle 3s ease-in-out infinite;
-        }
-
-        .project-card[data-key="geolife"] .project-card-content {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            color: white;
-            position: relative;
-            z-index: 2;
-        }
-
-        .project-card[data-key="geolife"]:hover {
-            animation: heart-glow 1s ease-in-out infinite alternate;
-        }
-
-        @keyframes heart-beat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
-        @keyframes romantic-sparkle {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        @keyframes heart-glow {
-            0% { box-shadow: 0 0 20px rgba(255, 69, 105, 0.6); }
-            100% { box-shadow: 0 0 35px rgba(233, 30, 99, 0.8); }
-        }
-
-        /* C Programming - Terminal Theme */
-        .project-card[data-key="hylomorph"] {
-            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-            border: 2px solid #30363d;
-            position: relative;
-            overflow: hidden;
-            font-family: 'Courier New', monospace;
-        }
-
-        .project-card[data-key="hylomorph"]::after {
-            content: "💻";
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            font-size: 50px;
-            opacity: 0.2;
-            z-index: 1;
-            animation: terminal-blink 2s linear infinite;
-        }
-
-        .project-card[data-key="hylomorph"]::before {
-            content: "> █";
-            position: absolute;
-            bottom: 10px;
-            left: 15px;
-            color: #00ff41;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            opacity: 0.6;
-            z-index: 1;
-            animation: cursor-blink 1s linear infinite;
-        }
-
-        .project-card[data-key="hylomorph"] .project-card-content {
-            background: rgba(13, 17, 23, 0.9);
-            color: #00ff41;
-            position: relative;
-            z-index: 2;
-            border: 1px solid #30363d;
-            border-radius: 4px;
-        }
-
-        .project-card[data-key="hylomorph"] h3 {
-            color: #00ff41 !important;
-            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
-        }
-
-        .project-card[data-key="hylomorph"]:hover {
-            box-shadow: 0 0 25px rgba(0, 255, 65, 0.3);
-            animation: terminal-glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes terminal-blink {
-            0%, 50% { opacity: 0.2; }
-            51%, 100% { opacity: 0.6; }
-        }
-
-        @keyframes cursor-blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        @keyframes terminal-glow {
-            0% { border-color: #30363d; }
-            100% { border-color: #00ff41; }
-        }
-
-        /* Academic Manager - Education Theme */
-        .project-card[data-key="enembot"] {
-            background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
-            border: 2px solid #5ba0f2;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card[data-key="enembot"]::after {
-            content: "🎓";
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            font-size: 60px;
-            opacity: 0.2;
-            z-index: 1;
-            animation: academic-float 3.5s ease-in-out infinite;
-        }
-
-        .project-card[data-key="enembot"]::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 10px,
-                    rgba(255, 255, 255, 0.05) 10px,
-                    rgba(255, 255, 255, 0.05) 20px
-                );
-            z-index: 1;
-        }
-
-        .project-card[data-key="enembot"] .project-card-content {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            color: white;
-            position: relative;
-            z-index: 2;
-        }
-
-        .project-card[data-key="enembot"]:hover {
-            box-shadow: 0 0 30px rgba(74, 144, 226, 0.6);
-            animation: academic-shine 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes academic-float {
-            0%, 100% { transform: translateY(0px) rotate(-5deg); }
-            50% { transform: translateY(-12px) rotate(5deg); }
-        }
-
-        @keyframes academic-shine {
-            0% { filter: brightness(1); }
-            100% { filter: brightness(1.2); }
-        }
-
-        /* Enhanced hover effects for all cards */
-        .project-card:hover .project-card-content {
-            transform: translateZ(20px);
-        }
-
-        .project-card .tags span {
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .tags span {
-            transform: translateY(-2px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .project-card-content {
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
-
-        .project-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .project-card .tags {
-            margin-top: auto;
-            padding-top: 15px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        
-        .project-card .tags span {
-            background: var(--secondary-color);
-            color: var(--text-color);
-            font-size: 0.8rem;
-            padding: 5px 10px;
-            border-radius: 5px;
-            border: 1px solid var(--border-color);
-        }
-
-        .swiper-button-next, .swiper-button-prev {
-            color: var(--primary-color);
-            transform: scale(0.8);
-        }
-        
-        .swiper-pagination-bullet-active {
-            background: var(--primary-color);
-        }
-
-        #experience {
-            background-color: var(--secondary-color);
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 3px;
-            background-color: var(--border-color);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1.5px;
-        }
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-        }
-        .timeline-item.left {
-            left: 0;
-        }
-        .timeline-item.right {
-            left: 50%;
-        }
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            right: -12px;
-            background-color: var(--secondary-color);
-            border: 4px solid var(--primary-color);
-            top: 25px;
-            border-radius: 50%;
-            z-index: 1;
-            transition: transform 0.3s ease;
-        }
-        .timeline-item:hover::after {
-            transform: scale(1.2);
-        }
-        .timeline-item.right::after {
-            left: -12px;
-        }
-        .timeline-content {
-            padding: 25px;
-            background-color: var(--card-bg-color);
-            position: relative;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            transition: border-color 0.3s ease;
-        }
-        .timeline-item:hover .timeline-content {
-            border-color: var(--primary-color);
-        }
-        .timeline-content h3 {
-             font-family: 'Space Grotesk', sans-serif;
-             color: var(--primary-color);
-        }
-        .timeline-content h4 {
-            font-weight: 500;
-            color: #8b949e;
-            font-size: 1rem;
-        }
-        .timeline-content span {
-            font-size: 0.85rem;
-            color: #6e7681;
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        #contact {
-            text-align: center;
-        }
-        #contact p {
-            max-width: 600px;
-            margin: 20px auto 30px auto;
-            font-size: 1.1rem;
-        }
-        
-        footer {
-            background-color: var(--secondary-color);
-            text-align: center;
-            padding: 30px 0;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .medium-zoom-overlay {
-            z-index: 3000 !important;
-        }
-
-        .medium-zoom-image {
-            z-index: 3001 !important;
-        }
-
-        .popup-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .popup {
-            background-color: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            width: 90%;
-            max-width: 900px;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 30px 40px;
-            position: relative;
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-        }
-
-        .popup-overlay.active .popup {
-            transform: scale(1);
-        }
-
-        .popup-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 2rem;
-            cursor: pointer;
-            line-height: 1;
-        }
-        
-        .popup-content h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.2rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-        
-        .popup-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        .popup-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .popup-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .popup-gallery img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            cursor: zoom-in;
-            transition: all 0.3s ease;
-        }
-
-        .popup-gallery img:hover {
-            transform: scale(1.02);
-            border-color: var(--primary-color);
-            box-shadow: 0 4px 12px rgba(0, 170, 255, 0.2);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: var(--primary-color);
-            color: var(--light-background);
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .project-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 170, 255, 0.3);
-        }
-
-        .project-metrics {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 25px;
-            padding: 20px;
-            background: var(--secondary-color);
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-
-        .project-metric {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            min-width: 120px;
-        }
-
-        .project-metric .metric-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .project-metric .metric-label {
-            font-size: 0.85rem;
-            color: var(--text-color);
-            opacity: 0.8;
-            margin-top: 4px;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--card-bg-color);
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--text-color);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background: var(--background-color);
-            color: var(--text-color);
-            font-family: 'Roboto', sans-serif;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-submit {
-            width: 100%;
-            background: var(--primary-color);
-            color: var(--light-background);
-            padding: 14px 20px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .form-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 170, 255, 0.3);
-        }
-
-        .contact-actions {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .contact-action {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            background: transparent;
-            color: var(--primary-color);
-            text-decoration: none;
-            border: 2px solid var(--primary-color);
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            font-family: 'Space Grotesk', sans-serif;
-            min-width: 180px;
-            justify-content: center;
-        }
-
-        .contact-action:hover {
-            background: var(--primary-color);
-            color: var(--light-background);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 170, 255, 0.3);
-        }
-
-        .contact-action.whatsapp {
-            background: #25D366;
-            border-color: #25D366;
-            color: white;
-        }
-
-        .contact-action.whatsapp:hover {
-            background: #128C7E;
-            border-color: #128C7E;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-        }
-
-        .form-status {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 500;
-            display: none;
-        }
-
-        .form-status.success {
-            background: rgba(40, 167, 69, 0.1);
-            color: #28a745;
-            border: 1px solid rgba(40, 167, 69, 0.3);
-        }
-
-        .form-status.error {
-            background: rgba(220, 53, 69, 0.1);
-            color: #dc3545;
-            border: 1px solid rgba(220, 53, 69, 0.3);
-        }
-
-
-        [data-theme='light'] .project-link {
-            color: var(--light-background);
-        }
-        [data-theme='dark'] .project-link {
-            color: var(--dark-secondary);
-        }
-
-        [data-theme='light'] .form-submit {
-            color: var(--light-background);
-        }
-        [data-theme='dark'] .form-submit {
-            color: var(--dark-secondary);
-        }
-
-
-        @media(max-width: 992px) {
-            #hero h2 { font-size: 3rem; min-height: 4rem; }
-            #hero p { font-size: 1.2rem; }
-            #about .about-content { grid-template-columns: 1fr; text-align: center;}
-            #about img { margin-bottom: 30px; }
-            .contact-form { padding: 30px 20px; }
-            .project-links { justify-content: center; }
-            .contact-actions { flex-direction: column; align-items: center; }
-            .contact-action { width: 250px; }
-        }
-
-        @media(max-width: 768px) {
-            .nav-toggle { display: flex; }
-            .nav-menu {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 6px;
-                background: var(--header-bg);
-                backdrop-filter: blur(15px);
-                -webkit-backdrop-filter: blur(15px);
-                border-bottom: 1px solid var(--border-color);
-                padding: 16px 24px 22px;
-                max-height: 0;
-                overflow: hidden;
-                opacity: 0;
-                pointer-events: none;
-                transform: translateY(-8px);
-                transition: max-height 0.35s ease, opacity 0.25s ease, transform 0.25s ease;
-            }
-            .nav-menu.open {
-                max-height: 420px;
-                opacity: 1;
-                pointer-events: auto;
-                transform: translateY(0);
-            }
-            .nav-menu li { margin-left: 0; padding: 6px 0; }
-            .nav-controls { margin-top: 8px; justify-content: flex-start; }
-            .section-title { font-size: 2.2rem; }
-            #hero h2 { font-size: 2.5rem; min-height: 3.5rem; }
-            
-            .timeline::after { left: 15px; }
-            .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; }
-            .timeline-item.left::after, .timeline-item.right::after { left: 3px; }
-            .timeline-item.right { left: 0%; }
-            
-            .popup { padding: 20px; margin: 20px; }
-            .popup-gallery { grid-template-columns: 1fr; }
-            .project-metrics { flex-direction: column; }
-            .project-metric { min-width: auto; }
-            .contact-form { padding: 25px 15px; }
-            .project-links { flex-direction: column; align-items: center; }
-            .project-link { width: 200px; justify-content: center; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tales Santiago | Full Stack Engineer · Node, React, React Native e IA em produção</title>
+<meta name="description" content="Full Stack Engineer de Fortaleza. Node/TypeScript, React, React Native e IA em produção: app de tutoria por voz nas lojas, SaaS clínico com mais de 1.000 médicos, acervo histórico com 2,5 milhões de manchetes e três jogos autorais.">
+<meta name="author" content="Tales Santiago">
+<link rel="canonical" href="https://taleszin.github.io/portfolio/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://taleszin.github.io/portfolio/">
+<meta property="og:title" content="Tales Santiago | Full Stack Engineer">
+<meta property="og:description" content="Node, React, React Native e IA em produção. Woolly, Leap-Notes, Portal da História do Ceará e jogos autorais.">
+<meta property="og:image" content="https://taleszin.github.io/portfolio/assets/og.png">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tales Santiago | Full Stack Engineer">
+<meta name="twitter:description" content="Node, React, React Native e IA em produção. Woolly, Leap-Notes, Portal da História do Ceará e jogos autorais.">
+<meta name="twitter:image" content="https://taleszin.github.io/portfolio/assets/og.png">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Tales Santiago","jobTitle":"Full Stack Engineer","url":"https://taleszin.github.io/portfolio/","email":"mailto:santiagold116@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Fortaleza","addressRegion":"CE","addressCountry":"BR"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Universidade Estadual do Ceará"},"sameAs":["https://github.com/taleszin"],"knowsAbout":["Node.js","TypeScript","React","React Native","LLM","ASP.NET Core","FastAPI","PostgreSQL","WebGL"]}
+</script>
 </head>
 <body>
+<canvas id="aura" aria-hidden="true"></canvas>
+<div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"></span></div>
+<div class="progress" aria-hidden="true"><span></span></div>
 
-    <header role="banner">
-        <nav class="container" role="navigation" aria-label="Navegação principal">
-            <div class="logo">Tales Santiago</div>
-            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
-                <span></span><span></span><span></span>
-            </button>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#hero" data-i18n="nav.home">Início</a></li>
-                <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
-                <li><a href="#projects" data-i18n="nav.projects">Projetos</a></li>
-                <li><a href="#experience" data-i18n="nav.journey">Jornada</a></li>
-                <li><a href="#contact" data-i18n="nav.contact">Contato</a></li>
-                <li class="nav-controls">
-                    <button class="lang-switcher" id="lang-toggle-btn" aria-label="Switch language / Trocar idioma">
-                        <span id="lang-label">EN</span>
-                    </button>
-                    <button class="theme-switcher" id="theme-toggle-btn" aria-label="Alternar tema claro/escuro">
-                        <span class="icon-sun">☀️</span>
-                        <span class="icon-moon" style="display:none;">🌙</span>
-                    </button>
-                </li>
-            </ul>
-        </nav>
-    </header>
+<header class="topbar">
+  <a href="#top" class="brand" aria-label="Tales Santiago, início"><span class="brand-mark">TS</span><span class="brand-name">Tales Santiago</span></a>
+  <nav class="nav" aria-label="Navegação principal">
+    <a href="#produtos" data-i18n="nav.products">Produtos</a>
+    <a href="#jogos" data-i18n="nav.games">Jogos</a>
+    <a href="#ia" data-i18n="nav.ai">IA</a>
+    <a href="#stack" data-i18n="nav.stack">Stack</a>
+    <a href="#jornada" data-i18n="nav.journey">Jornada</a>
+    <a href="#contato" class="nav-cta" data-i18n="nav.contact">Contato</a>
+  </nav>
+  <button class="lang" id="lang" type="button" aria-label="Switch to English"><span>PT</span><i>/</i><span>EN</span></button>
+  <button class="burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
+</header>
 
-    <main role="main">
-        <section id="hero" role="banner" aria-labelledby="hero-heading">
-            <div id="hero-canvas" aria-hidden="true"></div>
-            <div class="hero-content" data-aos="fade-in">
-                <h1 id="hero-heading"><span id="typewriter-text" class="typewriter-text">Transformando Ideias em Realidade Digital</span></h1>
-                <p data-i18n="hero.subtitle">Desenvolvedor full-stack que constrói da camada de produto à infraestrutura — mobile, web, back-ends em microsserviços e três integrações de IA em produção. Junto engenharia, visão de produto e atenção real à experiência do usuário.</p>
-                <a href="#contact" class="btn" data-i18n="hero.cta">VAMOS CONSTRUIR JUNTOS</a>
-            </div>
-        </section>
+<main id="top">
 
-        <section id="about" role="region" aria-labelledby="about-heading">
-            <div class="container">
-                <h2 id="about-heading" class="section-title" data-aos="fade-up" data-i18n="about.title">Sobre Mim</h2>
-                <article class="about-content">
-                    <div data-aos="fade-right">
-                        <img src="TalesRJ.jpg" alt="Foto profissional de Tales Santiago, desenvolvedor de software">
-                    </div>
-                    <div data-aos="fade-left">
-                        <p data-i18n="about.bio">
-                           Sou desenvolvedor full-stack de Fortaleza-CE e estudante de Ciência da Computação na UECE. Trabalho em produção com TypeScript/React Native, C#/ASP.NET Core, Python/FastAPI e PHP — do front-end mobile e web a back-ends em microsserviços, bancos PostgreSQL/MySQL e integrações de IA. Atuo como ponte entre produto e técnico: desenho mecânicas de engajamento e retenção e as implemento de ponta a ponta, sempre preferindo soluções enxutas a overengineering.
-                        </p>
-                        <ul class="skills-list">
-                            <li class="skill-card" data-skill="typescript" tabindex="0" role="button" aria-label="TypeScript / React Native">
-                                TypeScript / React Native
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 90%;"></div>
-                                </div>
-                                <div class="skill-tooltip">
-                                    <h4 data-i18n="skill.ts.t">TypeScript & React Native</h4>
-                                    <p data-i18n="skill.ts.d">Stack principal do meu trabalho mobile e web. No Woolly construo o app em Expo/React Native e interfaces reativas em React. TypeScript do front ao back para código seguro e manutenível.</p>
-                                </div>
-                            </li>
-                            <li class="skill-card" data-skill="csharp" tabindex="0" role="button" aria-label="C# / ASP.NET Core">
-                                C# / ASP.NET Core
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 80%;"></div>
-                                </div>
-                                <div class="skill-tooltip">
-                                    <h4 data-i18n="skill.csharp.t">C# & ASP.NET Core</h4>
-                                    <p data-i18n="skill.csharp.d">Back-end do Woolly em ASP.NET Core 8: módulos de gamificação, eventos de domínio e APIs server-authoritative sobre PostgreSQL.</p>
-                                </div>
-                            </li>
-                            <li class="skill-card" data-skill="python" tabindex="0" role="button" aria-label="Python / FastAPI">
-                                Python / FastAPI
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 78%;"></div>
-                                </div>
-                                <div class="skill-tooltip">
-                                    <h4 data-i18n="skill.python.t">Python & FastAPI</h4>
-                                    <p data-i18n="skill.python.d">Serviços em FastAPI, incluindo o serviço de voz do Woolly (LiveKit/WebRTC), além de automações e scripts de deploy.</p>
-                                </div>
-                            </li>
-                            <li class="skill-card" data-skill="php" tabindex="0" role="button" aria-label="PHP">
-                                PHP
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 88%;"></div>
-                                </div>
-                                <div class="skill-tooltip">
-                                    <h4 data-i18n="skill.php.t">PHP — onde tudo começou</h4>
-                                    <p data-i18n="skill.php.d">Comecei com PHP na universidade e levei a produção: o Portal da História do Ceará e a IAcema rodam em PHP/MySQL, com APIs, padrão MVC e integração de IA.</p>
-                                </div>
-                            </li>
-                            <li class="skill-card" data-skill="ai" tabindex="0" role="button" aria-label="LLM e IA aplicada">
-                                LLM & IA Aplicada
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 82%;"></div>
-                                </div>
-                                <div class="skill-tooltip">
-                                    <h4 data-i18n="skill.ai.t">LLM & IA Aplicada</h4>
-                                    <p data-i18n="skill.ai.d">Três integrações de LLM em produção: a IAcema (agente com 16 ferramentas SQL), o tutor por voz do Woolly e o ENEMBot. Prompt engineering, tool use e saída estruturada.</p>
-                                </div>
-                            </li>
-                            <li class="skill-card" data-skill="databases" tabindex="0" role="button" aria-label="PostgreSQL e MySQL">
-                                PostgreSQL / MySQL
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 82%;"></div>
-                                </div>
-                                <div class="skill-tooltip">
-                                    <h4 data-i18n="skill.db.t">PostgreSQL & MySQL</h4>
-                                    <p data-i18n="skill.db.d">Modelagem relacional e otimização de queries em grande volume — do índice Full-Text do acervo do Portal a esquemas transacionais com Supabase no Leap-Notes.</p>
-                                </div>
-                            </li>
-                            <li class="skill-card" data-skill="cloud" tabindex="0" role="button" aria-label="Deploy e DevOps">
-                                Deploy & DevOps
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 75%;"></div>
-                                </div>
-                                <div class="skill-tooltip">
-                                    <h4 data-i18n="skill.cloud.t">Deploy & DevOps</h4>
-                                    <p data-i18n="skill.cloud.d">Coloco produto no ar e mantenho de pé: Docker, VPS, CI/CD, Sentry e deploy automatizado. Da pipeline ao monitoramento em produção.</p>
-                                </div>
-                            </li>
-                            <li class="skill-card" data-skill="payments" tabindex="0" role="button" aria-label="Pagamentos e SaaS">
-                                Stripe / SaaS
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 80%;"></div>
-                                </div>
-                                <div class="skill-tooltip">
-                                    <h4 data-i18n="skill.saas.t">Pagamentos & SaaS</h4>
-                                    <p data-i18n="skill.saas.d">No Leap-Notes integro assinaturas e Pix (Stripe e AbacatePay), com planos, gating de paywall e modo convidado — da cobrança à conversão.</p>
-                                </div>
-                            </li>
-                            <li class="skill-card" data-skill="architecture" tabindex="0" role="button" aria-label="Arquitetura de Sistemas">
-                                Arquitetura de Sistemas
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 80%;"></div>
-                                </div>
-                                <div class="skill-tooltip">
-                                    <h4 data-i18n="skill.arch.t">Arquitetura de Sistemas</h4>
-                                    <p data-i18n="skill.arch.d">Projeto sistemas pensando em escala e manutenção: monorepos, microsserviços, eventos de domínio e APIs claras. Padrões que duram e evoluem.</p>
-                                </div>
-                            </li>
-                            <li class="skill-card" data-skill="gamedev" tabindex="0" role="button" aria-label="Game Dev e WebGL">
-                                Game Dev / WebGL
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 76%;"></div>
-                                </div>
-                                <div class="skill-tooltip">
-                                    <h4 data-i18n="skill.game.t">Game Dev & WebGL</h4>
-                                    <p data-i18n="skill.game.d">Construo games web do zero — motores próprios em WebGL/GLSL e Phaser, física custom, geração procedural e controles mobile-first.</p>
-                                </div>
-                            </li>
-                            <li class="skill-card" data-skill="design" tabindex="0" role="button" aria-label="UX e UI">
-                                UX / UI
-                                <div class="skill-progress">
-                                    <div class="skill-progress-bar" style="width: 84%;"></div>
-                                </div>
-                                <div class="skill-tooltip">
-                                    <h4 data-i18n="skill.ux.t">UX / UI</h4>
-                                    <p data-i18n="skill.ux.d">Desenho a experiência antes de codar: gamificação, retenção, onboarding e "game feel". Figma para prototipar e atenção real ao usuário final.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </article>
-            </div>
-        </section>
+<!-- HERO -->
+<section class="hero" data-accent="#c4a6ff">
+  <p class="eyebrow reveal" data-i18n="hero.eyebrow">Full Stack Engineer · Fortaleza, Brasil · remoto</p>
+  <h1 class="hero-title">
+    <span class="line"><span class="word" data-i18n="hero.l1">Construo produtos</span></span>
+    <span class="line"><span class="word" data-i18n="hero.l2">que pessoas de verdade</span></span>
+    <span class="line"><span class="word serif" data-i18n="hero.l3">usam todo dia.</span></span>
+  </h1>
+  <p class="hero-sub reveal" data-i18n="hero.sub">Node e TypeScript no servidor, React e React Native na tela, modelos de linguagem no meio. Hoje mantenho no ar um app de tutoria por voz, um SaaS clínico e um acervo histórico que responde perguntas. Nas horas vagas, faço jogos.</p>
+  <div class="hero-cta reveal">
+    <a class="btn btn-primary magnetic" href="https://wa.me/5585984038749?text=Ol%C3%A1%20Tales!%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20conversar." target="_blank" rel="noopener"><span data-i18n="hero.cta1">Falar no WhatsApp</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    <a class="btn btn-ghost magnetic" href="https://github.com/taleszin" target="_blank" rel="noopener" data-i18n="hero.cta2">Ver GitHub</a>
+  </div>
+  <ul class="hero-stats reveal" aria-label="Números">
+    <li><strong class="count" data-count="4">0</strong><span data-i18n="stat.products">produtos em produção</span></li>
+    <li><strong><span class="count" data-count="1000">0</span>+</strong><span data-i18n="stat.doctors">médicos e estudantes no Leap-Notes</span></li>
+    <li><strong><span class="count" data-count="2.5" data-decimals="1">0</span> mi</strong><span data-i18n="stat.headlines">manchetes buscáveis no Portal</span></li>
+    <li><strong class="count" data-count="3">0</strong><span data-i18n="stat.games">jogos autorais publicados</span></li>
+  </ul>
+  <div class="scroll-hint" aria-hidden="true"><span></span></div>
+</section>
 
-        <section id="projects" role="region" aria-labelledby="projects-heading">
-            <div class="container">
-                <h2 id="projects-heading" class="section-title" data-aos="fade-up" data-i18n="projects.title">Projetos em Destaque</h2>
-                <div class="swiper-container" data-aos="fade-up" data-aos-delay="200">
-                    <div class="swiper-wrapper">
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Node.js</span><span>TypeScript</span><span>React</span><span>React Native</span><span>Next.js</span><span>LLM &amp; agentes</span><span>Supabase</span><span>PostgreSQL</span><span>ASP.NET Core</span><span>FastAPI</span><span>WebGL</span><span>Three.js</span><span>Stripe</span><span>Sentry</span><span>PostHog</span>
+    <span>Node.js</span><span>TypeScript</span><span>React</span><span>React Native</span><span>Next.js</span><span>LLM &amp; agentes</span><span>Supabase</span><span>PostgreSQL</span><span>ASP.NET Core</span><span>FastAPI</span><span>WebGL</span><span>Three.js</span><span>Stripe</span><span>Sentry</span><span>PostHog</span>
+  </div>
+</div>
 
-                        <div class="swiper-slide">
-                            <div class="project-card"
-                                 data-key="leapnotes"
-                                 data-images="images/medleap-1.jpg,images/medleap-2.jpg,images/medleap-3.JPG"
-                                 data-tech="Leap-Notes é um SaaS de notas e estudo para medicina, construído em React 18 + TypeScript sobre Supabase, com editor rico em TipTap/ProseMirror e empacotamento mobile via Capacitor. Como cofundador e principal responsável técnico, desenvolvi o editor (tabelas, sumário, task lists, exportação PDF/DOCX), o modo convidado com gating de paywall no primeiro login, e a camada de ativação e engajamento (checklist, onboarding com spotlight, celebração de marcos). Integrei pagamentos com Stripe e AbacatePay (Pix), montei a suíte E2E em Playwright e automatizei o deploy."
-                                 data-tech-en="Leap-Notes is a note-taking and study SaaS for medicine, built in React 18 + TypeScript on Supabase, with a TipTap/ProseMirror rich-text editor and Capacitor for mobile. As co-founder and lead engineer, I built the editor (tables, table of contents, task lists, PDF/DOCX export), guest mode with first-login paywall gating, and the activation and engagement layer (checklist, spotlight onboarding, milestone celebrations). I integrated payments via Stripe and AbacatePay (Pix), stood up the Playwright E2E suite, and automated deploys.">
-                                <div class="project-card-content">
-                                    <h3>Leap-Notes</h3>
-                                    <p data-i18n="proj.leapnotes.blurb">SaaS de notas e estudo para medicina. Como cofundador e engine técnico, conduzo produto, o editor rico (TipTap), pagamentos e toda a base de engenharia.</p>
-                                    <div class="tags"><span>React</span><span>Supabase</span><span>Stripe</span><span>TipTap</span></div>
-                                </div>
-                            </div>
-                        </div>
+<!-- PRODUTOS -->
+<section id="produtos" class="chapter-intro">
+  <p class="eyebrow reveal" data-i18n="products.eyebrow">01 · Produtos</p>
+  <h2 class="reveal"><span data-i18n="products.title">Três produtos no ar,</span> <em class="serif" data-i18n="products.title2">com gente do outro lado.</em></h2>
+</section>
 
-                        <div class="swiper-slide">
-                             <div class="project-card"
-                                 data-key="phc"
-                                 data-images=""
-                                 data-tech="O Portal da História do Ceará é um acervo digital de jornais antigos, fatos históricos, livros e revistas, em PHP procedural com MySQL 8. Seu diferencial é a IAcema, que projetei como um agente — não RAG vetorial — com loop de ferramentas: 16 tools SQL com prepared statements consultam jornais, manchetes, fatos e autores. Defini schema de saída JSON estrito e ancoragem por citação para impedir alucinação de fontes do acervo. Inclui painel administrativo editorial e busca Full-Text sobre grande volume de manchetes."
-                                 data-tech-en="Portal da História do Ceará is a digital archive of historical newspapers, facts, books and magazines, built in procedural PHP on MySQL 8. Its standout feature is Iracema, which I designed as an agent — not vector RAG — with a tool-use loop: 16 SQL tools with prepared statements query newspapers, headlines, facts and authors. I defined a strict JSON output schema and citation grounding to prevent the model from hallucinating archive sources. It includes an editorial admin panel and Full-Text search over a large volume of headlines.">
-                                <div class="project-card-content">
-                                    <h3>Portal da História do Ceará</h3>
-                                    <p data-i18n="proj.phc.blurb">Acervo digital de jornais e fatos históricos, com a IAcema — uma assistente de IA que responde com base direta no acervo, via agente com ferramentas SQL.</p>
-                                    <div class="tags"><span>PHP</span><span>MySQL</span><span>OpenAI</span><span>AI Agent</span></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="project-card"
-                                 data-key="geosumo"
-                                 data-images=""
-                                 data-tech="GEO SUMO é um arena-fighter 3D construído do zero em WebGL/GLSL, sem engine pronta. Tem física própria com knockback percentual e hitstun (anti-combo infinito), sistema de stocks e ring-out, charge/dash, IA comportamental em três dificuldades e até quatro oponentes simultâneos. É mobile-first: joystick virtual, zonas de toque e háptica. O áudio é 100% procedural e o game feel inclui screen shake, slow-motion, hit-flash e partículas."
-                                 data-tech-en="GEO SUMO is a 3D arena fighter built from scratch in WebGL/GLSL, with no off-the-shelf engine. It has custom physics with percentage-based knockback and hitstun (anti-infinite-combo), a stock and ring-out system, charge/dash, behavioral AI across three difficulties, and up to four simultaneous opponents. It is mobile-first: virtual joystick, touch zones and haptics. The audio is fully procedural and the game feel includes screen shake, slow-motion, hit-flash and particles.">
-                                <div class="project-card-content">
-                                    <h3>GEO SUMO</h3>
-                                    <p data-i18n="proj.geosumo.blurb">Arena-fighter 3D em WebGL puro, com física custom, IA de combate e controles mobile-first. Motor e áudio escritos do zero.</p>
-                                    <div class="tags"><span>WebGL</span><span>GLSL</span><span>Game Dev</span></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="project-card"
-                                 data-key="hylomorph"
-                                 data-images=""
-                                 data-tech="Hylomorph é um 'god-game' em Phaser 3 com um loop de criar, observar, reproduzir e evoluir criaturas geométricas. Implementa genética mendeliana com mutação, receitas de crafting/transmutação com raridade e risco (anomalias), IA por steering behaviors e uma UI com gestos físicos (fling) e tratamento de toque vs. arraste no mobile."
-                                 data-tech-en="Hylomorph is a Phaser 3 'god-game' built around a loop of creating, observing, breeding and evolving geometric creatures. It implements Mendelian genetics with mutation, crafting/transmutation recipes with rarity and risk (anomalies), steering-behavior AI, and a UI with physics-based fling gestures and mobile tap-vs-drag handling.">
-                                <div class="project-card-content">
-                                    <h3>Hylomorph</h3>
-                                    <p data-i18n="proj.hylomorph.blurb">"God-game" em Phaser sobre criar, cruzar e evoluir vida digital — genética, crafting e raridade.</p>
-                                    <div class="tags"><span>Phaser</span><span>Procedural</span><span>Game Dev</span></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="project-card"
-                                 data-key="geolife"
-                                 data-images=""
-                                 data-tech="Geolife é um pet-sim no estilo Tamagotchi com renderizador em canvas a nível de pixel, escrito do zero. Tem loop de decaimento de status vitais, ciclo de vida e envelhecimento, sistema de personalidade e um vocabulário completo de gestos (toque, segurar, arrastar, pinçar) com thresholds afinados para o toque."
-                                 data-tech-en="Geolife is a Tamagotchi-style pet-sim with a from-scratch pixel-level canvas renderer. It has a vital-stat decay loop, a life cycle with aging, a personality system, and a full gesture vocabulary (tap, long-press, drag, pinch) with thresholds tuned for touch.">
-                                <div class="project-card-content">
-                                    <h3>Geolife</h3>
-                                    <p data-i18n="proj.geolife.blurb">Pet-sim em canvas (estilo Tamagotchi) com arte procedural e vocabulário completo de gestos. Touch-native.</p>
-                                    <div class="tags"><span>Canvas</span><span>Mobile</span><span>Game Dev</span></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="project-card"
-                                 data-key="enembot"
-                                 data-images=""
-                                 data-tech="ENEMBot é um tutor de estudos para o ENEM em Next.js + OpenAI que aplica o método Feynman: conduz o aluno à descoberta em vez de entregar a resposta. Combina conversa contextualizada, questões no estilo ENEM e uma camada de gamificação — pontuação, ofensivas, badges, dificuldade adaptativa e ferramentas de ajuda (lifelines) — com dashboard de desempenho e entrada por voz."
-                                 data-tech-en="ENEMBot is an ENEM study tutor in Next.js + OpenAI that applies the Feynman method: it guides the student to discovery instead of handing over the answer. It blends contextual conversation, ENEM-style questions and a gamification layer — scoring, streaks, badges, adaptive difficulty and lifeline help tools — with a performance dashboard and voice input.">
-                                <div class="project-card-content">
-                                    <h3>ENEMBot</h3>
-                                    <p data-i18n="proj.enembot.blurb">Tutor conversacional gamificado para o ENEM, no método Feynman: pontuação, ofensivas, dificuldade adaptativa e dicas socráticas.</p>
-                                    <div class="tags"><span>Next.js</span><span>OpenAI</span><span>Gamification</span></div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience" role="region" aria-labelledby="experience-heading">
-            <div class="container">
-                <h2 id="experience-heading" class="section-title" data-aos="fade-up" data-i18n="exp.title">Minha Jornada</h2>
-                <div class="timeline">
-                    <div class="timeline-item left" data-aos="fade-right">
-                        <div class="timeline-content">
-                            <h3 data-i18n="exp.woolly.role">Desenvolvedor Full-Stack</h3>
-                            <h4>Woolly</h4>
-                            <span data-i18n="exp.woolly.date">fev 2026 — presente</span>
-                            <p data-i18n="exp.woolly.desc">Desenvolvedor full-stack e autor principal da camada de gamificação de um app de tutoria por voz com IA (Expo/React Native + ASP.NET Core 8 + FastAPI). Economia de XP e níveis, ligas competitivas, ofensivas, quizzes e push-to-talk por voz.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item right" data-aos="fade-left">
-                        <div class="timeline-content">
-                            <h3 data-i18n="exp.leap.role">Cofundador & Engine Técnico</h3>
-                            <h4>Leap-Notes</h4>
-                            <span data-i18n="exp.leap.date">2025 — presente</span>
-                            <p data-i18n="exp.leap.desc">Cofundador e principal responsável técnico de um SaaS de notas para medicina (React + Supabase + Stripe/AbacatePay). Editor rico em TipTap, modo convidado, pagamentos, ativação e a base de engenharia do produto.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item left" data-aos="fade-right">
-                        <div class="timeline-content">
-                            <h3 data-i18n="exp.phc.role">Desenvolvedor & Autor da IAcema</h3>
-                            <h4>Portal da História do Ceará</h4>
-                            <span data-i18n="exp.phc.date">2024 — presente</span>
-                            <p data-i18n="exp.phc.desc">Manutenção do portal histórico em PHP/MySQL e autoria da IAcema, assistente de IA em arquitetura de agente com 16 ferramentas SQL sobre o acervo. Stakeholder: Prof. Gildácio Sá.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item right" data-aos="fade-left">
-                        <div class="timeline-content">
-                            <h3 data-i18n="exp.concern.role">Pesquisador Científico</h3>
-                            <h4>Universidade Estadual do Ceará</h4>
-                            <span data-i18n="exp.concern.date">abr 2024 — set 2024</span>
-                            <p data-i18n="exp.concern.desc">Aplicação de Machine Learning para predição de riscos clínicos em pacientes no projeto CONCERN.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item left" data-aos="fade-right">
-                        <div class="timeline-content">
-                            <h3 data-i18n="exp.aplis.role">Estágio em Engenharia de Software</h3>
-                            <h4>apLIS</h4>
-                            <span data-i18n="exp.aplis.date">mai 2023 — abr 2024</span>
-                            <p data-i18n="exp.aplis.desc">Desenvolvimento back-end e front-end com PHP e JavaScript, prototipação no Figma e aplicação de conceitos de UX.</p>
-                        </div>
-                    </div>
-                     <div class="timeline-item right" data-aos="fade-left">
-                        <div class="timeline-content">
-                            <h3 data-i18n="exp.pet.role">Bolsista PET-CC</h3>
-                            <h4>Universidade Estadual do Ceará</h4>
-                            <span data-i18n="exp.pet.date">jan 2022 — mai 2023</span>
-                            <p data-i18n="exp.pet.desc">Atuação em projetos de ensino, pesquisa e extensão no Programa de Educação Tutorial em Ciência da Computação.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" role="region" aria-labelledby="contact-heading">
-            <div class="container" data-aos="fade-up">
-                <h2 id="contact-heading" class="section-title" data-i18n="contact.title">Vamos Construir Algo Juntos?</h2>
-                <p data-i18n="contact.intro">
-                    Estou aberto a oportunidades — remotas e internacionais — em produto, mobile, IA aplicada e gamificação. Se você tem uma ideia ou uma vaga, vamos conversar.
-                </p>
-
-                <form class="contact-form" id="contact-form">
-                    <div class="form-group">
-                        <label for="name" data-i18n="contact.name">Nome *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email" data-i18n="contact.email">E-mail *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject" data-i18n="contact.subject">Assunto *</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message" data-i18n="contact.message">Mensagem *</label>
-                        <textarea id="message" name="message" data-i18n-placeholder="contact.placeholder" placeholder="Conte-me sobre seu projeto ou oportunidade..." required></textarea>
-                    </div>
-
-                    <button type="submit" class="form-submit" id="submit-btn" data-i18n="contact.send">
-                        Enviar Mensagem
-                    </button>
-
-                    <div class="form-status" id="form-status"></div>
-                </form>
-
-                <div class="contact-actions">
-                    <a href="https://wa.me/5585984038749?text=Olá%20Tales!%20Vi%20seu%20portfólio%20e%20gostaria%20de%20conversar."
-                       class="contact-action whatsapp"
-                       target="_blank" rel="noopener">
-                        📱 WhatsApp
-                    </a>
-                    <a href="mailto:santiagold116@gmail.com?subject=Contato%20via%20Portf%C3%B3lio&body=Ol%C3%A1%20Tales,%0A%0AVi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre..."
-                       class="contact-action" data-i18n="contact.emailDirect">
-                        ✉️ E-mail Direto
-                    </a>
-                </div>
-
-                <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color);">
-                    <p style="font-size: 0.9rem; color: var(--text-color); opacity: 0.7;">
-                        <span data-i18n="contact.replyTime">Respondo em até 24 horas</span> • <span style="color: var(--primary-color); font-weight: 500;">santiagold116@gmail.com</span>
-                    </p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p data-i18n="footer.text">Projetado e construído por Tales Santiago.</p>
-        </div>
-    </footer>
-
-    <div class="popup-overlay" id="project-popup">
-        <div class="popup">
-            <button class="popup-close" id="popup-close-btn">&times;</button>
-            <div class="popup-content" id="popup-content">
-                <h3 id="popup-title"></h3>
-                
-                <div class="project-links" id="popup-links">
-                    <a href="#" class="project-link" id="popup-live-link" target="_blank" rel="noopener" data-i18n="popup.live">
-                        🚀 Ver ao Vivo
-                    </a>
-                    <a href="#" class="project-link" id="popup-code-link" target="_blank" rel="noopener" data-i18n="popup.code">
-                        💻 Ver Código
-                    </a>
-                </div>
-                
-                <div class="project-metrics" id="popup-metrics"></div>
-                
-                <p id="popup-text"></p>
-                
-                <div class="popup-gallery" id="popup-gallery"></div>
-            </div>
-        </div>
+<!-- LEAP NOTES -->
+<article class="project" id="leapnotes" data-accent="#7c8cff">
+  <div class="project-media">
+    <figure class="frame browser reveal"><span class="frame-bar"><i></i><i></i><i></i><b>leapnotes.app</b></span><img src="assets/img/leap-hub-desktop.webp" alt="Hub do Leap Notes com módulos LeapCalc, Leap AI, Anatomia 3D e Exames Laboratoriais" loading="lazy" width="1600" height="1000"></figure>
+    <figure class="frame phone float-1 reveal"><img src="assets/img/leap-anatomia3d-mobile.webp" alt="Anatomia 3D do Leap Notes no celular" loading="lazy" width="780" height="1688"></figure>
+    <figure class="frame browser small float-2 reveal"><span class="frame-bar"><i></i><i></i><i></i></span><img src="assets/img/leap-checkout.webp" alt="Checkout interno do Leap Notes" loading="lazy" width="1600" height="1125"></figure>
+  </div>
+  <div class="project-body">
+    <div class="project-head reveal">
+      <img class="project-logo" src="assets/img/leap-logo.svg" alt="Leap Notes" width="186" height="38">
+      <span class="badge live" data-i18n="badge.live">no ar</span>
     </div>
+    <h3 class="reveal" data-i18n="leap.title">O caderno clínico de mais de mil médicos e estudantes de medicina.</h3>
+    <p class="role reveal" data-i18n="leap.role">Cofundador e engenheiro principal · nov/2025 até hoje</p>
+    <p class="reveal" data-i18n="leap.p1">O Leap Notes é onde internos, residentes e médicos guardam condutas, prescrições e resumos que usam no plantão. Comecei o produto com o time de fundadores e sou responsável por toda a engenharia, do editor à cobrança.</p>
+    <ul class="bullets reveal">
+      <li data-i18n="leap.b1">Editor rico sobre TipTap com colaboração em tempo real, tabelas, imagens e exportação para PDF e DOCX.</li>
+      <li data-i18n="leap.b2">Anatomia 3D com 2.234 estruturas selecionáveis, calculadoras clínicas, feed de questões e o Leap AI, um assistente com conhecimento clínico dentro da nota.</li>
+      <li data-i18n="leap.b3">Modelo freemium e checkout próprio com três gateways de pagamento (cartão, Pix e assinatura), plano vitalício por leva e painel de observabilidade para os sócios.</li>
+      <li data-i18n="leap.b4">Mesmo código no navegador e no celular via Capacitor, com 46 edge functions em TypeScript cuidando de webhooks, uploads e e-mails.</li>
+    </ul>
+    <ul class="metrics reveal">
+      <li><strong><span class="count" data-count="1000">0</span>+</strong><span data-i18n="leap.m1">usuários reais, médicos e estudantes</span></li>
+      <li><strong><span class="count" data-count="1100">0</span></strong><span data-i18n="leap.m2">sessões por semana</span></li>
+      <li><strong><span class="count" data-count="7">0</span></strong><span data-i18n="leap.m3">faculdades de medicina com turmas usando</span></li>
+      <li><strong><span class="count" data-count="172">0</span></strong><span data-i18n="leap.m4">PRs minhas em produção</span></li>
+    </ul>
+    <p class="chips reveal"><span>React</span><span>TypeScript</span><span>Node / Deno edge functions</span><span>Supabase</span><span>TipTap + Yjs</span><span>Stripe · Asaas · AbacatePay</span><span>Capacitor</span><span>PostHog</span><span>Sentry</span></p>
+    <p class="links reveal"><a class="link-arrow" href="https://leapnotes.app" target="_blank" rel="noopener" data-i18n="link.visit">Abrir o produto</a></p>
+  </div>
+</article>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js"></script>
-    <script src="script.js"></script>
+<!-- WOOLLY -->
+<article class="project flip" id="woolly" data-accent="#f8a634">
+  <div class="project-media">
+    <figure class="frame phone reveal"><img src="assets/img/woolly-store-1.webp" alt="Woolly: conversa de estudo com o tutor por voz" loading="lazy" width="1000" height="2164"></figure>
+    <figure class="frame phone float-1 reveal"><img src="assets/img/woolly-store-2.webp" alt="Woolly: tela de gamificação" loading="lazy" width="1000" height="2164"></figure>
+    <figure class="frame browser small float-2 reveal"><span class="frame-bar"><i></i><i></i><i></i><b data-i18n="woolly.panelbar">painel de coordenação</b></span><img src="assets/img/woolly-painel-inicio.webp" alt="Painel de coordenação do Woolly para escolas" loading="lazy" width="1600" height="1000"></figure>
+  </div>
+  <div class="project-body">
+    <div class="project-head reveal">
+      <img class="project-logo" src="assets/img/woolly-logo.webp" alt="Woolly" width="124" height="38">
+      <span class="badge live" data-i18n="badge.stores">App Store · Play Store</span>
+    </div>
+    <h3 class="reveal" data-i18n="woolly.title">Um tutor por voz com IA, em piloto final no colégio que mais aprova no ENEM.</h3>
+    <p class="role reveal" data-i18n="woolly.role">Full Stack Engineer · fev/2026 até hoje</p>
+    <p class="reveal" data-i18n="woolly.p1">O Woolly é um app em que o aluno estuda conversando em voz alta com um tutor de IA. Entrei no time como full stack e desde então contribuo continuamente com a melhoria do produto, cruzando o app mobile, os dois back-ends e os painéis. Estamos na fase final de piloto no Colégio Farias Brito, em Fortaleza, referência nacional em aprovação no ENEM.</p>
+    <ul class="bullets reveal">
+      <li data-i18n="woolly.b1">Camada de gamificação: XP, ligas, ofensivas, missões, quizzes e um tour guiado que vive no servidor, sem máquina de estado no cliente.</li>
+      <li data-i18n="woolly.b2">Voz push-to-talk sobre um pipeline STT → LLM → TTS em tempo real, com fallback para texto quando o áudio nativo falha.</li>
+      <li data-i18n="woolly.b3">Painel de coordenação para escolas, do login ao chat com a turma, desenhado e construído em uma semana para o piloto.</li>
+      <li data-i18n="woolly.b4">Observabilidade com Sentry nas três camadas, com corte de dados pessoais antes de sair do servidor.</li>
+    </ul>
+    <ul class="metrics reveal">
+      <li><strong><span class="count" data-count="80">0</span></strong><span data-i18n="woolly.m1">alunos em piloto, 3 turmas, 2 colégios</span></li>
+      <li><strong><span class="count" data-count="90">0</span>%</strong><span data-i18n="woolly.m2">de ativação na turma do Farias Brito</span></li>
+      <li><strong><span class="count" data-count="4">0</span></strong><span data-i18n="woolly.m3">serviços que toco: mobile, .NET, FastAPI e painéis</span></li>
+      <li><strong><span class="count" data-count="61">0</span></strong><span data-i18n="woolly.m4">PRs mergeadas desde fevereiro</span></li>
+    </ul>
+    <p class="chips reveal"><span>React Native / Expo</span><span>TypeScript</span><span>React 19</span><span>ASP.NET Core 8</span><span>FastAPI</span><span>PostgreSQL</span><span>OpenAI</span><span>LiveKit / WebSocket</span><span>Sentry</span></p>
+    <p class="links reveal"><a class="link-arrow" href="https://apps.apple.com/br/app/woolly-ai/id6756589884" target="_blank" rel="noopener">App Store</a><a class="link-arrow" href="https://woolly.app" target="_blank" rel="noopener">woolly.app</a></p>
+  </div>
+</article>
+
+<!-- PHC -->
+<article class="project" id="phc" data-accent="#e2b04a">
+  <div class="project-media">
+    <figure class="frame browser reveal"><span class="frame-bar"><i></i><i></i><i></i><b>historiadoceara.com.br</b></span><img src="assets/img/phc-home.webp" alt="Portal da História do Ceará, página inicial com mapa da Serra de Ibiapaba de 1892" loading="lazy" width="1440" height="900"></figure>
+    <div class="chat-card float-1 reveal" aria-label="Exemplo de conversa com a IAcema">
+      <p class="chat-q" data-i18n="phc.chatq">Quando o Ceará aboliu a escravidão?</p>
+      <p class="chat-a" data-i18n="phc.chata">Em 25 de março de 1884, quatro anos antes da Lei Áurea. Encontrei 3 fatos e 12 manchetes da época. Quer ver as edições?</p>
+      <p class="chat-meta">IAcema · 3 tools · <span data-i18n="phc.chatmeta">com citação</span></p>
+    </div>
+  </div>
+  <div class="project-body">
+    <div class="project-head reveal">
+      <span class="project-logo text-logo" data-i18n="phc.name">Portal da História do Ceará</span>
+      <span class="badge live" data-i18n="badge.live">no ar</span>
+    </div>
+    <h3 class="reveal" data-i18n="phc.title">Um acervo de 250 mil edições de jornal que responde perguntas.</h3>
+    <p class="role reveal" data-i18n="phc.role">Tech lead e autor da IAcema · set/2025 até hoje · parceria com o Prof. Gildácio Sá</p>
+    <p class="reveal" data-i18n="phc.p1">O maior acervo digital sobre a história do Ceará: jornais desde o século XIX, fatos, biografias, livros e revistas. Assumi a plataforma, reconstruí o painel de administração e criei a IAcema, uma assistente que responde com base no acervo.</p>
+    <ul class="bullets reveal">
+      <li data-i18n="phc.b1">A IAcema é um agente com 16 ferramentas SQL, não um RAG vetorial: a resposta cita a manchete, a edição e a data de onde saiu.</li>
+      <li data-i18n="phc.b2">Pipeline de OCR e reconciliação de PDFs que deu texto pesquisável a milhares de artigos acadêmicos.</li>
+      <li data-i18n="phc.b3">Busca full-text sobre 2,5 milhões de manchetes, painel de curadoria das conversas e relatório mensal automático para o stakeholder.</li>
+    </ul>
+    <ul class="metrics reveal">
+      <li><strong><span class="count" data-count="2.5" data-decimals="1">0</span> mi</strong><span data-i18n="phc.m1">manchetes pesquisáveis</span></li>
+      <li><strong><span class="count" data-count="250">0</span> mil</strong><span data-i18n="phc.m2">edições de 133 jornais</span></li>
+      <li><strong><span class="count" data-count="1650">0</span>+</strong><span data-i18n="phc.m3">conversas respondidas pela IAcema</span></li>
+      <li><strong><span class="count" data-count="6700">0</span>+</strong><span data-i18n="phc.m4">sessões de leitura de jornais</span></li>
+    </ul>
+    <p class="chips reveal"><span>PHP 8</span><span>MySQL 8</span><span>OpenAI tool use</span><span>Cloudflare R2</span><span>GitHub Actions</span><span>OCR</span></p>
+    <p class="links reveal"><a class="link-arrow" href="https://historiadoceara.com.br" target="_blank" rel="noopener" data-i18n="link.visit">Abrir o produto</a></p>
+  </div>
+</article>
+
+<!-- TAMBÉM NO AR -->
+<section class="also" data-accent="#c4a6ff">
+  <p class="eyebrow reveal" data-i18n="also.eyebrow">Também no ar</p>
+  <div class="also-grid">
+    <a class="also-card reveal" href="https://basquete-cearense.vercel.app" target="_blank" rel="noopener">
+      <img src="assets/img/basquete-home.webp" alt="Site Basquete Cearense" loading="lazy" width="1440" height="900">
+      <h4>Basquete Cearense</h4>
+      <p data-i18n="also.basquete">Panorama do basquete adulto do Ceará: 916 cartas de atletas e 51 equipes com um índice técnico próprio. Súmulas, fichas e um pipeline que lê o placar de transmissões por visão computacional.</p>
+      <span class="chips"><span>React</span><span>Python</span><span>OpenCV</span></span>
+    </a>
+    <a class="also-card reveal" href="https://edutopia.online" target="_blank" rel="noopener">
+      <img src="assets/img/edutopia-lp.webp" alt="Landing do Edutopia" loading="lazy" width="1200" height="1521">
+      <h4>Edutopia</h4>
+      <p data-i18n="also.edutopia">Professores geram provas, atividades, planos de aula e jogos educativos com IA em cerca de trinta segundos, prontos para exportar em PDF e DOCX.</p>
+      <span class="chips"><span>Next.js</span><span>Node</span><span>Supabase</span><span>OpenAI</span></span>
+    </a>
+    <a class="also-card reveal" href="https://github.com/taleszin" target="_blank" rel="noopener">
+      <div class="also-art" aria-hidden="true"><span>ENEM</span><span>Bot</span></div>
+      <h4>ENEMBot</h4>
+      <p data-i18n="also.enembot">Tutor conversacional para o ENEM no método Feynman: conduz o aluno à resposta em vez de entregá-la, com pontuação, ofensivas e dificuldade adaptativa.</p>
+      <span class="chips"><span>Next.js</span><span>Node</span><span>OpenAI</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- JOGOS -->
+<section id="jogos" class="games" data-accent="#3ef2d6">
+  <div class="games-sticky">
+    <header class="games-head">
+      <p class="eyebrow" data-i18n="games.eyebrow">02 · Jogos autorais</p>
+      <h2><span data-i18n="games.title">Motores, arte e som</span> <em class="serif" data-i18n="games.title2">feitos do zero.</em></h2>
+      <p class="games-lead" data-i18n="games.lead">Nenhum dos três usa engine pronta nem asset comprado. Cada um tem uma direção de arte própria, escrita em código.</p>
+    </header>
+    <div class="games-track" id="games-track">
+      <article class="game" style="--g:#7ed957">
+        <figure><img src="assets/img/fuel-storm.webp" alt="FUELMANIA sob tempestade" loading="lazy" width="1440" height="822"><img class="alt" src="assets/img/fuel-live.webp" alt="Tela de título do FUELMANIA" loading="lazy" width="1440" height="900"></figure>
+        <div class="game-body">
+          <p class="game-kicker"><span data-i18n="game.fuel.k">Simulador de gestão · 3D · web e Android</span></p>
+          <h3>FUELMANIA</h3>
+          <p data-i18n="game.fuel.p">Um posto de gasolina de beira de estrada brasileiro para você gerenciar. Cidade low-poly, ciclo de dia e noite, chuva, tempestade e poeira de vento, tudo gerado em código: o jogo não carrega uma única imagem de arte. Fila de clientes, caminhão-tanque, carros elétricos e uma trilha de progressão que fecha o loop.</p>
+          <ul class="game-facts">
+            <li data-i18n="game.fuel.f1">100% procedural, zero assets binários</li>
+            <li data-i18n="game.fuel.f2">Português, inglês e espanhol</li>
+            <li data-i18n="game.fuel.f3">Telemetria própria com PostHog</li>
+          </ul>
+          <p class="chips"><span>Three.js</span><span>TypeScript</span><span>Vite</span><span>Capacitor</span><span>Node / Vercel Functions</span></p>
+          <a class="link-arrow" href="https://bomba-cheia.vercel.app" target="_blank" rel="noopener" data-i18n="link.play">Jogar no navegador</a>
+        </div>
+      </article>
+      <article class="game" style="--g:#3ef2d6">
+        <figure><img src="assets/img/geosumo-fight.webp" alt="GEO SUMO: dois lutadores geométricos numa arena neon" loading="lazy" width="1440" height="900"><img class="alt" src="assets/img/geosumo-menu.webp" alt="Criação de lutador no GEO SUMO" loading="lazy" width="1440" height="900"></figure>
+        <div class="game-body">
+          <p class="game-kicker"><span data-i18n="game.geo.k">Arena fighter · WebGL puro</span> · <b data-i18n="game.geo.award">campeão da disciplina na categoria jogos 3D, UECE</b></p>
+          <h3>GEO SUMO</h3>
+          <p data-i18n="game.geo.p">Formas geométricas neon se empurram para fora de uma arena flutuante. Escrito em WebGL e GLSL sem engine: física própria com knockback percentual e hitstun, ring-out, IA de combate em três dificuldades e até quatro oponentes. O áudio é sintetizado ao vivo a partir de escalas musicais. Nasceu como trabalho de disciplina e saiu campeão na categoria de jogos 3D.</p>
+          <ul class="game-facts">
+            <li data-i18n="game.geo.f1">Motor de render e física escritos à mão</li>
+            <li data-i18n="game.geo.f2">Áudio 100% sintetizado, sem samples</li>
+            <li data-i18n="game.geo.f3">8 formas, 12 paletas e 9 olhos, todos procedurais</li>
+          </ul>
+          <p class="chips"><span>WebGL / GLSL</span><span>gl-matrix</span><span>Web Audio</span><span>Vite</span></p>
+          <a class="link-arrow" href="https://github.com/taleszin/geosumo" target="_blank" rel="noopener" data-i18n="link.code">Ver o código</a>
+        </div>
+      </article>
+      <article class="game" style="--g:#59f28a">
+        <figure><img src="assets/img/hylo-cover.webp" alt="Arte de capa do Hylomorph: um cubo verde num tanque de laboratório" loading="lazy" width="1440" height="803"><img class="alt" src="assets/img/hylo-ui.webp" alt="Interface do laboratório do Hylomorph" loading="lazy" width="1440" height="900"></figure>
+        <div class="game-body">
+          <p class="game-kicker"><span data-i18n="game.hylo.k">Simulador de vida artificial · pixel art · Phaser</span></p>
+          <h3>HYLOMORPH</h3>
+          <p data-i18n="game.hylo.p">Você é o cientista: combina matéria, forma e energia para criar golems geométricos, observa, cruza e evolui. Por baixo há genética mendeliana com mutação, steering behaviors e fórmulas de verdade para os atributos, inspiradas no hilomorfismo de Aristóteles. Direção de arte pixel, trilha sonora e vídeo de abertura autorais, com um GDD completo por trás.</p>
+          <ul class="game-facts">
+            <li data-i18n="game.hylo.f1">Genética com dominância variável e mutação</li>
+            <li data-i18n="game.hylo.f2">Arte, música e roteiro próprios</li>
+            <li data-i18n="game.hylo.f3">Publicado no GitHub Pages</li>
+          </ul>
+          <p class="chips"><span>Phaser 3</span><span>JavaScript ES Modules</span><span>Vite</span></p>
+          <a class="link-arrow" href="https://taleszin.github.io/game/" target="_blank" rel="noopener" data-i18n="link.play">Jogar no navegador</a>
+        </div>
+      </article>
+    </div>
+    <div class="games-progress" aria-hidden="true"><span id="games-bar"></span></div>
+  </div>
+</section>
+
+<!-- IA -->
+<section id="ia" class="ai" data-accent="#c4a6ff">
+  <p class="eyebrow reveal" data-i18n="ai.eyebrow">03 · IA em produção</p>
+  <h2 class="reveal"><span data-i18n="ai.title">Cinco integrações de LLM</span> <em class="serif" data-i18n="ai.title2">com usuário na ponta.</em></h2>
+  <p class="lead reveal" data-i18n="ai.lead">Não é demo. Cada uma tem custo por token monitorado, prompt versionado e um problema de produto que ela resolve.</p>
+  <div class="ai-grid">
+    <div class="ai-card reveal"><span class="ai-n">01</span><h4>IAcema</h4><p data-i18n="ai.c1">Agente com loop de ferramentas: 16 tools SQL com prepared statements consultam jornais, fatos e autores. Cada resposta sai com citação da fonte no acervo. Prompt versionado e conversas curadas por um painel próprio.</p></div>
+    <div class="ai-card reveal"><span class="ai-n">02</span><h4 data-i18n="ai.c2t">Tutor por voz do Woolly</h4><p data-i18n="ai.c2">Conversa falada em tempo real: transcrição, modelo e síntese de voz encadeados por WebSocket, com múltiplas personalidades de tutor e latência tratada como requisito de produto.</p></div>
+    <div class="ai-card reveal"><span class="ai-n">03</span><h4>Leap AI</h4><p data-i18n="ai.c3">Assistente clínico dentro do editor de notas do Leap Notes, com respostas ancoradas em condutas e um modo vendedor que apresenta o produto para quem ainda não assinou.</p></div>
+    <div class="ai-card reveal"><span class="ai-n">04</span><h4>Edutopia</h4><p data-i18n="ai.c4">Geração estruturada de provas, planos de aula e jogos educativos com saída validada e exportação em PDF e DOCX.</p></div>
+    <div class="ai-card reveal"><span class="ai-n">05</span><h4>ENEMBot</h4><p data-i18n="ai.c5">Tutor socrático para o ENEM: o modelo é instruído a perguntar antes de responder, com dificuldade adaptativa e gamificação.</p></div>
+    <div class="ai-card accent reveal"><span class="ai-n">+</span><h4 data-i18n="ai.c6t">Como eu trabalho com IA</h4><p data-i18n="ai.c6">Uso agentes de código no dia a dia com auditoria multiagente antes de implementar e revisão adversarial antes de cada PR. O ganho de velocidade só vale quando o teste passa e o review humano aprova.</p></div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack" class="stack" data-accent="#c4a6ff">
+  <p class="eyebrow reveal" data-i18n="stack.eyebrow">04 · Stack</p>
+  <h2 class="reveal"><span data-i18n="stack.title">O que eu uso</span> <em class="serif" data-i18n="stack.title2">quando o produto é sério.</em></h2>
+  <div class="stack-grid">
+    <div class="stack-col reveal">
+      <h4 data-i18n="stack.h1">Servidor</h4>
+      <ul>
+        <li><b>Node.js / TypeScript</b><span data-i18n="stack.s1">46 edge functions do Leap Notes, Vercel Functions do FUELMANIA, APIs do Edutopia e do ENEMBot em Next.js</span></li>
+        <li><b>ASP.NET Core 8</b><span data-i18n="stack.s2">back-end principal do Woolly: gamificação, eventos de domínio, APIs server-authoritative</span></li>
+        <li><b>FastAPI</b><span data-i18n="stack.s3">serviço de voz em tempo real do Woolly, WebSocket e streaming de áudio</span></li>
+        <li><b>PHP 8</b><span data-i18n="stack.s4">Portal da História do Ceará, onde tudo começou</span></li>
+      </ul>
+    </div>
+    <div class="stack-col reveal">
+      <h4 data-i18n="stack.h2">Tela</h4>
+      <ul>
+        <li><b>React 18 / 19</b><span data-i18n="stack.s5">Leap Notes, painéis do Woolly, Basquete Cearense</span></li>
+        <li><b>React Native / Expo</b><span data-i18n="stack.s6">app do Woolly nas duas lojas, com Expo Router, Zustand e TanStack Query</span></li>
+        <li><b>Next.js</b><span data-i18n="stack.s7">Edutopia e ENEMBot</span></li>
+        <li><b>WebGL / Three.js / Phaser</b><span data-i18n="stack.s8">três jogos publicados, um deles com motor próprio</span></li>
+      </ul>
+    </div>
+    <div class="stack-col reveal">
+      <h4 data-i18n="stack.h3">Dados e operação</h4>
+      <ul>
+        <li><b>PostgreSQL / Supabase</b><span data-i18n="stack.s9">auth, RLS, migrations versionadas com Sqitch, edge functions</span></li>
+        <li><b>MySQL 8</b><span data-i18n="stack.s10">índice full-text sobre 2,5 milhões de linhas</span></li>
+        <li><b>OpenAI · tool use · saída estruturada</b><span data-i18n="stack.s11">cinco integrações em produção</span></li>
+        <li><b>Stripe · Asaas · AbacatePay</b><span data-i18n="stack.s12">assinatura, cartão e Pix, com checkout próprio</span></li>
+        <li><b>Sentry · PostHog · GitHub Actions · Docker · Vercel</b><span data-i18n="stack.s13">deploy, monitoramento e telemetria em todos os produtos</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- JORNADA -->
+<section id="jornada" class="journey" data-accent="#c4a6ff">
+  <div class="journey-intro">
+    <p class="eyebrow reveal" data-i18n="journey.eyebrow">05 · Jornada</p>
+    <h2 class="reveal"><span data-i18n="journey.title">Quatro anos e meio</span> <em class="serif" data-i18n="journey.title2">de código que foi para produção.</em></h2>
+    <figure class="portrait reveal"><img src="assets/img/tales.webp" alt="Tales Santiago" width="900" height="1200" loading="lazy"></figure>
+    <p class="reveal" data-i18n="journey.bio">Sou de Fortaleza. Faço Ciência da Computação na UECE, em conclusão, e trabalho como engenheiro desde 2022. Gosto de ficar entre o produto e a técnica: desenhar a mecânica de engajamento e depois implementar de ponta a ponta. Prefiro solução enxuta a arquitetura de vitrine.</p>
+  </div>
+  <ol class="timeline">
+    <li class="reveal"><time>2026 · hoje</time><h4>Woolly</h4><p data-i18n="journey.j1">Full Stack Engineer. App de tutoria por voz nas lojas, gamificação, painel de coordenação e piloto em escolas.</p></li>
+    <li class="reveal"><time>2025 · hoje</time><h4>Leap Notes / MedLeap</h4><p data-i18n="journey.j2">Cofundador e engenheiro principal. SaaS clínico com mais de mil médicos e estudantes, pagamentos e mobile.</p></li>
+    <li class="reveal"><time>2025 · hoje</time><h4 data-i18n="journey.j3t">Portal da História do Ceará</h4><p data-i18n="journey.j3">Tech lead. Reconstrução do painel, OCR do acervo e a IAcema.</p></li>
+    <li class="reveal"><time>2023 · 2024</time><h4>apLIS</h4><p data-i18n="journey.j4">Engenharia de software e suporte com SLA. PHP, JavaScript e prototipação no Figma.</p></li>
+    <li class="reveal"><time>2022 · 2024</time><h4>PET Computação · UECE</h4><p data-i18n="journey.j5">Pesquisa e gestão de processos. Machine learning para predição de risco clínico no projeto CONCERN.</p></li>
+    <li class="reveal"><time data-i18n="journey.j6time">em conclusão</time><h4 data-i18n="journey.j6t">Ciência da Computação · UECE</h4><p data-i18n="journey.j6">Bacharelado. Inglês fluente, espanhol intermediário.</p></li>
+  </ol>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="contact" data-accent="#c4a6ff">
+  <p class="eyebrow reveal" data-i18n="contact.eyebrow">06 · Contato</p>
+  <h2 class="reveal"><span data-i18n="contact.title">Tem um produto para construir?</span> <em class="serif" data-i18n="contact.title2">Vamos conversar.</em></h2>
+  <p class="lead reveal" data-i18n="contact.lead">Disponível para vagas remotas e presenciais em Fortaleza, full stack ou mobile. Respondo em menos de 24 horas.</p>
+  <div class="contact-grid reveal">
+    <a class="contact-card magnetic" href="https://wa.me/5585984038749?text=Ol%C3%A1%20Tales!%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20conversar." target="_blank" rel="noopener"><span class="contact-k">WhatsApp</span><span class="contact-v">+55 85 98403-8749</span></a>
+    <a class="contact-card magnetic" href="mailto:santiagold116@gmail.com"><span class="contact-k">E-mail</span><span class="contact-v">santiagold116@gmail.com</span></a>
+    <a class="contact-card magnetic" href="https://github.com/taleszin" target="_blank" rel="noopener"><span class="contact-k">GitHub</span><span class="contact-v">github.com/taleszin</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <p><span data-i18n="footer.made">Desenhado e construído por Tales Santiago.</span> <span data-i18n="footer.tech">Sem framework, sem template: HTML, CSS e JavaScript.</span></p>
+  <p class="footer-links"><a href="https://github.com/taleszin/portfolio" target="_blank" rel="noopener" data-i18n="footer.src">código desta página</a></p>
+</footer>
+
+<script src="app.js" defer></script>
 </body>
 </html>
