@@ -21,7 +21,7 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Tales Santiago","jobTitle":"Full Stack Engineer","url":"https://taleszin.github.io/portfolio/","email":"mailto:santiagold116@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Fortaleza","addressRegion":"CE","addressCountry":"BR"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Universidade Estadual do Ceará"},"sameAs":["https://github.com/taleszin"],"knowsAbout":["Node.js","TypeScript","React","React Native","LLM","ASP.NET Core","FastAPI","PostgreSQL","WebGL"]}
@@ -182,38 +182,22 @@
   </div>
 </article>
 
-<!-- TAMBÉM NO AR -->
-<section class="also" data-accent="#c4a6ff">
-  <p class="eyebrow reveal" data-i18n="also.eyebrow">Também no ar</p>
-  <div class="also-grid">
-    <a class="also-card reveal" href="https://basquete-cearense.vercel.app" target="_blank" rel="noopener">
-      <img src="assets/img/basquete-home.webp" alt="Site Basquete Cearense" loading="lazy" width="1440" height="900">
-      <h4>Basquete Cearense</h4>
-      <p data-i18n="also.basquete">Panorama do basquete adulto do Ceará: 916 cartas de atletas e 51 equipes com um índice técnico próprio. Súmulas, fichas e um pipeline que lê o placar de transmissões por visão computacional.</p>
-      <span class="chips"><span>React</span><span>Python</span><span>OpenCV</span></span>
-    </a>
-    <a class="also-card reveal" href="https://edutopia.online" target="_blank" rel="noopener">
-      <img src="assets/img/edutopia-lp.webp" alt="Landing do Edutopia" loading="lazy" width="1200" height="1521">
-      <h4>Edutopia</h4>
-      <p data-i18n="also.edutopia">Professores geram provas, atividades, planos de aula e jogos educativos com IA em cerca de trinta segundos, prontos para exportar em PDF e DOCX.</p>
-      <span class="chips"><span>Next.js</span><span>Node</span><span>Supabase</span><span>OpenAI</span></span>
-    </a>
-    <a class="also-card reveal" href="https://github.com/taleszin" target="_blank" rel="noopener">
-      <div class="also-art" aria-hidden="true"><span>ENEM</span><span>Bot</span></div>
-      <h4>ENEMBot</h4>
-      <p data-i18n="also.enembot">Tutor conversacional para o ENEM no método Feynman: conduz o aluno à resposta em vez de entregá-la, com pontuação, ofensivas e dificuldade adaptativa.</p>
-      <span class="chips"><span>Next.js</span><span>Node</span><span>OpenAI</span></span>
-    </a>
-  </div>
-</section>
-
 <!-- JOGOS -->
 <section id="jogos" class="games" data-accent="#3ef2d6">
   <div class="games-sticky">
     <header class="games-head">
-      <p class="eyebrow" data-i18n="games.eyebrow">02 · Jogos autorais</p>
-      <h2><span data-i18n="games.title">Motores, arte e som</span> <em class="serif" data-i18n="games.title2">feitos do zero.</em></h2>
-      <p class="games-lead" data-i18n="games.lead">Nenhum dos três usa engine pronta nem asset comprado. Cada um tem uma direção de arte própria, escrita em código.</p>
+      <div>
+        <p class="eyebrow" data-i18n="games.eyebrow">02 · Jogos autorais</p>
+        <h2><span data-i18n="games.title">Motores, arte e som</span> <em class="serif" data-i18n="games.title2">feitos do zero.</em></h2>
+      </div>
+      <div class="games-manifesto">
+        <p class="games-lead" data-i18n="games.lead">É o lado autoral do trabalho. Nenhum dos três usa engine pronta nem asset comprado: o motor, a direção de arte, a trilha e a física saíram do mesmo editor de código. Um deles saiu campeão da disciplina na UECE.</p>
+        <ul class="games-stats" aria-label="Jogos em números">
+          <li><strong>3</strong><span data-i18n="games.s1">jogos publicados</span></li>
+          <li><strong>0</strong><span data-i18n="games.s2">assets comprados</span></li>
+          <li><strong>1</strong><span data-i18n="games.s3">motor WebGL escrito à mão</span></li>
+        </ul>
+      </div>
     </header>
     <div class="games-track" id="games-track">
       <article class="game" style="--g:#7ed957">
