@@ -4,6 +4,33 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
+  /* ---------- showcase videos ---------- */
+  // O poster e carregado como imagem; o arquivo de vídeo só entra quando a
+  // demonstração está prestes a aparecer. Isso mantém a página inicial leve.
+  if (!reduce && 'IntersectionObserver' in window) {
+    const videoObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const video = entry.target;
+        if (video.dataset.src) {
+          video.src = video.dataset.src;
+          delete video.dataset.src;
+          video.play().catch(() => {});
+        }
+        observer.unobserve(video);
+      });
+    }, { rootMargin: '240px 0px' });
+    $$('video[data-src]').forEach(video => {
+      // Em um navegador que não reproduza o formato, volta ao poster em vez
+      // de deixar um bloco de erro no principal asset do case.
+      video.addEventListener('error', () => {
+        video.removeAttribute('src');
+        video.load();
+      }, { once: true });
+      videoObserver.observe(video);
+    });
+  }
+
   /* ---------- i18n ---------- */
   const EN = {
     'nav.products': 'Products', 'nav.games': 'Games', 'nav.ai': 'AI', 'nav.stack': 'Stack', 'nav.journey': 'Journey', 'nav.contact': 'Contact',
