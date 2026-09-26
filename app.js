@@ -12,32 +12,25 @@
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const video = entry.target;
-        if (video.dataset.src || video.dataset.webm || video.dataset.mp4) {
-          const sources = [
-            [video.dataset.webm, 'video/webm'],
-            [video.dataset.mp4, 'video/mp4'],
-            [video.dataset.src, ''],
-          ].filter(([src]) => src);
-          sources.forEach(([src, type]) => {
-            const source = document.createElement('source');
-            source.src = src;
-            if (type) source.type = type;
-            video.appendChild(source);
-          });
-          delete video.dataset.webm;
-          delete video.dataset.mp4;
+        if (video.dataset.src) {
+          // Garante as condições exigidas pelos navegadores para autoplay antes
+          // de anexar o arquivo que foi adiado até o vídeo entrar na tela.
+          video.muted = true;
+          video.defaultMuted = true;
+          video.autoplay = true;
+          video.playsInline = true;
+          video.src = video.dataset.src;
           delete video.dataset.src;
           video.load();
-          video.play().catch(() => {});
+          video.addEventListener('canplay', () => video.play().catch(() => {}), { once: true });
         }
         observer.unobserve(video);
       });
     }, { rootMargin: '240px 0px' });
-    $$('video[data-src], video[data-webm], video[data-mp4]').forEach(video => {
+    $$('video[data-src]').forEach(video => {
       // Em um navegador que não reproduza o formato, volta ao poster em vez
       // de deixar um bloco de erro no principal asset do case.
       video.addEventListener('error', () => {
-        video.replaceChildren();
         video.removeAttribute('src');
         video.load();
       }, { once: true });
