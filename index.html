@@ -205,69 +205,66 @@
 
 <!-- JOGOS -->
 <section id="jogos" class="games" data-accent="#3ef2d6">
-  <div class="games-sticky">
-    <header class="games-head">
-      <div>
-        <p class="eyebrow" data-i18n="games.eyebrow">03 · Jogos autorais</p>
-        <h2><span data-i18n="games.title">Motores, arte e som</span> <em class="serif" data-i18n="games.title2">feitos do zero.</em></h2>
-      </div>
-      <div class="games-manifesto">
-        <p class="games-lead" data-i18n="games.lead">É o lado autoral do trabalho. Nenhum dos três usa engine pronta nem asset comprado: o motor, a direção de arte, a trilha e a física saíram do mesmo editor de código. Um deles saiu campeão da disciplina na UECE.</p>
-        <ul class="games-stats" aria-label="Jogos em números">
-          <li><strong>3</strong><span data-i18n="games.s1">jogos publicados</span></li>
-          <li><strong>0</strong><span data-i18n="games.s2">assets comprados</span></li>
-          <li><strong>1</strong><span data-i18n="games.s3">motor WebGL escrito à mão</span></li>
-        </ul>
-      </div>
-    </header>
-    <div class="games-track" id="games-track">
+  <header class="games-head">
+    <div>
+      <p class="eyebrow reveal" data-i18n="games.eyebrow">03 · Jogos autorais</p>
+      <h2 class="reveal"><span data-i18n="games.title">Motores, arte e som</span> <em class="serif" data-i18n="games.title2">feitos do zero.</em></h2>
+    </div>
+    <div class="games-manifesto reveal">
+      <p class="games-lead" data-i18n="games.lead">É o lado autoral do trabalho. Nenhum dos três usa engine pronta nem asset comprado: o motor, a direção de arte, a trilha e a física saíram do mesmo editor de código. Um deles saiu campeão da disciplina na UECE.</p>
+      <ul class="games-stats" aria-label="Jogos em números">
+        <li><strong>3</strong><span data-i18n="games.s1">jogos publicados</span></li>
+        <li><strong>0</strong><span data-i18n="games.s2">assets comprados</span></li>
+        <li><strong>1</strong><span data-i18n="games.s3">motor WebGL escrito à mão</span></li>
+      </ul>
+    </div>
+  </header>
+  <div class="games-cases">
       <article class="game game-featured" style="--g:#7ed957">
-        <figure><video class="game-video" autoplay muted loop playsinline preload="metadata" poster="assets/img/fuelmania-poster.jpg" aria-label="Demonstração do FUELMANIA, um simulador de posto de gasolina" width="1280" height="720"><source src="assets/video/fuelmania-loop.webm" type="video/webm"><source src="assets/video/fuelmania-loop.mp4" type="video/mp4">Seu navegador não suporta vídeo. A imagem de apresentação do FUELMANIA permanece disponível.</video><span class="game-live" aria-hidden="true">simulação ao vivo</span></figure>
+        <figure class="reveal"><video class="game-video" autoplay muted loop playsinline preload="metadata" poster="assets/img/fuelmania-poster.jpg" aria-label="Demonstração do FUELMANIA, um simulador de posto de gasolina" width="1280" height="720"><source src="assets/video/fuelmania-loop.webm" type="video/webm"><source src="assets/video/fuelmania-loop.mp4" type="video/mp4">Seu navegador não suporta vídeo. A imagem de apresentação do FUELMANIA permanece disponível.</video><span class="game-live" aria-hidden="true">simulação ao vivo</span></figure>
         <div class="game-body">
-          <p class="game-kicker"><span data-i18n="game.fuel.k">Simulador de gestão · 3D · web e Android</span></p>
-          <h3>FUELMANIA</h3>
-          <p data-i18n="game.fuel.p">Um posto de gasolina de beira de estrada brasileiro para você gerenciar. Cidade low-poly, ciclo de dia e noite, chuva, tempestade e poeira de vento, tudo gerado em código: o jogo não carrega uma única imagem de arte. Fila de clientes, caminhão-tanque, carros elétricos e uma trilha de progressão que fecha o loop.</p>
-          <ul class="game-facts">
+          <p class="game-kicker reveal"><span data-i18n="game.fuel.k">Simulador de gestão · 3D · web e Android</span></p>
+          <h3 class="reveal">FUELMANIA</h3>
+          <p class="reveal" data-i18n="game.fuel.p">Um posto de gasolina de beira de estrada brasileiro para você gerenciar. Cidade low-poly, ciclo de dia e noite, chuva, tempestade e poeira de vento, tudo gerado em código: o jogo não carrega uma única imagem de arte. Fila de clientes, caminhão-tanque, carros elétricos e uma trilha de progressão que fecha o loop.</p>
+          <ul class="game-facts reveal">
             <li data-i18n="game.fuel.f1">100% procedural, zero assets binários</li>
             <li data-i18n="game.fuel.f2">Português, inglês e espanhol</li>
             <li data-i18n="game.fuel.f3">Telemetria própria com PostHog</li>
           </ul>
-          <p class="chips"><span>Three.js</span><span>TypeScript</span><span>Vite</span><span>Capacitor</span><span>Node / Vercel Functions</span></p>
-          <a class="link-arrow" href="https://bomba-cheia.vercel.app" target="_blank" rel="noopener" data-i18n="link.play">Jogar no navegador</a>
+          <p class="chips reveal"><span>Three.js</span><span>TypeScript</span><span>Vite</span><span>Capacitor</span><span>Node / Vercel Functions</span></p>
+          <p class="links reveal"><a class="link-arrow" href="https://bomba-cheia.vercel.app" target="_blank" rel="noopener" data-i18n="link.play">Jogar no navegador</a></p>
         </div>
       </article>
-      <article class="game" style="--g:#3ef2d6">
-        <figure><img src="assets/img/geosumo-fight.webp" alt="GEO SUMO: dois lutadores geométricos numa arena neon" loading="lazy" width="1440" height="900"><img class="alt" src="assets/img/geosumo-menu.webp" alt="Criação de lutador no GEO SUMO" loading="lazy" width="1440" height="900"></figure>
+      <article class="game game-flip" style="--g:#3ef2d6">
+        <figure class="reveal"><img src="assets/img/geosumo-fight.webp" alt="GEO SUMO: dois lutadores geométricos numa arena neon" loading="lazy" width="1440" height="900"><img class="alt" src="assets/img/geosumo-menu.webp" alt="" aria-hidden="true" loading="lazy" width="1440" height="900"></figure>
         <div class="game-body">
-          <p class="game-kicker"><span data-i18n="game.geo.k">Arena fighter · WebGL puro</span> · <b data-i18n="game.geo.award">campeão da disciplina na categoria jogos 3D, UECE</b></p>
-          <h3>GEO SUMO</h3>
-          <p data-i18n="game.geo.p">Formas geométricas neon se empurram para fora de uma arena flutuante. Escrito em WebGL e GLSL sem engine: física própria com knockback percentual e hitstun, ring-out, IA de combate em três dificuldades e até quatro oponentes. O áudio é sintetizado ao vivo a partir de escalas musicais. Nasceu como trabalho de disciplina e saiu campeão na categoria de jogos 3D.</p>
-          <ul class="game-facts">
+          <p class="game-kicker reveal"><span data-i18n="game.geo.k">Arena fighter · WebGL puro</span> · <b data-i18n="game.geo.award">campeão da disciplina na categoria jogos 3D, UECE</b></p>
+          <h3 class="reveal">GEO SUMO</h3>
+          <p class="reveal" data-i18n="game.geo.p">Formas geométricas neon se empurram para fora de uma arena flutuante. Escrito em WebGL e GLSL sem engine: física própria com knockback percentual e hitstun, ring-out, IA de combate em três dificuldades e até quatro oponentes. O áudio é sintetizado ao vivo a partir de escalas musicais. Nasceu como trabalho de disciplina e saiu campeão na categoria de jogos 3D.</p>
+          <ul class="game-facts reveal">
             <li data-i18n="game.geo.f1">Motor de render e física escritos à mão</li>
             <li data-i18n="game.geo.f2">Áudio 100% sintetizado, sem samples</li>
             <li data-i18n="game.geo.f3">8 formas, 12 paletas e 9 olhos, todos procedurais</li>
           </ul>
-          <p class="chips"><span>WebGL / GLSL</span><span>gl-matrix</span><span>Web Audio</span><span>Vite</span></p>
-          <a class="link-arrow" href="https://github.com/taleszin/geosumo" target="_blank" rel="noopener" data-i18n="link.code">Ver o código</a>
+          <p class="chips reveal"><span>WebGL / GLSL</span><span>gl-matrix</span><span>Web Audio</span><span>Vite</span></p>
+          <p class="links reveal"><a class="link-arrow" href="https://github.com/taleszin/geosumo" target="_blank" rel="noopener" data-i18n="link.code">Ver o código</a></p>
         </div>
       </article>
       <article class="game" style="--g:#59f28a">
-        <figure><img src="assets/img/hylo-cover.webp" alt="Arte de capa do Hylomorph: um cubo verde num tanque de laboratório" loading="lazy" width="1440" height="803"><img class="alt" src="assets/img/hylo-ui.webp" alt="Interface do laboratório do Hylomorph" loading="lazy" width="1440" height="900"></figure>
+        <figure class="reveal"><img src="assets/img/hylo-cover.webp" alt="Arte de capa do Hylomorph: um cubo verde num tanque de laboratório" loading="lazy" width="1440" height="803"><img class="alt" src="assets/img/hylo-ui.webp" alt="" aria-hidden="true" loading="lazy" width="1440" height="900"></figure>
         <div class="game-body">
-          <p class="game-kicker"><span data-i18n="game.hylo.k">Simulador de vida artificial · pixel art · Phaser</span></p>
-          <h3>HYLOMORPH</h3>
-          <p data-i18n="game.hylo.p">Você é o cientista: combina matéria, forma e energia para criar golems geométricos, observa, cruza e evolui. Por baixo há genética mendeliana com mutação, steering behaviors e fórmulas de verdade para os atributos, inspiradas no hilomorfismo de Aristóteles. Direção de arte pixel, trilha sonora e vídeo de abertura autorais, com um GDD completo por trás.</p>
-          <ul class="game-facts">
+          <p class="game-kicker reveal"><span data-i18n="game.hylo.k">Simulador de vida artificial · pixel art · Phaser</span></p>
+          <h3 class="reveal">HYLOMORPH</h3>
+          <p class="reveal" data-i18n="game.hylo.p">Você é o cientista: combina matéria, forma e energia para criar golems geométricos, observa, cruza e evolui. Por baixo há genética mendeliana com mutação, steering behaviors e fórmulas de verdade para os atributos, inspiradas no hilomorfismo de Aristóteles. Direção de arte pixel, trilha sonora e vídeo de abertura autorais, com um GDD completo por trás.</p>
+          <ul class="game-facts reveal">
             <li data-i18n="game.hylo.f1">Genética com dominância variável e mutação</li>
             <li data-i18n="game.hylo.f2">Arte, música e roteiro próprios</li>
             <li data-i18n="game.hylo.f3">Publicado no GitHub Pages</li>
           </ul>
-          <p class="chips"><span>Phaser 3</span><span>JavaScript ES Modules</span><span>Vite</span></p>
-          <a class="link-arrow" href="https://taleszin.github.io/game/" target="_blank" rel="noopener" data-i18n="link.play">Jogar no navegador</a>
+          <p class="chips reveal"><span>Phaser 3</span><span>JavaScript ES Modules</span><span>Vite</span></p>
+          <p class="links reveal"><a class="link-arrow" href="https://taleszin.github.io/game/" target="_blank" rel="noopener" data-i18n="link.play">Jogar no navegador</a></p>
         </div>
       </article>
-    </div>
-    <div class="games-progress" aria-hidden="true"><span id="games-bar"></span></div>
   </div>
 </section>
 
