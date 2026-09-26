@@ -12,18 +12,32 @@
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const video = entry.target;
-        if (video.dataset.src) {
-          video.src = video.dataset.src;
+        if (video.dataset.src || video.dataset.webm || video.dataset.mp4) {
+          const sources = [
+            [video.dataset.webm, 'video/webm'],
+            [video.dataset.mp4, 'video/mp4'],
+            [video.dataset.src, ''],
+          ].filter(([src]) => src);
+          sources.forEach(([src, type]) => {
+            const source = document.createElement('source');
+            source.src = src;
+            if (type) source.type = type;
+            video.appendChild(source);
+          });
+          delete video.dataset.webm;
+          delete video.dataset.mp4;
           delete video.dataset.src;
+          video.load();
           video.play().catch(() => {});
         }
         observer.unobserve(video);
       });
     }, { rootMargin: '240px 0px' });
-    $$('video[data-src]').forEach(video => {
+    $$('video[data-src], video[data-webm], video[data-mp4]').forEach(video => {
       // Em um navegador que não reproduza o formato, volta ao poster em vez
       // de deixar um bloco de erro no principal asset do case.
       video.addEventListener('error', () => {
+        video.replaceChildren();
         video.removeAttribute('src');
         video.load();
       }, { once: true });
@@ -33,7 +47,7 @@
 
   /* ---------- i18n ---------- */
   const EN = {
-    'nav.products': 'Products', 'nav.games': 'Games', 'nav.ai': 'AI', 'nav.stack': 'Stack', 'nav.journey': 'Journey', 'nav.contact': 'Contact',
+    'nav.products': 'Products', 'nav.articles': 'Articles', 'nav.games': 'Games', 'nav.ai': 'AI', 'nav.stack': 'Stack', 'nav.journey': 'Journey', 'nav.contact': 'Contact',
     'hero.eyebrow': 'Full Stack Engineer · Fortaleza, Brazil · remote',
     'hero.l1': 'I build products', 'hero.l2': 'that real people', 'hero.l3': 'use every day.',
     'hero.sub': 'Node and TypeScript on the server, React and React Native on the screen, language models in between. Right now I keep a voice tutoring app, a clinical SaaS and a historical archive that answers questions in production. In my spare time, I make games.',
@@ -67,7 +81,12 @@
     'phc.b2': 'OCR and PDF reconciliation pipeline that made thousands of academic articles searchable.',
     'phc.b3': 'Full-text search over 2.5 million headlines, a curation panel for conversations and an automatic monthly report for the stakeholder.',
     'phc.m1': 'searchable headlines', 'phc.m2': 'issues from 133 newspapers', 'phc.m3': 'conversations answered by IAcema', 'phc.m4': 'newspaper reading sessions',
-    'games.eyebrow': '02 · Original games', 'games.title': 'Engines, art and sound', 'games.title2': 'built from scratch.',
+    'articles.eyebrow': '02 · Articles', 'articles.title': 'Product stories,', 'articles.title2': 'with sources and context.',
+    'articles.lead': 'Published pieces in the Portal da História do Ceará about research, digital preservation, and AI applied to a real archive.',
+    'articles.a1.kicker': 'OCR · indexing · curation', 'articles.a1.title': 'From paper to search', 'articles.a1.text': 'How scanning, OCR, AI-assisted curation, and indexing turn old newspapers into searchable text.',
+    'articles.a2.kicker': 'AI · tools · sources', 'articles.a2.title': 'IAcema and archive research', 'articles.a2.text': 'How an assistant searches 2.5 million headlines and returns answers with verifiable sources.',
+    'articles.read': 'Read on the Portal', 'articles.all': 'See all Portal articles ↗',
+    'games.eyebrow': '03 · Original games', 'games.title': 'Engines, art and sound', 'games.title2': 'built from scratch.',
     'games.lead': 'This is the authorial side of the work. None of the three uses an off-the-shelf engine or purchased assets: the engine, the art direction, the soundtrack and the physics came out of the same code editor. One of them won its course category at UECE.', 'games.s1': 'games published', 'games.s2': 'purchased assets', 'games.s3': 'hand-written WebGL engine',
     'game.fuel.k': 'Management sim · 3D · web and Android',
     'game.fuel.p': 'A Brazilian roadside gas station for you to run. Low-poly town, day and night cycle, rain, storms and wind dust, all generated in code: the game does not load a single art image. Customer queues, a tanker truck, electric cars and a progression track that closes the loop.',
@@ -78,7 +97,7 @@
     'game.hylo.k': 'Artificial life sim · pixel art · Phaser',
     'game.hylo.p': 'You are the scientist: combine matter, form and energy to create geometric golems, then observe, breed and evolve them. Underneath there is Mendelian genetics with mutation, steering behaviors and real formulas for the stats, inspired by Aristotle\'s hylomorphism. Original pixel art direction, soundtrack and opening video, with a full GDD behind it.',
     'game.hylo.f1': 'Genetics with variable dominance and mutation', 'game.hylo.f2': 'Original art, music and script', 'game.hylo.f3': 'Published on GitHub Pages',
-    'ai.eyebrow': '03 · AI in production', 'ai.title': 'Five LLM integrations', 'ai.title2': 'with a user at the end.',
+    'ai.eyebrow': '04 · AI in production', 'ai.title': 'Five LLM integrations', 'ai.title2': 'with a user at the end.',
     'ai.lead': 'Not demos. Each one has monitored token cost, a versioned prompt and a product problem it solves.',
     'ai.c1': 'Agent with a tool loop: 16 SQL tools with prepared statements query newspapers, facts and authors. Every answer ships with a citation from the archive. Versioned prompt and conversations curated in a dedicated panel.',
     'ai.c2t': 'Woolly voice tutor', 'ai.c2': 'Spoken conversation in real time: transcription, model and speech synthesis chained over WebSocket, with multiple tutor personalities and latency treated as a product requirement.',
@@ -86,7 +105,7 @@
     'ai.c4': 'Structured generation of tests, lesson plans and educational games with validated output and PDF and DOCX export.',
     'ai.c5': 'Socratic tutor for the ENEM exam: the model is instructed to ask before answering, with adaptive difficulty and gamification.',
     'ai.c6t': 'How I work with AI', 'ai.c6': 'I use coding agents daily, with multi-agent audits before implementing and adversarial review before every PR. The speed only counts when the tests pass and a human review approves.',
-    'stack.eyebrow': '04 · Stack', 'stack.title': 'What I reach for', 'stack.title2': 'when the product is serious.',
+    'stack.eyebrow': '05 · Stack', 'stack.title': 'What I reach for', 'stack.title2': 'when the product is serious.',
     'stack.h1': 'Server', 'stack.h2': 'Screen', 'stack.h3': 'Data and operations',
     'stack.s1': '46 Leap Notes edge functions, FUELMANIA Vercel Functions, Edutopia and ENEMBot APIs in Next.js',
     'stack.s2': 'Woolly main back-end: gamification, domain events, server-authoritative APIs',
@@ -99,7 +118,7 @@
     'stack.s10': 'full-text index over 2.5 million rows', 'stack.s11': 'five integrations in production',
     'stack.s12': 'subscription, card and Pix, with an in-house checkout',
     'stack.s13': 'deploy, monitoring and telemetry across every product',
-    'journey.eyebrow': '05 · Journey', 'journey.title': 'Four and a half years', 'journey.title2': 'of code that shipped.',
+    'journey.eyebrow': '06 · Journey', 'journey.title': 'Four and a half years', 'journey.title2': 'of code that shipped.',
     'journey.bio': 'I am from Fortaleza. I study Computer Science at UECE, finishing the degree, and have worked as an engineer since 2022. I like sitting between product and engineering: designing the engagement mechanic and then implementing it end to end. I prefer a lean solution to showcase architecture.',
     'journey.j1': 'Full Stack Engineer. Voice tutoring app on both stores, gamification, coordination panel and school pilots.',
     'journey.j2': 'Co-founder and lead engineer. Clinical SaaS with more than a thousand doctors and students, payments and mobile.',
@@ -107,7 +126,7 @@
     'journey.j4': 'Software engineering and SLA support. PHP, JavaScript and Figma prototyping.',
     'journey.j5': 'Research and process management. Machine learning for clinical risk prediction in the CONCERN project.',
     'journey.j6time': 'in progress', 'journey.j6t': 'Computer Science · UECE', 'journey.j6': 'Bachelor\'s degree. Fluent English, intermediate Spanish.',
-    'contact.eyebrow': '06 · Contact', 'contact.title': 'Have a product to build?', 'contact.title2': 'Let\'s talk.',
+    'contact.eyebrow': '07 · Contact', 'contact.title': 'Have a product to build?', 'contact.title2': 'Let\'s talk.',
     'contact.lead': 'Available for remote roles and on-site in Fortaleza, full stack or mobile. I reply within 24 hours.',
     'footer.made': 'Designed and built by Tales Santiago.', 'footer.tech': 'No framework, no template: HTML, CSS and JavaScript.', 'footer.src': 'source of this page',
   };

@@ -36,6 +36,7 @@
   <a href="#top" class="brand" aria-label="Tales Santiago, início"><span class="brand-mark">TS</span><span class="brand-name">Tales Santiago</span></a>
   <nav class="nav" aria-label="Navegação principal">
     <a href="#produtos" data-i18n="nav.products">Produtos</a>
+    <a href="#artigos" data-i18n="nav.articles">Artigos</a>
     <a href="#jogos" data-i18n="nav.games">Jogos</a>
     <a href="#ia" data-i18n="nav.ai">IA</a>
     <a href="#stack" data-i18n="nav.stack">Stack</a>
@@ -182,12 +183,32 @@
   </div>
 </article>
 
+<!-- ARTIGOS -->
+<section id="artigos" class="articles" data-accent="#e2b04a">
+  <p class="eyebrow reveal" data-i18n="articles.eyebrow">02 · Artigos</p>
+  <h2 class="reveal"><span data-i18n="articles.title">Bastidores de produto,</span> <em class="serif" data-i18n="articles.title2">com fonte e contexto.</em></h2>
+  <p class="lead reveal" data-i18n="articles.lead">Textos publicados no Portal da História do Ceará sobre pesquisa, preservação digital e IA aplicada a um acervo real.</p>
+  <div class="article-grid">
+    <a class="article-card reveal" href="https://historiadoceara.com.br/blog/do-papel-ao-buscador-como-digitalizamos-e-tornamos-pesquisaveis-jornais-com-mais-de-100-anos" target="_blank" rel="noopener">
+      <span class="article-number">01</span><p class="article-kicker" data-i18n="articles.a1.kicker">OCR · indexação · curadoria</p>
+      <h3 data-i18n="articles.a1.title">Do papel ao buscador</h3><p data-i18n="articles.a1.text">Como digitalização, OCR, curadoria com IA e indexação transformam jornais antigos em texto pesquisável.</p>
+      <span class="article-link" data-i18n="articles.read">Ler no Portal</span>
+    </a>
+    <a class="article-card reveal" href="https://historiadoceara.com.br/blog/iacema-a-inteligencia-artificial-que-ajuda-pesquisadores-a-explorar-dois-seculos-de-imprensa-cearense" target="_blank" rel="noopener">
+      <span class="article-number">02</span><p class="article-kicker" data-i18n="articles.a2.kicker">IA · ferramentas · fontes</p>
+      <h3 data-i18n="articles.a2.title">IAcema e a pesquisa no acervo</h3><p data-i18n="articles.a2.text">Como uma assistente consulta 2,5 milhões de manchetes e devolve respostas com fontes verificáveis.</p>
+      <span class="article-link" data-i18n="articles.read">Ler no Portal</span>
+    </a>
+  </div>
+  <a class="articles-all reveal" href="https://historiadoceara.com.br/blog" target="_blank" rel="noopener" data-i18n="articles.all">Ver todos os artigos do Portal ↗</a>
+</section>
+
 <!-- JOGOS -->
 <section id="jogos" class="games" data-accent="#3ef2d6">
   <div class="games-sticky">
     <header class="games-head">
       <div>
-        <p class="eyebrow" data-i18n="games.eyebrow">02 · Jogos autorais</p>
+        <p class="eyebrow" data-i18n="games.eyebrow">03 · Jogos autorais</p>
         <h2><span data-i18n="games.title">Motores, arte e som</span> <em class="serif" data-i18n="games.title2">feitos do zero.</em></h2>
       </div>
       <div class="games-manifesto">
@@ -200,8 +221,8 @@
       </div>
     </header>
     <div class="games-track" id="games-track">
-      <article class="game" style="--g:#7ed957">
-        <figure><img src="assets/img/fuel-storm.webp" alt="FUELMANIA sob tempestade" loading="lazy" width="1440" height="822"><img class="alt" src="assets/img/fuel-live.webp" alt="Tela de título do FUELMANIA" loading="lazy" width="1440" height="900"></figure>
+      <article class="game game-featured" style="--g:#7ed957">
+        <figure><video class="game-video" muted loop playsinline preload="none" poster="assets/img/fuelmania-poster.jpg" data-webm="assets/video/fuelmania-loop.webm" data-mp4="assets/video/fuelmania-loop.mp4" aria-label="Demonstração do FUELMANIA, um simulador de posto de gasolina" width="1280" height="720">Seu navegador não suporta vídeo. A imagem de apresentação do FUELMANIA permanece disponível.</video><span class="game-live" aria-hidden="true">simulação ao vivo</span></figure>
         <div class="game-body">
           <p class="game-kicker"><span data-i18n="game.fuel.k">Simulador de gestão · 3D · web e Android</span></p>
           <h3>FUELMANIA</h3>
@@ -252,7 +273,7 @@
 
 <!-- IA -->
 <section id="ia" class="ai" data-accent="#c4a6ff">
-  <p class="eyebrow reveal" data-i18n="ai.eyebrow">03 · IA em produção</p>
+  <p class="eyebrow reveal" data-i18n="ai.eyebrow">04 · IA em produção</p>
   <h2 class="reveal"><span data-i18n="ai.title">Cinco integrações de LLM</span> <em class="serif" data-i18n="ai.title2">com usuário na ponta.</em></h2>
   <p class="lead reveal" data-i18n="ai.lead">Não é demo. Cada uma tem custo por token monitorado, prompt versionado e um problema de produto que ela resolve.</p>
   <div class="ai-grid">
@@ -267,7 +288,7 @@
 
 <!-- STACK -->
 <section id="stack" class="stack" data-accent="#c4a6ff">
-  <p class="eyebrow reveal" data-i18n="stack.eyebrow">04 · Stack</p>
+  <p class="eyebrow reveal" data-i18n="stack.eyebrow">05 · Stack</p>
   <h2 class="reveal"><span data-i18n="stack.title">O que eu uso</span> <em class="serif" data-i18n="stack.title2">quando o produto é sério.</em></h2>
   <div class="stack-grid">
     <div class="stack-col reveal">
@@ -304,7 +325,7 @@
 <!-- JORNADA -->
 <section id="jornada" class="journey" data-accent="#c4a6ff">
   <div class="journey-intro">
-    <p class="eyebrow reveal" data-i18n="journey.eyebrow">05 · Jornada</p>
+    <p class="eyebrow reveal" data-i18n="journey.eyebrow">06 · Jornada</p>
     <h2 class="reveal"><span data-i18n="journey.title">Quatro anos e meio</span> <em class="serif" data-i18n="journey.title2">de código que foi para produção.</em></h2>
     <figure class="portrait reveal"><img src="assets/img/tales.webp" alt="Tales Santiago" width="900" height="1200" loading="lazy"></figure>
     <p class="reveal" data-i18n="journey.bio">Sou de Fortaleza. Faço Ciência da Computação na UECE, em conclusão, e trabalho como engenheiro desde 2022. Gosto de ficar entre o produto e a técnica: desenhar a mecânica de engajamento e depois implementar de ponta a ponta. Prefiro solução enxuta a arquitetura de vitrine.</p>
@@ -321,7 +342,7 @@
 
 <!-- CONTATO -->
 <section id="contato" class="contact" data-accent="#c4a6ff">
-  <p class="eyebrow reveal" data-i18n="contact.eyebrow">06 · Contato</p>
+  <p class="eyebrow reveal" data-i18n="contact.eyebrow">07 · Contato</p>
   <h2 class="reveal"><span data-i18n="contact.title">Tem um produto para construir?</span> <em class="serif" data-i18n="contact.title2">Vamos conversar.</em></h2>
   <p class="lead reveal" data-i18n="contact.lead">Disponível para vagas remotas e presenciais em Fortaleza, full stack ou mobile. Respondo em menos de 24 horas.</p>
   <div class="contact-grid reveal">
