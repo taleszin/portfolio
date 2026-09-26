@@ -196,28 +196,6 @@
   }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
   $$('[data-accent]').forEach(el => aio.observe(el));
 
-  /* ---------- horizontal games ---------- */
-  const games = $('.games'), track = $('#games-track'), gbar = $('#games-bar');
-  const layoutGames = () => {
-    if (innerWidth <= 900) { games.style.height = ''; track.style.transform = ''; return; }
-    const extra = track.scrollWidth - track.clientWidth;
-    games.style.height = `${innerHeight + extra}px`;
-    moveGames();
-  };
-  const moveGames = () => {
-    if (innerWidth <= 900) return;
-    const rect = games.getBoundingClientRect();
-    const total = games.offsetHeight - innerHeight;
-    const p = Math.min(1, Math.max(0, -rect.top / (total || 1)));
-    const extra = track.scrollWidth - track.clientWidth;
-    track.style.transform = `translate3d(${-p * extra}px,0,0)`;
-    gbar.style.width = `${p * 100}%`;
-  };
-  addEventListener('resize', layoutGames);
-  addEventListener('scroll', moveGames, { passive: true });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutGames);
-  addEventListener('load', layoutGames); layoutGames();
-
   /* ---------- cursor + magnetic ---------- */
   if (fine && !reduce) {
     const cur = $('.cursor');
