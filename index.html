@@ -28,7 +28,8 @@
 </script>
 </head>
 <body>
-<canvas id="aura" aria-hidden="true"></canvas>
+<canvas id="terrain" aria-hidden="true"></canvas>
+<p class="map-label" aria-hidden="true">03°43′S 038°32′W · FORTALEZA</p>
 <div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"></span></div>
 <div class="progress" aria-hidden="true"><span></span></div>
 
@@ -38,6 +39,7 @@
     <a href="#produtos" data-i18n="nav.products">Produtos</a>
     <a href="#artigos" data-i18n="nav.articles">Artigos</a>
     <a href="#jogos" data-i18n="nav.games">Jogos</a>
+    <a href="#hardware" data-i18n="nav.hw">Hardware</a>
     <a href="#ia" data-i18n="nav.ai">IA</a>
     <a href="#stack" data-i18n="nav.stack">Stack</a>
     <a href="#jornada" data-i18n="nav.journey">Jornada</a>
@@ -50,25 +52,94 @@
 <main id="top">
 
 <!-- HERO -->
-<section class="hero" data-accent="#c4a6ff">
-  <p class="eyebrow reveal" data-i18n="hero.eyebrow">Full Stack Engineer · Fortaleza, Brasil · remoto</p>
-  <h1 class="hero-title">
-    <span class="line"><span class="word" data-i18n="hero.l1">Construo produtos</span></span>
-    <span class="line"><span class="word" data-i18n="hero.l2">que pessoas de verdade</span></span>
-    <span class="line"><span class="word serif" data-i18n="hero.l3">usam todo dia.</span></span>
-  </h1>
-  <p class="hero-sub reveal" data-i18n="hero.sub">Node e TypeScript no servidor, React e React Native na tela, modelos de linguagem no meio. Hoje mantenho no ar um app de tutoria por voz, um SaaS clínico e um acervo histórico que responde perguntas. Nas horas vagas, faço jogos.</p>
-  <div class="hero-cta reveal">
+<section class="hero" data-accent="#7c8cff">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow reveal" data-i18n="hero.eyebrow">Full Stack Engineer · Fortaleza, Brasil · remoto</p>
+      <h1 class="hero-title">
+        <span class="line"><span class="word" data-i18n="hero.l1">Construo produtos</span></span>
+        <span class="line"><span class="word" data-i18n="hero.l2">que pessoas reais</span></span>
+        <span class="line"><span class="word serif" data-i18n="hero.l3">usam todo dia.</span></span>
+      </h1>
+      <p class="hero-sub reveal" data-i18n="hero.sub">Node e TypeScript no servidor, React e React Native na tela, modelos de linguagem no meio. Nas horas vagas, faço jogos.</p>
+      <div class="hero-cta reveal">
     <a class="btn btn-primary magnetic" href="https://wa.me/5585984038749?text=Ol%C3%A1%20Tales!%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20conversar." target="_blank" rel="noopener"><span data-i18n="hero.cta1">Falar no WhatsApp</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
     <a class="btn btn-ghost magnetic" href="https://github.com/taleszin" target="_blank" rel="noopener" data-i18n="hero.cta2">Ver GitHub</a>
   </div>
-  <ul class="hero-stats reveal" aria-label="Números">
+    </div>
+    <div class="showcase" id="showcase" role="region" aria-roledescription="carousel" aria-label="Principais projetos">
+      <div class="showcase-stage">
+      <article class="showcase-slide is-active" data-accent="#7c8cff" aria-roledescription="slide" aria-label="Leap Notes">
+        <a class="showcase-media" href="#leapnotes" tabindex="-1" aria-hidden="true">
+          <figure class="frame browser"><span class="frame-bar"><i></i><i></i><i></i><b>leapnotes.app · anatomia 3D</b></span><img class="showcase-shot" src="assets/img/leap-anatomia3d-hero.webp" alt="" width="1272" height="795"></figure>
+          <figure class="frame phone"><img src="assets/img/leap-anatomia3d-mobile.webp" alt="" width="780" height="1688"></figure>
+        </a>
+        <div class="showcase-caption">
+          <div>
+            <h2>Leap Notes</h2>
+            <p data-i18n="show.leap.line">Caderno clínico com anatomia 3D, IA e checkout próprio.</p>
+            <a class="showcase-link" href="#leapnotes"><span data-i18n="show.case">Ver o case</span> <span aria-hidden="true">→</span></a>
+          </div>
+          <p class="showcase-metric"><strong data-i18n="show.leap.n">1.000+</strong><span data-i18n="show.leap.u">usuários reais</span></p>
+        </div>
+      </article>
+      <article class="showcase-slide" data-accent="#f8a634" aria-roledescription="slide" aria-label="Woolly">
+        <a class="showcase-media" href="#woolly" tabindex="-1" aria-hidden="true">
+          <figure class="frame browser"><span class="frame-bar"><i></i><i></i><i></i><b>Woolly · App Store e Google Play</b></span><div class="showcase-phones"><img src="assets/img/woolly-store-1.webp" alt="" width="462" height="1000"><img src="assets/img/woolly-store-2.webp" alt="" width="462" height="1000"><img src="assets/img/woolly-store-3.webp" alt="" width="462" height="1000"></div></figure>
+        </a>
+        <div class="showcase-caption">
+          <div>
+            <h2>Woolly</h2>
+            <p data-i18n="show.woolly.line">Tutor por voz com IA, na App Store e no Google Play.</p>
+            <a class="showcase-link" href="#woolly"><span data-i18n="show.case">Ver o case</span> <span aria-hidden="true">→</span></a>
+          </div>
+          <p class="showcase-metric"><strong data-i18n="show.woolly.n">80</strong><span data-i18n="show.woolly.u">alunos em piloto</span></p>
+        </div>
+      </article>
+      <article class="showcase-slide" data-accent="#e2b04a" aria-roledescription="slide" aria-label="Portal da História do Ceará">
+        <a class="showcase-media" href="#phc" tabindex="-1" aria-hidden="true">
+          <figure class="frame browser"><span class="frame-bar"><i></i><i></i><i></i><b>historiadoceara.com.br</b></span><img class="showcase-shot showcase-zoom" src="assets/img/phc-home.webp" alt="" width="1440" height="900"></figure>
+        </a>
+        <div class="showcase-caption">
+          <div>
+            <h2>Portal da História do Ceará</h2>
+            <p data-i18n="show.phc.line">Acervo de jornais com uma assistente que cita a fonte.</p>
+            <a class="showcase-link" href="#phc"><span data-i18n="show.case">Ver o case</span> <span aria-hidden="true">→</span></a>
+          </div>
+          <p class="showcase-metric"><strong data-i18n="show.phc.n">2,5 mi</strong><span data-i18n="show.phc.u">manchetes buscáveis</span></p>
+        </div>
+      </article>
+      <article class="showcase-slide" data-accent="#3ef2d6" aria-roledescription="slide" aria-label="FUELMANIA">
+        <a class="showcase-media" href="#jogos" tabindex="-1" aria-hidden="true">
+          <figure class="frame browser"><span class="frame-bar"><i></i><i></i><i></i><b>FUELMANIA · jogo ao vivo</b></span><video class="showcase-video" muted loop playsinline preload="none" poster="assets/img/fuelmania-poster.jpg" data-hero-src="assets/video/fuelmania-loop.mp4"></video></figure>
+        </a>
+        <div class="showcase-caption">
+          <div>
+            <h2>FUELMANIA</h2>
+            <p data-i18n="show.fuel.line">Simulador 3D de posto de gasolina, todo gerado em código.</p>
+            <a class="showcase-link" href="#jogos"><span data-i18n="show.case">Ver o case</span> <span aria-hidden="true">→</span></a>
+          </div>
+          <p class="showcase-metric"><strong data-i18n="show.fuel.n">100%</strong><span data-i18n="show.fuel.u">procedural</span></p>
+        </div>
+      </article>
+      </div>
+      <div class="showcase-nav">
+        <div class="showcase-tabs" role="tablist">
+        <button class="showcase-tab is-active" type="button" role="tab" aria-selected="true" data-index="0"><span>Leap Notes</span><i></i></button>
+        <button class="showcase-tab" type="button" role="tab" aria-selected="false" data-index="1"><span>Woolly</span><i></i></button>
+        <button class="showcase-tab" type="button" role="tab" aria-selected="false" data-index="2"><span>Portal</span><i></i></button>
+        <button class="showcase-tab" type="button" role="tab" aria-selected="false" data-index="3"><span>FUELMANIA</span><i></i></button>
+        </div>
+        <button class="showcase-pause" id="showcase-pause" type="button" aria-label="Pausar carrossel" aria-pressed="false"></button>
+      </div>
+    </div>
+  </div>
+  <ul class="hero-stats" aria-label="Números">
     <li><strong class="count" data-count="4">0</strong><span data-i18n="stat.products">produtos em produção</span></li>
     <li><strong><span class="count" data-count="1000">0</span>+</strong><span data-i18n="stat.doctors">médicos e estudantes no Leap-Notes</span></li>
     <li><strong><span class="count" data-count="2.5" data-decimals="1">0</span> mi</strong><span data-i18n="stat.headlines">manchetes buscáveis no Portal</span></li>
     <li><strong class="count" data-count="3">0</strong><span data-i18n="stat.games">jogos autorais publicados</span></li>
   </ul>
-  <div class="scroll-hint" aria-hidden="true"><span></span></div>
 </section>
 
 <!-- MARQUEE -->
@@ -268,9 +339,73 @@
   </div>
 </section>
 
+<!-- HARDWARE: TALESZIN OS -->
+<section id="hardware" class="hw" data-accent="#ff7a1a">
+  <header class="hw-head">
+    <div>
+      <p class="eyebrow reveal" data-i18n="hw.eyebrow">04 · Baixo nível</p>
+      <h2 class="reveal"><span data-i18n="hw.title">Um tablet de 2014 que ia pro lixo</span> <em class="serif" data-i18n="hw.title2">virou um sistema operacional.</em></h2>
+    </div>
+    <p class="lead reveal" data-i18n="hw.lead">O Multilaser M7s tem 512 MB de RAM, dois núcleos a 1 GHz e nenhuma ROM alternativa no mundo. Escrevi a primeira: o Taleszin OS, com build reproduzível a partir do firmware oficial, serviços de boot em shell, hooks na interface do Android e cinco apps nativos feitos sem Gradle. Tudo pelo cabo USB, sem abrir o aparelho.</p>
+  </header>
+
+  <div class="hw-stage reveal">
+    <figure class="tablet" aria-label="Telas do Taleszin OS no tablet">
+      <span class="tablet-cam" aria-hidden="true"></span>
+      <div class="tablet-screen">
+        <img src="assets/img/tablet-home.webp" alt="Tela inicial do Taleszin OS com relógio, favoritos e papel de parede de quadra de basquete" width="800" height="480">
+        <img src="assets/img/tablet-estante.webp" alt="Estante, o leitor de livros próprio, com a biblioteca de capas e o card Continuar lendo" loading="lazy" width="800" height="480">
+        <img src="assets/img/tablet-leitor.webp" alt="Página de livro aberta no leitor Estante, estilo Kindle" loading="lazy" width="800" height="480">
+        <img src="assets/img/tablet-fliperama.webp" alt="Fliperama, a grade de jogos homebrew com capas" loading="lazy" width="800" height="480">
+        <img src="assets/img/tablet-supercooked.webp" alt="Supercooked, um jogo homebrew de Super Nintendo, rodando a 60 quadros por segundo" loading="lazy" width="800" height="480">
+      </div>
+      <figcaption class="tablet-label" aria-hidden="true"><span>M7s · RK3026 · 512 MB</span><b data-i18n="hw.live">no aparelho de verdade</b></figcaption>
+    </figure>
+    <figure class="tablet tablet-portrait" aria-label="App Diagnóstico">
+      <span class="tablet-cam" aria-hidden="true"></span>
+      <div class="tablet-screen"><img src="assets/img/tablet-diag.webp" alt="App Diagnóstico mostrando modelo, Android 4.4.2, versão do Taleszin OS e frequência da CPU" loading="lazy" width="480" height="800"></div>
+    </figure>
+    <div class="term" aria-label="Trecho do serviço que lê o botão liga/desliga direto do kernel">
+      <p class="term-bar"><i></i><i></i><i></i><b>m7s-botao · sh</b></p>
+<pre><code><span class="c"># evdev cru: struct input_event de 16 bytes</span>
+set -- $(dd bs=16 count=1 &lt;&amp;3 | od -b)
+<span class="c"># type 001 = EV_KEY · code 164 = KEY_POWER</span>
+[ "${10}${11}" = 001000 ] || continue
+<span class="c"># segurou 8 s: sync, só-leitura, reboot</span>
+echo s &gt; /proc/sysrq-trigger
+echo u &gt; /proc/sysrq-trigger
+echo b &gt; /proc/sysrq-trigger</code></pre>
+    </div>
+  </div>
+
+  <ol class="layers" aria-label="O que foi feito em cada camada, de baixo para cima">
+    <li class="layer reveal"><span class="layer-n">01</span><div><h4 data-i18n="hw.l1.t">Hardware e gravação</h4><p data-i18n="hw.l1.p">Rockchip RK3026, NAND e partições mapeadas por engenharia reversa do firmware oficial. Backup completo em modo loader e gravação pelo Mac com rkflashtool, com conferência por sha256 bloco a bloco.</p></div></li>
+    <li class="layer reveal"><span class="layer-n">02</span><div><h4 data-i18n="hw.l2.t">Kernel e drivers</h4><p data-i18n="hw.l2.p">O sensor de bateria do kernel congela entre degraus de porcentagem, então a tensão real vem do ADC lido direto (× 6,06 mV). O botão liga/desliga é lido como evento cru do evdev e, segurado por 8 s, força um reinício limpo via sysrq, um reset que o aparelho não tinha.</p></div></li>
+    <li class="layer reveal"><span class="layer-n">03</span><div><h4 data-i18n="hw.l3.t">Boot e serviços</h4><p data-i18n="hw.l3.p">Serviços em shell que sobem no init: zRAM de 128 MB, KSM, governador de CPU ajustado, uma sentinela que mata o processo certo antes do travamento por falta de memória, caixa-preta que explica no boot seguinte por que a sessão anterior acabou e um vigia de bateria em degraus.</p></div></li>
+    <li class="layer reveal"><span class="layer-n">04</span><div><h4 data-i18n="hw.l4.t">Sistema e interface</h4><p data-i18n="hw.l4.p">system.img reproduzível a partir do zip oficial, sem versionar firmware nem APK de terceiros. Hooks em Xposed na SystemUI para trocar o layout de tablet pelo de celular, contextos de SELinux corrigidos para o hook carregar e animação de boot própria.</p></div></li>
+    <li class="layer reveal"><span class="layer-n">05</span><div><h4 data-i18n="hw.l5.t">Apps nativos</h4><p data-i18n="hw.l5.p">Tela inicial, tema, Diagnóstico, leitor de livros Estante (paginação em colunas numa WebView de 2013) e Fliperama, que abre jogos homebrew direto no emulador. Java puro, compilado com aapt2 e d8 sem Gradle: a maioria dos apps tem menos de 120 KB.</p></div></li>
+  </ol>
+
+  <div class="hw-foot">
+    <ul class="metrics reveal">
+      <li><strong>512 MB</strong><span data-i18n="hw.m1">de RAM, com zRAM e KSM para caber</span></li>
+      <li><strong><span class="count" data-count="0">0</span></strong><span data-i18n="hw.m2">ROMs alternativas antes desta para o aparelho</span></li>
+      <li><strong><span class="count" data-count="5">0</span></strong><span data-i18n="hw.m3">apps nativos próprios, nenhum com Gradle</span></li>
+      <li><strong><span class="count" data-count="60">0</span> fps</strong><span data-i18n="hw.m4">no Super Nintendo, com um shim de compatibilidade para o emulador</span></li>
+    </ul>
+    <div class="hw-side">
+      <figure class="hw-shot reveal"><img src="assets/img/tablet-bateria.webp" alt="Aviso de bateria crítica do Taleszin OS sobre o navegador" loading="lazy" width="480" height="800"><figcaption data-i18n="hw.cap">O vigia de bateria reduz a CPU e o brilho antes do apagão.</figcaption></figure>
+      <div>
+        <p class="chips reveal"><span>Android 4.4 / AOSP</span><span>Shell (mksh, busybox)</span><span>Linux evdev · sysrq</span><span>rkflashtool</span><span>SELinux</span><span>Xposed</span><span>Java · aapt2 · d8</span><span>libretro</span></p>
+        <p class="links reveal"><a class="link-arrow" href="https://github.com/taleszin/taleszin-os" target="_blank" rel="noopener" data-i18n="link.code">Ver o código</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- IA -->
 <section id="ia" class="ai" data-accent="#c4a6ff">
-  <p class="eyebrow reveal" data-i18n="ai.eyebrow">04 · IA em produção</p>
+  <p class="eyebrow reveal" data-i18n="ai.eyebrow">05 · IA em produção</p>
   <h2 class="reveal"><span data-i18n="ai.title">Cinco integrações de LLM</span> <em class="serif" data-i18n="ai.title2">com usuário na ponta.</em></h2>
   <p class="lead reveal" data-i18n="ai.lead">Não é demo. Cada uma tem custo por token monitorado, prompt versionado e um problema de produto que ela resolve.</p>
   <div class="ai-grid">
@@ -285,7 +420,7 @@
 
 <!-- STACK -->
 <section id="stack" class="stack" data-accent="#c4a6ff">
-  <p class="eyebrow reveal" data-i18n="stack.eyebrow">05 · Stack</p>
+  <p class="eyebrow reveal" data-i18n="stack.eyebrow">06 · Stack</p>
   <h2 class="reveal"><span data-i18n="stack.title">O que eu uso</span> <em class="serif" data-i18n="stack.title2">quando o produto é sério.</em></h2>
   <div class="stack-grid">
     <div class="stack-col reveal">
@@ -322,7 +457,7 @@
 <!-- JORNADA -->
 <section id="jornada" class="journey" data-accent="#c4a6ff">
   <div class="journey-intro">
-    <p class="eyebrow reveal" data-i18n="journey.eyebrow">06 · Jornada</p>
+    <p class="eyebrow reveal" data-i18n="journey.eyebrow">07 · Jornada</p>
     <h2 class="reveal"><span data-i18n="journey.title">Quatro anos e meio</span> <em class="serif" data-i18n="journey.title2">de código que foi para produção.</em></h2>
     <figure class="portrait reveal"><img src="assets/img/tales.webp" alt="Tales Santiago" width="900" height="1200" loading="lazy"></figure>
     <p class="reveal" data-i18n="journey.bio">Sou de Fortaleza. Faço Ciência da Computação na UECE, em conclusão, e trabalho como engenheiro desde 2022. Gosto de ficar entre o produto e a técnica: desenhar a mecânica de engajamento e depois implementar de ponta a ponta. Prefiro solução enxuta a arquitetura de vitrine.</p>
@@ -339,7 +474,7 @@
 
 <!-- CONTATO -->
 <section id="contato" class="contact" data-accent="#c4a6ff">
-  <p class="eyebrow reveal" data-i18n="contact.eyebrow">07 · Contato</p>
+  <p class="eyebrow reveal" data-i18n="contact.eyebrow">08 · Contato</p>
   <h2 class="reveal"><span data-i18n="contact.title">Tem um produto para construir?</span> <em class="serif" data-i18n="contact.title2">Vamos conversar.</em></h2>
   <p class="lead reveal" data-i18n="contact.lead">Disponível para vagas remotas e presenciais em Fortaleza, full stack ou mobile. Respondo em menos de 24 horas.</p>
   <div class="contact-grid reveal">

@@ -40,11 +40,16 @@
 
   /* ---------- i18n ---------- */
   const EN = {
-    'nav.products': 'Products', 'nav.articles': 'Articles', 'nav.games': 'Games', 'nav.ai': 'AI', 'nav.stack': 'Stack', 'nav.journey': 'Journey', 'nav.contact': 'Contact',
+    'nav.products': 'Products', 'nav.articles': 'Articles', 'nav.games': 'Games', 'nav.hw': 'Hardware', 'nav.ai': 'AI', 'nav.stack': 'Stack', 'nav.journey': 'Journey', 'nav.contact': 'Contact',
     'hero.eyebrow': 'Full Stack Engineer · Fortaleza, Brazil · remote',
     'hero.l1': 'I build products', 'hero.l2': 'that real people', 'hero.l3': 'use every day.',
-    'hero.sub': 'Node and TypeScript on the server, React and React Native on the screen, language models in between. Right now I keep a voice tutoring app, a clinical SaaS and a historical archive that answers questions in production. In my spare time, I make games.',
+    'hero.sub': 'Node and TypeScript on the server, React and React Native on the screen, language models in between. In my spare time, I make games.',
     'hero.cta1': 'Message me on WhatsApp', 'hero.cta2': 'See GitHub',
+    'show.case': 'See the case',
+    'show.leap.line': 'Clinical notebook with 3D anatomy, AI and an in-house checkout.', 'show.leap.n': '1,000+', 'show.leap.u': 'real users',
+    'show.woolly.line': 'Voice AI tutor on the App Store and Google Play.', 'show.woolly.n': '80', 'show.woolly.u': 'students in pilot',
+    'show.phc.line': 'A newspaper archive with an assistant that cites its sources.', 'show.phc.n': '2.5M', 'show.phc.u': 'searchable headlines',
+    'show.fuel.line': 'A 3D gas station sim, entirely generated in code.', 'show.fuel.n': '100%', 'show.fuel.u': 'procedural',
     'stat.products': 'products in production', 'stat.doctors': 'doctors and med students on Leap Notes', 'stat.headlines': 'searchable headlines in the Portal', 'stat.games': 'original games published',
     'products.eyebrow': '01 · Products', 'products.title': 'Three products live,', 'products.title2': 'with people on the other side.',
     'badge.live': 'live', 'badge.stores': 'App Store · Play Store', 'link.visit': 'Open the product', 'link.play': 'Play in the browser', 'link.code': 'See the code',
@@ -90,7 +95,16 @@
     'game.hylo.k': 'Artificial life sim · pixel art · Phaser',
     'game.hylo.p': 'You are the scientist: combine matter, form and energy to create geometric golems, then observe, breed and evolve them. Underneath there is Mendelian genetics with mutation, steering behaviors and real formulas for the stats, inspired by Aristotle\'s hylomorphism. Original pixel art direction, soundtrack and opening video, with a full GDD behind it.',
     'game.hylo.f1': 'Genetics with variable dominance and mutation', 'game.hylo.f2': 'Original art, music and script', 'game.hylo.f3': 'Published on GitHub Pages',
-    'ai.eyebrow': '04 · AI in production', 'ai.title': 'Five LLM integrations', 'ai.title2': 'with a user at the end.',
+    'hw.eyebrow': '04 · Low level', 'hw.title': 'A 2014 tablet headed for the trash', 'hw.title2': 'became an operating system.', 'hw.live': 'on the real device',
+    'hw.lead': 'The Multilaser M7s has 512 MB of RAM, two cores at 1 GHz and no alternative ROM anywhere. I wrote the first one: Taleszin OS, with a reproducible build from the official firmware, shell boot services, hooks into the Android UI and five native apps built without Gradle. All over a USB cable, without opening the device.',
+    'hw.l1.t': 'Hardware and flashing', 'hw.l1.p': 'Rockchip RK3026, NAND and partitions mapped by reverse engineering the official firmware. Full backup in loader mode and flashing from a Mac with rkflashtool, verified block by block with sha256.',
+    'hw.l2.t': 'Kernel and drivers', 'hw.l2.p': 'The kernel battery sensor freezes between percentage steps, so the real voltage comes straight from the ADC (× 6.06 mV). The power button is read as a raw evdev event and, held for 8 s, forces a clean reboot through sysrq, a reset the device never had.',
+    'hw.l3.t': 'Boot and services', 'hw.l3.p': 'Shell services started by init: 128 MB zRAM, KSM, a tuned CPU governor, a sentinel that kills the right process before an out-of-memory freeze, a black box that explains on the next boot why the last session ended, and a stepped battery guard.',
+    'hw.l4.t': 'System and UI', 'hw.l4.p': 'A system.img reproducible from the official zip, with no firmware or third-party APKs in version control. Xposed hooks into SystemUI swap the tablet layout for the phone one, SELinux contexts are fixed so the hook loads, plus a custom boot animation.',
+    'hw.l5.t': 'Native apps', 'hw.l5.p': 'Home screen, theme, Diagnostics, the Estante book reader (column pagination in a 2013 WebView) and Fliperama, which launches homebrew games straight into the emulator. Plain Java built with aapt2 and d8, no Gradle: most apps weigh under 120 KB.',
+    'hw.m1': 'of RAM, with zRAM and KSM to make it fit', 'hw.m2': 'alternative ROMs for this device before this one', 'hw.m3': 'native apps of my own, none using Gradle', 'hw.m4': 'on Super Nintendo, with a compatibility shim for the emulator',
+    'hw.cap': 'The battery guard lowers CPU and brightness before the blackout.',
+    'ai.eyebrow': '05 · AI in production', 'ai.title': 'Five LLM integrations', 'ai.title2': 'with a user at the end.',
     'ai.lead': 'Not demos. Each one has monitored token cost, a versioned prompt and a product problem it solves.',
     'ai.c1': 'Agent with a tool loop: 16 SQL tools with prepared statements query newspapers, facts and authors. Every answer ships with a citation from the archive. Versioned prompt and conversations curated in a dedicated panel.',
     'ai.c2t': 'Woolly voice tutor', 'ai.c2': 'Spoken conversation in real time: transcription, model and speech synthesis chained over WebSocket, with multiple tutor personalities and latency treated as a product requirement.',
@@ -98,7 +112,7 @@
     'ai.c4': 'Structured generation of tests, lesson plans and educational games with validated output and PDF and DOCX export.',
     'ai.c5': 'Socratic tutor for the ENEM exam: the model is instructed to ask before answering, with adaptive difficulty and gamification.',
     'ai.c6t': 'How I work with AI', 'ai.c6': 'I use coding agents daily, with multi-agent audits before implementing and adversarial review before every PR. The speed only counts when the tests pass and a human review approves.',
-    'stack.eyebrow': '05 · Stack', 'stack.title': 'What I reach for', 'stack.title2': 'when the product is serious.',
+    'stack.eyebrow': '06 · Stack', 'stack.title': 'What I reach for', 'stack.title2': 'when the product is serious.',
     'stack.h1': 'Server', 'stack.h2': 'Screen', 'stack.h3': 'Data and operations',
     'stack.s1': '46 Leap Notes edge functions, FUELMANIA Vercel Functions, Edutopia and ENEMBot APIs in Next.js',
     'stack.s2': 'Woolly main back-end: gamification, domain events, server-authoritative APIs',
@@ -111,7 +125,7 @@
     'stack.s10': 'full-text index over 2.5 million rows', 'stack.s11': 'five integrations in production',
     'stack.s12': 'subscription, card and Pix, with an in-house checkout',
     'stack.s13': 'deploy, monitoring and telemetry across every product',
-    'journey.eyebrow': '06 · Journey', 'journey.title': 'Four and a half years', 'journey.title2': 'of code that shipped.',
+    'journey.eyebrow': '07 · Journey', 'journey.title': 'Four and a half years', 'journey.title2': 'of code that shipped.',
     'journey.bio': 'I am from Fortaleza. I study Computer Science at UECE, finishing the degree, and have worked as an engineer since 2022. I like sitting between product and engineering: designing the engagement mechanic and then implementing it end to end. I prefer a lean solution to showcase architecture.',
     'journey.j1': 'Full Stack Engineer. Voice tutoring app on both stores, gamification, coordination panel and school pilots.',
     'journey.j2': 'Co-founder and lead engineer. Clinical SaaS with more than a thousand doctors and students, payments and mobile.',
@@ -119,7 +133,7 @@
     'journey.j4': 'Software engineering and SLA support. PHP, JavaScript and Figma prototyping.',
     'journey.j5': 'Research and process management. Machine learning for clinical risk prediction in the CONCERN project.',
     'journey.j6time': 'in progress', 'journey.j6t': 'Computer Science · UECE', 'journey.j6': 'Bachelor\'s degree. Fluent English, intermediate Spanish.',
-    'contact.eyebrow': '07 · Contact', 'contact.title': 'Have a product to build?', 'contact.title2': 'Let\'s talk.',
+    'contact.eyebrow': '08 · Contact', 'contact.title': 'Have a product to build?', 'contact.title2': 'Let\'s talk.',
     'contact.lead': 'Available for remote roles and on-site in Fortaleza, full stack or mobile. I reply within 24 hours.',
     'footer.made': 'Designed and built by Tales Santiago.', 'footer.tech': 'No framework, no template: HTML, CSS and JavaScript.', 'footer.src': 'source of this page',
   };
@@ -130,6 +144,8 @@
     en: { title: 'Tales Santiago | Full Stack Engineer · Node, React, React Native and AI in production', desc: 'Full Stack Engineer from Fortaleza, Brazil. Node/TypeScript, React, React Native and AI in production: a voice tutoring app on the stores, a clinical SaaS with 1,000+ doctors, a historical archive with 2.5 million headlines and three original games.' },
   };
   let lang = 'pt';
+  let syncShowcaseLabel = () => {};
+  let pulseTerrain = () => {};
   const setLang = (l) => {
     lang = l;
     const dict = l === 'en' ? EN : PT;
@@ -139,6 +155,8 @@
     $('meta[name="description"]').content = META[l].desc;
     $$('#lang span').forEach((s, i) => s.classList.toggle('on', (i === 0) === (l === 'pt')));
     $('#lang').setAttribute('aria-label', l === 'pt' ? 'Switch to English' : 'Mudar para português');
+    $('#showcase').setAttribute('aria-label', l === 'pt' ? 'Principais projetos' : 'Main projects');
+    syncShowcaseLabel();
     try { localStorage.setItem('lang', l); } catch (e) {}
   };
   $('#lang').addEventListener('click', () => setLang(lang === 'pt' ? 'en' : 'pt'));
@@ -194,7 +212,131 @@
   const aio = new IntersectionObserver((entries) => {
     entries.forEach(en => { if (en.isIntersecting) root.style.setProperty('--accent', en.target.dataset.accent); });
   }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
-  $$('[data-accent]').forEach(el => aio.observe(el));
+  $$('[data-accent]:not(.showcase-slide)').forEach(el => aio.observe(el));
+
+  /* ---------- hero showcase ---------- */
+  {
+    const box = $('#showcase'), hero = $('.hero');
+    const slides = $$('.showcase-slide', box), tabs = $$('.showcase-tab', box), pauseBtn = $('#showcase-pause');
+    let current = 0, userPaused = reduce, focused = false, heroVisible = true;
+
+    const syncPause = () => {
+      box.classList.toggle('is-paused', userPaused || focused || !heroVisible);
+      pauseBtn.setAttribute('aria-pressed', String(userPaused));
+    };
+    syncShowcaseLabel = () => {
+      const label = lang === 'pt' ? (userPaused ? 'Retomar carrossel' : 'Pausar carrossel') : (userPaused ? 'Resume carousel' : 'Pause carousel');
+      pauseBtn.setAttribute('aria-label', label);
+    };
+    const syncVideo = () => {
+      slides.forEach((slide, i) => {
+        const video = $('video', slide);
+        if (!video) return;
+        const upNext = i === (current + 1) % slides.length;
+        if (video.dataset.heroSrc && !reduce && heroVisible && (i === current || upNext)) {
+          video.muted = true;
+          video.preload = 'auto';
+          video.src = video.dataset.heroSrc;
+          delete video.dataset.heroSrc;
+        }
+        if (i !== current || !heroVisible || reduce) { video.pause(); return; }
+        video.play().catch(() => {});
+      });
+    };
+    let stopCount = () => {};
+    const countUp = (el) => {
+      const text = () => (lang === 'en' ? EN : PT)[el.dataset.i18n];
+      const token = text().match(/\d[\d.,]*/)[0];
+      const grouped = /[.,]\d{3}$/.test(token);
+      const target = Number(grouped ? token.replace(/\D/g, '') : token.replace(',', '.'));
+      const digits = !grouped && /[.,]/.test(token) ? 1 : 0;
+      const start = performance.now();
+      let raf;
+      const frame = (now) => {
+        const t = Math.min((now - start) / 900, 1);
+        if (t === 1) { el.textContent = text(); return; }
+        const value = target * (1 - (1 - t) ** 3);
+        const shown = value.toLocaleString(lang === 'en' ? 'en-US' : 'pt-BR', { minimumFractionDigits: digits, maximumFractionDigits: digits });
+        el.textContent = text().replace(/\d[\d.,]*/, shown);
+        raf = requestAnimationFrame(frame);
+      };
+      raf = requestAnimationFrame(frame);
+      stopCount = () => { cancelAnimationFrame(raf); el.textContent = text(); };
+    };
+    const go = (index, dir = 1) => {
+      const previous = current;
+      current = (index + slides.length) % slides.length;
+      box.style.setProperty('--showcase-dir', dir);
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('is-active', i === current);
+        slide.classList.toggle('was-active', i === previous && i !== current);
+        slide.inert = i !== current;
+      });
+      tabs.forEach((tab, i) => {
+        tab.classList.toggle('is-active', i === current);
+        tab.setAttribute('aria-selected', String(i === current));
+        tab.tabIndex = i === current ? 0 : -1;
+      });
+      hero.dataset.accent = slides[current].dataset.accent;
+      if (heroVisible) root.style.setProperty('--accent', hero.dataset.accent);
+      syncVideo();
+      stopCount();
+      if (!reduce) countUp($('.showcase-metric strong', slides[current]));
+      pulseTerrain();
+    };
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => { if (i !== current) go(i, i > current ? 1 : -1); });
+      $('i', tab).addEventListener('animationend', () => go(i + 1));
+    });
+    $('.showcase-tabs', box).addEventListener('keydown', e => {
+      const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+      if (!step) return;
+      e.preventDefault();
+      go(current + step, step);
+      tabs[current].focus();
+    });
+    pauseBtn.addEventListener('click', () => { userPaused = !userPaused; syncPause(); syncShowcaseLabel(); });
+    box.addEventListener('focusin', e => { focused = e.target.matches(':focus-visible'); syncPause(); });
+    box.addEventListener('focusout', () => { focused = false; syncPause(); });
+
+    let touchX = null;
+    const stage = $('.showcase-stage', box);
+    stage.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+    stage.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 40) { const dir = dx < 0 ? 1 : -1; go(current + dir, dir); }
+    }, { passive: true });
+
+    if (fine && !reduce) {
+      let targetX = 0, targetY = 0, tiltX = 0, tiltY = 0, raf = 0;
+      const tilt = () => {
+        tiltX += (targetX - tiltX) * 0.12;
+        tiltY += (targetY - tiltY) * 0.12;
+        stage.style.setProperty('--tilt-x', tiltX.toFixed(3));
+        stage.style.setProperty('--tilt-y', tiltY.toFixed(3));
+        const settled = Math.abs(targetX - tiltX) + Math.abs(targetY - tiltY) < 0.002;
+        raf = settled ? 0 : requestAnimationFrame(tilt);
+      };
+      const aim = (x, y) => { targetX = x; targetY = y; raf ||= requestAnimationFrame(tilt); };
+      stage.addEventListener('pointermove', e => {
+        const r = stage.getBoundingClientRect();
+        aim((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1);
+      });
+      stage.addEventListener('pointerleave', () => aim(0, 0));
+    }
+
+    $$('video', box).forEach(video => video.addEventListener('error', () => { video.removeAttribute('src'); video.load(); }, { once: true }));
+    new IntersectionObserver(([entry]) => {
+      heroVisible = entry.isIntersecting;
+      syncPause();
+      syncVideo();
+    }, { threshold: 0.25 }).observe(box);
+
+    syncPause();
+    syncShowcaseLabel();
+    go(0);
+  }
 
   /* ---------- cursor + magnetic ---------- */
   if (fine && !reduce) {
@@ -221,40 +363,139 @@
     });
   }
 
-  /* ---------- aura canvas ---------- */
-  const cv = $('#aura');
-  if (cv && !reduce) {
-    const ctx = cv.getContext('2d');
-    let w, h, dpr;
-    const blobs = [
-      { x: .2, y: .3, r: .45, s: .00021, o: 0 },
-      { x: .8, y: .2, r: .38, s: .00017, o: 2 },
-      { x: .5, y: .9, r: .5, s: .00013, o: 4 },
-    ];
-    let px = .5, py = .4, tx = .5, ty = .4;
-    const size = () => { dpr = Math.min(1.5, devicePixelRatio || 1); w = cv.width = innerWidth * dpr; h = cv.height = innerHeight * dpr; };
-    size(); addEventListener('resize', size);
-    addEventListener('mousemove', e => { tx = e.clientX / innerWidth; ty = e.clientY / innerHeight; }, { passive: true });
-    const hex = (c, a) => { const n = parseInt(c.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; };
-    let last = 0;
-    const draw = (t) => {
-      requestAnimationFrame(draw);
-      if (t - last < 33) return; last = t;
-      if (document.hidden) return;
-      px += (tx - px) * .04; py += (ty - py) * .04;
-      const acc = getComputedStyle(root).getPropertyValue('--accent').trim() || '#c4a6ff';
-      ctx.clearRect(0, 0, w, h);
-      ctx.globalCompositeOperation = 'lighter';
-      blobs.forEach((b, i) => {
-        const a = t * b.s + b.o;
-        const bx = (b.x + Math.cos(a) * .12 + (px - .5) * (.18 + i * .06)) * w;
-        const by = (b.y + Math.sin(a * 1.3) * .12 + (py - .5) * (.18 + i * .06)) * h;
-        const rad = b.r * Math.max(w, h) * .55;
-        const g = ctx.createRadialGradient(bx, by, 0, bx, by, rad);
-        g.addColorStop(0, hex(acc, .13)); g.addColorStop(1, hex(acc, 0));
-        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(bx, by, rad, 0, Math.PI * 2); ctx.fill();
-      });
+  /* ---------- terrain ---------- */
+  const cv = $('#terrain');
+  const gl = cv && cv.getContext('webgl2', { alpha: false, antialias: false, powerPreference: 'low-power' });
+  if (gl) {
+    const vert = `#version 300 es
+      void main() {
+        vec2 v = vec2((gl_VertexID << 1) & 2, gl_VertexID & 2);
+        gl_Position = vec4(v * 2. - 1., 0., 1.);
+      }`;
+    const frag = `#version 300 es
+      precision highp float;
+      uniform vec2 uRes;
+      uniform float uTime, uScroll, uQuality;
+      uniform vec3 uAccent, uMouse, uRipple;
+      out vec4 color;
+
+      // Integer hash: a float one rounds differently per GPU and tears the contours along noise cell edges.
+      float hash(ivec2 cell) {
+        uvec2 v = uvec2(cell) * 1664525u + 1013904223u;
+        v.x += v.y * 1664525u;
+        v.y += v.x * 1664525u;
+        v ^= v >> 16u;
+        v.x += v.y * 1664525u;
+        return float(v.x >> 8u) / 16777216.;
+      }
+      float noise(vec2 p) {
+        ivec2 i = ivec2(floor(p));
+        vec2 f = fract(p);
+        vec2 u = f * f * f * (f * (f * 6. - 15.) + 10.);
+        return mix(mix(hash(i), hash(i + ivec2(1, 0)), u.x), mix(hash(i + ivec2(0, 1)), hash(i + ivec2(1, 1)), u.x), u.y);
+      }
+      float fbm(vec2 p, int octaves) {
+        const mat2 turn = mat2(.8, .6, -.6, .8);
+        float amp = .5, sum = 0.;
+        for (int i = 0; i < octaves; i++) { sum += amp * noise(p); p = turn * p * 2.03 + 7.1; amp *= .5; }
+        return sum;
+      }
+      float contour(float v, float width) {
+        float w = max(fwidth(v), 1e-4);
+        float line = 1. - smoothstep(0., width, abs(fract(v - .5) - .5) / w);
+        return line * (1. - smoothstep(.3, .65, w));
+      }
+      void main() {
+        vec2 uv = (gl_FragCoord.xy - .5 * uRes) / uRes.y;
+        vec2 p = uv * 1.7 - vec2(0., uScroll);
+        vec2 warp = vec2(fbm(p + uTime * .035, 2), fbm(p + vec2(5.2, 1.3) - uTime * .028, 2)) * 1.3;
+        float h = fbm(p + warp * .95, 3);
+
+        float mouse = length(uv - uMouse.xy);
+        h += uMouse.z * .13 * exp(-mouse * mouse * 16.);
+
+        float age = uRipple.z;
+        float ring = exp(-pow((length(uv - uRipple.xy) - age * .8) * 6., 2.)) * exp(-age * 1.5);
+        h += ring * .045;
+
+        float v = h * 24.;
+        float light = (.07 * contour(v, 1.1) + .16 * contour(v / 5., 1.5)) * uQuality;
+        light *= 1. + 2.2 * uMouse.z * exp(-mouse * mouse * 9.) + 3. * ring;
+
+        vec2 cell = p * 1.25;
+        vec2 cross = abs(fract(cell + .5) - .5) * uRes.y / 2.125;
+        if ((cross.x < .7 && cross.y < 6.) || (cross.y < .7 && cross.x < 6.)) light += .2;
+
+        vec3 ground = vec3(.039, .039, .059) + uAccent * .012 * floor(v / 5.);
+        color = vec4(ground + uAccent * light, 1.);
+      }`;
+    const compile = (type, source) => {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      return shader;
     };
-    requestAnimationFrame(draw);
+    const program = gl.createProgram();
+    gl.attachShader(program, compile(gl.VERTEX_SHADER, vert));
+    gl.attachShader(program, compile(gl.FRAGMENT_SHADER, frag));
+    gl.linkProgram(program);
+    gl.useProgram(program);
+    const uniform = Object.fromEntries(['uRes', 'uTime', 'uScroll', 'uQuality', 'uAccent', 'uMouse', 'uRipple'].map(n => [n, gl.getUniformLocation(program, n)]));
+
+    const rgb = (hex) => { const n = parseInt(hex.slice(1), 16); return [(n >> 16) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255]; };
+    const toMap = (x, y) => [(x - innerWidth / 2) / innerHeight, (innerHeight / 2 - y) / innerHeight];
+    const accentNow = () => rgb(root.style.getPropertyValue('--accent').trim() || '#c4a6ff');
+    let accent = accentNow(), scroll = scrollY, mouse = [0, 0], mouseTarget = [0, 0], strength = 0, strengthTarget = 0;
+    let ripple = [0, 0], rippleStart = -1e4, last = 0, quality = 1, frames = 0, windowStart = 0;
+
+    const render = (now) => {
+      const target = accentNow();
+      accent = accent.map((c, i) => c + (target[i] - c) * .07);
+      scroll += (scrollY - scroll) * .12;
+      mouse = mouse.map((c, i) => c + (mouseTarget[i] - c) * .14);
+      strength += (strengthTarget - strength) * .08;
+      gl.uniform2f(uniform.uRes, cv.width, cv.height);
+      gl.uniform1f(uniform.uTime, now / 1000);
+      gl.uniform1f(uniform.uQuality, quality);
+      gl.uniform1f(uniform.uScroll, scroll / innerHeight * .55);
+      gl.uniform3f(uniform.uAccent, ...accent);
+      gl.uniform3f(uniform.uMouse, mouse[0], mouse[1], strength);
+      gl.uniform3f(uniform.uRipple, ripple[0], ripple[1], (now - rippleStart) / 1000);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+    };
+    const size = () => {
+      const dpr = Math.min(1.25, devicePixelRatio || 1) * quality;
+      cv.width = innerWidth * dpr;
+      cv.height = innerHeight * dpr;
+      gl.viewport(0, 0, cv.width, cv.height);
+      if (reduce) render(0);
+    };
+    size();
+    addEventListener('resize', size);
+
+    if (!reduce) {
+      if (fine) {
+        addEventListener('pointermove', e => { mouseTarget = toMap(e.clientX, e.clientY); strengthTarget = 1; }, { passive: true });
+        document.documentElement.addEventListener('mouseleave', () => { strengthTarget = 0; });
+      }
+      pulseTerrain = () => {
+        const r = $('#showcase').getBoundingClientRect();
+        ripple = toMap(r.left + r.width / 2, r.top + r.height * .4);
+        rippleStart = performance.now();
+      };
+      const loop = (now) => {
+        requestAnimationFrame(loop);
+        if (document.hidden) { frames = 0; return; }
+        if (now - last < 33) return;
+        last = now;
+        if (!frames) windowStart = now;
+        if (++frames > 30) {
+          frames = 0;
+          if ((now - windowStart) / 30 > 45 && quality > .6) { quality *= .8; size(); }
+        }
+        render(now);
+      };
+      requestAnimationFrame(loop);
+    }
   }
 })();
