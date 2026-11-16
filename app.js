@@ -42,15 +42,11 @@
   const EN = {
     'nav.products': 'Products', 'nav.articles': 'Articles', 'nav.games': 'Games', 'nav.hw': 'Hardware', 'nav.ai': 'AI', 'nav.stack': 'Stack', 'nav.journey': 'Journey', 'nav.contact': 'Contact',
     'hero.eyebrow': 'Full Stack Engineer · Fortaleza, Brazil · remote',
-    'hero.l1': 'I build products', 'hero.l2': 'that real people', 'hero.l3': 'use every day.',
+    'hero.l1': 'From back end', 'hero.l2': 'to kernel,', 'hero.l3': 'shipped and live.',
     'hero.sub': 'Node and TypeScript on the server, React and React Native on the screen, language models in between. In my spare time, I make games.',
-    'hero.cta1': 'Message me on WhatsApp', 'hero.cta2': 'See GitHub',
-    'show.case': 'See the case',
-    'show.leap.line': 'Clinical notebook with 3D anatomy, AI and an in-house checkout.', 'show.leap.n': '1,000+', 'show.leap.u': 'real users',
-    'show.woolly.line': 'Voice AI tutor on the App Store and Google Play.', 'show.woolly.n': '80', 'show.woolly.u': 'students in pilot',
-    'show.phc.line': 'A newspaper archive with an assistant that cites its sources.', 'show.phc.n': '2.5M', 'show.phc.u': 'searchable headlines',
-    'show.fuel.line': 'A 3D gas station sim, entirely generated in code.', 'show.fuel.n': '100%', 'show.fuel.u': 'procedural',
-    'stat.products': 'products in production', 'stat.doctors': 'doctors and med students on Leap Notes', 'stat.headlines': 'searchable headlines in the Portal', 'stat.games': 'original games published',
+    'hero.cta1': 'Message me on WhatsApp', 'hero.cta2': 'See the projects',
+    'stat.products': 'products in production', 'stat.doctors': 'doctors on Leap Notes', 'stat.hn': '2.5M', 'stat.dn': '1,000+', 'stat.headlines': 'headlines with AI',
+    'show.t1': '1,000+ doctors', 'show.t2': 'App Store · Play', 'show.t3': 'own ROM · 512 MB', 'show.t4': '2.5M headlines', 'show.t5': 'pure WebGL', 'show.t6': '100% procedural', 'show.t7': '3D anatomy', 'show.t8': 'a 2014 tablet', 'show.t9': 'school dashboard', 'show.t10': 'artificial life', 'show.t11': 'AI that cites sources', 'show.t12': 'voice tutor', 'show.t13': '7 med schools', 'show.t14': 'native reader', 'show.t15': 'in-house checkout',
     'products.eyebrow': '01 · Products', 'products.title': 'Three products live,', 'products.title2': 'with people on the other side.',
     'badge.live': 'live', 'badge.stores': 'App Store · Play Store', 'link.visit': 'Open the product', 'link.play': 'Play in the browser', 'link.code': 'See the code',
     'leap.title': 'The clinical notebook of more than a thousand doctors and medical students.',
@@ -144,8 +140,6 @@
     en: { title: 'Tales Santiago | Full Stack Engineer · Node, React, React Native and AI in production', desc: 'Full Stack Engineer from Fortaleza, Brazil. Node/TypeScript, React, React Native and AI in production: a voice tutoring app on the stores, a clinical SaaS with 1,000+ doctors, a historical archive with 2.5 million headlines and three original games.' },
   };
   let lang = 'pt';
-  let syncShowcaseLabel = () => {};
-  let pulseTerrain = () => {};
   const setLang = (l) => {
     lang = l;
     const dict = l === 'en' ? EN : PT;
@@ -155,8 +149,7 @@
     $('meta[name="description"]').content = META[l].desc;
     $$('#lang span').forEach((s, i) => s.classList.toggle('on', (i === 0) === (l === 'pt')));
     $('#lang').setAttribute('aria-label', l === 'pt' ? 'Switch to English' : 'Mudar para português');
-    $('#showcase').setAttribute('aria-label', l === 'pt' ? 'Principais projetos' : 'Main projects');
-    syncShowcaseLabel();
+    $('#mosaic').setAttribute('aria-label', l === 'pt' ? 'Telas reais dos projetos' : 'Real screens from the projects');
     try { localStorage.setItem('lang', l); } catch (e) {}
   };
   $('#lang').addEventListener('click', () => setLang(lang === 'pt' ? 'en' : 'pt'));
@@ -214,128 +207,11 @@
   }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
   $$('[data-accent]:not(.showcase-slide)').forEach(el => aio.observe(el));
 
-  /* ---------- hero showcase ---------- */
+  /* ---------- hero mosaic ---------- */
+  // As colunas só animam com a abertura na tela: fora dela o compositor fica livre.
   {
-    const box = $('#showcase'), hero = $('.hero');
-    const slides = $$('.showcase-slide', box), tabs = $$('.showcase-tab', box), pauseBtn = $('#showcase-pause');
-    let current = 0, userPaused = reduce, focused = false, heroVisible = true;
-
-    const syncPause = () => {
-      box.classList.toggle('is-paused', userPaused || focused || !heroVisible);
-      pauseBtn.setAttribute('aria-pressed', String(userPaused));
-    };
-    syncShowcaseLabel = () => {
-      const label = lang === 'pt' ? (userPaused ? 'Retomar carrossel' : 'Pausar carrossel') : (userPaused ? 'Resume carousel' : 'Pause carousel');
-      pauseBtn.setAttribute('aria-label', label);
-    };
-    const syncVideo = () => {
-      slides.forEach((slide, i) => {
-        const video = $('video', slide);
-        if (!video) return;
-        const upNext = i === (current + 1) % slides.length;
-        if (video.dataset.heroSrc && !reduce && heroVisible && (i === current || upNext)) {
-          video.muted = true;
-          video.preload = 'auto';
-          video.src = video.dataset.heroSrc;
-          delete video.dataset.heroSrc;
-        }
-        if (i !== current || !heroVisible || reduce) { video.pause(); return; }
-        video.play().catch(() => {});
-      });
-    };
-    let stopCount = () => {};
-    const countUp = (el) => {
-      const text = () => (lang === 'en' ? EN : PT)[el.dataset.i18n];
-      const token = text().match(/\d[\d.,]*/)[0];
-      const grouped = /[.,]\d{3}$/.test(token);
-      const target = Number(grouped ? token.replace(/\D/g, '') : token.replace(',', '.'));
-      const digits = !grouped && /[.,]/.test(token) ? 1 : 0;
-      const start = performance.now();
-      let raf;
-      const frame = (now) => {
-        const t = Math.min((now - start) / 900, 1);
-        if (t === 1) { el.textContent = text(); return; }
-        const value = target * (1 - (1 - t) ** 3);
-        const shown = value.toLocaleString(lang === 'en' ? 'en-US' : 'pt-BR', { minimumFractionDigits: digits, maximumFractionDigits: digits });
-        el.textContent = text().replace(/\d[\d.,]*/, shown);
-        raf = requestAnimationFrame(frame);
-      };
-      raf = requestAnimationFrame(frame);
-      stopCount = () => { cancelAnimationFrame(raf); el.textContent = text(); };
-    };
-    const go = (index, dir = 1) => {
-      const previous = current;
-      current = (index + slides.length) % slides.length;
-      box.style.setProperty('--showcase-dir', dir);
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('is-active', i === current);
-        slide.classList.toggle('was-active', i === previous && i !== current);
-        slide.inert = i !== current;
-      });
-      tabs.forEach((tab, i) => {
-        tab.classList.toggle('is-active', i === current);
-        tab.setAttribute('aria-selected', String(i === current));
-        tab.tabIndex = i === current ? 0 : -1;
-      });
-      hero.dataset.accent = slides[current].dataset.accent;
-      if (heroVisible) root.style.setProperty('--accent', hero.dataset.accent);
-      syncVideo();
-      stopCount();
-      if (!reduce) countUp($('.showcase-metric strong', slides[current]));
-      pulseTerrain();
-    };
-
-    tabs.forEach((tab, i) => {
-      tab.addEventListener('click', () => { if (i !== current) go(i, i > current ? 1 : -1); });
-      $('i', tab).addEventListener('animationend', () => go(i + 1));
-    });
-    $('.showcase-tabs', box).addEventListener('keydown', e => {
-      const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
-      if (!step) return;
-      e.preventDefault();
-      go(current + step, step);
-      tabs[current].focus();
-    });
-    pauseBtn.addEventListener('click', () => { userPaused = !userPaused; syncPause(); syncShowcaseLabel(); });
-    box.addEventListener('focusin', e => { focused = e.target.matches(':focus-visible'); syncPause(); });
-    box.addEventListener('focusout', () => { focused = false; syncPause(); });
-
-    let touchX = null;
-    const stage = $('.showcase-stage', box);
-    stage.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
-    stage.addEventListener('touchend', e => {
-      const dx = e.changedTouches[0].clientX - touchX;
-      if (Math.abs(dx) > 40) { const dir = dx < 0 ? 1 : -1; go(current + dir, dir); }
-    }, { passive: true });
-
-    if (fine && !reduce) {
-      let targetX = 0, targetY = 0, tiltX = 0, tiltY = 0, raf = 0;
-      const tilt = () => {
-        tiltX += (targetX - tiltX) * 0.12;
-        tiltY += (targetY - tiltY) * 0.12;
-        stage.style.setProperty('--tilt-x', tiltX.toFixed(3));
-        stage.style.setProperty('--tilt-y', tiltY.toFixed(3));
-        const settled = Math.abs(targetX - tiltX) + Math.abs(targetY - tiltY) < 0.002;
-        raf = settled ? 0 : requestAnimationFrame(tilt);
-      };
-      const aim = (x, y) => { targetX = x; targetY = y; raf ||= requestAnimationFrame(tilt); };
-      stage.addEventListener('pointermove', e => {
-        const r = stage.getBoundingClientRect();
-        aim((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1);
-      });
-      stage.addEventListener('pointerleave', () => aim(0, 0));
-    }
-
-    $$('video', box).forEach(video => video.addEventListener('error', () => { video.removeAttribute('src'); video.load(); }, { once: true }));
-    new IntersectionObserver(([entry]) => {
-      heroVisible = entry.isIntersecting;
-      syncPause();
-      syncVideo();
-    }, { threshold: 0.25 }).observe(box);
-
-    syncPause();
-    syncShowcaseLabel();
-    go(0);
+    const mosaic = $('#mosaic');
+    new IntersectionObserver(([en]) => mosaic.classList.toggle('is-off', !en.isIntersecting)).observe(mosaic);
   }
 
   /* ---------- cursor + magnetic ---------- */
@@ -343,12 +219,13 @@
     const cur = $('.cursor');
     let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
     addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
+    let craf = 0;
     const loop = () => {
       rx += (mx - rx) * 0.35; ry += (my - ry) * 0.35;
       cur.style.transform = `translate3d(${rx}px,${ry}px,0)`;
-      requestAnimationFrame(loop);
+      craf = Math.abs(mx - rx) + Math.abs(my - ry) > 0.3 ? requestAnimationFrame(loop) : 0;
     };
-    loop();
+    addEventListener('mousemove', () => { craf ||= requestAnimationFrame(loop); }, { passive: true });
     $$('a, button').forEach(el => {
       el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
       el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
@@ -464,7 +341,7 @@
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     };
     const size = () => {
-      const dpr = Math.min(1.25, devicePixelRatio || 1) * quality;
+      const dpr = .6 * quality; // contornos finos: meia resolução já basta e custa ~4x menos
       cv.width = innerWidth * dpr;
       cv.height = innerHeight * dpr;
       gl.viewport(0, 0, cv.width, cv.height);
@@ -478,16 +355,22 @@
         addEventListener('pointermove', e => { mouseTarget = toMap(e.clientX, e.clientY); strengthTarget = 1; }, { passive: true });
         document.documentElement.addEventListener('mouseleave', () => { strengthTarget = 0; });
       }
-      pulseTerrain = () => {
-        const r = $('#showcase').getBoundingClientRect();
+      { // uma onda de entrada saindo do mosaico
+        const r = $('#mosaic').getBoundingClientRect();
         ripple = toMap(r.left + r.width / 2, r.top + r.height * .4);
         rippleStart = performance.now();
-      };
+      }
+      // Parado, o relevo respira a ~8 fps; rolando, com o mouse ou com a onda, sobe para ~30.
+      let lastMove = 0;
+      addEventListener('scroll', () => { lastMove = performance.now(); }, { passive: true });
+      if (fine) addEventListener('pointermove', () => { lastMove = performance.now(); }, { passive: true });
       const loop = (now) => {
         requestAnimationFrame(loop);
         if (document.hidden) { frames = 0; return; }
-        if (now - last < 33) return;
+        const busy = now - lastMove < 900 || now - rippleStart < 2500 || Math.abs(scrollY - scroll) > 1;
+        if (now - last < (busy ? 33 : 125)) return;
         last = now;
+        if (!busy) { frames = 0; render(now); return; } // só mede o custo no ritmo cheio
         if (!frames) windowStart = now;
         if (++frames > 30) {
           frames = 0;
