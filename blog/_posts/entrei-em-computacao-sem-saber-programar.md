@@ -7,7 +7,7 @@ tags: ["carreira", "faculdade", "uece", "inicio-de-carreira", "programacao"]
 order: 1
 ---
 
-Na primeira semana de Ciência da Computação na UECE, descobri que tinha colega de turma que já tinha ligado um Arduino a uma inteligência artificial que respondia pelo WhatsApp. Na mesma turma tinha gente que nunca tinha mexido num computador. Eu tava no meio, mais perto do segundo grupo do que gostaria de admitir.
+Toda turma de computação tem a sua lenda. Na minha, era o colega que chegou na primeira semana de aula já tendo ligado um Arduino a uma inteligência artificial que respondia pelo WhatsApp. Isso mesmo: o cara conversava com uma placa pelo zap, e eu ainda tava descobrindo em que bloco ficava o laboratório. Na mesma sala tinha gente que nunca tinha mexido num computador. Eu tava no meio, mais perto do segundo grupo do que gostaria de admitir.
 
 Isso foi em 2022. Saí do ensino médio gostando de tecnologia e mexendo em tudo que era digital, mas nunca fui o cara que programa desde os doze anos e tem opinião sobre editor de texto. Escolhi o curso por curiosidade. Escrevo pra quem tá entrando agora e já sentiu, na primeira aula de algoritmos, que todo mundo largou antes.
 
