@@ -16,6 +16,8 @@ const OUT = join(__dirname, '../../assets/img/blog/capas');
     const png = join(OUT, `${s}.png`);
     await p.screenshot({ path: png });
     execFileSync('cwebp', ['-quiet', '-q', '82', png, '-o', join(OUT, `${s}.webp`)]);
+    // JPG 1200x675 pro og:image (WhatsApp/LinkedIn leem JPG melhor que WebP)
+    execFileSync('sips', ['-s', 'format', 'jpeg', '-s', 'formatOptions', '82', '-Z', '1200', png, '--out', join(OUT, '../og', `${s}.jpg`)], { stdio: 'ignore' });
     require('fs').unlinkSync(png);
     console.log('capa', s);
   }

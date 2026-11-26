@@ -210,7 +210,7 @@ posts.sort((a, b) => a.order - b.order);
 
 /* ---------------- partes comuns ---------------- */
 const FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">`;
-const head = ({ title, desc, url, base, type = 'website', extra = '', image = `${SITE}/assets/og.png` }) => `<!DOCTYPE html>
+const head = ({ title, desc, url, base, type = 'website', extra = '', image = `${SITE}/assets/og.png`, imageAlt = title, imageSize = null }) => `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -223,9 +223,16 @@ const head = ({ title, desc, url, base, type = 'website', extra = '', image = `$
 <meta property="og:url" content="${url}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:site_name" content="Tales Santiago">
 <meta property="og:image" content="${image}">
+<meta property="og:image:alt" content="${esc(imageAlt)}">${imageSize ? `
+<meta property="og:image:width" content="${imageSize[0]}"><meta property="og:image:height" content="${imageSize[1]}">` : ''}
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(desc)}">
+<meta name="twitter:image" content="${image}">
 <meta name="theme-color" content="#0a0a0f">
 <link rel="icon" href="${base}assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/rss+xml" title="Blog do Tales Santiago" href="${SITE}/blog/feed.xml">
@@ -341,7 +348,7 @@ function article(p, idx) {
   };
   const tocHtml = p.toc.length >= 2 ? `<ol>${p.toc.map((t) => `<li><a href="#${t.id}">${t.text}</a></li>`).join('')}</ol>` : '';
   const share = encodeURIComponent(url);
-  return `${head({ title: `${p.title} | Tales Santiago`, desc: p.description, url, base, type: 'article', image: p.art ? `${SITE}/assets/${p.art}` : undefined, extra: `<meta property="article:published_time" content="${p.publishedAt}"><meta property="article:section" content="${esc(p.category)}"><script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` })}
+  return `${head({ title: `${p.title} | Tales Santiago`, desc: p.description, url, base, type: 'article', ...(existsSync(join(ROOT, 'assets/img/blog/og', `${p.slug}.jpg`)) ? { image: `${SITE}/assets/img/blog/og/${p.slug}.jpg`, imageSize: [1200, 675], imageAlt: `Capa do artigo: ${p.title}` } : { image: p.art ? `${SITE}/assets/${p.art}` : undefined }), extra: `<meta property="article:published_time" content="${p.publishedAt}"><meta property="article:author" content="${AUTHOR}"><meta property="article:section" content="${esc(p.category)}"><script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` })}
 <body class="page-post" style="--c:${cat.cor}">
 ${topbar(base, 'blog')}
 <main id="top">
@@ -403,10 +410,11 @@ ${posts.map((p) => `<item><title>${esc(p.title)}</title><link>${SITE}/blog/${p.s
 </channel></rss>`;
 }
 function sitemap() {
-  const urls = [`${SITE}/`, `${SITE}/blog/`, ...posts.map((p) => `${SITE}/blog/${p.slug}/`)];
+  const last = posts.map((p) => p.publishedAt).sort().at(-1);
+  const urls = [[`${SITE}/`, last], [`${SITE}/blog/`, last], ...posts.map((p) => [`${SITE}/blog/${p.slug}/`, p.publishedAt])];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((u) => `<url><loc>${u}</loc></url>`).join('\n')}
+${urls.map(([u, d]) => `<url><loc>${u}</loc><lastmod>${d}</lastmod></url>`).join('\n')}
 </urlset>`;
 }
 function homeCards() {
