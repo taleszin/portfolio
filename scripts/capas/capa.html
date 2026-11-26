@@ -100,6 +100,16 @@ const S = {
     els: [['browser', A + 'blog/golems-que-falam-com-quem-os-cria/golems-nascendo.webp', 1010, 70, 520, 4, 5, { url: 'hylomorph' }], ['browser', A + 'blog/golems-que-falam-com-quem-os-cria/golems-conversando.webp', 800, 330, 640, -3, 10, { url: 'hylomorph' }]], tags: [['ghost', '"você que me fez?"', 1150, 790]] },
   'taleszin-os-tablet-2014': { n: 15, cat: 'engenharia', h: 'Uma ROM para<em>512 MB de RAM.</em>', giant: ['2014', 1180, -30, 250],
     els: [['tablet', A + 'tablet-bateria.webp', 1040, 330, 500, 6, 5], ['tablet', A + 'tablet-home.webp', 830, 110, 600, -4, 10]], tags: [['', 'Taleszin OS · Android 4.4', 1100, 800]] },
+  'do-autocomplete-a-orquestracao': { n: 16, cat: 'ia', h: 'Do autocomplete<em>à orquestração.</em>',
+    els: [['card', A + 'blog/do-autocomplete-a-orquestracao/caixa.webp', 980, 70, 560, 4, 5],
+      ['code', `<span class="c">// antes: ctrl+c no chat, ctrl+v no editor</span>
+<span class="k">›</span> corrige o checkout e testa no app
+  <span class="v">mapa</span>       lendo 14 arquivos
+  <span class="v">crítica</span>    premissa derrubada, plano v2
+  <span class="v">implementa</span> worktree própria
+  <span class="v">revisão</span>    2 achados, arquivo:linha
+  <span class="v">navegador</span>  conta de teste <span class="s">✓ laudo</span>`, 800, 380, 760, -2, 10, { url: '~/dev · claude code' }]],
+    tags: [['', 'de assistente a time', 1180, 790]] },
 };
 const slug = new URLSearchParams(location.search).get('s');
 const s = S[slug]; const cv = document.getElementById('capa');
@@ -109,7 +119,7 @@ if (s.giant) { const [t, x, y, size] = s.giant; html += `<div class="giant" styl
 html += `<div class="txt"><p class="kicker"><i></i>N.º ${String(s.n).padStart(2, '0')} <span>·</span> ${CAT[s.cat]}</p><h1>${s.h}</h1><p class="sign"><b>TS</b>Tales Santiago · blog</p></div>`;
 for (const [type, src, x, y, w, rot, z, ex = {}] of s.els) {
   const st = `left:${x}px;top:${y}px;width:${w}px;transform:rotate(${rot}deg);z-index:${z}${ex.h ? `;height:${ex.h}px` : ''}`;
-  if (type === 'code') { html += `<div class="el code shadow" style="${st}"><div class="browser"><div class="bar"><i></i><i></i><i></i><u>estagio/exames.php</u></div></div><pre>${src}</pre></div>`; continue; }
+  if (type === 'code') { html += `<div class="el code shadow" style="${st}"><div class="browser"><div class="bar"><i></i><i></i><i></i><u>${ex.url || 'estagio/exames.php'}</u></div></div><pre>${src}</pre></div>`; continue; }
   const img = `<img src="${src.replace('src/../../', '../../')}" alt="">`;
   if (type === 'browser') html += `<div class="el browser shadow" style="${st}"><div class="bar"><i></i><i></i><i></i><u>${ex.url || ''}</u></div>${img}</div>`;
   else if (type === 'polaroid') html += `<figure class="el polaroid shadow" style="${st}">${img}<figcaption>${ex.cap}</figcaption></figure>`;

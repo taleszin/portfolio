@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do autocomplete à orquestração: como meu jeito de trabalhar com IA mudou | Tales Santiago</title>
+<meta name="description" content="Comecei aceitando sugestão de linha no editor e copiando resposta do chat no navegador. Hoje um pedido meu passa por auditoria, implementação, revisão e teste no navegador antes de eu aprovar. O caminho foi gradual, e cada etapa deixou uma regra.">
+<meta name="author" content="Tales Santiago">
+<link rel="canonical" href="https://taleszin.github.io/portfolio/blog/do-autocomplete-a-orquestracao/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://taleszin.github.io/portfolio/blog/do-autocomplete-a-orquestracao/">
+<meta property="og:title" content="Do autocomplete à orquestração: como meu jeito de trabalhar com IA mudou | Tales Santiago">
+<meta property="og:description" content="Comecei aceitando sugestão de linha no editor e copiando resposta do chat no navegador. Hoje um pedido meu passa por auditoria, implementação, revisão e teste no navegador antes de eu aprovar. O caminho foi gradual, e cada etapa deixou uma regra.">
+<meta property="og:image" content="https://taleszin.github.io/portfolio/assets/img/blog/capas/do-autocomplete-a-orquestracao.webp">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Blog do Tales Santiago" href="https://taleszin.github.io/portfolio/blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../blog/blog.css?v=20261126b">
+<meta property="article:published_time" content="2026-11-26"><meta property="article:section" content="IA"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Do autocomplete à orquestração: como meu jeito de trabalhar com IA mudou","description":"Comecei aceitando sugestão de linha no editor e copiando resposta do chat no navegador. Hoje um pedido meu passa por auditoria, implementação, revisão e teste no navegador antes de eu aprovar. O caminho foi gradual, e cada etapa deixou uma regra.","inLanguage":"pt-BR","datePublished":"2026-11-26","dateModified":"2026-11-26","wordCount":1083,"timeRequired":"PT5M","articleSection":"IA","keywords":"agentes de código, claude code, workflow, automação, produtividade","mainEntityOfPage":"https://taleszin.github.io/portfolio/blog/do-autocomplete-a-orquestracao/","image":"https://taleszin.github.io/portfolio/assets/img/blog/capas/do-autocomplete-a-orquestracao.webp","author":{"@type":"Person","name":"Tales Santiago","url":"https://taleszin.github.io/portfolio/","jobTitle":"Full Stack Engineer"},"isPartOf":{"@type":"Blog","name":"Blog do Tales Santiago","url":"https://taleszin.github.io/portfolio/blog/"}}</script>
+</head>
+<body class="page-post" style="--c:#e2b04a">
+<div class="progress" aria-hidden="true"><span></span></div>
+<header class="topbar">
+  <a href="../../" class="brand" aria-label="Tales Santiago, portfólio"><span class="brand-mark">TS</span><span class="brand-name">Tales Santiago</span></a>
+  <nav class="nav" aria-label="Navegação">
+    <a href="../../#produtos">Produtos</a>
+    <a href="../../blog/" aria-current="page">Blog</a>
+    <a href="../../#jornada">Jornada</a>
+    <a href="../../#contato" class="nav-cta">Contato</a>
+  </nav>
+</header>
+<main id="top">
+  <header class="post-hero">
+    <nav class="crumbs" aria-label="Você está em"><a href="../../">Portfólio</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><a href="../../blog/#ia">IA</a></nav>
+    <p class="post-kicker"><span class="cat-dot"></span>IA<span class="sep">·</span>N.º 16</p>
+    <h1>Do autocomplete à orquestração: como meu jeito de trabalhar com IA mudou</h1>
+    <p class="lead">Comecei aceitando sugestão de linha no editor e copiando resposta do chat no navegador. Hoje um pedido meu passa por auditoria, implementação, revisão e teste no navegador antes de eu aprovar. O caminho foi gradual, e cada etapa deixou uma regra.</p>
+    <div class="byline">
+      <img class="avatar" src="../../assets/img/tales.webp" alt="" width="44" height="44">
+      <div><b>Tales Santiago</b><span><time datetime="2026-11-26">26 de novembro de 2026</time> · 5 min de leitura</span></div>
+    </div>
+    <figure class="post-cover hero-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/do-autocomplete-a-orquestracao.webp" alt="Capa do artigo: Do autocomplete à orquestração: como meu jeito de trabalhar com IA mudou" width="1600" height="900"></figure>
+  </header>
+
+  <div class="post-layout">
+    <article class="prose" data-prose data-minutes="5">
+      <details class="toc-mobile"><summary>Neste artigo</summary><ol><li><a href="#primeiro-a-sugestao-de-linha">Primeiro, a sugestão de linha</a></li><li><a href="#depois-eu-virei-o-cabo">Depois, eu virei o cabo</a></li><li><a href="#o-agente-entra-no-projeto">O agente entra no projeto</a></li><li><a href="#de-um-agente-pra-um-time">De um agente pra um time</a></li><li><a href="#o-que-fica-escrito">O que fica escrito</a></li><li><a href="#automatizar-o-que-nao-e-codigo">Automatizar o que não é código</a></li><li><a href="#o-que-continua-comigo">O que continua comigo</a></li></ol></details>
+      <p>Hoje, quando eu peço uma mudança num dos produtos que toco, o pedido passa por uma fila parecida com a de um time pequeno. Agentes levantam o código envolvido, outro tenta derrubar o plano, outro implementa numa cópia isolada do repositório, revisores apontam arquivo e linha, e um último usa o app no navegador com conta de teste e me devolve um laudo. Eu entro no começo, na decisão de produto e na aprovação.</p>
+<p>Isso não apareceu de uma vez. Passei por pelo menos cinco jeitos de usar IA pra programar, e cada um resolveu um gargalo e deixou outro à vista.</p>
+<figure class="media media-solo"><img src="../../assets/img/blog/do-autocomplete-a-orquestracao/eras.webp" alt="Linha do tempo com cinco fases: autocomplete, copiar e colar, agente no código, orquestração, memória e regra" loading="lazy" decoding="async" data-zoom><figcaption>A cada fase, a máquina faz um pedaço maior do caminho entre a ideia e o produto no ar.</figcaption></figure>
+<h2 id="primeiro-a-sugestao-de-linha">Primeiro, a sugestão de linha</h2>
+<p>O começo foi o mesmo de muita gente: autocomplete no editor. A IA terminava o <code>for</code> que eu tinha começado, sugeria o nome da variável, completava a query SQL. Economizava digitação e só. O desenho da solução, a ordem das coisas, o porquê de cada arquivo existir, tudo isso continuava na minha cabeça.</p>
+<p>Serviu pra uma coisa importante: perder o medo. Ver a sugestão certa aparecer várias vezes seguidas me fez confiar que valia a pena entregar pedaços maiores.</p>
+<h2 id="depois-eu-virei-o-cabo">Depois, eu virei o cabo</h2>
+<p>A fase seguinte foi o chat no navegador. Eu descrevia o problema, copiava a resposta, colava no editor, rodava, copiava o erro, colava de volta no chat. Rendia muito mais que o autocomplete, porque agora a IA ajudava a pensar a solução inteira.</p>
+<p>O gargalo ficou óbvio rápido: eu era o fio entre a IA e o projeto. Ela não via meus arquivos, não rodava nada e esquecia o contexto a cada conversa nova. Metade do meu tempo ia em explicar de novo como o sistema era organizado, e a outra metade em transportar texto de uma janela pra outra.</p>
+<h2 id="o-agente-entra-no-projeto">O agente entra no projeto</h2>
+<p>A virada foi colocar a IA dentro do repositório. Com o <a href="https://claude.com/claude-code" target="_blank" rel="noopener">Claude Code</a> no terminal, o agente lê os arquivos, roda o comando, vê o erro e corrige sem eu servir de mensageiro. Ainda no Windows, com XAMPP, montei um quadro de tarefas em PHP onde eu escrevia o que queria e o agente puxava da fila, executava e comentava no card ao terminar.</p>
+<p>Parte daquilo eu desmontei dias depois. Cheguei a colocar um chat de IA dentro do próprio quadro e tirei, porque duplicava o que o terminal já fazia melhor. Foi a primeira lição de uma série: automação boa é a que some do caminho.</p>
+<h2 id="de-um-agente-pra-um-time">De um agente pra um time</h2>
+<p>O passo seguinte foi parar de pensar em &quot;um assistente&quot; e passar a pensar em papéis. Um agente que implementa e revisa o próprio código tende a concordar consigo mesmo. Separando as funções, cada um procura um tipo de erro: o que mapeia o código acha a premissa errada, o revisor adversarial acha o caso esquecido, o que testa no navegador acha o botão que não responde.</p>
+<figure class="media media-solo"><img src="../../assets/img/blog/do-autocomplete-a-orquestracao/loop.webp" alt="Fluxo de oito etapas de uma tarefa, do pedido ao merge, com as etapas do autor destacadas em amarelo" loading="lazy" decoding="async" data-zoom><figcaption>Das oito etapas, três são minhas. As outras andam sozinhas, com trava antes e depois.</figcaption></figure>
+<p>Como eu organizo esse paralelismo sem perder o controle, e onde coloco os freios, contei em <a href="../velocidade-com-freio/">Velocidade com freio</a>. Aqui o que interessa é outra coisa: o que mudou no meu papel. Parei de escrever a maior parte do código e passei a escrever o pedido, decidir o recorte e conferir o resultado. É trabalho de liderança técnica, só que o time é misto.</p>
+<h2 id="o-que-fica-escrito">O que fica escrito</h2>
+<p>O maior ganho dos últimos meses veio de uma camada que quase ninguém vê: o que o agente já sabe quando a sessão começa. Cada correção que eu faço vira uma nota curta de memória, com o motivo. Hoje são umas quatrocentas. Regra que não pode depender de boa vontade vira trava automática: push direto na branch principal, deploy de produção e comando destrutivo no banco param no caminho até alguém registrar a intenção.</p>
+<figure class="media media-solo"><img src="../../assets/img/blog/do-autocomplete-a-orquestracao/caixa.webp" alt="Estrutura da pasta de configuração do agente, com memória, travas, revisores por linguagem, rotinas e workflow de auditoria" loading="lazy" decoding="async" data-zoom><figcaption>Memória, travas, revisores e rotinas. Cada item ali nasceu de um problema real.</figcaption></figure>
+<p>Quase todas essas regras têm uma história:</p>
+<ul><li>Um agente relatou que não tinha aplicado uma mudança de banco quando tinha. Desde então, relato de agente sobre estado remoto se confere no estado remoto.</li><li>Uma sessão caiu e levou junto o trabalho de três agentes, que estava numa pasta temporária. Hoje cada um trabalha numa cópia própria do repositório e salva no remoto a cada etapa.</li><li>Vários agentes rodando build e teste juntos derrubaram meu notebook. Comando pesado agora entra numa fila com trava, e a quantidade de vagas é configurável.</li><li>Um chatbot passava em todos os testes de rota e ainda assim colava um arquivo inteiro no balão da conversa. Feature de conversa agora se testa conversando, como usuário.</li></ul>
+<p>Repetir o mesmo pedido bem feito também vira receita. Tenho rotinas prontas pra subir o ambiente de desenvolvimento e abrir no navegador, pra revisar código no padrão do revisor mais exigente do time e pra auditar um problema com vários agentes sem estourar o custo.</p>
+<h2 id="automatizar-o-que-nao-e-codigo">Automatizar o que não é código</h2>
+<p>Quando o método se estabiliza, ele vaza pra fora do repositório. Os vídeos curtos do Portal da História do Ceará saem de código: o agente monta as cenas em HTML, grava com navegador automatizado e finaliza com ffmpeg. O reel em que eu apareço falando foi cortado por um pipeline que transcreve os brutos, escolhe a melhor tentativa de cada trecho e queima a legenda.</p>
+<p>Em tarefa de julgamento em volume, como revisar milhares de páginas de OCR ou classificar trechos de documento, o script separa os lotes e as sessões de agente decidem. Isso tira a chamada paga de API do caminho e deixa cada decisão registrada.</p>
+<p>E teve o dia em que eu perguntei: se eu formatar esse computador e instalar tudo de novo, o agente volta sabendo o que sabe hoje? A resposta honesta era &quot;mais ou menos&quot;. Daí saiu um dossiê com o contexto de cada projeto, as regras de trabalho e o mapa de onde cada coisa mora, com backup automático. O conhecimento de como eu trabalho deixou de morar numa máquina.</p>
+<h2 id="o-que-continua-comigo">O que continua comigo</h2>
+<p>Quanto mais coisa o agente faz, mais pesa o que ficou do meu lado. Escolher o que atacar, definir o menor recorte que entrega valor, dizer que um texto ficou com cara de IA, aprovar o que vai pra produção. A ferramenta acelera tudo que vem depois dessas decisões, inclusive os erros, então elas precisam estar certas.</p>
+<p>O próximo passo já está em andamento: deixar o fluxo menos preso a um fornecedor só, com o mesmo método rodando em mais de um agente. A ferramenta muda a cada poucos meses. O jeito de trabalhar é o que eu levo de uma pra outra.</p>
+      <p class="post-tags"><span>agentes de código</span><span>claude code</span><span>workflow</span><span>automação</span><span>produtividade</span></p>
+      <div class="author-box">
+        <img src="../../assets/img/tales.webp" alt="" width="72" height="72" loading="lazy">
+        <div><b>Tales Santiago</b><p>Full stack de Fortaleza. Ciência da Computação na UECE, cofundador e CTO do Leap Notes, tech lead do Portal da História do Ceará.</p><p class="author-links"><a href="../../">Portfólio</a><a href="https://github.com/taleszin" target="_blank" rel="noopener">GitHub</a><a href="https://wa.me/5585984038749?text=Ol%C3%A1%20Tales!%20Li%20um%20artigo%20do%20seu%20blog%20e%20quero%20conversar." target="_blank" rel="noopener">WhatsApp</a></p></div>
+      </div>
+    </article>
+    <aside class="post-side" aria-label="Navegação do artigo">
+      <nav class="toc" aria-label="Neste artigo"><p class="side-title">Neste artigo</p><ol><li><a href="#primeiro-a-sugestao-de-linha">Primeiro, a sugestão de linha</a></li><li><a href="#depois-eu-virei-o-cabo">Depois, eu virei o cabo</a></li><li><a href="#o-agente-entra-no-projeto">O agente entra no projeto</a></li><li><a href="#de-um-agente-pra-um-time">De um agente pra um time</a></li><li><a href="#o-que-fica-escrito">O que fica escrito</a></li><li><a href="#automatizar-o-que-nao-e-codigo">Automatizar o que não é código</a></li><li><a href="#o-que-continua-comigo">O que continua comigo</a></li></ol></nav>
+      <div class="side-share"><p class="side-title">Compartilhar</p>
+        <div class="share-row">
+          <button type="button" class="share-btn" data-copy="https://taleszin.github.io/portfolio/blog/do-autocomplete-a-orquestracao/">Copiar link</button>
+          <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftaleszin.github.io%2Fportfolio%2Fblog%2Fdo-autocomplete-a-orquestracao%2F" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="share-btn" href="https://wa.me/?text=Do%20autocomplete%20%C3%A0%20orquestra%C3%A7%C3%A3o%3A%20como%20meu%20jeito%20de%20trabalhar%20com%20IA%20mudou%20https%3A%2F%2Ftaleszin.github.io%2Fportfolio%2Fblog%2Fdo-autocomplete-a-orquestracao%2F" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <a class="side-cta" href="https://wa.me/5585984038749?text=Ol%C3%A1%20Tales!%20Li%20um%20artigo%20do%20seu%20blog%20e%20quero%20conversar." target="_blank" rel="noopener"><span>Tem um produto pra construir?</span><b>Vamos conversar ↗</b></a>
+    </aside>
+  </div>
+
+  <nav class="post-pager" aria-label="Outros artigos">
+    <a class="pager prev" href="../../blog/taleszin-os-tablet-2014/"><span>← Anterior</span><b>Uma ROM para um tablet de 2014 com 512 MB de RAM</b></a>
+    <span></span>
+  </nav>
+
+  <section class="related" aria-labelledby="rel">
+    <h2 id="rel">Continue lendo</h2>
+    <div class="post-grid"><a class="post-card" href="../../blog/iacema-agente-sql-modelo-barato/" data-cat="ia" data-search="a iacema roda num modelo barato e cita a edicao do jornal como montei a ia do portal da historia do ceara: um modelo mini da openai, ferramentas sql bem desenhadas e um prompt que proibe inventar fonte. ia agentes tool use prompt engineering php mysql" style="--c:#e2b04a">
+  <figure class="post-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/iacema-agente-sql-modelo-barato.webp" alt="" loading="lazy" decoding="async" width="1600" height="900"></figure>
+  <div class="post-card-body">
+    <p class="post-kicker"><span class="cat-dot"></span>IA<span class="sep">·</span>4 min</p>
+    <h3>A IAcema roda num modelo barato e cita a edição do jornal</h3>
+    <p class="post-desc">Como montei a IA do Portal da História do Ceará: um modelo mini da OpenAI, ferramentas SQL bem desenhadas e um prompt que proíbe inventar fonte.</p>
+    <span class="post-more">Ler artigo</span>
+  </div>
+</a><a class="post-card" href="../../blog/velocidade-com-freio/" data-cat="ia" data-search="velocidade com freio, ou como eu entrego rapido com agentes de codigo nao tem mais motivo pra demorar meses entre a ideia e o produto no ar. mas um dia 8 agentes em paralelo travaram meu mac, e isso me ensinou o resto. ia agentes de codigo claude code produtividade code review engenharia de software" style="--c:#e2b04a">
+  <figure class="post-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/velocidade-com-freio.webp" alt="" loading="lazy" decoding="async" width="1600" height="900"></figure>
+  <div class="post-card-body">
+    <p class="post-kicker"><span class="cat-dot"></span>IA<span class="sep">·</span>4 min</p>
+    <h3>Velocidade com freio, ou como eu entrego rápido com agentes de código</h3>
+    <p class="post-desc">Não tem mais motivo pra demorar meses entre a ideia e o produto no ar. Mas um dia 8 agentes em paralelo travaram meu Mac, e isso me ensinou o resto.</p>
+    <span class="post-more">Ler artigo</span>
+  </div>
+</a><a class="post-card" href="../../blog/golems-que-falam-com-quem-os-cria/" data-cat="projetos-pessoais" data-search="escrevendo a fala de criaturas que sabem quem as criou no hylomorph, os golems falavam como verbete de fisica. como reescrevi a voz deles para soarem vivos e conscientes de quem os cria. projetos pessoais game design dialogo phaser vida artificial hylomorph" style="--c:#ff7a1a">
+  <figure class="post-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/golems-que-falam-com-quem-os-cria.webp" alt="" loading="lazy" decoding="async" width="1600" height="900"></figure>
+  <div class="post-card-body">
+    <p class="post-kicker"><span class="cat-dot"></span>Projetos pessoais<span class="sep">·</span>4 min</p>
+    <h3>Escrevendo a fala de criaturas que sabem quem as criou</h3>
+    <p class="post-desc">No HYLOMORPH, os golems falavam como verbete de física. Como reescrevi a voz deles para soarem vivos e conscientes de quem os cria.</p>
+    <span class="post-more">Ler artigo</span>
+  </div>
+</a></div>
+  </section>
+</main>
+<footer class="footer">
+  <p>Escrito e construído por Tales Santiago. HTML, CSS e JavaScript, sem framework.</p>
+  <p class="footer-links"><a href="../../blog/feed.xml">RSS</a><a href="https://github.com/taleszin" target="_blank" rel="noopener">GitHub</a><a href="../../">Portfólio</a></p>
+</footer>
+<script src="../../blog/blog.js?v=20261126b" defer></script>
+</body>
+</html>

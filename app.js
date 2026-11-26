@@ -79,7 +79,7 @@
     'phc.m1': 'searchable headlines', 'phc.m2': 'issues from 133 newspapers', 'phc.m3': 'conversations answered by IAcema', 'phc.m4': 'newspaper reading sessions',
     'articles.eyebrow': '02 · Blog', 'articles.title': 'From the first semester', 'articles.title2': 'to a product in production.',
     'articles.lead': 'Essays on career, product, engineering and AI in production (in Portuguese): starting Computer Science without knowing how to code, building Leap Notes and the Portal da História do Ceará, and the projects I build for myself.',
-    'articles.all': 'Read all 15 posts →', 'articles.phc': 'I also write on the <a href="https://historiadoceara.com.br/blog" target="_blank" rel="noopener">Portal da História do Ceará blog ↗</a>',
+    'articles.all': 'Read all 16 posts →', 'articles.phc': 'I also write on the <a href="https://historiadoceara.com.br/blog" target="_blank" rel="noopener">Portal da História do Ceará blog ↗</a>',
     'games.eyebrow': '03 · Original games', 'games.title': 'Engines, art and sound', 'games.title2': 'built from scratch.',
     'games.lead': 'This is the authorial side of the work. None of the three uses an off-the-shelf engine or purchased assets: the engine, the art direction, the soundtrack and the physics came out of the same code editor. One of them won its course category at UECE.', 'games.s1': 'games published', 'games.s2': 'purchased assets', 'games.s3': 'hand-written WebGL engine',
     'game.fuel.k': 'Management sim · 3D · web and Android',
