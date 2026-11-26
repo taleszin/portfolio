@@ -5,59 +5,52 @@ description: "Como o Leap Notes saiu de um MVP de bloco de notas e virou produto
 category: "Produto"
 tags: ["leap-notes", "startup", "produto", "crescimento-organico", "saas"]
 order: 7
+cover: "img/leap-hub-desktop.webp"
 ---
 
-O primeiro commit do Leap Notes não tinha nada de medicina. Era login, cadastro e uma tabela de notas. Um bloco de notas com conta de usuário, basicamente. Hoje o mesmo repositório tem quase 3 mil commits, um editor com coedição em tempo real, um modelo 3D de anatomia, um assistente de IA e um checkout que a gente mesmo escreveu. No meio do caminho ninguém sentou e desenhou esse produto inteiro. Ele foi crescendo porque as pessoas usavam e pediam mais.
+A primeira versão do Leap Notes não tinha nada de medicina. Era login, cadastro e notas. Um bloco de notas com conta de usuário, basicamente. Hoje é a ferramenta de estudo e plantão de mais de 6.100 pessoas, com mais de 23 mil notas clínicas salvas, anatomia 3D, assistente de IA e checkout próprio. Ninguém sentou e desenhou esse produto inteiro no começo. Ele cresceu porque as pessoas usavam e pediam mais, e porque a gente aprendeu a escolher quais pedidos atender.
 
 ## O problema era de quem estava no plantão
 
-O Leap Notes nasceu dentro da UECE. Eu sou o CTO e venho de Ciência da Computação. Meus sócios são estudantes de medicina, e isso muda tudo. Eles não precisavam de pesquisa de mercado pra saber qual era a dor: viviam ela toda semana.
+O Leap nasceu dentro da UECE. Eu sou o CTO e cofundador, e venho de Ciência da Computação. Meus sócios são estudantes de medicina, e eles não precisavam de pesquisa de mercado pra saber qual era a dor: viviam ela toda semana.
 
-A situação é mais ou menos essa. Interno ou residente no plantão, celular na mão, precisando lembrar a conduta de uma pneumonia, a dose de uma medicação, o jeito certo de escrever uma prescrição hospitalar. A informação existe, mas tá espalhada em PDF, print de WhatsApp, caderno, nota do celular sem formatação nenhuma. O que eles queriam era um lugar só, rápido, que funcionasse no navegador e no celular e que entendesse o jeito como médico escreve.
+Interno ou residente no plantão, celular na mão, precisando lembrar a conduta de uma pneumonia ou a dose de uma medicação. A informação existe, mas tá espalhada em PDF, print de WhatsApp, caderno e nota do celular sem formatação nenhuma. Eles queriam um lugar só, rápido, que funcionasse no navegador e no celular e entendesse o jeito como médico escreve.
 
-Então a primeira versão foi exatamente isso: um caderno. Notas, pastas, sincronização entre aparelhos. Nada que justificasse o nome "startup" ainda. Mas o caderno resolvia, e quem usava voltava. Foi aí que a gente percebeu que tinha algo.
+![Busca nas anotações do Leap Notes encontrando a nota certa enquanto o termo é digitado](video/leap-busca.mp4 "Achar a própria anotação em segundos foi o primeiro problema que o produto resolveu.")
 
-## Como o caderno virou produto
+A primeira versão foi exatamente isso: um caderno com pastas e sincronização. Simples de propósito: resolvia o problema central, e quem usava voltava. Foi esse retorno que mostrou que tinha negócio ali.
 
-A evolução veio quase toda de conversa com usuário e dos próprios sócios testando no plantão. Cada pedido que se repetia virava feature. Alguns marcos que eu lembro bem:
+## Como um time enxuto decide o que entra
 
-- **O editor.** Saímos de uma caixa de texto pra um editor rico sobre TipTap, com tabelas, imagens, atalhos de texto, histórico de versões e exportação pra PDF e DOCX. Depois veio a parte mais difícil: compartilhar pasta e nota, e editar a mesma nota junto com outra pessoa em tempo real.
-- **Conteúdo clínico dentro do app.** Manual de condutas, bulário, calculadoras clínicas, CID-10 e CID-11. A ideia era que o usuário não precisasse sair do Leap pra consultar algo no meio de uma evolução.
-- **Anatomia 3D.** Um modelo com 2.234 estruturas selecionáveis, rodando no navegador e no celular. É o tipo de coisa que ninguém espera achar num app de notas, e rende vídeo bom pras redes.
-- **Questões.** Um feed de questões pra quem tá estudando pra prova e residência.
-- **Leap AI.** Um assistente que conversa com as notas do próprio usuário. Ele busca nas notas antes de responder, monta quiz a partir de um tema e aceita ditado por voz.
-- **Prescrições.** Essa começou como protótipo de um dos meus sócios. Ele escreveu os diagnósticos em Markdown, eu portei pra dentro do app com um script que transforma esses arquivos em dados. O médico copia o bloco, insere no cursor da nota ou gera um rascunho novo.
+Pedido de usuário não falta. O que falta é gente pra construir tudo, então a gente precisou de critério. O nosso acabou sendo simples: se o usuário precisa sair do Leap no meio de uma evolução pra consultar alguma coisa, aquilo é candidato a entrar. Daí vieram o manual de condutas, as calculadoras e scores, os exames laboratoriais, o bulário e a CID. Cada um tira uma aba do navegador da vida de quem está atendendo.
 
-Tudo isso roda com o mesmo código no navegador e no Android, empacotado com Capacitor. No backend são 46 edge functions em TypeScript cuidando de webhook, upload, e-mail e IA. Time de engenharia: eu. Isso obriga a fazer de tudo um pouco e a escolher muito bem onde gastar tempo.
+::: celular
+![Hub do Leap Notes no celular com Leap AI, Anatomia 3D e Feed de Questões](img/leap-hub-mobile.webp "O Hub junta as ferramentas que antes moravam em outras abas.")
+![Modelo de anatomia 3D do corpo inteiro aberto no celular](img/leap-anatomia3d-mobile.webp "Anatomia 3D com 2.234 estruturas, também no celular.")
+:::
+
+Algumas apostas tiveram dois motivos ao mesmo tempo. A anatomia 3D, com 2.234 estruturas selecionáveis, ajuda quem estuda e rende vídeo bom pras redes, que é nosso único canal de aquisição. O Leap AI, que conversa com as notas do próprio usuário e monta quiz, deixou o caderno com cara de ferramenta de estudo. E as Prescrições começaram como protótipo de um dos meus sócios, escrito do jeito que ele pensa a clínica. Meu trabalho foi transformar aquilo em produto sem perder o que fazia sentido pra quem é médico.
+
+Boa parte do meu papel como CTO acontece longe do editor de código. É dizer "agora não" pra uma ideia boa porque tem outra que destrava mais gente, quebrar uma feature grande em pedaços que dá pra lançar em uma semana, e traduzir nos dois sentidos: explicar pros sócios por que um botão nunca é só um botão, e entender com eles por que um residente precisa copiar uma conduta em dois toques. Do lado técnico, é um código só rodando na web e no Android, o que deixa um time pequeno entregar nas duas frentes.
 
 ## Cobrar também é produto
 
-Teve um momento em que o Leap deixou de ser projeto legal e virou negócio. Foi quando a gente precisou cobrar.
+O Leap deixou de ser projeto legal e virou negócio quando a gente precisou cobrar. A decisão foi freemium: o plano gratuito tem o caderno e uma parte boa das ferramentas, e o Pro libera tudo e mais uso da IA. O desafio de produto é calibrar essa linha. Gratuito demais e ninguém assina. Fechado demais e o boca a boca morre, porque quem indica o Leap pra turma quase sempre começou de graça.
 
-A primeira decisão foi o modelo freemium. O plano gratuito tem o caderno e boa parte das ferramentas. O Pro libera mais uso da IA e outras coisas. Pra controlar a cota do Leap AI eu fiz uma função atômica no banco que conta o uso por plano e, se der qualquer erro, nega em vez de liberar. Prefiro um usuário reclamando de bloqueio indevido do que uma conta de IA explodindo sem eu saber.
+![Modal do plano Pro do Leap Notes com as opções anual, mensal e vitalício](img/blog/de-bloco-de-notas-a-startup/plano-pro.webp "A ferramenta continua visível no Hub; só o acesso é do Pro.")
 
-A segunda foi construir o checkout próprio. Seria mais simples mandar todo mundo pra uma página pronta de gateway, mas a gente queria controle de cupom, de plano, de Pix e de cartão dentro da nossa cara. Hoje o checkout atende cartão, Pix e assinatura, e tem um painel de observabilidade pros sócios acompanharem o que acontece sem precisar me perguntar.
-
-Aprendi uma coisa nessa parte: pagamento é onde o software encosta no dinheiro de alguém, e qualquer bug ali vira mensagem no suporte no mesmo dia. Webhook que chega duas vezes, plano que precisa bater com o que o gateway diz, preço que mora em mais de um lugar. Hoje o preço tem uma fonte única no código e um teste que quebra se o checkout divergir dela. Parece exagero até a primeira vez que alguém paga o valor errado.
+Também decidimos ter checkout próprio em vez de mandar todo mundo pra uma página pronta de gateway. Custou mais trabalho, mas deu controle de cupom, plano, Pix e cartão dentro da nossa cara, e uma garantia de reembolso em sete dias que deixa a decisão de assinar mais leve. Pagamento é onde o produto encosta no dinheiro de alguém. Qualquer atrito ali vira mensagem no suporte no mesmo dia, ou pior, vira uma pessoa que desiste e não avisa.
 
 ## Crescer sem pagar anúncio
 
-A gente nunca investiu em tráfego pago. Todo o crescimento veio das redes sociais, com estratégia de conteúdo feita pelos sócios: vídeo mostrando a anatomia 3D, a busca, a nota sendo montada no plantão. O perfil do Leap passou de 10 mil seguidores assim. Do lado do produto, mais de 6.100 pessoas já acessaram a plataforma e já são mais de 23 mil notas clínicas salvas.
+A gente nunca investiu em tráfego pago. O crescimento veio das redes, com estratégia de conteúdo feita pelos sócios: vídeo da anatomia 3D, da busca, da nota sendo montada no plantão. O perfil do Leap passou de 10 mil seguidores assim.
 
-Crescimento orgânico tem uma vantagem que eu só entendi depois: quem chega já sabe o que tá procurando. Viu o vídeo, entendeu pra que serve, criou conta. E tem a desvantagem de não ter botão pra apertar quando você quer crescer mais rápido. Então o trabalho de engenharia acaba indo também pra parte de growth: links com UTM pra saber de qual post veio cada cadastro, programa de indicação, popups no Hub com teste A/B, campanha de e-mail, e um painel admin onde os sócios veem os números importantes logo na primeira tela, em linguagem de gestor e não de banco de dados.
+Crescimento orgânico tem uma vantagem que eu só entendi depois: quem chega já sabe o que tá procurando. Viu o vídeo, entendeu pra que serve, criou conta. A desvantagem é não ter botão pra apertar quando você quer crescer mais rápido. Por isso parte do trabalho de engenharia vai pra growth: saber de qual post veio cada cadastro, programa de indicação, campanhas dentro do app, e um painel onde os sócios veem os números que importam na primeira tela, em linguagem de gestor. Código só tem valor se alguém decide alguma coisa com base nele.
 
-Isso é uma das partes que eu mais gosto de fazer. O código só tem valor se alguém decide alguma coisa com base nele.
+![Página inicial do Leap Notes com a frase Você salva vidas e as faculdades de onde vêm os usuários](img/leap-live.webp "Usuários de várias faculdades, sem apoio formal das instituições e sem anúncio.")
 
-## Todo mundo aprendendo junto
+## Produto de quem entende dos dois lados
 
-Nenhum de nós tinha fundado uma empresa antes. Eu não sabia nada de medicina, eles não sabiam nada de deploy. A gente foi aprendendo um com o outro no processo, e segue aprendendo. Hoje eu sei o que é uma evolução clínica e por que um residente precisa copiar uma conduta em dois toques. Eles sabem por que eu não deixo subir mudança no banco sem testar antes e por que "é só um botão" quase nunca é só um botão.
+O Leap funciona porque a sociedade junta duas competências que raramente moram na mesma mesa. Meus sócios trazem a clínica: sabem o que trava um plantão, qual conduta é consultada às três da manhã, que linguagem um residente confia. Eu trago a outra metade: transformar isso em produto que aguenta milhares de pessoas usando ao mesmo tempo, decidir o que vira feature e o que vira ruído, e garantir que nada chega em produção sem passar por teste. Nenhum lado sozinho teria feito o Leap.
 
-Algumas lições que ficaram:
-
-- **Feature boa costuma vir de quem usa.** As melhores ideias do Leap vieram dos sócios no plantão, não de mim olhando concorrente.
-- **MVP feio que resolve vale mais que produto bonito que ninguém abre.** O bloco de notas do começo era bem simples, e foi ele que segurou os primeiros usuários.
-- **Time enxuto exige disciplina.** Sendo o único dev, eu não tenho margem pra retrabalho. Teste automatizado, deploy por etapas e um ambiente de dev separado de produção é o que me deixa dormir.
-
-Acho que somos um dos maiores cases de startup fundada por estudantes dentro da UECE, talvez o maior. Não tenho como provar isso com um ranking, é a minha impressão de quem tá lá dentro. O que eu sei é que o Leap começou como um bloco de notas feito por gente que precisava dele, e hoje é um produto que se paga, cresce sozinho e continua sendo feito por quem vive o problema.
-
-Se quiser ver como ficou, tá em [leapnotes.app](https://leapnotes.app).
+Hoje o Leap é um dos maiores cases de startup nascida dentro da UECE. Começou como um bloco de notas feito por quem precisava dele, e se sustenta e cresce sem um real em anúncio. Tá em [leapnotes.app](https://leapnotes.app).

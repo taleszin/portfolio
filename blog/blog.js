@@ -20,7 +20,40 @@
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   /* entrada dos cards */
-  const cards = $$('.post-card, .pager, .hub-cta');
+  const cards = $$('.post-card, .pager, .hub-cta, .prose .media, .prose .carousel');
+
+  /* spotlight dos cards segue o mouse */
+  $$('.post-card').forEach(c => c.addEventListener('pointermove', e => {
+    const r = c.getBoundingClientRect();
+    c.style.setProperty('--mx', `${e.clientX - r.left}px`); c.style.setProperty('--my', `${e.clientY - r.top}px`);
+  }));
+
+  /* artigo: título de seção ganha o traço quando aparece + pílula de tempo restante */
+  if (prose) {
+    const hs = $$('.prose h2');
+    if ('IntersectionObserver' in window) {
+      const ho = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('seen'); ho.unobserve(e.target); } }), { rootMargin: '0px 0px -15% 0px' });
+      hs.forEach(h => ho.observe(h));
+    } else hs.forEach(h => h.classList.add('seen'));
+    const total = Number(prose.dataset.minutes) || 0;
+    if (total) {
+      const pill = document.createElement('button');
+      pill.type = 'button'; pill.className = 'time-left'; pill.setAttribute('aria-label', 'Voltar ao topo');
+      pill.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle class="bg" cx="12" cy="12" r="9"/><circle class="fg" cx="12" cy="12" r="9" pathLength="1"/></svg><span></span>';
+      document.body.append(pill);
+      const fg = $('.fg', pill), label = $('span', pill);
+      pill.addEventListener('click', () => scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
+      const upd = () => {
+        const r = prose.getBoundingClientRect();
+        const p = Math.min(1, Math.max(0, (innerHeight * 0.5 - r.top) / r.height));
+        fg.style.strokeDashoffset = String(1 - p);
+        const left = Math.ceil(total * (1 - p));
+        label.textContent = p >= 0.98 ? 'fim · voltar ao topo' : `${left} min restante${left > 1 ? 's' : ''}`;
+        pill.classList.toggle('on', r.top < innerHeight * 0.2 && r.bottom > innerHeight * 0.15);
+      };
+      addEventListener('scroll', upd, { passive: true }); upd();
+    }
+  }
   if (!reduce && 'IntersectionObserver' in window) {
     cards.forEach(el => el.classList.add('reveal'));
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
@@ -77,6 +110,47 @@
     addEventListener('scroll', mark, { passive: true }); mark();
   }
   $$('.toc-mobile a').forEach(a => a.addEventListener('click', () => a.closest('details').open = false));
+
+  /* carrosséis: setas, contador, teclado */
+  $$('.carousel').forEach(car => {
+    const track = $('.car-track', car), slides = $$('.slide', track);
+    const count = $('.car-count b', car), btns = $$('.car-btn', car);
+    if (slides.length < 2) return;
+    const cur = () => {
+      const x = track.scrollLeft + track.clientWidth / 2; let best = 0, d = Infinity;
+      slides.forEach((s, n) => { const c = s.offsetLeft - track.offsetLeft + s.offsetWidth / 2; if (Math.abs(c - x) < d) { d = Math.abs(c - x); best = n; } });
+      return best;
+    };
+    const go = n => { const s = slides[Math.max(0, Math.min(slides.length - 1, n))]; track.scrollTo({ left: s.offsetLeft - track.offsetLeft - (track.clientWidth - s.offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' }); };
+    const sync = () => { const n = cur(); if (count) count.textContent = n + 1; if (btns.length) { btns[0].disabled = n === 0; btns[1].disabled = n === slides.length - 1; } };
+    btns.forEach(b => b.addEventListener('click', () => go(cur() + Number(b.dataset.dir))));
+    track.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { e.preventDefault(); go(cur() + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur() - 1); } });
+    let t; track.addEventListener('scroll', () => { clearTimeout(t); t = setTimeout(sync, 60); }, { passive: true });
+    sync();
+  });
+
+  /* vídeos só tocam quando aparecem na tela */
+  const vids = $$('.prose video');
+  if (vids.length && 'IntersectionObserver' in window) {
+    const vo = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && !reduce) e.target.play().catch(() => {}); else e.target.pause(); }), { threshold: 0.25 });
+    vids.forEach(v => { v.removeAttribute('autoplay'); v.pause(); vo.observe(v); });
+  }
+
+  /* zoom nas imagens */
+  $$('.prose img[data-zoom]').forEach(img => img.addEventListener('click', () => {
+    const box = document.createElement('div');
+    box.className = 'lightbox'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', img.alt);
+    const inner = document.createElement('div');
+    const big = document.createElement('img'); big.src = img.currentSrc || img.src; big.alt = img.alt;
+    inner.append(big);
+    const cap = img.closest('figure')?.querySelector('figcaption');
+    if (cap) { const p = document.createElement('p'); p.textContent = cap.textContent; inner.append(p); }
+    box.append(inner);
+    const onKey = e => { if (e.key === 'Escape') close(); };
+    const close = () => { box.classList.remove('on'); removeEventListener('keydown', onKey); setTimeout(() => box.remove(), 250); };
+    box.addEventListener('click', close); addEventListener('keydown', onKey);
+    document.body.append(box); requestAnimationFrame(() => box.classList.add('on'));
+  }));
 
   /* copiar link */
   $$('[data-copy]').forEach(b => b.addEventListener('click', async () => {

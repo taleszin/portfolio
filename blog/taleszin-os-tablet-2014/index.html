@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uma ROM para um tablet de 2014 com 512 MB de RAM | Tales Santiago</title>
+<meta name="description" content="Como medir antes de mexer, brigar com uma bateria gasta e escrever apps Android sem Gradle num Multilaser M7s que ia pro lixo.">
+<meta name="author" content="Tales Santiago">
+<link rel="canonical" href="https://taleszin.github.io/portfolio/blog/taleszin-os-tablet-2014/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://taleszin.github.io/portfolio/blog/taleszin-os-tablet-2014/">
+<meta property="og:title" content="Uma ROM para um tablet de 2014 com 512 MB de RAM | Tales Santiago">
+<meta property="og:description" content="Como medir antes de mexer, brigar com uma bateria gasta e escrever apps Android sem Gradle num Multilaser M7s que ia pro lixo.">
+<meta property="og:image" content="https://taleszin.github.io/portfolio/assets/img/blog/capas/taleszin-os-tablet-2014.webp">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Blog do Tales Santiago" href="https://taleszin.github.io/portfolio/blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../blog/blog.css?v=20261126b">
+<meta property="article:published_time" content="2026-11-26"><meta property="article:section" content="Engenharia"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Uma ROM para um tablet de 2014 com 512 MB de RAM","description":"Como medir antes de mexer, brigar com uma bateria gasta e escrever apps Android sem Gradle num Multilaser M7s que ia pro lixo.","inLanguage":"pt-BR","datePublished":"2026-11-26","dateModified":"2026-11-26","wordCount":1013,"timeRequired":"PT5M","articleSection":"Engenharia","keywords":"android, kitkat, rom, linux, baixo-nivel","mainEntityOfPage":"https://taleszin.github.io/portfolio/blog/taleszin-os-tablet-2014/","image":"https://taleszin.github.io/portfolio/assets/img/blog/capas/taleszin-os-tablet-2014.webp","author":{"@type":"Person","name":"Tales Santiago","url":"https://taleszin.github.io/portfolio/","jobTitle":"Full Stack Engineer"},"isPartOf":{"@type":"Blog","name":"Blog do Tales Santiago","url":"https://taleszin.github.io/portfolio/blog/"}}</script>
+</head>
+<body class="page-post" style="--c:#3ef2d6">
+<div class="progress" aria-hidden="true"><span></span></div>
+<header class="topbar">
+  <a href="../../" class="brand" aria-label="Tales Santiago, portfólio"><span class="brand-mark">TS</span><span class="brand-name">Tales Santiago</span></a>
+  <nav class="nav" aria-label="Navegação">
+    <a href="../../#produtos">Produtos</a>
+    <a href="../../blog/" aria-current="page">Blog</a>
+    <a href="../../#jornada">Jornada</a>
+    <a href="../../#contato" class="nav-cta">Contato</a>
+  </nav>
+</header>
+<main id="top">
+  <header class="post-hero">
+    <nav class="crumbs" aria-label="Você está em"><a href="../../">Portfólio</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><a href="../../blog/#engenharia">Engenharia</a></nav>
+    <p class="post-kicker"><span class="cat-dot"></span>Engenharia<span class="sep">·</span>N.º 15</p>
+    <h1>Uma ROM para um tablet de 2014 com 512 MB de RAM</h1>
+    <p class="lead">Como medir antes de mexer, brigar com uma bateria gasta e escrever apps Android sem Gradle num Multilaser M7s que ia pro lixo.</p>
+    <div class="byline">
+      <img class="avatar" src="../../assets/img/tales.webp" alt="" width="44" height="44">
+      <div><b>Tales Santiago</b><span><time datetime="2026-11-26">26 de novembro de 2026</time> · 5 min de leitura</span></div>
+    </div>
+    <figure class="post-cover hero-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/taleszin-os-tablet-2014.webp" alt="Capa do artigo: Uma ROM para um tablet de 2014 com 512 MB de RAM" width="1600" height="900"></figure>
+  </header>
+
+  <div class="post-layout">
+    <article class="prose" data-prose data-minutes="5">
+      <details class="toc-mobile"><summary>Neste artigo</summary><ol><li><a href="#build-reproduzivel-a-partir-do-firmware-oficial">Build reproduzível a partir do firmware oficial</a></li><li><a href="#bateria-gasta-e-memoria-apertada">Bateria gasta e memória apertada</a></li><li><a href="#apps-nativos-sem-gradle">Apps nativos sem Gradle</a></li><li><a href="#o-que-ficou-de-fora">O que ficou de fora</a></li></ol></details>
+      <p>Tinha um Multilaser M7s Dual Core parado em casa, travando em tudo. Rockchip RK3026, dois núcleos a 1 GHz, 512 MB de RAM, Android 4.4.2 de fábrica. A pergunta inicial foi pequena: dá pra otimizar isso só pelo cabo USB, com depuração ligada? Não existia nenhuma ROM alternativa pra esse aparelho, então a resposta virou o Taleszin OS, uma ROM própria com tela inicial, tema, serviços de boot e apps nativos.</p>
+<p>A regra que guiou o projeto todo veio cedo: num aparelho desses, quem decide é o hardware, e eu só sei o que o hardware quer depois de medir.</p>
+<figure class="media media-solo"><img src="../../assets/img/tablet-home.webp" alt="Tela inicial do Taleszin OS no tablet, com relógio, bateria, RAM livre e favoritos" loading="lazy" decoding="async" data-zoom><figcaption>A tela inicial mostra bateria e RAM livre porque, nesse aparelho, são esses dois números que importam.</figcaption></figure>
+<h2 id="build-reproduzivel-a-partir-do-firmware-oficial">Build reproduzível a partir do firmware oficial</h2>
+<p>A primeira decisão foi não versionar firmware nem APK de terceiros. O repositório tem scripts, configuração e um overlay. O <code>build.sh</code> lê o zip oficial da Multilaser que você fornece, baixa os apps por URL fixa conferindo sha256 e monta o <code>system.img</code>. A gravação é pelo Mac com <code>rkflashtool</code>, depois de um backup completo em modo loader.</p>
+<p>Antes de mudar qualquer coisa, li o firmware. Strings e dexdump do <code>framework.jar</code>, do <code>services.jar</code> e das libs nativas, mais o <code>dmesg</code> e o sysfs lidos ao vivo. Isso rendeu achados que nenhum fórum ia me dar:</p>
+<ul><li>O <code>build.prop</code> de fábrica define <code>ro.kernel.android.checkjni=0</code> e, mais abaixo, <code>=1</code>. Vale o último, então todo app pagava a validação de cada chamada JNI.</li><li>A propriedade <code>wifi.supplicant_scan_interval</code> é placebo: nada no framework nem no <code>wpa_supplicant</code> lê esse valor. O que conta é um Settings Global, aplicado no primeiro boot.</li><li>O tzdata de 2014 ainda tinha horário de verão no Brasil, extinto em 2019. O build compila o <code>zic</code> atual e reempacota no formato que o bionic do 4.4 entende.</li><li>A resolução da tela saiu por dedução: o clock do LCD dividido pelos 67 fps do <code>dmesg</code> dá uns 554 mil pixels por quadro, o que bate com 800×480 e descarta 1024×600.</li></ul>
+<h2 id="bateria-gasta-e-memoria-apertada">Bateria gasta e memória apertada</h2>
+<p>Coloquei telemetria antes de otimizar. Um serviço em shell grava CSV com tensão, frequência de CPU, memória e o app da frente. Os primeiros dados foram feios: desplugado a 100%, a tensão caía na hora pra uns 3,80 V, e o tablet desligava sozinho sob carga do navegador. O sensor de porcentagem do kernel estima por tensão e mente nos dois sentidos, e o <code>voltage_now</code> congela entre degraus. A tensão real passou a vir do ADC lido direto.</p>
+<p>Daí nasceu o <code>m7s-powerguard</code>, um processo <code>sh</code> dormindo que lê quatro nós de <code>/sys/class/power_supply</code>. Na bateria, ele limita a CPU a 816 MHz, porque o degrau de 1008 MHz pede a maior tensão do núcleo e os picos de corrente derrubam uma bateria velha. Perto do fim, reduz brilho e CPU em degraus e desliga limpo com a <code>ShutdownActivity</code> do próprio 4.4, exigindo duas leituras baixas seguidas pra não cair num pico isolado.</p>
+<figure class="media media-solo"><img src="../../assets/img/tablet-bateria.webp" alt="Aviso de bateria crítica do Taleszin OS por cima do navegador" loading="lazy" decoding="async" data-zoom><figcaption>O vigia de bateria corta CPU e brilho antes do apagão e avisa em vez de deixar o tablet morrer no meio da página.</figcaption></figure>
+<p>Os travamentos tinham outra causa. A telemetria de um dia mostrou o tablet 15 minutos parado com load 25, sem conseguir nem gravar o log. O navegador ocupava uns 165 MB dos cerca de 400 úteis, e o low memory killer do kernel 3.0 contava o ashmem do Chromium como cache descartável, então nunca matava nada. A solução foi o <code>m7s-sentinela</code>: a cada 5 segundos ele calcula a memória realmente livre (MemFree + Cached − Shmem − Mapped) e, em aperto confirmado, mata um processo só, do menos importante pro mais. Junto veio uma caixa-preta que, no boot seguinte, diz como a sessão anterior acabou: desligamento limpo, bateria, travamento.</p>
+<p>Faltava o reset. Antes, só um palito no furo resolvia. O <code>m7s-botao</code> lê o botão liga/desliga como evento cru do evdev, direto do kernel, e funciona mesmo com o Android travado:</p>
+<pre class="code" data-lang="sh"><code># evdev cru: struct input_event de 16 bytes
+set -- $(dd bs=16 count=1 &lt;&amp;3 | od -b)
+# type 001 = EV_KEY · code 164 = KEY_POWER
+[ &quot;${10}${11}&quot; = 001000 ] || continue
+# segurou 8 s: sync, só-leitura, reboot
+echo s &gt; /proc/sysrq-trigger
+echo u &gt; /proc/sysrq-trigger
+echo b &gt; /proc/sysrq-trigger</code></pre>
+<p>Esses scripts rodam no <code>mksh</code> do 4.4, que não se comporta igual ao shell do macOS. Um <code>${e%%|*}</code> que funciona no Mac devolve vazio no tablet. Desde então, script do overlay só é dado como testado depois de rodar no aparelho.</p>
+<p>A memória ganhou zRAM de 128 MB, KSM e <code>ro.config.low_ram</code>. A KSM custa por volta de 1% de um núcleo e devolve uns 18 MB. Em 512 MB, vale.</p>
+<h2 id="apps-nativos-sem-gradle">Apps nativos sem Gradle</h2>
+<p>Os apps da ROM são Java puro, minSdk 19, sem biblioteca nenhuma. O build de cada um é um script de 30 linhas que chama as ferramentas do SDK direto:</p>
+<pre class="code" data-lang="sh"><code>aapt2 compile --dir res -o build/res/res.zip
+aapt2 link -I android.jar --manifest AndroidManifest.xml \
+  --min-sdk-version 19 --target-sdk-version 19 --java build/gen ...
+javac -source 8 -target 8 -bootclasspath android.jar ...
+d8 --release --min-api 19 --lib android.jar ...
+zipalign -f -p 4 ... &amp;&amp; apksigner sign ...</code></pre>
+<p>Não tem Gradle nem dependência que exija API 21, e o resultado cabe no aparelho: o Fliperama tem 50 KB, o leitor Estante e o Piano uns 80 KB, o Diagnóstico 120 KB. App pequeno também é dexopt rápido e menos RAM, que é o que esse tablet tem de mais escasso.</p>
+<p>A Estante é o melhor exemplo de restrição ditando desenho. A WebView do 4.4 não tem nada de leitor, então a paginação estilo Kindle é feita com colunas CSS (<code>-webkit-column-width</code> do tamanho da tela), sem rolagem e sem linha cortada. Capítulos acima de 150 KB são quebrados em partes de uns 60 mil caracteres, fechando e reabrindo as tags nos cortes, porque paginar 1 MB de uma vez levava mais de 15 segundos no RK3026. O capítulo é lido direto do zip, sem extrair nada pro <code>/data</code>.</p>
+<div class="carousel is-gallery" data-count="4" role="group" aria-roledescription="carrossel"><div class="car-track" tabindex="0"><figure class="slide" data-n="1"><div class="slide-media"><img src="../../assets/img/tablet-leitor.webp" alt="Leitor Estante mostrando uma página de texto com rodapé de capítulo e progresso" loading="lazy" decoding="async" data-zoom></div><figcaption>Estante: páginas por colunas CSS numa WebView do Android 4.4.</figcaption></figure><figure class="slide" data-n="2"><div class="slide-media"><img src="../../assets/img/tablet-supercooked.webp" alt="Jogo homebrew Supercooked aberto no emulador com controles na tela" loading="lazy" decoding="async" data-zoom></div><figcaption>Fliperama abre homebrew direto no emulador.</figcaption></figure><figure class="slide" data-n="3"><div class="slide-media"><img src="../../assets/img/blog/taleszin-os-tablet-2014/prancheta.webp" alt="Prancheta tática de basquete com jogadores numerados e setas de movimento" loading="lazy" decoding="async" data-zoom></div><figcaption>A Prancheta desenha jogadas em Canvas puro, passo a passo.</figcaption></figure><figure class="slide" data-n="4"><div class="slide-media"><img src="../../assets/img/blog/taleszin-os-tablet-2014/tema.webp" alt="Componentes do tema laranja: painel de Wi-Fi, notificações e menu" loading="lazy" decoding="async" data-zoom></div><figcaption>O tema troca o azul Holo pelo laranja via Xposed na SystemUI.</figcaption></figure></div><div class="car-ctrl"><button type="button" class="car-btn" data-dir="-1" aria-label="Anterior">←</button><span class="car-count"><b>1</b> / 4</span><button type="button" class="car-btn" data-dir="1" aria-label="Próximo">→</button></div></div>
+<p>O tema foi a parte mais chata de fazer funcionar. Os hooks em Xposed na SystemUI trocam o azul Holo pelo laranja e o layout de tablet pelo de celular. O servidor oficial do Xposed não responde mais, então o instalador e o framework para KitKat vieram do Internet Archive, conferidos por hash e assinatura. Pra carregar com o SELinux em enforcing numa gravação limpa, precisei corrigir os contextos dos arquivos.</p>
+<h2 id="o-que-ficou-de-fora">O que ficou de fora</h2>
+<p>O touch roda em polling e a memória DDR não baixa de frequência em ocioso. As duas coisas só mudam no kernel e ficaram anotadas como candidatas pra uma versão 2. E a própria documentação da ROM admite o óbvio: o maior ganho possível é trocar a bateria de 2.200 mAh de 2014, que hoje rende menos de uma hora de tela. Software segura o apagão por alguns minutos. Bateria nova daria horas.</p>
+<p>O código está no meu <a href="https://github.com/taleszin" target="_blank" rel="noopener">GitHub</a>.</p>
+      <p class="post-tags"><span>android</span><span>kitkat</span><span>rom</span><span>linux</span><span>baixo-nivel</span></p>
+      <div class="author-box">
+        <img src="../../assets/img/tales.webp" alt="" width="72" height="72" loading="lazy">
+        <div><b>Tales Santiago</b><p>Full stack de Fortaleza. Ciência da Computação na UECE, cofundador e CTO do Leap Notes, tech lead do Portal da História do Ceará.</p><p class="author-links"><a href="../../">Portfólio</a><a href="https://github.com/taleszin" target="_blank" rel="noopener">GitHub</a><a href="https://wa.me/5585984038749?text=Ol%C3%A1%20Tales!%20Li%20um%20artigo%20do%20seu%20blog%20e%20quero%20conversar." target="_blank" rel="noopener">WhatsApp</a></p></div>
+      </div>
+    </article>
+    <aside class="post-side" aria-label="Navegação do artigo">
+      <nav class="toc" aria-label="Neste artigo"><p class="side-title">Neste artigo</p><ol><li><a href="#build-reproduzivel-a-partir-do-firmware-oficial">Build reproduzível a partir do firmware oficial</a></li><li><a href="#bateria-gasta-e-memoria-apertada">Bateria gasta e memória apertada</a></li><li><a href="#apps-nativos-sem-gradle">Apps nativos sem Gradle</a></li><li><a href="#o-que-ficou-de-fora">O que ficou de fora</a></li></ol></nav>
+      <div class="side-share"><p class="side-title">Compartilhar</p>
+        <div class="share-row">
+          <button type="button" class="share-btn" data-copy="https://taleszin.github.io/portfolio/blog/taleszin-os-tablet-2014/">Copiar link</button>
+          <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftaleszin.github.io%2Fportfolio%2Fblog%2Ftaleszin-os-tablet-2014%2F" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="share-btn" href="https://wa.me/?text=Uma%20ROM%20para%20um%20tablet%20de%202014%20com%20512%20MB%20de%20RAM%20https%3A%2F%2Ftaleszin.github.io%2Fportfolio%2Fblog%2Ftaleszin-os-tablet-2014%2F" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <a class="side-cta" href="https://wa.me/5585984038749?text=Ol%C3%A1%20Tales!%20Li%20um%20artigo%20do%20seu%20blog%20e%20quero%20conversar." target="_blank" rel="noopener"><span>Tem um produto pra construir?</span><b>Vamos conversar ↗</b></a>
+    </aside>
+  </div>
+
+  <nav class="post-pager" aria-label="Outros artigos">
+    <a class="pager prev" href="../../blog/golems-que-falam-com-quem-os-cria/"><span>← Anterior</span><b>Escrevendo a fala de criaturas que sabem quem as criou</b></a>
+    <span></span>
+  </nav>
+
+  <section class="related" aria-labelledby="rel">
+    <h2 id="rel">Continue lendo</h2>
+    <div class="post-grid"><a class="post-card" href="../../blog/ocr-de-jornal-de-1800-e-pouco/" data-cat="engenharia" data-search="o que sobra depois do ocr em papel de 1800 e pouco como um acervo de mais de 30 anos, guardado como imagem e txt sujo, virou busca full-text sobre 2,5 milhoes de manchetes no portal da historia do ceara. engenharia ocr mysql dados full-text phc" style="--c:#3ef2d6">
+  <figure class="post-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/ocr-de-jornal-de-1800-e-pouco.webp" alt="" loading="lazy" decoding="async" width="1600" height="900"></figure>
+  <div class="post-card-body">
+    <p class="post-kicker"><span class="cat-dot"></span>Engenharia<span class="sep">·</span>5 min</p>
+    <h3>O que sobra depois do OCR em papel de 1800 e pouco</h3>
+    <p class="post-desc">Como um acervo de mais de 30 anos, guardado como imagem e TXT sujo, virou busca full-text sobre 2,5 milhões de manchetes no Portal da História do Ceará.</p>
+    <span class="post-more">Ler artigo</span>
+  </div>
+</a><a class="post-card" href="../../blog/dois-jogos-sem-nenhum-arquivo-de-arte/" data-cat="engenharia" data-search="dois jogos sem um unico arquivo de arte como fiz o fuelmania e o geo sumo com arte, som e fisica escritos em codigo, e o que essa regra me deu de graca: um jogo que da pra medir. engenharia game dev webgl three.js audio procedural fisica" style="--c:#3ef2d6">
+  <figure class="post-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/dois-jogos-sem-nenhum-arquivo-de-arte.webp" alt="" loading="lazy" decoding="async" width="1600" height="900"></figure>
+  <div class="post-card-body">
+    <p class="post-kicker"><span class="cat-dot"></span>Engenharia<span class="sep">·</span>5 min</p>
+    <h3>Dois jogos sem um único arquivo de arte</h3>
+    <p class="post-desc">Como fiz o FUELMANIA e o GEO SUMO com arte, som e física escritos em código, e o que essa regra me deu de graça: um jogo que dá pra medir.</p>
+    <span class="post-more">Ler artigo</span>
+  </div>
+</a><a class="post-card" href="../../blog/golems-que-falam-com-quem-os-cria/" data-cat="projetos-pessoais" data-search="escrevendo a fala de criaturas que sabem quem as criou no hylomorph, os golems falavam como verbete de fisica. como reescrevi a voz deles para soarem vivos e conscientes de quem os cria. projetos pessoais game design dialogo phaser vida artificial hylomorph" style="--c:#ff7a1a">
+  <figure class="post-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/golems-que-falam-com-quem-os-cria.webp" alt="" loading="lazy" decoding="async" width="1600" height="900"></figure>
+  <div class="post-card-body">
+    <p class="post-kicker"><span class="cat-dot"></span>Projetos pessoais<span class="sep">·</span>4 min</p>
+    <h3>Escrevendo a fala de criaturas que sabem quem as criou</h3>
+    <p class="post-desc">No HYLOMORPH, os golems falavam como verbete de física. Como reescrevi a voz deles para soarem vivos e conscientes de quem os cria.</p>
+    <span class="post-more">Ler artigo</span>
+  </div>
+</a></div>
+  </section>
+</main>
+<footer class="footer">
+  <p>Escrito e construído por Tales Santiago. HTML, CSS e JavaScript, sem framework.</p>
+  <p class="footer-links"><a href="../../blog/feed.xml">RSS</a><a href="https://github.com/taleszin" target="_blank" rel="noopener">GitHub</a><a href="../../">Portfólio</a></p>
+</footer>
+<script src="../../blog/blog.js?v=20261126b" defer></script>
+</body>
+</html>

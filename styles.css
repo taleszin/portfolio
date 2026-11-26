@@ -454,3 +454,13 @@ h2 { font-size: clamp(34px, 5.4vw, 76px); max-width: 16ch; margin-top: 18px; }
 @media (max-width: 600px) { .hw-side { grid-template-columns: 1fr; } .hw-shot { max-width: 180px; } .tablet-label span { display: none; } }
 @media (prefers-reduced-motion: reduce) { .tablet-screen img { animation: none; } .tablet-screen img:first-child { opacity: 1; } .tablet-dots { display: none; } }
 #artigos .article-card h3 { max-width: 24ch; font-size: clamp(24px, 2vw, 32px); }
+#artigos .article-thumb { display: block; margin: -30px -30px 22px; aspect-ratio: 16 / 8; overflow: hidden; border-bottom: 1px solid var(--line); background: #0d0d14; }
+#artigos .article-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: saturate(.9) brightness(.8); transition: transform 1s var(--ease), filter .5s; }
+#artigos .article-card:hover .article-thumb img { transform: scale(1.06); filter: saturate(1.05) brightness(.95); }
+#artigos .article-card .article-number { position: absolute; top: 14px; right: 16px; z-index: 1; }
+#artigos .article-thumb svg { display: block; width: 100%; height: 100%; transition: transform 1.2s var(--ease); }
+#artigos .article-card:hover .article-thumb svg { transform: scale(1.06); }
+#artigos .article-thumb img { filter: saturate(.85) brightness(.62); }
+#artigos .article-thumb { aspect-ratio: 16 / 9; }
+#artigos .article-thumb img.is-art { filter: none; }
+#artigos .article-card .article-thumb ~ .article-number { display: none; }
