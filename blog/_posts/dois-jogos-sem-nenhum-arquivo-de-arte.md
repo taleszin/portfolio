@@ -5,6 +5,7 @@ description: "Como fiz o FUELMANIA e o GEO SUMO com arte, som e física escritos
 category: "Engenharia"
 tags: ["game dev", "webgl", "three.js", "áudio procedural", "física"]
 order: 13
+publishedAt: "2026-09-16"
 cover: "img/fuel-day.webp"
 ---
 

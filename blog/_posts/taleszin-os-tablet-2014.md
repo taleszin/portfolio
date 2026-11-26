@@ -5,6 +5,7 @@ description: "Como medir antes de mexer, brigar com uma bateria gasta e escrever
 category: "Engenharia"
 tags: ["android", "kitkat", "rom", "linux", "baixo-nivel"]
 order: 15
+publishedAt: "2026-11-17"
 ---
 
 Tinha um Multilaser M7s Dual Core parado em casa, travando em tudo. Rockchip RK3026, dois núcleos a 1 GHz, 512 MB de RAM, Android 4.4.2 de fábrica. A pergunta inicial foi pequena: dá pra otimizar isso só pelo cabo USB, com depuração ligada? Não existia nenhuma ROM alternativa pra esse aparelho, então a resposta virou o Taleszin OS, uma ROM própria com tela inicial, tema, serviços de boot e apps nativos.

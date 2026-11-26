@@ -5,6 +5,7 @@ description: "Um tablet de 2014 que ia pro lixo, uma prancheta de basquete, um p
 category: "Projetos pessoais"
 tags: ["projetos pessoais", "android", "ia", "side projects"]
 order: 9
+publishedAt: "2026-11-10"
 cover: "img/blog/quando-o-cliente-sou-eu/prancheta-jogada.webp"
 ---
 

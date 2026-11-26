@@ -5,6 +5,7 @@ description: "Como montei a IA do Portal da História do Ceará: um modelo mini 
 category: "IA"
 tags: ["agentes", "tool use", "prompt engineering", "PHP", "MySQL"]
 order: 5
+publishedAt: "2026-04-23"
 ---
 
 Durante dois meses eu melhorei o prompt da IAcema e nenhuma dessas melhorias chegou ao visitante. Eu commitava, o deploy passava verde, as auditorias das conversas mostravam os mesmos vícios, e eu concluía que o modelo era teimoso. Não era. Um arquivo de configuração no servidor, fora do git, criado pra guardar a chave da API, também definia prompt, modelo e ferramentas. Ele carregava antes do arquivo versionado, que só definia cada constante se ela ainda não existisse. Produção rodava uma foto antiga, e tudo que eu escrevia depois era ignorado em silêncio.

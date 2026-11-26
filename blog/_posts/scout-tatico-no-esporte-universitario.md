@@ -5,17 +5,16 @@ description: "Como a insegurança de entrar em quadra sem conhecer ninguém viro
 category: "Projetos pessoais"
 tags: ["esporte", "analise-tatica", "handebol", "basquete", "visualizacao"]
 order: 12
+publishedAt: "2026-07-29"
 ---
 
-Jogo basquete e handebol pela UECE. Basquete pelo CCT, o time da Computação, e handebol pela Triunfal, a associação dos cursos de humanas, onde jogo de ponta. Por muito tempo eu tinha uma insegurança antes de toda competição: entrar em quadra sem saber quem era quem do outro lado. Quem arremessa de longe, quem só vai pra direita, quem corre o contra-ataque. Descobria no meio do jogo, quando já tinha tomado gol.
+Jogo basquete e handebol universitário pela UECE; no handebol, de ponta. Antes de competição, uma coisa me incomodava: entrar em quadra sem saber quem era quem do outro lado. Quem arremessa de longe, quem só vai pra direita, quem corre o contra-ataque. No esporte universitário isso costuma ser descoberto no meio do jogo, depois do gol tomado.
 
 Acabei dando uma hiperfocada nisso. Primeiro em estudar os adversários de verdade, depois o nosso próprio time, pra entender como os meus podiam se encaixar melhor. No caminho aprendi bastante coisa de tática, de análise de movimento e de vídeo. E, como sou dev, a vontade natural foi transformar isso em material visual, que qualquer um do time conseguisse entender em dois minutos no vestiário.
 
-## O vice que puxou o resto
+## Chegar com um plano
 
-No meio de 2026 perdemos uma final de basquete 3x3 por 6 a 3, contra um time com um pivô bem mais alto que a gente. Eu tive câimbra, a mão esfriou, e a sensação depois foi de que a gente não tinha um plano pra aquele cenário. Tinha talento, não tinha leitura.
-
-Pouco depois vinha o torneio de handebol. Dessa vez resolvi chegar preparado. Montei um dossiê em HTML com as três equipes que a gente ia enfrentar, a ordem dos jogos e o que cada cenário de classificação exigia. O formato era todos contra todos num dia, final no dia seguinte, em quadra de futsal. Quadra menor comprime o espaço, a defesa recompõe mais rápido, e isso muda qual tipo de contra-ataque compensa.
+Talento sem leitura de jogo rende pouco numa competição curta. No torneio de handebol de 2026, decidi que o time ia chegar com plano. Montei um dossiê em HTML com as três equipes que a gente ia enfrentar, a ordem dos jogos e o que cada cenário de classificação exigia. O formato era todos contra todos num dia, final no dia seguinte, em quadra de futsal. Quadra menor comprime o espaço, a defesa recompõe mais rápido, e isso muda qual tipo de contra-ataque compensa.
 
 O processo era simples e meio braçal. Assistir aos jogos dos outros, rever gravação quando tinha, anotar quem finaliza, de onde, e como cada time defende. Separar a impressão do fato: o próprio dossiê avisava que era análise com a informação disponível, e que o sistema defensivo de quem eu não tinha visto jogar seria confirmado ao vivo, nos primeiros ataques.
 
@@ -56,4 +55,4 @@ Também fiz um shot chart com cara de fliperama: toca na quadra pra marcar arrem
 ![Shot chart em estilo arcade com zonas coloridas por aproveitamento e tabela por zona ao lado](img/blog/scout-tatico-no-esporte-universitario/bzin-main.webp "O shot chart, aqui com dados de exemplo.")
 :::
 
-O troféu que eu mais quero ainda está pela frente: os Jogos UECE, a competição maior, onde o CCT foi vice no ano passado. Lá a gente chega como desafiante, e dessa vez sem descobrir o adversário no meio do jogo.
+O próximo alvo são os Jogos UECE, a competição maior da universidade. O método é o mesmo: estudar o adversário antes, desenhar o plano de um jeito que todo mundo entende, e conferir em quadra se ele funciona.

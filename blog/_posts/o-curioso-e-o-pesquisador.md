@@ -5,6 +5,7 @@ description: "Como públicos muito diferentes mudaram a busca, a IA e os painéi
 category: "Produto"
 tags: ["produto", "portal-da-historia-do-ceara", "busca", "metricas", "ux"]
 order: 6
+publishedAt: "2026-05-14"
 cover: "img/blog/o-curioso-e-o-pesquisador/busca-praca-do-ferreira.webp"
 ---
 
