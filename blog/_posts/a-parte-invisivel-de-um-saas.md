@@ -1,65 +1,55 @@
 ---
-title: "A parte invisível de um SaaS que cresceu"
+title: "A parte invisível de um SaaS que cresce"
 slug: "a-parte-invisivel-de-um-saas"
-description: "Um gráfico que apagava o passado, um app que voltava pra versão velha e um webhook que rebaixava quem pagava. O que aprendi como CTO do Leap Notes."
-category: "Engenharia"
-tags: ["engenharia", "saas", "supabase", "postgres", "cto"]
+description: "Confiança, suporte, pagamento que funciona e saber o que não fazer. O que ocupa a semana de um CTO depois que o produto sai do MVP."
+category: "Produto"
+tags: ["saas", "cto", "produto", "startup", "leap-notes"]
 order: 8
+cover: "img/leap-live.webp"
 ---
 
-Um dia meus sócios me mandaram um print do painel de admin do [Leap Notes](https://leapnotes.app) com uma pergunta simples: "uma semana atrás esse dia tinha mais gente ativa. Por que agora tem menos?". O gráfico de usuários ativos por dia estava encolhendo o passado. Cada vez que alguém abria o painel, os dias antigos tinham um pouco menos de gente.
+A mensagem de suporte que mais me preocupa não é "tá dando erro". É "paguei e não liberou". Erro de tela a pessoa contorna, espera, tenta de novo. Dinheiro que saiu da conta sem o acesso chegar quebra a confiança na hora, e confiança é o que faz alguém deixar as anotações de plantão dentro de um app.
 
-Ninguém de fora vê esse tipo de coisa. O usuário vê o editor de notas, a anatomia 3D, o Leap AI. Mas quando um produto sai do MVP de bloco de notas e passa a ter cobrança, plano grátis, plano pago, app no celular e dezenas de edge functions, a maior parte do meu trabalho como CTO virou a parte que não aparece em print de rede social. Separei quatro histórias dessa parte, porque cada uma me ensinou uma regra que hoje eu sigo sem pensar.
+O que aparece nos vídeos do [Leap Notes](https://leapnotes.app) é a anatomia 3D, o Leap AI, o editor. Mas depois que o produto saiu do bloco de notas e passou a ter plano grátis, plano pago, app no celular e milhares de pessoas usando, a maior parte das minhas decisões como CTO virou a parte que não dá print. Separei as que mais pesam.
 
-## O gráfico que apagava o passado
+## Confiança é a feature que ninguém pede
 
-A primeira reação foi achar que era bug de fuso ou de `updated_at`, que é o suspeito de sempre. Não era. A consulta contava os usuários ativos de cada dia olhando pra quem tinha criado nota ou salvo uma versão de rascunho naquele dia. O `created_at` de cada linha é imutável, então em tese o passado não mudava.
+Ninguém abre o suporte pra elogiar que a nota estava lá no dia seguinte. Mas é exatamente isso que segura o usuário. Médico escreve no plantão, com pressa, às vezes sem internet boa. Se ele perde uma evolução uma vez, não volta.
 
-O problema é que as linhas somem. Um cron semanal poda versões antigas de rascunho de usuários do plano grátis. Usuários apagam notas. Apagar uma pasta apaga em cascata o que tem dentro. E um `COUNT(DISTINCT user_id)` recalcula sobre o que existe hoje. Linha apagada, usuário sumido daquele dia.
+Por isso, antes de qualquer feature nova, a pergunta que eu faço é se ela pode, de algum jeito, fazer alguém perder o que escreveu ou ver uma versão velha do app. Histórico de versões e backup ficam no menu principal, à vista, e não escondidos em configuração. E todo deploy que o usuário percebe atualiza o número da versão e as notas da versão no rodapé. Parece burocracia até o dia em que alguém manda print de um comportamento estranho e você precisa saber qual versão está rodando ali.
 
-A correção foi parar de derivar métrica histórica de tabela operacional. Criei uma tabela só pra isso, `daily_active_users`, com chave primária em (dia, usuário), que só recebe inserção e nunca é podada. Um cron diário tira a foto do dia, e fiz um backfill único com o que ainda existia. Duas decisões ali foram de propósito:
+![Hub do Leap Notes no computador, com Histórico e Backup no menu lateral](img/leap-hub-desktop.webp "Histórico e Backup no menu principal, do lado das pastas.")
 
-- A tabela tem RLS ligada e nenhuma policy. Ninguém lê nem escreve direto, só funções no servidor.
-- Ela não tem chave estrangeira pra tabela de usuários. Se alguém apaga a conta, o histórico agregado não pode ir junto em cascata. Quando a LGPD pedir a remoção, vira um passo explícito, não um efeito colateral.
+## Suporte é onde o produto fala a verdade
 
-O dado que já tinha sido podado não voltou, e eu disse isso aos sócios com todas as letras. Prefiro um gráfico com um buraco honesto a um gráfico bonito que mente. A regra que ficou: **se um número vai ser comparado com o passado, ele precisa de um registro que só cresce**.
+Eu leio o suporte. Não tudo, mas o suficiente pra perceber quando a mesma dúvida aparece três vezes na semana. Pergunta repetida quase sempre é defeito de produto disfarçado: um botão que ninguém acha, um texto que promete uma coisa e entrega outra, um limite que não se explica.
 
-## Fail-closed e a ordem do deploy
+O limite do Leap AI é um bom exemplo. Cada resposta custa processamento de verdade, então o plano gratuito tem um teto diário. Dava pra responder só "limite atingido". A mensagem diz quando renova, o que muda no Pro e por que o teto existe. A regra é a mesma, só que explicada, e isso muda o tom de quem escreve pro suporte depois.
 
-Quando o Leap AI ganhou limite de uso por plano, a reserva de cota passou a ser uma função no banco que, numa transação, confere o plano, verifica o quanto a pessoa já usou no dia e reserva a unidade. Atômico, pra duas abas abertas não furarem o limite ao mesmo tempo.
+![Leap AI avisando que o limite diário acabou, quando renova e o que o plano Pro libera](img/blog/a-parte-invisivel-de-um-saas/leap-ai-limite.webp "Limite explicado: quando renova, o que o Pro muda e por que o teto existe.")
 
-Escolhi que ela fosse fail-closed. Se a checagem de cota falha por qualquer motivo, o assistente responde erro em vez de liberar. Num produto com chamada de LLM paga por token, falhar aberto é deixar a torneira ligada enquanto você dorme.
+## Pagamento que simplesmente funciona
 
-Só que fail-closed tem um custo que a gente esquece: ele transforma a ordem do deploy em requisito. Se o código da edge function sobe antes da migration que cria a função de cota, a chamada não encontra a função, cai no `catch` e o assistente fica fora do ar pra todo mundo. Não pra quem estourou o limite. Pra todo mundo.
+O Leap tem checkout próprio, com cartão, Pix e assinatura. Isso dá controle sobre a experiência, mas também coloca na nossa mão tudo que pode dar errado entre o clique em "assinar" e o acesso liberado.
 
-Por isso a ordem virou lei no projeto: migration primeiro, function depois, front por último. A migration é aditiva e idempotente (`create if not exists`, `create or replace`), então rodar duas vezes não estraga nada. O front degrada com calma se o backend ainda não chegou. E quando o produto amadureceu, isso entrou no processo: migration vai em PR própria, antes do front, e merge na branch principal publica backend, então ninguém mergeia sem saber o que vai pra produção.
+Os princípios que segui ali são poucos. Quem paga nunca perde acesso por erro nosso, então ninguém é rebaixado sem a gente ter certeza de que foi a assinatura certa que acabou. Cancelar é direto no app, sem precisar pedir. O reembolso em sete dias está escrito na tela de pagamento, não escondido nos termos. E existe um aviso automático pra quando alguém pagou e o acesso não foi ativado, porque gateway conversa com o sistema por eventos, e evento chega atrasado, repetido ou fora de ordem.
 
-Teve um detalhe que só apareceu na revisão. No Postgres do Supabase, `revoke execute ... from public` não basta pra fechar uma função. Os papéis de usuário anônimo e autenticado recebem permissão de execução por padrão em toda função nova. Sem revogar deles explicitamente, qualquer pessoa logada poderia chamar a função de cota direto, passando o limite que quisesse. O freemium inteiro dependia de uma linha de `revoke` a mais.
+![Resumo do checkout do Leap Notes com garantia de sete dias e renovação cancelável no app](img/blog/a-parte-invisivel-de-um-saas/checkout-resumo.webp "Garantia e cancelamento escritos na própria tela de pagamento.")
 
-## O app que voltava pra versão antiga
+## Decidir o que não fazer
 
-Essa me custou uma tarde e três bugs encadeados. O sintoma: você abria o app e via a versão nova depois de um recarregamento forçado, fechava, abria de novo e estava na antiga. Parecia assombração.
+Com time enxuto, o "não" é a ferramenta de gestão mais usada. Não à ideia boa que destrava menos gente do que outra que já está na fila. Não à feature que agrada um usuário barulhento e confunde os outros cem. Não a deixar um custo variável sem teto: no assistente, se a checagem de uso falhar por qualquer motivo, ele prefere recusar a liberar. Prefiro um usuário reclamando de bloqueio indevido a uma conta de IA crescendo sem ninguém ver.
 
-O primeiro bug era de cabeçalho. O servidor entregava o `sw.js`, o service worker, com um content-type diferente do que a regra de cache esperava, então ele caía na regra genérica e ficava cacheado por sete dias. O service worker velho seguia servindo o bundle velho que tinha guardado.
+Teve decisão de produto que pareceu exagero e não era. Funcionalidade nova que mexe no editor só chega a quem já atualizou o app, porque versão antiga convivendo com dado novo é receita pra perder texto.
 
-O segundo era pior: a correção do cabeçalho nunca chegava ao servidor. O script de deploy pulava todo arquivo começado com ponto, pra não subir coisa sensível por acidente. Fazia sentido, só que o `.htaccess` também começa com ponto. O arquivo de configuração do servidor estava congelado numa versão antiga.
+## Cadência com time enxuto
 
-O terceiro era o verificador de versão do próprio app, que se enganava sozinho. Ele comparava a versão do servidor com uma referência que ele mesmo gravava a partir do servidor. No primeiro descompasso recarregava a página, gravava a referência nova, o service worker servia o bundle antigo de novo e o app ficava preso achando que estava atualizado. A limpeza de cache ainda preservava justamente o cache do service worker.
+Nossa cadência é de entregas pequenas e frequentes. Tudo passa por um ambiente de desenvolvimento antes de produção, com teste automatizado e alguém usando de verdade. Nada vai pro ar sem revisão de outra pessoa do time. Mudança grande vira várias pequenas, que dá pra lançar e observar separadas.
 
-A correção foi assar a data do build dentro do próprio bundle na hora de compilar e comparar o que o app *é* com o que o servidor *diz que existe*, sem referência intermediária. Desde então todo deploy visível também atualiza o número da versão e as notas da versão, aquele modal que abre no rodapé. Parece burocracia até o dia em que você precisa saber, olhando o celular de alguém, qual código está rodando ali.
+Isso deixa o time rápido sem virar roleta. Num dia bom, várias melhorias chegam em produção numa tarde. Num dia ruim, uma delas volta e as outras seguem.
 
-## O webhook que rebaixava quem pagava
+## Medir antes de mexer
 
-O Leap Notes tem checkout próprio e três gateways de pagamento: cartão, Pix e assinatura. Cada um manda seus eventos por webhook, e cada evento mexe no plano de alguém. Quanto mais gateway, mais caminho pra um evento chegar na ordem errada ou falar de uma assinatura que já não é a atual.
+Quase todo redesign que eu já quis fazer começou com uma opinião. Os que deram certo começaram com um número. Antes de mexer no onboarding ou no checkout, a gente mede onde as pessoas param. E antes de confiar num número, conferimos se ele é estável: um indicador que muda o passado conforme os dados de hoje mudam não serve pra decidir nada.
 
-Um caso de suporte mostrou isso. Uma pessoa acabou com duas assinaturas ativas no mesmo cartão. Cancelamos a duplicada, como manda o bom senso, e o gateway disparou o evento de assinatura apagada. O handler fez o que tinha sido escrito pra fazer: rebaixou a conta pro plano grátis. Ela estava pagando a outra assinatura e perdeu o acesso.
-
-O handler confiava no evento sem perguntar de qual assinatura ele falava. O conserto foi um guard: só rebaixar se o id da assinatura apagada for o mesmo id que está registrado como a assinatura atual daquele usuário, e nunca mexer em quem tem plano vitalício. Depois disso fiz uma varredura no banco inteiro procurando qualquer outra conta com plano e assinatura divergentes. Não tinha nenhuma, mas eu só dormi tranquilo depois de olhar.
-
-O débito que ficou anotado é guardar todo evento de pagamento numa tabela própria, com histórico, em vez de só aplicar o efeito. Sem isso, investigar um caso desses depende de abrir o painel do gateway e reconstruir a linha do tempo na mão.
-
-## O que ninguém pede e todo mundo usa
-
-Nenhuma dessas histórias virou funcionalidade que eu possa mostrar num vídeo. Ao lado delas tem outras do mesmo tipo: o catálogo de conteúdo pago que ia inteiro dentro de um chunk JavaScript público e foi tirado do bundle pra ser servido pelo backend com checagem de plano, porque esconder no front não é paywall. Crons que expiram planos vencidos e avisam quando alguém pagou e não teve o acesso ativado. Um gate local que roda só os testes do escopo que a PR tocou. Backup do banco três vezes ao dia, e a descoberta de que uma migration mergeada durante o backup falha por lock e não chega à produção, então o script de merge agora espera o backup terminar. PostHog nos funis de checkout e onboarding, Sentry nos erros que importam.
-
-Time enxuto, como o nosso, não tem um time de plataforma pra cuidar disso. Ou o CTO cuida, ou ninguém cuida, e o produto continua bonito por fora até o dia em que o gráfico mente, o app volta no tempo ou alguém que paga perde o acesso. Boa parte da minha semana é ler cron, webhook e log de deploy pra esse dia não chegar.
+Os sócios acompanham isso num painel feito pra eles, em linguagem de gestor, com o que importa logo na primeira tela. Meu trabalho é garantir que o que está ali seja verdade. Time pequeno não tem equipe de plataforma pra cuidar de nada disso. Ou o CTO cuida, ou ninguém cuida, e o produto continua bonito por fora até o dia em que alguém que paga perde o acesso.

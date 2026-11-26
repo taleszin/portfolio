@@ -5,31 +5,32 @@ description: "Meu primeiro estágio exigia uma linguagem que eu nunca tinha usad
 category: "Carreira"
 tags: ["php", "estagio", "carreira", "aprendizado"]
 order: 3
+cover: "none"
 ---
 
-A vaga era de estagiário num sistema de gestão para laboratórios, o apLIS, e o código era em PHP. Eu nunca tinha escrito uma linha de PHP. O combinado, na prática, era simples: em menos de um mês eu precisava estar entregando coisa de verdade naquela base. Não tinha trilha de onboarding de três meses, não tinha curso pago pela empresa. Tinha o prazo e eu.
+A vaga era de estagiário num sistema de gestão para laboratórios, o apLIS, e o código era em PHP. Eu nunca tinha escrito uma linha de PHP. O combinado, na prática, era: em menos de um mês eu precisava estar entregando coisa de verdade naquela base. Sem trilha de onboarding de três meses, sem curso pago pela empresa. Tinha o prazo e eu.
 
-Eu vinha do PET de Computação da UECE, uma bolsa ótima pra quem tá no começo da graduação, mas que pra mim já tinha começado a ficar repetitiva. Saí porque não queria ficar estagnado. O estágio foi a primeira vez que alguém dependia do que eu escrevia, e foi ali que eu comecei a me sentir programador de fato.
+Eu vinha do PET Computação da UECE, que já tinha começado a ficar repetitivo pra mim. O estágio foi a primeira vez que alguém dependia do que eu escrevia.
 
 ## Um mês, três ferramentas
 
-Hoje, se eu precisasse aprender uma linguagem nova em um mês, eu abriria um assistente de IA e pediria pra ele me explicar a base de código linha por linha. Naquela época isso não fazia parte da rotina de ninguém que eu conhecia. Então o método foi o clássico, e ele se resumia a três coisas.
+Hoje, se eu precisasse aprender uma linguagem em um mês, abriria um assistente de IA e pediria pra ele me explicar a base de código linha por linha. Naquela época isso não fazia parte da rotina de ninguém que eu conhecia, então o método foi o clássico.
 
-A primeira era a documentação oficial. O [manual do PHP](https://www.php.net/manual/pt_BR/) tem uma coisa que eu demorei pra valorizar: cada função tem exemplos, e embaixo vem uma seção de comentários de usuários que às vezes explica melhor que o texto oficial. Eu lia a página da função, testava o exemplo, quebrava o exemplo de propósito pra ver o que acontecia.
+Primeiro, a documentação oficial. O [manual do PHP](https://www.php.net/manual/pt_BR/) tem uma coisa que demorei pra valorizar: cada função vem com exemplos, e embaixo tem comentários de usuários que às vezes explicam melhor que o texto oficial. Eu lia a página, testava o exemplo e quebrava ele de propósito pra ver o que acontecia.
 
-A segunda era o Stack Overflow. Eu copiava a mensagem de erro, colava na busca e ia lendo respostas até achar uma que fizesse sentido pro meu caso. O aprendizado que ninguém te conta é que metade do trabalho é saber descrever o problema. Quando eu não conseguia achar resposta, quase sempre era porque eu ainda não sabia o nome do que estava errado.
+Segundo, o Stack Overflow. Copiava a mensagem de erro, colava na busca e lia respostas até achar uma que servisse pro meu caso. Metade do trabalho era saber descrever o problema. Quando eu não achava resposta, quase sempre era porque ainda não sabia o nome do que estava errado.
 
-A terceira era tentativa e erro, muita. `var_dump` em tudo, recarregar a página, ler o erro, mudar uma linha, recarregar de novo. É lento, é feio e funciona. Ainda funciona.
+Terceiro, tentativa e erro. `var_dump` em tudo, recarregar a página, ler o erro, mudar uma linha, recarregar de novo. É lento, é feio e funciona até hoje.
 
-O que esse período me deu de mais valioso nem foi o PHP. Foi perder o medo de base de código desconhecida. Depois de passar por aquilo sem atalho, chegar num projeto novo e não entender nada nos primeiros dias virou estado normal.
+O que esse mês me deu de mais valioso foi perder o medo de base de código desconhecida. Chegar num projeto novo e não entender nada nos primeiros dias virou estado normal.
 
 ## Por que o PHP virou minha linguagem preferida
 
-Eu esperava aprender PHP por obrigação e largar quando desse. Aconteceu o contrário: ele virou a linguagem com que eu mais gostava de trabalhar, por dois motivos bem práticos.
+Eu esperava aprender por obrigação e largar quando desse. Aconteceu o contrário, por dois motivos práticos.
 
-O primeiro é a interação. No PHP clássico você escreve, salva, recarrega o navegador e vê o resultado. Não tem etapa de build, não tem compilador reclamando antes de você ver qualquer coisa. Pra quem tá aprendendo, esse ciclo curto entre mudar algo e ver o efeito é o que mantém a motivação viva.
+O primeiro é o ciclo curto. No PHP clássico você escreve, salva, recarrega o navegador e vê o resultado. Sem build, sem compilador reclamando antes. Pra quem tá aprendendo, ver o efeito da mudança na hora é o que mantém a motivação.
 
-O segundo é a facilidade de colocar uma página no ar. Um arquivo resolve:
+O segundo é colocar uma página no ar. Um arquivo resolve:
 
 ```php
 <?php
@@ -38,34 +39,28 @@ $nome = $_GET['nome'] ?? 'visitante';
 <h1>Olá, <?= htmlspecialchars($nome) ?></h1>
 ```
 
-Sobe esse arquivo num servidor com PHP e você tem uma página dinâmica publicada. Sem configurar roteador, sem framework, sem pipeline. Quem começou com stack moderna às vezes acha isso primitivo, e em projeto grande realmente cobra seu preço. Mas pra um estudante que queria ver as próprias ideias funcionando na internet, era o caminho mais curto que existia. Depois do estágio eu acabei centrando boa parte do meu aprendizado nele justamente por isso.
+Sobe isso num servidor com PHP e você tem uma página dinâmica publicada, sem roteador, framework ou pipeline. Em projeto grande isso cobra seu preço, mas pra um estudante que queria ver as próprias ideias funcionando na internet era o caminho mais curto que existia.
 
 ## O que o estágio ensinou além do código
 
-Fiquei cerca de um ano lá. O PHP foi a parte visível, mas o que mais mudou meu jeito de trabalhar foi o resto.
+Fiquei cerca de um ano lá, e o PHP foi só a parte visível.
 
-### Ser gerido
+**Ser gerido.** Na faculdade você entrega pro professor e acabou. No estágio a prioridade era definida por outra pessoa, e às vezes a tarefa que importava naquela semana era a que eu achava menos interessante. Aprender a receber direção, perguntar quando não entendi e avisar cedo quando algo ia atrasar pesou tanto quanto a sintaxe.
 
-Na faculdade você entrega trabalho pro professor e acabou. No estágio tinha prioridade definida por outra pessoa, prazo que não era meu e tarefa que eu achava menos interessante mas que era a que importava naquela semana. Aprender a receber direção, perguntar quando não entendi e avisar cedo quando algo ia atrasar foi tão importante quanto aprender a sintaxe.
+**Dividir código.** Era a primeira vez que eu mexia num código que não era só meu. Não dá pra renomear algo porque achou o nome feio; você precisa entender por que alguém fez daquele jeito antes de mudar. Escrever pensando no colega que vai abrir o arquivo depois é hábito que levo até hoje.
 
-### Dividir código com outras pessoas
+**Suporte com SLA.** Quando chega um chamado com prazo de resposta, tem alguém do outro lado esperando, e "funciona na minha máquina" não resolve nada. Aprendi a reproduzir antes de mexer e a explicar a solução numa linguagem que quem abriu o chamado entende.
 
-Era a primeira vez que eu mexia num código que não era só meu. Isso muda tudo: você não pode renomear uma coisa porque achou o nome feio, precisa entender por que alguém fez daquele jeito antes de mudar, e o seu código vai ser lido por gente que não tá na sua cabeça. Escrever pensando no colega que vai abrir aquele arquivo depois é hábito que eu levo até hoje.
+**Produto.** Também fiz prototipação no Figma. Desenhar a tela antes de codar me obrigou a pensar em quem ia usar. Num sistema de gestão, tela confusa vira chamado de suporte, e chamado de suporte vira trabalho pra você mesmo.
 
-### Suporte com prazo
-
-Parte do trabalho era suporte com SLA. Quando chega um chamado com prazo de resposta, o problema deixa de ser abstrato. Tem alguém do outro lado esperando, e "funciona na minha máquina" não resolve nada. Isso me ensinou a investigar com método, reproduzir antes de mexer e explicar a solução em linguagem que quem abriu o chamado entende.
-
-### Noção de produto
-
-Também fiz prototipação no Figma, além de PHP e JavaScript. Desenhar a tela antes de codar me obrigou a pensar em quem ia usar aquilo, e não só em como implementar. Num sistema de gestão, uma tela confusa vira chamado de suporte, e chamado de suporte vira trabalho pra você mesmo. Essa conta fecha rápido na cabeça.
-
-Por trás de tudo isso tem um padrão que se repetiu na minha vida inteira: time enxuto. Eu sempre trabalhei em equipes pequenas, e em equipe pequena você faz de tudo um pouco. Uma semana é código, na outra é atender suporte, na outra é desenhar tela. Pra quem tá começando isso pode assustar, mas pra mim foi o melhor jeito de entender como um software inteiro funciona, do banco até a pessoa que reclama do botão.
+Por trás disso tudo tinha um time enxuto, como em quase todo lugar onde trabalhei. Uma semana era código, na outra suporte, na outra desenho de tela. Foi o melhor jeito de entender um software inteiro, do banco até a pessoa que reclama do botão.
 
 ## O PHP ainda tá aqui
 
-Depois que o contrato de estágio terminou, fiquei um tempo mais focado na faculdade. Aí veio o convite pra colaborar com o [Portal da História do Ceará](https://historiadoceara.com.br), e adivinha em que linguagem ele roda. PHP 8, com MySQL.
+Depois que o contrato terminou, fiquei um tempo mais focado na faculdade. Aí veio o convite pra colaborar com o [Portal da História do Ceará](https://historiadoceara.com.br), que roda em PHP 8 com MySQL.
 
-Abrindo o repositório do portal hoje, a estrutura ainda é aquela que eu aprendi a gostar no estágio: uma página, um arquivo. Tem `fato.php`, `acervos.php`, `biografia.php`, e uma pasta `api/` com endpoints como `get_fato.php`. O portal cresceu muito, ganhou busca no acervo, OCR de jornal antigo e uma assistente com IA, mas a base continua sendo PHP simples, que qualquer dev consegue abrir e entender em poucos minutos. Isso vale muito toda vez que alguém novo chega no projeto.
+![Página inicial do Portal da História do Ceará, com um mapa antigo da Serra da Ibiapaba ao fundo e o menu de jornais, fatos, biografias e livros](img/phc-home.webp "O Portal da História do Ceará: PHP 8 e MySQL, uma página por arquivo.")
 
-Hoje eu uso IA todo dia pra programar, e não tenho nenhuma nostalgia de ficar caçando resposta em fórum. Mas fico feliz de ter passado por aquele mês do jeito difícil. Foi ali que eu aprendi a ler documentação, a descrever um problema direito e a ficar confortável sem entender tudo de primeira. Essas coisas não vêm junto quando a resposta chega pronta, e são elas que me deixam conferir se a resposta que a IA me deu está certa.
+A estrutura do repositório ainda é a que aprendi a gostar no estágio: uma página, um arquivo. Tem `fato.php`, `acervos.php`, `biografia.php`, e uma pasta `api/` com endpoints como `get_fato.php`. O portal ganhou busca no acervo, OCR de jornal antigo e uma assistente com IA, mas a base continua sendo PHP simples, que qualquer dev abre e entende em poucos minutos. Isso vale muito toda vez que alguém novo chega no projeto.
+
+Hoje uso IA todo dia pra programar e não tenho nostalgia nenhuma de caçar resposta em fórum. Mas aquele mês do jeito difícil me ensinou a ler documentação, descrever um problema direito e ficar confortável sem entender tudo de primeira. É isso que me deixa conferir se a resposta que a IA me deu está certa.

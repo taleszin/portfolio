@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dois jogos sem um único arquivo de arte | Tales Santiago</title>
+<meta name="description" content="Como fiz o FUELMANIA e o GEO SUMO com arte, som e física escritos em código, e o que essa regra me deu de graça: um jogo que dá pra medir.">
+<meta name="author" content="Tales Santiago">
+<link rel="canonical" href="https://taleszin.github.io/portfolio/blog/dois-jogos-sem-nenhum-arquivo-de-arte/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://taleszin.github.io/portfolio/blog/dois-jogos-sem-nenhum-arquivo-de-arte/">
+<meta property="og:title" content="Dois jogos sem um único arquivo de arte | Tales Santiago">
+<meta property="og:description" content="Como fiz o FUELMANIA e o GEO SUMO com arte, som e física escritos em código, e o que essa regra me deu de graça: um jogo que dá pra medir.">
+<meta property="og:image" content="https://taleszin.github.io/portfolio/assets/img/blog/capas/dois-jogos-sem-nenhum-arquivo-de-arte.webp">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Blog do Tales Santiago" href="https://taleszin.github.io/portfolio/blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../blog/blog.css?v=20261126b">
+<meta property="article:published_time" content="2026-11-26"><meta property="article:section" content="Engenharia"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Dois jogos sem um único arquivo de arte","description":"Como fiz o FUELMANIA e o GEO SUMO com arte, som e física escritos em código, e o que essa regra me deu de graça: um jogo que dá pra medir.","inLanguage":"pt-BR","datePublished":"2026-11-26","dateModified":"2026-11-26","wordCount":956,"timeRequired":"PT5M","articleSection":"Engenharia","keywords":"game dev, webgl, three.js, áudio procedural, física","mainEntityOfPage":"https://taleszin.github.io/portfolio/blog/dois-jogos-sem-nenhum-arquivo-de-arte/","image":"https://taleszin.github.io/portfolio/assets/img/blog/capas/dois-jogos-sem-nenhum-arquivo-de-arte.webp","author":{"@type":"Person","name":"Tales Santiago","url":"https://taleszin.github.io/portfolio/","jobTitle":"Full Stack Engineer"},"isPartOf":{"@type":"Blog","name":"Blog do Tales Santiago","url":"https://taleszin.github.io/portfolio/blog/"}}</script>
+</head>
+<body class="page-post" style="--c:#3ef2d6">
+<div class="progress" aria-hidden="true"><span></span></div>
+<header class="topbar">
+  <a href="../../" class="brand" aria-label="Tales Santiago, portfólio"><span class="brand-mark">TS</span><span class="brand-name">Tales Santiago</span></a>
+  <nav class="nav" aria-label="Navegação">
+    <a href="../../#produtos">Produtos</a>
+    <a href="../../blog/" aria-current="page">Blog</a>
+    <a href="../../#jornada">Jornada</a>
+    <a href="../../#contato" class="nav-cta">Contato</a>
+  </nav>
+</header>
+<main id="top">
+  <header class="post-hero">
+    <nav class="crumbs" aria-label="Você está em"><a href="../../">Portfólio</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><a href="../../blog/#engenharia">Engenharia</a></nav>
+    <p class="post-kicker"><span class="cat-dot"></span>Engenharia<span class="sep">·</span>N.º 13</p>
+    <h1>Dois jogos sem um único arquivo de arte</h1>
+    <p class="lead">Como fiz o FUELMANIA e o GEO SUMO com arte, som e física escritos em código, e o que essa regra me deu de graça: um jogo que dá pra medir.</p>
+    <div class="byline">
+      <img class="avatar" src="../../assets/img/tales.webp" alt="" width="44" height="44">
+      <div><b>Tales Santiago</b><span><time datetime="2026-11-26">26 de novembro de 2026</time> · 5 min de leitura</span></div>
+    </div>
+    <figure class="post-cover hero-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/dois-jogos-sem-nenhum-arquivo-de-arte.webp" alt="Capa do artigo: Dois jogos sem um único arquivo de arte" width="1600" height="900"></figure>
+  </header>
+
+  <div class="post-layout">
+    <article class="prose" data-prose data-minutes="5">
+      <details class="toc-mobile"><summary>Neste artigo</summary><ol><li><a href="#a-regra">A regra</a></li><li><a href="#geo-sumo-fisica-que-da-pra-sentir">GEO SUMO: física que dá pra sentir</a></li><li><a href="#som-afinado-por-uma-escala-so">Som afinado por uma escala só</a></li><li><a href="#fuelmania-arte-que-e-codigo">FUELMANIA: arte que é código</a></li><li><a href="#o-que-a-regra-me-deu-de-graca-um-jogo-que-da-pra-medir">O que a regra me deu de graça: um jogo que dá pra medir</a></li></ol></details>
+      <p>O FUELMANIA é um posto de gasolina de beira de estrada com cidade, carros, chuva, poeira de vento, eclipse e disco voador. O jogo não carrega uma imagem de arte sequer. O GEO SUMO, uma briga de formas geométricas numa arena flutuante, também não. Tudo o que aparece e tudo o que toca nos dois sai de código: geometria montada em tempo de execução, shader, oscilador da Web Audio API.</p>
+<figure class="media media-solo is-video"><video src="../../assets/video/fuelmania-loop.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Ciclo de dia e noite, clima e movimento no pátio do FUELMANIA"></video><figcaption>FUELMANIA rodando: nada disso vem de arquivo de imagem.</figcaption></figure>
+<h2 id="a-regra">A regra</h2>
+<p>Se dá pra escrever, não vira arquivo. O primeiro ganho é peso. No começo do FUELMANIA, medi o build inteiro: uns 150 KB gzip. Nada de tela de &quot;baixando recursos&quot;.</p>
+<p>O ganho maior é outro: quando a arte é parâmetro, mudar o humor do jogo é mudar um número. E o jogo inteiro fica coerente porque tudo puxa da mesma fonte. Isso vale pra cor, pra luz e, principalmente, pra som.</p>
+<h2 id="geo-sumo-fisica-que-da-pra-sentir">GEO SUMO: física que dá pra sentir</h2>
+<p>O GEO SUMO saiu em quatro dias de fevereiro, como trabalho de disciplina na UECE, e acabou campeão na categoria de jogos 3D. É WebGL 1 cru com GLSL, sem engine, com <code>gl-matrix</code> pra álgebra e só. O renderizador, a câmera, o input de toque e a física foram escritos à mão.</p>
+<p>A mecânica é a do Smash: não existe barra de vida. O dano acumula em porcentagem e aumenta o quanto você voa no próximo golpe. A conta é simples de propósito:</p>
+<pre class="code" data-lang="javascript"><code>baseKnockback = punchPower * (1 + defender.damage / 100)
+hitstun = min(30, baseDuration * (1 + damage / 200)) * difficultyMultiplier</code></pre>
+<p>O knockback sai 82% na horizontal, porque o objetivo é jogar o outro pra fora da arena, não pro alto. O hitstun cresce com o dano mas tem teto, senão o combo vira infinito. A dificuldade mexe no tempo de reação da IA e também nesses multiplicadores: no fácil o knockback é multiplicado por 1,5 e o atrito é alto; no difícil cai pra 0,7, com atrito baixo e hitstun maior.</p>
+<div class="carousel is-gallery" data-count="2" role="group" aria-roledescription="carrossel"><div class="car-track" tabindex="0"><figure class="slide" data-n="1"><div class="slide-media"><img src="../../assets/img/geosumo-fight.webp" alt="Dois lutadores em forma de cubo se empurrando na arena circular neon" loading="lazy" decoding="async" data-zoom></div><figcaption>A arena: quem sai do círculo perde uma vida.</figcaption></figure><figure class="slide" data-n="2"><div class="slide-media"><img src="../../assets/img/geosumo-menu.webp" alt="Tela de criação de lutador com opções de forma, olhos, boca e dificuldade" loading="lazy" decoding="async" data-zoom></div><figcaption>Forma, cor, olhos e boca, tudo desenhado em shader.</figcaption></figure></div><div class="car-ctrl"><button type="button" class="car-btn" data-dir="-1" aria-label="Anterior">←</button><span class="car-count"><b>1</b> / 2</span><button type="button" class="car-btn" data-dir="1" aria-label="Próximo">→</button></div></div>
+<h2 id="som-afinado-por-uma-escala-so">Som afinado por uma escala só</h2>
+<p>Os dois jogos têm a mesma ideia no áudio: nenhum som toca fora de uma escala pentatônica. Pentatônica não tem os graus de atrito, então qualquer combinação de notas soa consonante. Dá pra disparar vinte efeitos ao mesmo tempo sem virar barulho.</p>
+<p>No GEO SUMO é Ré menor pentatônica. Até andar toca nota: cada direção do WASD é um grau da escala, com cooldown pra não poluir. A trilha tem seis camadas que entram conforme a intensidade da luta, num relógio de 120 BPM, e o combate conversa com ela: soco no tempo da batida dá 25% a mais de dano e knockback, com um power chord de recompensa.</p>
+<p>No FUELMANIA a escala é Dó maior pentatônica em entonação justa, e a tônica não é fixa. Ela escorrega de Dó, de dia, pra Lá, a relativa menor, conforme a noite cai. Trilha, caixa registradora e combo leem a mesma função <code>getRoot()</code>, então mudam de humor juntos e nunca desafinam entre si. O comentário no topo do arquivo da trilha resume a filosofia: silêncio é instrumento. Madrugada chuvosa e vazia é quase silêncio; meio-dia lotado é a trilha inteira.</p>
+<p>Uma regra técnica que me salvou: no caminho de áudio não entra <code>Math.random</code>, <code>Date</code> nem <code>performance.now</code>. A variação musical vem de um gerador congruencial com semente, e as notas são agendadas à frente no relógio do <code>AudioContext</code>. Sem isso, a música tropeça sempre que o frame atrasa.</p>
+<h2 id="fuelmania-arte-que-e-codigo">FUELMANIA: arte que é código</h2>
+<p>Dois exemplos do que &quot;arte em código&quot; quer dizer na prática.</p>
+<p>O mundo é redondo, no estilo Animal Crossing. Um trecho de vertex shader afunda a geometria conforme ela se afasta do centro: <code>y -= max(0, dist - 24)² / (2·80)</code>. Até raio 24 o mundo é perfeitamente plano, e é ali que fica o posto inteiro. Assim o clique e o posicionamento de construções não precisam saber que existe curva. Na borda da grama a queda chega a 10 unidades e o chão vira horizonte dentro da neblina.</p>
+<p>A frota é brasileira e procedural. São cinco carros &quot;heróis&quot; (Fusca, Brasília, Kombi, Uno e Opala) com o corpo extrudado do perfil lateral, e nove carros de fundo feitos de caixa simples de propósito: o contraste faz os icônicos saltarem. A Brasília sai amarela em três de cada cinco, porque a piada é essa. O Uno raro vem com escada no teto. As geometrias fundidas nascem uma vez no boot; cada carro novo é só um <code>new Mesh</code> em cima do cache.</p>
+<div class="carousel is-gallery" data-count="3" role="group" aria-roledescription="carrossel"><div class="car-track" tabindex="0"><figure class="slide" data-n="1"><div class="slide-media"><img src="../../assets/img/fuel-day.webp" alt="Pátio do posto de dia, com bombas, loja, árvores e bandeiras" loading="lazy" decoding="async" data-zoom></div><figcaption>Dia limpo no pátio.</figcaption></figure><figure class="slide" data-n="2"><div class="slide-media"><img src="../../assets/img/fuel-storm.webp" alt="O mesmo pátio sob tempestade, com nuvens escuras e chuva" loading="lazy" decoding="async" data-zoom></div><figcaption>Mesmo pátio, clima de tempestade: luz, céu e som mudam juntos.</figcaption></figure><figure class="slide" data-n="3"><div class="slide-media"><img src="../../assets/img/fuel-advanced.webp" alt="Carros na fila das bombas com painel de depuração mostrando o estado da fila" loading="lazy" decoding="async" data-zoom></div><figcaption>Fila de atendimento com o painel de depuração ligado.</figcaption></figure></div><div class="car-ctrl"><button type="button" class="car-btn" data-dir="-1" aria-label="Anterior">←</button><span class="car-count"><b>1</b> / 3</span><button type="button" class="car-btn" data-dir="1" aria-label="Próximo">→</button></div></div>
+<h2 id="o-que-a-regra-me-deu-de-graca-um-jogo-que-da-pra-medir">O que a regra me deu de graça: um jogo que dá pra medir</h2>
+<p>Como tudo é código, o jogo inteiro roda sem tela. Antes de mostrar pra alguém, escrevi bots que dirigem o build real pelo navegador: avançam a simulação no mesmo passo fixo do jogo, com <code>Math.random</code> semeado pra cada rodada ser repetível, e perfis diferentes de jogador (casual, apressado, distraído).</p>
+<p>O resultado doeu. Um jogador dedicado esgotava tudo o que dava pra comprar em 22 minutos e meio, umas quatro vezes mais rápido do que eu tinha planejado. E a logística punia quem jogava bem. Bot não sente tédio, então isso mede economia e ritmo, não diversão, mas é o tipo de coisa que eu só descobriria semanas depois com gente.</p>
+<p>Depois veio gente de verdade: mandei o link pra umas seis pessoas num domingo à noite. Minha primeira leitura dos dados foi que o tutorial falhava. Estava errada. Todo mundo que entrou no jogo atendeu pelo menos um carro. Quem não jogou nunca passou da porta, e uma das barreiras da porta era minha: uma tela preta de &quot;toque para começar&quot;, pra liberar o áudio no navegador, que eu tinha colocado no ar poucas horas antes. Três dias depois ela saiu, e o jogo voltou a abrir direto.</p>
+<div class="carousel is-phones is-single" data-count="1" role="group" aria-roledescription="carrossel"><div class="car-track" tabindex="0"><figure class="slide phone-frame" data-n="1"><div class="slide-media"><img src="../../assets/img/fuel-mobile.webp" alt="Pátio do FUELMANIA na tela de um celular, com o posto no centro e botões no topo" loading="lazy" decoding="async" data-zoom></div><figcaption>No celular: mesma build, empacotada pra Android com Capacitor.</figcaption></figure></div></div>
+<p>Dá pra jogar os dois no navegador: o <a href="https://bomba-cheia.vercel.app" target="_blank" rel="noopener">FUELMANIA</a> e o <a href="https://taleszin.github.io/geosumo/" target="_blank" rel="noopener">GEO SUMO</a>, que tem o <a href="https://github.com/taleszin/geosumo" target="_blank" rel="noopener">código aberto</a>.</p>
+      <p class="post-tags"><span>game dev</span><span>webgl</span><span>three.js</span><span>áudio procedural</span><span>física</span></p>
+      <div class="author-box">
+        <img src="../../assets/img/tales.webp" alt="" width="72" height="72" loading="lazy">
+        <div><b>Tales Santiago</b><p>Full stack de Fortaleza. Ciência da Computação na UECE, cofundador e CTO do Leap Notes, tech lead do Portal da História do Ceará.</p><p class="author-links"><a href="../../">Portfólio</a><a href="https://github.com/taleszin" target="_blank" rel="noopener">GitHub</a><a href="https://wa.me/5585984038749?text=Ol%C3%A1%20Tales!%20Li%20um%20artigo%20do%20seu%20blog%20e%20quero%20conversar." target="_blank" rel="noopener">WhatsApp</a></p></div>
+      </div>
+    </article>
+    <aside class="post-side" aria-label="Navegação do artigo">
+      <nav class="toc" aria-label="Neste artigo"><p class="side-title">Neste artigo</p><ol><li><a href="#a-regra">A regra</a></li><li><a href="#geo-sumo-fisica-que-da-pra-sentir">GEO SUMO: física que dá pra sentir</a></li><li><a href="#som-afinado-por-uma-escala-so">Som afinado por uma escala só</a></li><li><a href="#fuelmania-arte-que-e-codigo">FUELMANIA: arte que é código</a></li><li><a href="#o-que-a-regra-me-deu-de-graca-um-jogo-que-da-pra-medir">O que a regra me deu de graça: um jogo que dá pra medir</a></li></ol></nav>
+      <div class="side-share"><p class="side-title">Compartilhar</p>
+        <div class="share-row">
+          <button type="button" class="share-btn" data-copy="https://taleszin.github.io/portfolio/blog/dois-jogos-sem-nenhum-arquivo-de-arte/">Copiar link</button>
+          <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftaleszin.github.io%2Fportfolio%2Fblog%2Fdois-jogos-sem-nenhum-arquivo-de-arte%2F" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="share-btn" href="https://wa.me/?text=Dois%20jogos%20sem%20um%20%C3%BAnico%20arquivo%20de%20arte%20https%3A%2F%2Ftaleszin.github.io%2Fportfolio%2Fblog%2Fdois-jogos-sem-nenhum-arquivo-de-arte%2F" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <a class="side-cta" href="https://wa.me/5585984038749?text=Ol%C3%A1%20Tales!%20Li%20um%20artigo%20do%20seu%20blog%20e%20quero%20conversar." target="_blank" rel="noopener"><span>Tem um produto pra construir?</span><b>Vamos conversar ↗</b></a>
+    </aside>
+  </div>
+
+  <nav class="post-pager" aria-label="Outros artigos">
+    <a class="pager prev" href="../../blog/scout-tatico-no-esporte-universitario/"><span>← Anterior</span><b>Eu não conhecia os adversários, então fui estudar</b></a>
+    <a class="pager next" href="../../blog/golems-que-falam-com-quem-os-cria/"><span>Próximo →</span><b>Escrevendo a fala de criaturas que sabem quem as criou</b></a>
+  </nav>
+
+  <section class="related" aria-labelledby="rel">
+    <h2 id="rel">Continue lendo</h2>
+    <div class="post-grid"><a class="post-card" href="../../blog/ocr-de-jornal-de-1800-e-pouco/" data-cat="engenharia" data-search="o que sobra depois do ocr em papel de 1800 e pouco como um acervo de mais de 30 anos, guardado como imagem e txt sujo, virou busca full-text sobre 2,5 milhoes de manchetes no portal da historia do ceara. engenharia ocr mysql dados full-text phc" style="--c:#3ef2d6">
+  <figure class="post-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/ocr-de-jornal-de-1800-e-pouco.webp" alt="" loading="lazy" decoding="async" width="1600" height="900"></figure>
+  <div class="post-card-body">
+    <p class="post-kicker"><span class="cat-dot"></span>Engenharia<span class="sep">·</span>5 min</p>
+    <h3>O que sobra depois do OCR em papel de 1800 e pouco</h3>
+    <p class="post-desc">Como um acervo de mais de 30 anos, guardado como imagem e TXT sujo, virou busca full-text sobre 2,5 milhões de manchetes no Portal da História do Ceará.</p>
+    <span class="post-more">Ler artigo</span>
+  </div>
+</a><a class="post-card" href="../../blog/taleszin-os-tablet-2014/" data-cat="engenharia" data-search="uma rom para um tablet de 2014 com 512 mb de ram como medir antes de mexer, brigar com uma bateria gasta e escrever apps android sem gradle num multilaser m7s que ia pro lixo. engenharia android kitkat rom linux baixo-nivel" style="--c:#3ef2d6">
+  <figure class="post-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/taleszin-os-tablet-2014.webp" alt="" loading="lazy" decoding="async" width="1600" height="900"></figure>
+  <div class="post-card-body">
+    <p class="post-kicker"><span class="cat-dot"></span>Engenharia<span class="sep">·</span>5 min</p>
+    <h3>Uma ROM para um tablet de 2014 com 512 MB de RAM</h3>
+    <p class="post-desc">Como medir antes de mexer, brigar com uma bateria gasta e escrever apps Android sem Gradle num Multilaser M7s que ia pro lixo.</p>
+    <span class="post-more">Ler artigo</span>
+  </div>
+</a><a class="post-card" href="../../blog/computacao-e-um-jeito-de-pensar/" data-cat="carreira" data-search="computacao e um jeito de pensar, e eu aprendi fazendo sozinho fluxo de jornal antigo, decisao de produto, scout de handebol. o mesmo raciocinio em tudo, e por que eu fazia os trabalhos da faculdade sozinho. carreira carreira pensamento sistemico aprendizado gestao faculdade" style="--c:#c4a6ff">
+  <figure class="post-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/computacao-e-um-jeito-de-pensar.webp" alt="" loading="lazy" decoding="async" width="1600" height="900"></figure>
+  <div class="post-card-body">
+    <p class="post-kicker"><span class="cat-dot"></span>Carreira<span class="sep">·</span>5 min</p>
+    <h3>Computação é um jeito de pensar, e eu aprendi fazendo sozinho</h3>
+    <p class="post-desc">Fluxo de jornal antigo, decisão de produto, scout de handebol. O mesmo raciocínio em tudo, e por que eu fazia os trabalhos da faculdade sozinho.</p>
+    <span class="post-more">Ler artigo</span>
+  </div>
+</a></div>
+  </section>
+</main>
+<footer class="footer">
+  <p>Escrito e construído por Tales Santiago. HTML, CSS e JavaScript, sem framework.</p>
+  <p class="footer-links"><a href="../../blog/feed.xml">RSS</a><a href="https://github.com/taleszin" target="_blank" rel="noopener">GitHub</a><a href="../../">Portfólio</a></p>
+</footer>
+<script src="../../blog/blog.js?v=20261126b" defer></script>
+</body>
+</html>

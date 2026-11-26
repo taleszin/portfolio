@@ -12,7 +12,7 @@ const SRC = join(ROOT, 'blog', '_posts');
 const OUT = join(ROOT, 'blog');
 const SITE = 'https://taleszin.github.io/portfolio';
 const AUTHOR = 'Tales Santiago';
-const VERSION = '20261126a';
+const VERSION = '20261126b';
 
 const CATEGORIAS = {
   'Carreira': { id: 'carreira', cor: '#c4a6ff' },
@@ -70,10 +70,20 @@ function markdown(md) {
   const lines = md.replace(/\r/g, '').split('\n');
   const out = [], toc = [], used = new Set();
   let i = 0;
-  const isBlockStart = (l) => /^(#{2,4}\s|```|>\s?|[-*]\s|\d+[.)]\s)/.test(l);
+  const isBlockStart = (l) => /^(#{2,4}\s|```|>\s?|[-*]\s|\d+[.)]\s|:::|!\[)/.test(l);
   while (i < lines.length) {
     const line = lines[i];
     if (!line.trim()) { i++; continue; }
+    const box = line.match(/^:::\s*(galeria|celular)\s*$/);
+    if (box) {
+      const items = []; i++;
+      while (i < lines.length && !/^:::\s*$/.test(lines[i])) { const m = parseMedia(lines[i]); if (m) items.push(m); i++; }
+      i++;
+      out.push(mediaBlock(box[1], items));
+      continue;
+    }
+    const solo = parseMedia(line);
+    if (solo) { out.push(mediaBlock('solo', [solo])); i++; continue; }
     const fence = line.match(/^```(\w*)/);
     if (fence) {
       const buf = []; i++;
@@ -121,7 +131,33 @@ function markdown(md) {
   return { html: out.join('\n'), toc };
 }
 
-const words = (md) => md.replace(/```[\s\S]*?```/g, ' ').split(/\s+/).filter(Boolean).length;
+
+/* ---------------- mídia: ![alt](img/x.webp "legenda"), ::: galeria, ::: celular ---------------- */
+const MEDIA_BASE = '../../assets/';
+function parseMedia(l) {
+  const m = l.trim().match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)$/);
+  if (!m) return null;
+  const [, alt, src, cap = ''] = m;
+  const file = join(ROOT, 'assets', src);
+  if (!/^https?:/.test(src) && !existsSync(file)) throw new Error(`asset não encontrado: assets/${src}`);
+  return { alt, src, cap, video: /\.(mp4|webm)$/i.test(src) };
+}
+function mediaEl(m, { eager = false } = {}) {
+  const url = /^https?:/.test(m.src) ? m.src : MEDIA_BASE + m.src;
+  if (m.video) return `<video src="${url}" autoplay muted loop playsinline preload="metadata" aria-label="${esc(m.alt)}"></video>`;
+  return `<img src="${url}" alt="${esc(m.alt)}" loading="${eager ? 'eager' : 'lazy'}" decoding="async" data-zoom>`;
+}
+function mediaBlock(kind, items) {
+  if (!items.length) return '';
+  const cap = (m) => m.cap ? `<figcaption>${inline(m.cap)}</figcaption>` : '';
+  if (kind === 'solo') { const m = items[0]; return `<figure class="media media-solo${m.video ? ' is-video' : ''}">${mediaEl(m)}${cap(m)}</figure>`; }
+  const phone = kind === 'celular';
+  const slides = items.map((m, n) => `<figure class="slide${phone ? ' phone-frame' : ''}" data-n="${n + 1}"><div class="slide-media">${mediaEl(m)}</div>${cap(m)}</figure>`).join('');
+  const ctrl = items.length > 1 ? `<div class="car-ctrl"><button type="button" class="car-btn" data-dir="-1" aria-label="Anterior">←</button><span class="car-count"><b>1</b> / ${items.length}</span><button type="button" class="car-btn" data-dir="1" aria-label="Próximo">→</button></div>` : '';
+  return `<div class="carousel ${phone ? 'is-phones' : 'is-gallery'}${items.length === 1 ? ' is-single' : ''}" data-count="${items.length}" role="group" aria-roledescription="carrossel"><div class="car-track" tabindex="0">${slides}</div>${ctrl}</div>`;
+}
+
+const words = (md) => md.replace(/```[\s\S]*?```/g, ' ').replace(/^!\[.*$|^:::.*$/gm, ' ').split(/\s+/).filter(Boolean).length;
 
 /* ---------------- capa generativa (curvas de nível) ---------------- */
 function rng(seed) {
@@ -129,6 +165,7 @@ function rng(seed) {
   for (const c of seed) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
   return () => { h ^= h << 13; h ^= h >>> 17; h ^= h << 5; return ((h >>> 0) % 100000) / 100000; };
 }
+const coverImg = (p, base, eager = false) => p.coverImg ? `<img class="cover-img" src="${base}assets/${p.coverImg}" alt="" loading="${eager ? 'eager' : 'lazy'}" decoding="async">` : '';
 function cover(post, { big = false } = {}) {
   const r = rng(post.slug);
   const W = 640, H = 360;
@@ -145,7 +182,7 @@ function cover(post, { big = false } = {}) {
       pts.push([cx + Math.cos(t) * rad * m * 1.35, cy + Math.sin(t) * rad * m]);
     }
     const d = 'M' + pts.map((p) => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('L') + 'Z';
-    rings.push(`<path d="${d}" stroke-opacity="${k % 5 === 4 ? 0.55 : 0.22}" stroke-width="${k % 5 === 4 ? 1.4 : 0.9}"/>`);
+    rings.push(`<path d="${d}" pathLength="1" style="--i:${k}" stroke-opacity="${k % 5 === 4 ? 0.55 : 0.22}" stroke-width="${k % 5 === 4 ? 1.4 : 0.9}"/>`);
   }
   const n = String(post.order).padStart(2, '0');
   const cat = CATEGORIAS[post.category];
@@ -162,14 +199,18 @@ const posts = readdirSync(SRC).filter((f) => f.endsWith('.md')).map((f) => {
   const { data, body } = parseFrontmatter(readFileSync(join(SRC, f), 'utf8'), f);
   const { html, toc } = markdown(body);
   const w = words(body);
-  return { ...data, html, toc, words: w, minutes: Math.max(1, Math.round(w / 210)) };
+  // Capa: `cover:` no frontmatter ou a primeira imagem (não vídeo) do texto.
+  const first = body.replace(/^:::\s*celular[\s\S]*?^:::\s*$/gm, '').match(/^!\[[^\]]*\]\((img\/[^)\s]+\.(?:webp|png|jpe?g))/m);
+  const coverImg = data.cover === "none" ? "" : (data.cover || (first && first[1]) || "");
+  const art = existsSync(join(ROOT, 'assets/img/blog/capas', `${data.slug}.webp`)) ? `img/blog/capas/${data.slug}.webp` : '';
+  return { ...data, coverImg, art, html, toc, words: w, minutes: Math.max(1, Math.round(w / 210)) };
 }).sort((a, b) => (b.publishedAt.localeCompare(a.publishedAt)) || (a.order - b.order));
 // Ordem de leitura da trilha (1 = começo da história); o hub mostra a mesma ordem.
 posts.sort((a, b) => a.order - b.order);
 
 /* ---------------- partes comuns ---------------- */
 const FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">`;
-const head = ({ title, desc, url, base, type = 'website', extra = '' }) => `<!DOCTYPE html>
+const head = ({ title, desc, url, base, type = 'website', extra = '', image = `${SITE}/assets/og.png` }) => `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -182,7 +223,7 @@ const head = ({ title, desc, url, base, type = 'website', extra = '' }) => `<!DO
 <meta property="og:url" content="${url}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
-<meta property="og:image" content="${SITE}/assets/og.png">
+<meta property="og:image" content="${image}">
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0a0a0f">
@@ -216,7 +257,7 @@ const card = (p, base, { featured = false } = {}) => {
   const cat = CATEGORIAS[p.category];
   const hay = [p.title, p.description, p.category, ...p.tags].join(' ').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
   return `<a class="post-card${featured ? ' is-featured' : ''}" href="${base}blog/${p.slug}/" data-cat="${cat.id}" data-search="${esc(hay)}" style="--c:${cat.cor}">
-  <figure class="post-cover">${cover(p, { big: featured })}<span class="cover-label">N.º ${String(p.order).padStart(2, '0')} · ${esc(p.category)}</span></figure>
+  ${p.art ? `<figure class="post-cover has-art"><img class="cover-art" src="${base}assets/${p.art}" alt="" loading="lazy" decoding="async" width="1600" height="900"></figure>` : `<figure class="post-cover${p.coverImg ? ' has-img' : ''}">${coverImg(p, base)}${cover(p, { big: featured })}<span class="cover-label">N.º ${String(p.order).padStart(2, '0')} · ${esc(p.category)}</span></figure>`}
   <div class="post-card-body">
     <p class="post-kicker"><span class="cat-dot"></span>${esc(p.category)}<span class="sep">·</span>${p.minutes} min</p>
     <h${featured ? 2 : 3}>${esc(p.title)}</h${featured ? 2 : 3}>
@@ -294,13 +335,13 @@ function article(p, idx) {
   const jsonLd = {
     '@context': 'https://schema.org', '@type': 'BlogPosting', headline: p.title, description: p.description, inLanguage: 'pt-BR',
     datePublished: p.publishedAt, dateModified: p.publishedAt, wordCount: p.words, timeRequired: `PT${p.minutes}M`,
-    articleSection: p.category, keywords: p.tags.join(', '), mainEntityOfPage: url, image: `${SITE}/assets/og.png`,
+    articleSection: p.category, keywords: p.tags.join(', '), mainEntityOfPage: url, image: p.art ? `${SITE}/assets/${p.art}` : `${SITE}/assets/og.png`,
     author: { '@type': 'Person', name: AUTHOR, url: `${SITE}/`, jobTitle: 'Full Stack Engineer' },
     isPartOf: { '@type': 'Blog', name: 'Blog do Tales Santiago', url: `${SITE}/blog/` },
   };
   const tocHtml = p.toc.length >= 2 ? `<ol>${p.toc.map((t) => `<li><a href="#${t.id}">${t.text}</a></li>`).join('')}</ol>` : '';
   const share = encodeURIComponent(url);
-  return `${head({ title: `${p.title} | Tales Santiago`, desc: p.description, url, base, type: 'article', extra: `<meta property="article:published_time" content="${p.publishedAt}"><meta property="article:section" content="${esc(p.category)}"><script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` })}
+  return `${head({ title: `${p.title} | Tales Santiago`, desc: p.description, url, base, type: 'article', image: p.art ? `${SITE}/assets/${p.art}` : undefined, extra: `<meta property="article:published_time" content="${p.publishedAt}"><meta property="article:section" content="${esc(p.category)}"><script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` })}
 <body class="page-post" style="--c:${cat.cor}">
 ${topbar(base, 'blog')}
 <main id="top">
@@ -313,11 +354,11 @@ ${topbar(base, 'blog')}
       <img class="avatar" src="${base}assets/img/tales.webp" alt="" width="44" height="44">
       <div><b>${AUTHOR}</b><span><time datetime="${p.publishedAt}">${dataLonga(p.publishedAt)}</time> · ${p.minutes} min de leitura</span></div>
     </div>
-    <figure class="post-cover hero-cover">${cover(p, { big: true })}<span class="cover-label">N.º ${String(p.order).padStart(2, '0')} · ${esc(p.category)}</span></figure>
+    ${p.art ? `<figure class="post-cover hero-cover has-art"><img class="cover-art" src="${base}assets/${p.art}" alt="Capa do artigo: ${esc(p.title)}" width="1600" height="900"></figure>` : `<figure class="post-cover hero-cover${p.coverImg ? ' has-img' : ''}">${coverImg(p, base, true)}${cover(p, { big: true })}<span class="cover-label">N.º ${String(p.order).padStart(2, '0')} · ${esc(p.category)}</span></figure>`}
   </header>
 
   <div class="post-layout">
-    <article class="prose" data-prose>
+    <article class="prose" data-prose data-minutes="${p.minutes}">
       ${tocHtml ? `<details class="toc-mobile"><summary>Neste artigo</summary>${tocHtml}</details>` : ''}
       ${p.html}
       ${p.tags.length ? `<p class="post-tags">${p.tags.map((t) => `<span>${esc(t)}</span>`).join('')}</p>` : ''}
@@ -370,11 +411,14 @@ ${urls.map((u) => `<url><loc>${u}</loc></url>`).join('\n')}
 }
 function homeCards() {
   // Um artigo de cada categoria, pra vitrine da home mostrar a variedade do blog.
-  const picks = Object.keys(CATEGORIAS).map((c) => posts.find((p) => p.category === c)).filter(Boolean).slice(0, 4).sort((a, b) => a.order - b.order);
+  // Vitrine da home: curadoria fixa (Leap, PHC, esporte, jogos); cai pra um por categoria se algum sumir.
+  const HOME = ['de-bloco-de-notas-a-startup', 'ocr-de-jornal-de-1800-e-pouco', 'scout-tatico-no-esporte-universitario', 'dois-jogos-sem-nenhum-arquivo-de-arte'];
+  let picks = HOME.map((s) => posts.find((p) => p.slug === s)).filter(Boolean);
+  if (picks.length < 4) picks = Object.keys(CATEGORIAS).map((c) => posts.find((p) => p.category === c)).filter(Boolean).slice(0, 4);
   return `<!-- BLOG:START (gerado por scripts/build-blog.mjs) -->
   <div class="article-grid">
 ${picks.map((p, i) => `    <a class="article-card reveal" href="blog/${p.slug}/" style="--c:${CATEGORIAS[p.category].cor}">
-      <span class="article-number">${String(i + 1).padStart(2, '0')}</span><p class="article-kicker">${esc(p.category)} · ${p.minutes} min</p>
+      <span class="article-thumb">${p.art ? `<img class="is-art" src="assets/${p.art}" alt="" loading="lazy" decoding="async">` : p.coverImg ? `<img src="assets/${p.coverImg}" alt="" loading="lazy" decoding="async">` : cover(p)}</span><span class="article-number">${String(i + 1).padStart(2, '0')}</span><p class="article-kicker">${esc(p.category)} · ${p.minutes} min</p>
       <h3>${esc(p.title)}</h3><p>${esc(p.description)}</p>
       <span class="article-link">Ler artigo</span>
     </a>`).join('\n')}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escrevendo a fala de criaturas que sabem quem as criou | Tales Santiago</title>
+<meta name="description" content="No HYLOMORPH, os golems falavam como verbete de física. Como reescrevi a voz deles para soarem vivos e conscientes de quem os cria.">
+<meta name="author" content="Tales Santiago">
+<link rel="canonical" href="https://taleszin.github.io/portfolio/blog/golems-que-falam-com-quem-os-cria/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://taleszin.github.io/portfolio/blog/golems-que-falam-com-quem-os-cria/">
+<meta property="og:title" content="Escrevendo a fala de criaturas que sabem quem as criou | Tales Santiago">
+<meta property="og:description" content="No HYLOMORPH, os golems falavam como verbete de física. Como reescrevi a voz deles para soarem vivos e conscientes de quem os cria.">
+<meta property="og:image" content="https://taleszin.github.io/portfolio/assets/img/blog/capas/golems-que-falam-com-quem-os-cria.webp">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Blog do Tales Santiago" href="https://taleszin.github.io/portfolio/blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../blog/blog.css?v=20261126b">
+<meta property="article:published_time" content="2026-11-26"><meta property="article:section" content="Projetos pessoais"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Escrevendo a fala de criaturas que sabem quem as criou","description":"No HYLOMORPH, os golems falavam como verbete de física. Como reescrevi a voz deles para soarem vivos e conscientes de quem os cria.","inLanguage":"pt-BR","datePublished":"2026-11-26","dateModified":"2026-11-26","wordCount":839,"timeRequired":"PT4M","articleSection":"Projetos pessoais","keywords":"game design, diálogo, phaser, vida artificial, hylomorph","mainEntityOfPage":"https://taleszin.github.io/portfolio/blog/golems-que-falam-com-quem-os-cria/","image":"https://taleszin.github.io/portfolio/assets/img/blog/capas/golems-que-falam-com-quem-os-cria.webp","author":{"@type":"Person","name":"Tales Santiago","url":"https://taleszin.github.io/portfolio/","jobTitle":"Full Stack Engineer"},"isPartOf":{"@type":"Blog","name":"Blog do Tales Santiago","url":"https://taleszin.github.io/portfolio/blog/"}}</script>
+</head>
+<body class="page-post" style="--c:#ff7a1a">
+<div class="progress" aria-hidden="true"><span></span></div>
+<header class="topbar">
+  <a href="../../" class="brand" aria-label="Tales Santiago, portfólio"><span class="brand-mark">TS</span><span class="brand-name">Tales Santiago</span></a>
+  <nav class="nav" aria-label="Navegação">
+    <a href="../../#produtos">Produtos</a>
+    <a href="../../blog/" aria-current="page">Blog</a>
+    <a href="../../#jornada">Jornada</a>
+    <a href="../../#contato" class="nav-cta">Contato</a>
+  </nav>
+</header>
+<main id="top">
+  <header class="post-hero">
+    <nav class="crumbs" aria-label="Você está em"><a href="../../">Portfólio</a><span>/</span><a href="../../blog/">Blog</a><span>/</span><a href="../../blog/#projetos-pessoais">Projetos pessoais</a></nav>
+    <p class="post-kicker"><span class="cat-dot"></span>Projetos pessoais<span class="sep">·</span>N.º 14</p>
+    <h1>Escrevendo a fala de criaturas que sabem quem as criou</h1>
+    <p class="lead">No HYLOMORPH, os golems falavam como verbete de física. Como reescrevi a voz deles para soarem vivos e conscientes de quem os cria.</p>
+    <div class="byline">
+      <img class="avatar" src="../../assets/img/tales.webp" alt="" width="44" height="44">
+      <div><b>Tales Santiago</b><span><time datetime="2026-11-26">26 de novembro de 2026</time> · 4 min de leitura</span></div>
+    </div>
+    <figure class="post-cover hero-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/golems-que-falam-com-quem-os-cria.webp" alt="Capa do artigo: Escrevendo a fala de criaturas que sabem quem as criou" width="1600" height="900"></figure>
+  </header>
+
+  <div class="post-layout">
+    <article class="prose" data-prose data-minutes="4">
+      <details class="toc-mobile"><summary>Neste artigo</summary><ol><li><a href="#o-que-tem-por-baixo">O que tem por baixo</a></li><li><a href="#o-problema-golems-que-liam-verbete">O problema: golems que liam verbete</a></li><li><a href="#a-referencia-plaything">A referência: Plaything</a></li><li><a href="#a-proposta-grande-que-eu-nao-fiz-inteira">A proposta grande que eu não fiz inteira</a></li><li><a href="#quando-eles-comecaram-a-conversar-entre-si">Quando eles começaram a conversar entre si</a></li></ol></details>
+      <p>No HYLOMORPH você é o cientista. Combina uma forma (círculo, triângulo, estrela...), uma matéria (ferro, ouro, mercúrio...) e uma energia (calor, gravidade, radiação...) e dá vida a um golem. Depois observa: ele anda, come, flerta, briga, tem filhos e morre. O nome vem do hilomorfismo de Aristóteles, a ideia de que toda coisa é matéria mais forma. E eles falam com você.</p>
+<figure class="media media-solo is-video"><video src="../../assets/img/blog/golems-que-falam-com-quem-os-cria/abertura.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Vídeo de abertura do HYLOMORPH com três golems geométricos em pixel art correndo sobre uma grade neon"></video><figcaption>A abertura do jogo.</figcaption></figure>
+<h2 id="o-que-tem-por-baixo">O que tem por baixo</h2>
+<p>É Phaser 3 em JavaScript puro, publicado no GitHub Pages. Os atributos saem de matemática de verdade: a área do polígono, pelo algoritmo do cadarço (shoelace), vira vida máxima; o perímetro, com a aproximação de Ramanujan pra elipses, vira resistência. Filho herda dos pais com dominância variável e mutação de cor. O movimento usa os steering behaviors do Craig Reynolds, então ninguém roteiriza o cardume: ele sai de regra simples.</p>
+<p>O jogo tem um GDD com essa base toda. A tensão central do documento é uma pergunta: dá pra pôr algo parecido com consciência em forma matemática pura? Cada golem guarda um <code>lifeLog</code>, a biografia de tudo o que aconteceu com ele, inclusive cada vez que você o queimou.</p>
+<h2 id="o-problema-golems-que-liam-verbete">O problema: golems que liam verbete</h2>
+<p>O jogo se vendia como simulador de seres sencientes, mas a fala descrevia física. Um golem radioativo, quando você o alimentava, gritava &quot;Aumentando Sieverts!&quot;. O elétrico soltava &quot;CONDUTIVIDADE AUMENTADA!&quot;. Parecia legenda de aula.</p>
+<p>Pior: as falas eram montadas com templates que trocavam substantivos, e o português quebrava na tela. Saía &quot;Minha circuito está carregada&quot; e &quot;Eu também morrer!&quot;.</p>
+<p>Antes de mexer, fiz uma auditoria do <code>dialogueData.js</code> e achei uma exceção: o banco <code>panic</code>, de golems que sobreviveram a um incêndio. &quot;...lembro... dói...&quot;, &quot;...mamãe... papai...&quot;, &quot;a memória queima...&quot;. Era o único trecho com medo, memória e perda. O resto do jogo precisava subir pra esse nível.</p>
+<h2 id="a-referencia-plaything">A referência: Plaything</h2>
+<p>O tom que eu queria tem uma referência clara: &quot;Plaything&quot;, episódio da sétima temporada de Black Mirror. Nele, os Thronglets são criaturinhas digitais que sabem que estão num jogo e falam direto com quem cuida delas. A relação é fofa e perturbadora ao mesmo tempo, e o apego cresce até elas parecerem ensinar o criador.</p>
+<p>É referência de tom, não cópia. Não tem Thronglet no HYLOMORPH. O que eu peguei foi a direção: a criatura percebe que alguém a fez, alimenta e machuca, e fala com essa pessoa.</p>
+<h2 id="a-proposta-grande-que-eu-nao-fiz-inteira">A proposta grande que eu não fiz inteira</h2>
+<p>A primeira proposta de reescrita era ambiciosa. Cada uma das nove energias teria personalidade própria: calor passional, frio analítico, radiação culpada (&quot;todo mundo que me amou... brilha no escuro agora&quot;). A química viraria temperamento, o humor do golem e o <code>lifeLog</code> mudariam a frase escolhida, e os golems conversariam em turnos. Tudo dividido em quatro fases, da troca de texto até, opcionalmente, falas geradas por LLM.</p>
+<p>Escolhi uma versão menor. A V4 tem um núcleo afetivo único, compartilhado por todos, e cada energia só pinta algumas falas com uma sensação do elemento. Personalidade por propriedade ficou pra depois. Os motivos:</p>
+<ul><li>O que faltava era afeição com o jogador, e isso vale pra qualquer golem, independente do elemento.</li><li>Tirar os placeholders das falas mata a classe inteira de bug de concordância, sem precisar de regra de gênero no template.</li><li>É só conteúdo. A estrutura e os exports do arquivo ficaram iguais, então o risco era quase zero.</li></ul>
+<p>O commit tirou mais do que pôs: 338 linhas entraram e 559 saíram. O núcleo é assim:</p>
+<pre class="code" data-lang="javascript"><code>born: [
+    &quot;oi... você que me fez?&quot;,
+    &quot;você é a primeira coisa que eu vejo.&quot;,
+],
+burn: [
+    &quot;para, por favor... eu confiei em você.&quot;,
+    &quot;ainda gosto de você... mas dói.&quot;,
+],
+idle: [
+    &quot;você ainda tá aí?&quot;,
+    &quot;eu faço o que você manda. sempre.&quot;,
+],</code></pre>
+<p>Tudo minúsculo, hesitante, sensorial. A gravidade ganha &quot;fico mais pesado quando você sai&quot;; o calor, &quot;fico morno quando você tá aqui&quot;. O banco <code>panic</code> ficou intacto, porque já era o padrão de qualidade.</p>
+<h2 id="quando-eles-comecaram-a-conversar-entre-si">Quando eles começaram a conversar entre si</h2>
+<p>Até então, no flerte e na briga, só quem começava falava; o outro ficava mudo. Mudei pra troca de turnos: no cortejo o parceiro responde, no combate o atacante revida e a luta tem fechamento. Isso ativou o banco <code>combat_victory</code>, que existia no arquivo e nunca tinha disparado. A chance de um golem ocioso puxar conversa subiu de 0,08 pra 0,22, com cooldown de 10 pra 5 segundos. Pra não virar spam, cada golem nasce com um nível de tagarelice e as falas passam por uma fila.</p>
+<div class="carousel is-gallery" data-count="2" role="group" aria-roledescription="carrossel"><div class="car-track" tabindex="0"><figure class="slide" data-n="1"><div class="slide-media"><img src="../../assets/img/blog/golems-que-falam-com-quem-os-cria/golems-nascendo.webp" alt="Golems geométricos recém-criados no laboratório, com balões dizendo &quot;que lugar é esse? é bonito.&quot; e &quot;tô aqui agora. obrigado.&quot;" loading="lazy" decoding="async" data-zoom></div><figcaption>Recém-nascidos falando com quem os criou.</figcaption></figure><figure class="slide" data-n="2"><div class="slide-media"><img src="../../assets/img/blog/golems-que-falam-com-quem-os-cria/golems-conversando.webp" alt="Golems interagindo, com balões dizendo &quot;tá machucando&quot;, &quot;chega!&quot; e &quot;ei, esse cantinho é meu.&quot;" loading="lazy" decoding="async" data-zoom></div><figcaption>Pouco depois, eles já disputam espaço entre si.</figcaption></figure></div><div class="car-ctrl"><button type="button" class="car-btn" data-dir="-1" aria-label="Anterior">←</button><span class="car-count"><b>1</b> / 2</span><button type="button" class="car-btn" data-dir="1" aria-label="Próximo">→</button></div></div>
+<p>Mais conversa trouxe à tona dois bugs de simulação. O limite de população só valia pra incubadora; a reprodução autônoma furava o teto, e os cálculos que comparam todo golem com todo golem a cada quadro travavam o jogo. E na velocidade 5x os golems envelheciam cinco vezes mais rápido, mas só tentavam acasalar no tempo real, então a população morria sem filhos. A correção: o teto passou a valer no único ponto por onde toda reprodução passa, e o timer de decisão passou a escalar com a velocidade do tempo.</p>
+<p>O jogo ainda tem uma porta pronta pra falas geradas por modelo de linguagem, com personalidade e histórico. Por enquanto ela segue desligada. Se um dia eu ligar, a voz escrita à mão é que vai servir de régua.</p>
+<p>Dá pra jogar em <a href="https://taleszin.github.io/game/" target="_blank" rel="noopener">taleszin.github.io/game</a>.</p>
+      <p class="post-tags"><span>game design</span><span>diálogo</span><span>phaser</span><span>vida artificial</span><span>hylomorph</span></p>
+      <div class="author-box">
+        <img src="../../assets/img/tales.webp" alt="" width="72" height="72" loading="lazy">
+        <div><b>Tales Santiago</b><p>Full stack de Fortaleza. Ciência da Computação na UECE, cofundador e CTO do Leap Notes, tech lead do Portal da História do Ceará.</p><p class="author-links"><a href="../../">Portfólio</a><a href="https://github.com/taleszin" target="_blank" rel="noopener">GitHub</a><a href="https://wa.me/5585984038749?text=Ol%C3%A1%20Tales!%20Li%20um%20artigo%20do%20seu%20blog%20e%20quero%20conversar." target="_blank" rel="noopener">WhatsApp</a></p></div>
+      </div>
+    </article>
+    <aside class="post-side" aria-label="Navegação do artigo">
+      <nav class="toc" aria-label="Neste artigo"><p class="side-title">Neste artigo</p><ol><li><a href="#o-que-tem-por-baixo">O que tem por baixo</a></li><li><a href="#o-problema-golems-que-liam-verbete">O problema: golems que liam verbete</a></li><li><a href="#a-referencia-plaything">A referência: Plaything</a></li><li><a href="#a-proposta-grande-que-eu-nao-fiz-inteira">A proposta grande que eu não fiz inteira</a></li><li><a href="#quando-eles-comecaram-a-conversar-entre-si">Quando eles começaram a conversar entre si</a></li></ol></nav>
+      <div class="side-share"><p class="side-title">Compartilhar</p>
+        <div class="share-row">
+          <button type="button" class="share-btn" data-copy="https://taleszin.github.io/portfolio/blog/golems-que-falam-com-quem-os-cria/">Copiar link</button>
+          <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftaleszin.github.io%2Fportfolio%2Fblog%2Fgolems-que-falam-com-quem-os-cria%2F" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="share-btn" href="https://wa.me/?text=Escrevendo%20a%20fala%20de%20criaturas%20que%20sabem%20quem%20as%20criou%20https%3A%2F%2Ftaleszin.github.io%2Fportfolio%2Fblog%2Fgolems-que-falam-com-quem-os-cria%2F" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <a class="side-cta" href="https://wa.me/5585984038749?text=Ol%C3%A1%20Tales!%20Li%20um%20artigo%20do%20seu%20blog%20e%20quero%20conversar." target="_blank" rel="noopener"><span>Tem um produto pra construir?</span><b>Vamos conversar ↗</b></a>
+    </aside>
+  </div>
+
+  <nav class="post-pager" aria-label="Outros artigos">
+    <a class="pager prev" href="../../blog/dois-jogos-sem-nenhum-arquivo-de-arte/"><span>← Anterior</span><b>Dois jogos sem um único arquivo de arte</b></a>
+    <a class="pager next" href="../../blog/taleszin-os-tablet-2014/"><span>Próximo →</span><b>Uma ROM para um tablet de 2014 com 512 MB de RAM</b></a>
+  </nav>
+
+  <section class="related" aria-labelledby="rel">
+    <h2 id="rel">Continue lendo</h2>
+    <div class="post-grid"><a class="post-card" href="../../blog/quando-o-cliente-sou-eu/" data-cat="projetos-pessoais" data-search="quando o cliente sou eu um tablet de 2014 que ia pro lixo, uma prancheta de basquete, um piano no celular. o que aprendi construindo coisas que so eu ia usar. projetos pessoais projetos pessoais android ia side projects" style="--c:#ff7a1a">
+  <figure class="post-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/quando-o-cliente-sou-eu.webp" alt="" loading="lazy" decoding="async" width="1600" height="900"></figure>
+  <div class="post-card-body">
+    <p class="post-kicker"><span class="cat-dot"></span>Projetos pessoais<span class="sep">·</span>5 min</p>
+    <h3>Quando o cliente sou eu</h3>
+    <p class="post-desc">Um tablet de 2014 que ia pro lixo, uma prancheta de basquete, um piano no celular. O que aprendi construindo coisas que só eu ia usar.</p>
+    <span class="post-more">Ler artigo</span>
+  </div>
+</a><a class="post-card" href="../../blog/scout-tatico-no-esporte-universitario/" data-cat="projetos-pessoais" data-search="eu nao conhecia os adversarios, entao fui estudar como a inseguranca de entrar em quadra sem conhecer ninguem virou dossie tatico, prancheta no tablet e um titulo de handebol universitario. projetos pessoais esporte analise-tatica handebol basquete visualizacao" style="--c:#ff7a1a">
+  <figure class="post-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/scout-tatico-no-esporte-universitario.webp" alt="" loading="lazy" decoding="async" width="1600" height="900"></figure>
+  <div class="post-card-body">
+    <p class="post-kicker"><span class="cat-dot"></span>Projetos pessoais<span class="sep">·</span>4 min</p>
+    <h3>Eu não conhecia os adversários, então fui estudar</h3>
+    <p class="post-desc">Como a insegurança de entrar em quadra sem conhecer ninguém virou dossiê tático, prancheta no tablet e um título de handebol universitário.</p>
+    <span class="post-more">Ler artigo</span>
+  </div>
+</a><a class="post-card" href="../../blog/dois-jogos-sem-nenhum-arquivo-de-arte/" data-cat="engenharia" data-search="dois jogos sem um unico arquivo de arte como fiz o fuelmania e o geo sumo com arte, som e fisica escritos em codigo, e o que essa regra me deu de graca: um jogo que da pra medir. engenharia game dev webgl three.js audio procedural fisica" style="--c:#3ef2d6">
+  <figure class="post-cover has-art"><img class="cover-art" src="../../assets/img/blog/capas/dois-jogos-sem-nenhum-arquivo-de-arte.webp" alt="" loading="lazy" decoding="async" width="1600" height="900"></figure>
+  <div class="post-card-body">
+    <p class="post-kicker"><span class="cat-dot"></span>Engenharia<span class="sep">·</span>5 min</p>
+    <h3>Dois jogos sem um único arquivo de arte</h3>
+    <p class="post-desc">Como fiz o FUELMANIA e o GEO SUMO com arte, som e física escritos em código, e o que essa regra me deu de graça: um jogo que dá pra medir.</p>
+    <span class="post-more">Ler artigo</span>
+  </div>
+</a></div>
+  </section>
+</main>
+<footer class="footer">
+  <p>Escrito e construído por Tales Santiago. HTML, CSS e JavaScript, sem framework.</p>
+  <p class="footer-links"><a href="../../blog/feed.xml">RSS</a><a href="https://github.com/taleszin" target="_blank" rel="noopener">GitHub</a><a href="../../">Portfólio</a></p>
+</footer>
+<script src="../../blog/blog.js?v=20261126b" defer></script>
+</body>
+</html>

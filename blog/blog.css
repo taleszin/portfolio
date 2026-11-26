@@ -190,3 +190,102 @@ main { padding: 0 var(--pad); }
 .post-cover { position: relative; }
 .cover-label { position: absolute; left: 22px; bottom: 18px; font: 500 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--c); text-shadow: 0 1px 12px #0a0a0f; }
 .hero-cover .cover-label { left: 30px; bottom: 26px; font-size: 13px; }
+
+/* ---------- mídia nos artigos: figura, vídeo, carrossel, moldura de iPhone, zoom ---------- */
+.prose .media { margin: 2.2em 0; }
+.prose .media img, .prose .media video { display: block; width: 100%; height: auto; border-radius: 16px; border: 1px solid var(--line); background: var(--bg-2); }
+.prose figcaption { margin-top: 10px; font-size: 14px; line-height: 1.5; color: var(--ink-3); }
+.prose figcaption::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: var(--c); vertical-align: 1px; }
+.prose img[data-zoom] { cursor: zoom-in; }
+
+.carousel { position: relative; margin: 2.4em 0; }
+.car-track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; outline: none; }
+.car-track::-webkit-scrollbar { display: none; }
+.car-track:focus-visible { box-shadow: 0 0 0 2px var(--c); border-radius: 16px; }
+.car-track .slide { flex: 0 0 100%; margin: 0; scroll-snap-align: center; }
+.is-gallery .slide-media { display: grid; place-items: center; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 16px; border: 1px solid var(--line); background: var(--bg-2); }
+.is-gallery .slide-media img, .is-gallery .slide-media video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.car-ctrl { display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 12px; }
+.car-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: rgba(255,255,255,.03); color: var(--ink); font-size: 16px; cursor: pointer; transition: background .2s, border-color .2s, opacity .2s; }
+.car-btn:hover { border-color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); }
+.car-btn:disabled { opacity: .3; cursor: default; }
+.car-count { min-width: 44px; text-align: center; font: 500 12px var(--mono); color: var(--ink-3); }
+.car-count b { color: var(--c); font-weight: 500; }
+.is-gallery .car-ctrl { position: absolute; right: 0; bottom: 0; margin: 0; }
+.is-gallery .slide figcaption { min-height: 40px; padding-right: 150px; }
+
+/* iPhone: moldura com ilha dinâmica */
+.is-phones .car-track { gap: 22px; justify-content: safe center; padding: 6px 2px 4px; }
+.is-phones .slide { flex: 0 0 min(230px, 62%); }
+.phone-frame .slide-media { position: relative; padding: 9px; border-radius: 38px; background: linear-gradient(145deg, #2a2a33, #0c0c11 55%, #23232b); box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 24px 60px -20px rgba(0,0,0,.8), 0 0 60px -30px var(--c); }
+.phone-frame .slide-media::before { content: ""; position: absolute; top: 17px; left: 50%; z-index: 2; width: 30%; height: 18px; transform: translateX(-50%); border-radius: 12px; background: #000; }
+.phone-frame .slide-media img, .phone-frame .slide-media video { display: block; width: 100%; aspect-ratio: 9 / 19.5; object-fit: cover; object-position: top; border-radius: 30px; background: #000; }
+.phone-frame figcaption { text-align: center; }
+.phone-frame figcaption::before { display: none; }
+.is-phones .car-ctrl { display: none; }
+@media (max-width: 640px) {
+  .is-phones .car-track { justify-content: flex-start; }
+  .is-phones .car-ctrl { display: flex; justify-content: center; }
+  .is-gallery .car-ctrl { position: static; margin-top: 10px; }
+  .is-gallery .slide figcaption { min-height: 0; padding-right: 0; }
+}
+
+/* zoom */
+.lightbox { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 4vmin; background: rgba(5,5,9,.92); backdrop-filter: blur(8px); cursor: zoom-out; opacity: 0; transition: opacity .25s; }
+.lightbox.on { opacity: 1; }
+.lightbox img { max-width: 100%; max-height: 86vh; border-radius: 12px; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+.lightbox p { margin: 14px 0 0; text-align: center; color: var(--ink-2); font-size: 14px; }
+
+/* ---------- capas com print do projeto + curvas de nível por cima ---------- */
+.post-cover.has-img { isolation: isolate; }
+.post-cover .cover-img { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: saturate(.85) brightness(.5) contrast(1.05); transition: transform 1.2s var(--ease), filter .6s; }
+.post-cover.has-img::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(180deg, transparent 35%, rgba(10,10,15,.85)), linear-gradient(120deg, color-mix(in srgb, var(--c) 30%, transparent), transparent 60%); mix-blend-mode: normal; }
+.post-cover.has-img svg { position: relative; z-index: 0; mix-blend-mode: screen; opacity: .38; }
+.post-cover.has-img svg rect { fill: transparent; }
+.post-cover.has-img .cover-label { z-index: 1; }
+.post-card:hover .post-cover .cover-img { transform: scale(1.06); filter: saturate(1.05) brightness(.78); }
+.post-card:hover .post-cover.has-img svg { opacity: .8; }
+
+/* curvas se desenhando no topo do artigo */
+.hero-cover path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.8s var(--ease) forwards; animation-delay: calc(var(--i) * 45ms + .15s); }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.hero-cover .cover-img { animation: coverIn 1.4s var(--ease) both; }
+@keyframes coverIn { from { transform: scale(1.08); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* spotlight que segue o mouse nos cards */
+.post-card::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: 0; transition: opacity .35s; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--c) 16%, transparent), transparent 60%); }
+.post-card:hover::before { opacity: 1; }
+
+/* entrada das mídias */
+.prose .media.reveal, .prose .carousel.reveal { transform: translateY(26px) scale(.975); }
+.prose .media.reveal.in, .prose .carousel.reveal.in { transform: none; }
+.is-phones .slide { transition: transform .5s var(--ease); }
+.is-phones .slide:hover { transform: translateY(-8px) rotate(-1deg); }
+.is-phones .slide:nth-child(even):hover { transform: translateY(-8px) rotate(1deg); }
+
+/* primeira letra e destaques de leitura */
+.prose > p:first-of-type::first-letter { float: left; margin: .06em .12em 0 0; font-family: var(--display); font-size: 3.4em; line-height: .82; font-weight: 700; color: var(--c); }
+.prose h2 { position: relative; }
+.prose h2::before { content: ""; display: block; width: 0; height: 3px; margin-bottom: 18px; border-radius: 3px; background: var(--c); transition: width .9s var(--ease); }
+.prose h2.seen::before { width: 44px; }
+
+/* tempo restante */
+.time-left { position: fixed; right: 22px; bottom: 22px; z-index: 40; display: flex; align-items: center; gap: 10px; padding: 9px 14px 9px 10px; border: 1px solid var(--line); border-radius: 999px; background: rgba(16,16,24,.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font: 500 12px var(--mono); color: var(--ink-2); opacity: 0; transform: translateY(12px); transition: opacity .35s, transform .35s var(--ease); cursor: pointer; }
+.time-left.on { opacity: 1; transform: none; }
+.time-left svg { width: 22px; height: 22px; transform: rotate(-90deg); }
+.time-left circle { fill: none; stroke-width: 3; }
+.time-left .bg { stroke: rgba(255,255,255,.1); }
+.time-left .fg { stroke: var(--c); stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+@media (max-width: 640px) { .time-left { right: 14px; bottom: 14px; } }
+@media (prefers-reduced-motion: reduce) { .hero-cover path { animation: none; stroke-dashoffset: 0; } .hero-cover .cover-img { animation: none; } }
+
+/* capas editadas (assets/img/blog/capas/<slug>.webp) */
+.post-cover.has-art { aspect-ratio: 16 / 9; }
+.post-cover .cover-art { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.post-card:hover .cover-art { transform: scale(1.04); }
+.post-card.is-featured .post-cover.has-art { aspect-ratio: auto; min-height: 380px; }
+.post-card.is-featured .cover-art { position: absolute; inset: 0; object-position: 15% center; }
+@media (max-width: 900px) { .post-card.is-featured .post-cover.has-art { aspect-ratio: 16 / 9; min-height: 0; } }
+.hero-cover.has-art { aspect-ratio: 16 / 9; }
+.hero-cover .cover-art { animation: coverIn 1.2s var(--ease) both; }
+@media (max-width: 640px) { .hero-cover.has-art { aspect-ratio: 16 / 9; } }
