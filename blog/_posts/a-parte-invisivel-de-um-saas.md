@@ -5,6 +5,7 @@ description: "Confiança, suporte, pagamento que funciona e saber o que não faz
 category: "Produto"
 tags: ["saas", "cto", "produto", "startup", "leap-notes"]
 order: 8
+publishedAt: "2026-06-24"
 cover: "img/leap-live.webp"
 ---
 

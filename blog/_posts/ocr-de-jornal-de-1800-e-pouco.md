@@ -5,6 +5,7 @@ description: "Como um acervo de mais de 30 anos, guardado como imagem e TXT sujo
 category: "Engenharia"
 tags: ["ocr", "mysql", "dados", "full-text", "phc"]
 order: 4
+publishedAt: "2026-03-26"
 cover: "img/blog/ocr-de-jornal-de-1800-e-pouco/pagina-transcrita.webp"
 ---
 

@@ -5,6 +5,7 @@ description: "Em 2022 entrei em Ciência da Computação na UECE sem nunca ter p
 category: "Carreira"
 tags: ["carreira", "faculdade", "uece", "inicio-de-carreira", "programacao"]
 order: 1
+publishedAt: "2026-01-19"
 ---
 
 Toda turma de computação tem a sua lenda. Na minha, era o colega que chegou na primeira semana de aula já tendo ligado um Arduino a uma inteligência artificial que respondia pelo WhatsApp. Isso mesmo: o cara conversava com uma placa pelo zap, e eu ainda tava descobrindo em que bloco ficava o laboratório. Na mesma sala tinha gente que nunca tinha mexido num computador. Eu tava no meio, mais perto do segundo grupo do que gostaria de admitir.

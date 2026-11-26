@@ -5,6 +5,7 @@ description: "No HYLOMORPH, os golems falavam como verbete de física. Como rees
 category: "Projetos pessoais"
 tags: ["game design", "diálogo", "phaser", "vida artificial", "hylomorph"]
 order: 14
+publishedAt: "2026-07-09"
 ---
 
 No HYLOMORPH você é o cientista. Combina uma forma (círculo, triângulo, estrela...), uma matéria (ferro, ouro, mercúrio...) e uma energia (calor, gravidade, radiação...) e dá vida a um golem. Depois observa: ele anda, come, flerta, briga, tem filhos e morre. O nome vem do hilomorfismo de Aristóteles, a ideia de que toda coisa é matéria mais forma. E eles falam com você.

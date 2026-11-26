@@ -5,6 +5,7 @@ description: "Como o Leap Notes saiu de um MVP de bloco de notas e virou produto
 category: "Produto"
 tags: ["leap-notes", "startup", "produto", "crescimento-organico", "saas"]
 order: 7
+publishedAt: "2026-06-02"
 cover: "img/leap-hub-desktop.webp"
 ---
 

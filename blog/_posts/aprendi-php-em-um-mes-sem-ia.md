@@ -5,6 +5,7 @@ description: "Meu primeiro estágio exigia uma linguagem que eu nunca tinha usad
 category: "Carreira"
 tags: ["php", "estagio", "carreira", "aprendizado"]
 order: 3
+publishedAt: "2026-03-05"
 cover: "none"
 ---
 

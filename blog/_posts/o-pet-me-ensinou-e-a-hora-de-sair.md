@@ -5,6 +5,7 @@ description: "A bolsa do PET Computação da UECE me deu rede, pesquisa e desenr
 category: "Carreira"
 tags: ["carreira", "universidade", "pet", "pesquisa", "uece"]
 order: 2
+publishedAt: "2026-02-10"
 ---
 
 Entrei em Ciência da Computação na UECE em 2022 me sentindo atrás da turma. Tinha gente que programava desde criança e gente que mal tinha usado um computador, e eu ficava no meio. Passar na seleção do PET Computação, logo no começo do curso, foi a primeira coisa que me colocou de pé.

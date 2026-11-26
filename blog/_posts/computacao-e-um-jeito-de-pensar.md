@@ -5,6 +5,7 @@ description: "Fluxo de jornal antigo, decisão de produto, scout de handebol. O 
 category: "Carreira"
 tags: ["carreira", "pensamento sistêmico", "aprendizado", "gestão", "faculdade"]
 order: 11
+publishedAt: "2026-11-21"
 cover: "img/blog/computacao-e-um-jeito-de-pensar/mesmo-fluxo.webp"
 ---
 
